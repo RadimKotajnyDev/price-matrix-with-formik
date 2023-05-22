@@ -1,4 +1,12 @@
-export default function Ruleset({ Key, RulesetID, RulesetPriority}) {
+import Note from "./Note.tsx";
+
+interface RulesetProps {
+  Key: number,
+  RulesetID: number,
+  RulesetPriority: number
+}
+
+export default function Ruleset({ Key, RulesetID, RulesetPriority}: RulesetProps) {
 
   return (
     <div key={Key}
@@ -9,6 +17,7 @@ export default function Ruleset({ Key, RulesetID, RulesetPriority}) {
           Priority: #{RulesetPriority}
         </p>
         {/* TODO: Priority changer */}
+        <Note />
       </div>
     </div>
   )
