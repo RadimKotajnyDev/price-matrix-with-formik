@@ -7,5 +7,25 @@ export async function fetchData() {
     return response.data
   } catch (error) {
     console.log(error);
+    alert(error)
   }
+}
+
+export async function resolveRulesets() {
+  const data = await fetchData()
+  return await
+    data.ruleSets.map((item: any) => {
+      return {
+        ruleSetId: item.ruleSetId,
+        logicalOperatorId: item.logicalOperatorId,
+        priority: item.priority,
+        rules: item.rules,
+        priceSelling: item.priceSelling,
+        bookingFeePercent: item.bookingFeePercent,
+        bookingFeeAbsolute: item.bookingFeeAbsolute,
+        insideCommissionRate: item.insideCommissionRate,
+        note: item.note,
+        offerCode: item.offerCode,
+      }
+    })
 }
