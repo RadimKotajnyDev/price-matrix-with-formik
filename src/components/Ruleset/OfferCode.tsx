@@ -1,7 +1,10 @@
-export default function OfferCode() {
-  return (
-    <div>
+import {Field} from "formik";
 
-    </div>
+export default function OfferCode({nameProp}: any) {
+  return (
+    <>
+      <label>Note</label>
+      <Field type="text" name={nameProp} />
+    </>
   )
 }
