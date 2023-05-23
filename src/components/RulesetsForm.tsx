@@ -33,7 +33,6 @@ export default function RulesetsForm() {
                     />
                   </div>
                 ))}
-                <Button className></Button>
               </div>
             )}
           </FieldArray>

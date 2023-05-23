@@ -1,4 +1,5 @@
 import {Field} from "formik";
+import {InputClass} from "../../configs/classNames/ClassNames.tsx";
 
 export default function Pricing(props: any) {
   const {bookingFeeAbsolute, bookingFeePercent, insideCommission, priceSelling} = props
@@ -10,18 +11,18 @@ export default function Pricing(props: any) {
       <p className="font-semibold">Pricing</p>
       <div>
         <label>BookingFeeAbsolute</label>
-        <Field type="number" name={bookingFeeAbsolute} />
+        <Field className={InputClass} type="number" name={bookingFeeAbsolute} />
       </div>
       <div>
         <label>BookingFeePercent</label>
-        <Field type="number" name={bookingFeePercent} />
+        <Field className={InputClass} type="number" name={bookingFeePercent} />
       </div>
       <div>
         <label>InsideCommission</label>
-        <Field type="number" name={insideCommission} />
+        <Field className={InputClass} type="number" name={insideCommission} />
       </div>
         <label>PriceSelling</label>
-      <Field type="number" name={priceSelling} />
+      <Field className={InputClass} type="number" name={priceSelling} />
       <div>
       </div>
     </div>
