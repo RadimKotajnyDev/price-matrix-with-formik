@@ -2,6 +2,7 @@ import {ErrorMessage, Field, FieldArray, Form, Formik} from 'formik';
 import {useEffect, useState} from "react";
 import {resolveRulesets} from "../API.tsx";
 import Ruleset from "./Ruleset/Ruleset.tsx";
+import Button from "./elements/Button.tsx";
 
 const formConfig = await resolveRulesets()
 
@@ -21,11 +22,18 @@ export default function RulesetsForm() {
                 {values.rulesets.map((ruleset: any, index: number) => (
                   <div key={index}>
                     <Ruleset
-                      RulesetPriority={ruleset.priority}
-                      RulesetID={ruleset.ruleSetId}
-                      offerCode={`rulesets[${index}].offerCode`} />
+                      removeRuleset={() => remove(index)}
+                      rulesetPriority={ruleset.priority}
+                      rulesetID={ruleset.ruleSetId}
+                      offerCode={`rulesets[${index}].offerCode`}
+                      bookingFeeAbsolute={`rulesets[${index}].bookingFeeAbsolute`}
+                      bookingFeePercent={`rulesets[${index}].bookingFeePercent`}
+                      insideCommission={`rulesets[${index}].insideCommissionRate`}
+                      priceSelling={`rulesets[${index}].priceSelling`}
+                    />
                   </div>
                 ))}
+                <Button className></Button>
               </div>
             )}
           </FieldArray>
