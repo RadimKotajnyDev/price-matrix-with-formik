@@ -3,13 +3,13 @@ import {useEffect, useState} from "react";
 import {resolveRulesets} from "../API.tsx";
 import Ruleset from "./Ruleset/Ruleset.tsx";
 import Button from "./elements/Button.tsx";
+import {AddRulesetClass, ButtonClass, center} from "../configs/classNames/ClassNames.tsx";
 
 const formConfig = await resolveRulesets()
 
 export default function RulesetsForm() {
 
   console.log(formConfig)
-
   return (
     <Formik initialValues={{rulesets: formConfig}}
             onSubmit={(values) => console.log(values)}
@@ -22,7 +22,7 @@ export default function RulesetsForm() {
                 {values.rulesets.map((ruleset: any, index: number) => (
                   <div key={index}>
                     <Ruleset
-                      removeRuleset={() => remove(index)}
+                      removeRuleset={() => remove(index)} //TODO: DELETE request
                       rulesetPriority={ruleset.priority}
                       rulesetID={ruleset.ruleSetId}
                       offerCode={`rulesets[${index}].offerCode`}
@@ -33,6 +33,10 @@ export default function RulesetsForm() {
                     />
                   </div>
                 ))}
+                <Button
+                  center={center}
+                  classNameProp={ButtonClass + AddRulesetClass}
+                  onClickProp={() => push('')}>Add ruleset</Button>
               </div>
             )}
           </FieldArray>

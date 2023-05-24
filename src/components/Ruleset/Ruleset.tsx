@@ -3,15 +3,16 @@ import Pricing from "./Pricing.tsx";
 import OfferCode from "./OfferCode.tsx";
 import Button from "../elements/Button.tsx";
 import {ButtonClass} from "../../configs/classNames/ClassNames.tsx";
+import {AiOutlineClose} from "react-icons/all";
 
 interface RulesetProps {
   rulesetID: number,
   rulesetPriority: number,
   offerCode: string,
-  bookingFeeAbsolute: string | number,
-  bookingFeePercent: string | number,
-  insideCommission: string | number,
-  priceSelling: string | number,
+  bookingFeeAbsolute?: number | string,
+  bookingFeePercent?: number | string,
+  insideCommission?: number | string,
+  priceSelling?: number | string,
   removeRuleset: any
 }
 
@@ -28,7 +29,7 @@ export default function Ruleset(props: RulesetProps) {
   }: RulesetProps = props
   return (
     <div
-      className="w-fit p-4 bg-gray-300 my-4 rounded-md">
+      className="w-fit p-4  my-4 rounded-md bg-gray-200 outline-gray-200 shadow-lg">
       <div>
         <div className="flex flex-row justify-between mb-2">
           <p className="font-semibold text-4xl">Ruleset {rulesetID}
@@ -37,7 +38,7 @@ export default function Ruleset(props: RulesetProps) {
           </p>
           <Button onClickProp={removeRuleset}
                   classNameProp={ButtonClass + " bg-red-600"}
-          >Remove Ruleset</Button>
+          ><AiOutlineClose size={25} /></Button>
         </div>
         {/* TODO: Priority changer */}
         <Note />
