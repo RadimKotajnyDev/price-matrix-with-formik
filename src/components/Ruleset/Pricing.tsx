@@ -9,7 +9,7 @@ interface Props {
 }
 
 const rowClass = "flex flex-row gap-5 justify-between items-center"
-
+const widthClass = " w-full min-w-[100px] max-w-[120px] "
 export default function Pricing(props: Props) {
   const {
     bookingFeeAbsolute,
@@ -24,19 +24,19 @@ export default function Pricing(props: Props) {
       <p className="font-semibold">Pricing</p>
       <div className={rowClass}>
         <label>BookingFeeAbsolute</label>
-        <Field className={InputClass} type="number" name={bookingFeeAbsolute} />
+        <Field className={InputClass + widthClass} type="number" name={bookingFeeAbsolute} />
       </div>
       <div className={rowClass}>
         <label>BookingFeePercent</label>
-        <Field className={InputClass} type="number" name={bookingFeePercent} />
+        <Field className={InputClass + widthClass} type="number" name={bookingFeePercent} />
       </div>
       <div className={rowClass}>
         <label>InsideCommission</label>
-        <Field className={InputClass} type="number" name={insideCommission} />
+        <Field className={InputClass + widthClass} type="number" name={insideCommission} />
       </div>
       <div className={rowClass}>
         <label>PriceSelling</label>
-        <Field className={InputClass} type="number" name={priceSelling} />
+        <Field className={InputClass + widthClass} type="number" name={priceSelling} />
       </div>
     </div>
   )
