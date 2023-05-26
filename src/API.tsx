@@ -7,7 +7,7 @@ export async function fetchData() {
     return response.data
   } catch (error) {
     console.log(error);
-    alert(error)
+    alert("Fetching data from API error: \n" + error)
   }
 }
 

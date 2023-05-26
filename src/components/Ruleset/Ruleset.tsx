@@ -4,10 +4,12 @@ import OfferCode from "./OfferCode.tsx";
 import Button from "../elements/Button.tsx";
 import {ButtonClass} from "../../configs/classNames/ClassNames.tsx";
 import {AiOutlineClose} from "react-icons/all";
+import Rules from "./Rules.tsx";
 
 interface RulesetProps {
   rulesetID: number,
   rulesetPriority: number,
+  rulesName: any,
   offerCode: string,
   bookingFeeAbsolute?: number | string,
   bookingFeePercent?: number | string,
@@ -20,6 +22,7 @@ export default function Ruleset(props: RulesetProps) {
   const {
     rulesetID,
     rulesetPriority,
+    rulesName,
     offerCode,
     bookingFeeAbsolute,
     bookingFeePercent,
@@ -38,11 +41,20 @@ export default function Ruleset(props: RulesetProps) {
           </p>
           <Button onClickProp={removeRuleset}
                   classNameProp={ButtonClass + " bg-red-600"}
-          ><AiOutlineClose size={25} /></Button>
+          >
+            <span className="flex flex-row items-center gap-2">
+              <AiOutlineClose size={25} />
+              <span className="flex flex-col items-start text-sm font-light">
+                <p>remove</p>
+                <p>ruleset</p>
+              </span>
+            </span>
+          </Button>
         </div>
         {/* TODO: Priority changer */}
         <Note />
         {/* TODO: Rules */}
+        {/* <Rules nameProp={rulesName} /> */}
         <div className="flex flex-row">
           <Pricing
             bookingFeeAbsolute={bookingFeeAbsolute}

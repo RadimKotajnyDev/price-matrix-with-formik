@@ -4,10 +4,12 @@ import {resolveRulesets} from "../API.tsx";
 import Ruleset from "./Ruleset/Ruleset.tsx";
 import Button from "./elements/Button.tsx";
 import {AddRulesetClass, ButtonClass, center} from "../configs/classNames/ClassNames.tsx";
+import {Heading} from "./Heading.tsx";
+import {AiOutlinePlusCircle} from "react-icons/all";
 
 const formConfig = await resolveRulesets()
 
-export default function RulesetsForm() {
+export default function RulesetsForm(props: any) {
 
   console.log(formConfig)
   return (
@@ -17,14 +19,16 @@ export default function RulesetsForm() {
       {({values}) => (
         <Form className="flex justify-center">
           <FieldArray name="rulesets">
-            {({ push, remove}) => (
-              <div>
+            {({push, remove}) => (
+              <div className="relative">
+                <Heading dataName={props.dataName} dataID={props.dataID}/>
                 {values.rulesets.map((ruleset: any, index: number) => (
                   <div key={index}>
                     <Ruleset
-                      removeRuleset={() => remove(index)} //TODO: DELETE request
+                      removeRuleset={() => remove(index)}
                       rulesetPriority={ruleset.priority}
                       rulesetID={ruleset.ruleSetId}
+                      rulesName={`rulesets[${index}]`}
                       offerCode={`rulesets[${index}].offerCode`}
                       bookingFeeAbsolute={`rulesets[${index}].bookingFeeAbsolute`}
                       bookingFeePercent={`rulesets[${index}].bookingFeePercent`}
@@ -33,17 +37,22 @@ export default function RulesetsForm() {
                     />
                   </div>
                 ))}
-                <Button
-                  center={center}
-                  classNameProp={ButtonClass + AddRulesetClass}
-                  onClickProp={() => push('')}>Add ruleset</Button>
+                <div className="flex flex-col gap-6">
+                  <Button
+                    center={center}
+                    classNameProp={ButtonClass + AddRulesetClass + " flex flex-row items-center"}
+                    onClickProp={() => push('')}><AiOutlinePlusCircle size={20} className="mr-2"/> Add ruleset</Button>
+                  <Button center={center} typeProp="submit"
+                          classNameProp={ButtonClass + " bg-teal-500"}>Submit</Button>
+                </div>
               </div>
             )}
           </FieldArray>
         </Form>
       )}
     </Formik>
-  );
+  )
+    ;
 }
 
 
