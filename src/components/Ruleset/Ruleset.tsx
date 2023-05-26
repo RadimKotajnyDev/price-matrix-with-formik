@@ -42,13 +42,7 @@ export default function Ruleset(props: RulesetProps) {
           <Button onClickProp={removeRuleset}
                   classNameProp={ButtonClass + " bg-red-600"}
           >
-            <span className="flex flex-row items-center gap-2">
               <AiOutlineClose size={25} />
-              <span className="flex flex-col items-start text-sm font-light">
-                <p>remove</p>
-                <p>ruleset</p>
-              </span>
-            </span>
           </Button>
         </div>
         {/* TODO: Priority changer */}
