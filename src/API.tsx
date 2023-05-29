@@ -13,19 +13,19 @@ export async function fetchData() {
 
 export async function resolveRulesets() {
   const data = await fetchData()
-  return await
-    data.ruleSets.map((item: any) => {
-      return {
-        ruleSetId: item.ruleSetId,
-        logicalOperatorId: item.logicalOperatorId,
-        priority: item.priority,
-        rules: item.rules,
-        priceSelling: item.priceSelling,
-        bookingFeePercent: item.bookingFeePercent,
-        bookingFeeAbsolute: item.bookingFeeAbsolute,
-        insideCommissionRate: item.insideCommissionRate,
-        note: item.note,
-        offerCode: item.offerCode,
-      }
-    })
+  await data.ruleSets.map((item: any) => {
+    return {
+      ruleSetId: item.ruleSetId,
+      logicalOperatorId: item.logicalOperatorId,
+      priority: item.priority,
+      rules: item.rules,
+      priceSelling: item.priceSelling,
+      bookingFeePercent: item.bookingFeePercent,
+      bookingFeeAbsolute: item.bookingFeeAbsolute,
+      insideCommissionRate: item.insideCommissionRate,
+      note: item.note,
+      offerCode: item.offerCode,
+    }
+  }) //TODO: dont reverse an array, sort by priority
+  return await data.ruleSets.slice().reverse() //priority rendering
 }

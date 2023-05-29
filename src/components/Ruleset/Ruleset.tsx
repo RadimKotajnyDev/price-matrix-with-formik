@@ -15,7 +15,8 @@ interface RulesetProps {
   bookingFeePercent?: number | string,
   insideCommission?: number | string,
   priceSelling?: number | string,
-  removeRuleset: any
+  removeRuleset: any,
+  children: any
 }
 
 export default function Ruleset(props: RulesetProps) {
@@ -28,7 +29,8 @@ export default function Ruleset(props: RulesetProps) {
     bookingFeePercent,
     insideCommission,
     priceSelling,
-    removeRuleset
+    removeRuleset,
+    children
   }: RulesetProps = props
   return (
     <div
@@ -47,8 +49,8 @@ export default function Ruleset(props: RulesetProps) {
         </div>
         {/* TODO: Priority changer */}
         <Note />
-        {/* TODO: Rules */}
-        {/* <Rules nameProp={rulesName} /> */}
+        {/* RULES */}
+        {children}
         <div className="flex flex-row">
           <Pricing
             bookingFeeAbsolute={bookingFeeAbsolute}

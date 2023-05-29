@@ -1,5 +1,5 @@
 const daysOfWeek = [
-  {name: "", id: 0},
+  {name: "---select field---", id: 0},
   {name: "Monday", id: 1},
   {name: "Tuesday", id: 2},
   {name: "Wednesday", id: 3},
