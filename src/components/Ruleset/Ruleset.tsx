@@ -4,7 +4,7 @@ import OfferCode from "./OfferCode.tsx";
 import Button from "../elements/Button.tsx";
 import {ButtonClass} from "../../configs/classNames/ClassNames.tsx";
 import {AiOutlineClose} from "react-icons/all";
-import Rules from "./Rules.tsx";
+import RulesBackup from "./RulesBackup.tsx";
 
 interface RulesetProps {
   rulesetID: number,

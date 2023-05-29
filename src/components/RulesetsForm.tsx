@@ -6,11 +6,12 @@ import Button from "./elements/Button.tsx";
 import {AddRulesetClass, ButtonClass, InputClass, LabelClass} from "../configs/classNames/ClassNames.tsx";
 import {Heading} from "./Heading.tsx";
 import {AiOutlineMinus, AiOutlinePlusCircle} from "react-icons/ai";
-import Rules from "./Ruleset/Rules.tsx";
+import RulesBackup from "./Ruleset/RulesBackup.tsx";
 import fieldOptions from "../configs/options/FieldOptionsConfig.tsx";
 import OperatorOptionsConfig from "../configs/options/OperatorOptionsConfig.tsx";
 import FieldOptionsConfig from "../configs/options/FieldOptionsConfig.tsx";
 import operatorOptions from "../configs/options/OperatorOptionsConfig.tsx";
+import Rules from "./Ruleset/Rules.tsx";
 
 const formConfig = await resolveRulesets()
 
@@ -42,46 +43,17 @@ export default function RulesetsForm(props: any) {
                         insideCommission={`rulesets[${index}].insideCommissionRate`}
                         priceSelling={`rulesets[${index}].priceSelling`}
                       >
-                        {/* Rules */}
+                        {/* RulesBackup */}
                         <FieldArray name={`rulesets.rules`}>
-                          {({pushRule, removeRule}) => (
+                          {({push: pushRule, remove: removeRule}) => (
                             <div>
                               {ruleset.rules.map((rule: any, ruleIndex: number) => (
-                                <div key={ruleIndex}>
-                                  <div className="flex flex-row items-center">
-                                    <div className="flex flex-col">
-                                      <label className={LabelClass}>Field</label>
-                                      <Field as="select" className={InputClass + " z-0 relative"}
-                                             name={`rulesets[${index}].rules[${ruleIndex}].fieldId`}>
-                                        {fieldOptions.map((current) => (
-                                          <option key={current.id} value={current.id}>{current.name}</option>
-                                        ))}
-                                      </Field>
-                                    </div>
-                                    <div className="flex flex-col">
-                                      <label className={LabelClass}>Operator</label>
-                                      <Field as="select" className={InputClass}
-                                             name={`rulesets[${index}].rules[${ruleIndex}].compareOperatorId`}>
-                                        {operatorOptions.map((current) => (
-                                          <option key={current.id} value={current.id}>{current.name}</option>
-                                        ))}
-                                      </Field>
-                                    </div>
-                                    <div className="flex flex-col">
-                                      <label className={LabelClass}>Value</label>
-                                      <Field className={InputClass}
-                                             name={`rulesets[${index}].rules[${ruleIndex}].valueInt`}/>
-                                    </div>
-                                    <Button onClickProp={() => remove(removeRule)} classNameProp="flex">
-                                      <AiOutlineMinus
-                                        size="50"
-                                        className="ml-2 rounded text-white bg-slate-900 duration-200
-                                                     hover:text-slate-900 hover:bg-white disabled:cursor-not-allowed"
-
-                                      />
-                                    </Button>
-                                  </div>
-                                </div>
+                                <Rules key={ruleIndex}
+                                       fieldName={`rulesets[${index}].rules[${ruleIndex}].fieldId`}
+                                       optionName={`rulesets[${index}].rules[${ruleIndex}].compareOperatorId`}
+                                       valueName={`rulesets[${index}].rules[${ruleIndex}].valueInt`}
+                                       remove={() => removeRule(ruleIndex)}
+                                />
                               ))}
                             </div>
                           )}
@@ -94,7 +66,8 @@ export default function RulesetsForm(props: any) {
                   <div className="flex flex-col gap-6 w-fit">
                     <Button
                       classNameProp={ButtonClass + AddRulesetClass + " flex flex-row items-center"}
-                      onClickProp={() => push('')}><AiOutlinePlusCircle size={20} className="mr-2"/> Add ruleset</Button>
+                      onClickProp={() => push('')}><AiOutlinePlusCircle size={20} className="mr-2"/> Add
+                      ruleset</Button>
                     <Button typeProp="submit"
                             classNameProp={ButtonClass + " bg-teal-500"}>Submit</Button>
                   </div>
