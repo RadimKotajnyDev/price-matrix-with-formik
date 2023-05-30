@@ -12,6 +12,7 @@ export default function Rules(props: any) {
         <div className="flex flex-col">
           <label className={LabelClass}>Field</label>
           <Field component="select" className={InputClass + " z-0 relative"}
+                 onChange={(e: any) => props.setFieldValue(props.fieldName, parseInt(e.target.value))}
                  name={props.fieldName}>
             {fieldOptions.map((current) => (
               <option key={current.id} value={current.id}>{current.name}</option>
@@ -21,6 +22,7 @@ export default function Rules(props: any) {
         <div className="flex flex-col">
           <label className={LabelClass}>Operator</label>
           <Field component="select" className={InputClass}
+                 onChange={(e: any) => props.setFieldValue(props.optionName, parseInt(e.target.value))}
                  name={props.optionName}>
             {operatorOptions.map((current) => (
               <option key={current.id} value={current.id}>{current.name}</option>

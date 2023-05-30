@@ -16,7 +16,7 @@ export default function RulesetsForm(props: any) {
     <Formik initialValues={{rulesets: formConfig}}
             onSubmit={(values) => console.log(values)}
     >
-      {({values}) => (
+      {({values, setFieldValue}) => (
         <Form className="flex justify-center">
           <FieldArray name="rulesets">
             {({push, remove}) => (
@@ -47,6 +47,7 @@ export default function RulesetsForm(props: any) {
                                        optionName={`rulesets[${index}].rules[${ruleIndex}].compareOperatorId`}
                                        valueName={`rulesets[${index}].rules[${ruleIndex}].valueInt`}
                                        remove={() => removeRule(ruleIndex)}
+                                       setFieldValue={setFieldValue}
                                 />
                               ))}
                             </div>
