@@ -1,16 +1,10 @@
-import {ErrorMessage, Field, FieldArray, Form, Formik} from 'formik';
-import {useEffect, useState} from "react";
+import {FieldArray, Form, Formik} from 'formik';
 import {resolveRulesets} from "../API.tsx";
 import Ruleset from "./Ruleset/Ruleset.tsx";
 import Button from "./elements/Button.tsx";
-import {AddRulesetClass, ButtonClass, InputClass, LabelClass} from "../configs/classNames/ClassNames.tsx";
+import {AddRulesetClass, ButtonClass} from "../configs/classNames/ClassNames.tsx";
 import {Heading} from "./Heading.tsx";
-import {AiOutlineMinus, AiOutlinePlusCircle} from "react-icons/ai";
-import RulesBackup from "./Ruleset/RulesBackup.tsx";
-import fieldOptions from "../configs/options/FieldOptionsConfig.tsx";
-import OperatorOptionsConfig from "../configs/options/OperatorOptionsConfig.tsx";
-import FieldOptionsConfig from "../configs/options/FieldOptionsConfig.tsx";
-import operatorOptions from "../configs/options/OperatorOptionsConfig.tsx";
+import {AiOutlinePlusCircle} from "react-icons/ai";
 import Rules from "./Ruleset/Rules.tsx";
 
 const formConfig = await resolveRulesets()

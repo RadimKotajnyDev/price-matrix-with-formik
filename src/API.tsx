@@ -26,6 +26,6 @@ export async function resolveRulesets() {
       note: item.note,
       offerCode: item.offerCode,
     }
-  }) //TODO: dont reverse an array, sort by priority
-  return await data.ruleSets.slice().reverse() //priority rendering
+  }) // sorting rulesets by priority
+  return [...data.ruleSets].sort((a, b) => a.priority - b.priority);
 }
