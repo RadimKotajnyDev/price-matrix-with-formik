@@ -16,10 +16,12 @@ interface RulesetProps {
   insideCommission?: number | string,
   priceSelling?: number | string,
   removeRuleset: any,
-  children: any
+  rules: any,
+  rulesString: string,
+  setFieldValue: any
 }
 
-export default function Ruleset(props: any) {
+export default function Ruleset(props: RulesetProps) {
   const {
     rulesetID,
     rulesetPriority,
@@ -28,11 +30,14 @@ export default function Ruleset(props: any) {
     bookingFeePercent,
     insideCommission,
     priceSelling,
-    removeRuleset
+    removeRuleset,
+    rules,
+    rulesString,
+    setFieldValue
   }: RulesetProps = props
   return (
     <div
-      className="w-fit p-4 my-4 rounded-md bg-gray-200 outline-gray-200 shadow-lg">
+      className="w-fit p-4 my-4 rounded-md bg-white border-2 outline-gray-100 shadow-lg">
       <div>
         <div className="flex flex-row justify-between mb-2">
           <p className="font-semibold text-4xl text-gray-800">Ruleset {rulesetID}
@@ -47,21 +52,21 @@ export default function Ruleset(props: any) {
         </div>
         {/* TODO: Priority changer */}
         <Note />
-        <div className="flex w-full px-4 -mb-4">
-          <label className="w-[15rem] LabelClass">Field</label>
-          <label className="w-[15rem] LabelClass">Operator</label>
-          <label className="w-[15rem] LabelClass">Value</label>
+        <div className="flex w-full -mb-4">
+          <label className="w-[15rem] ml-2 LabelClass">Field</label>
+          <label className="w-[15rem] ml-2 LabelClass">Operator</label>
+          <label className="w-[15rem] ml-2 LabelClass">Value</label>
         </div>
         <FieldArray name={`rulesets.rules`}>
           {({push, remove}) => (
               <>
-                  {props.rules.map((rule: any, ruleIndex: number) => (
+                  {rules.map((rule: any, ruleIndex: number) => (
                       <Rule key={ruleIndex}
-                            fieldName={props.rulesString + `[${ruleIndex}].fieldId`}
+                            fieldName={rulesString + `[${ruleIndex}].fieldId`}
                             optionName={props.rulesString + `[${ruleIndex}].compareOperatorId`}
                             valueName={props.rulesString + `[${ruleIndex}].valueInt`}
                             remove={() => remove(ruleIndex)}
-                            setFieldValue={props.setFieldValue}
+                            setFieldValue={setFieldValue}
                       />
                   ))}
               </>

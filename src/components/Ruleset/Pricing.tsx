@@ -20,19 +20,19 @@ export default function Pricing(props: Props) {
     <div className="flex flex-col">
       <p className="LabelClass">Pricing</p>
       <div className={rowClass}>
-        <label>BookingFeeAbsolute</label>
+        <label className="PricingLabel">BookingFeeAbsolute</label>
         <Field className={"InputClass" + widthClass} type="number" name={bookingFeeAbsolute} />
       </div>
       <div className={rowClass}>
-        <label>BookingFeePercent</label>
+        <label className="PricingLabel">BookingFeePercent</label>
         <Field className={"InputClass" + widthClass} type="number" name={bookingFeePercent} />
       </div>
       <div className={rowClass}>
-        <label>InsideCommission</label>
+        <label className="PricingLabel">InsideCommission</label>
         <Field className={"InputClass" + widthClass} type="number" name={insideCommission} />
       </div>
       <div className={rowClass}>
-        <label>PriceSelling</label>
+        <label className="PricingLabel">PriceSelling</label>
         <Field className={"InputClass" + widthClass} type="number" name={priceSelling} />
       </div>
     </div>

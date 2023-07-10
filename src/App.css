@@ -21,11 +21,14 @@
     }
     .InputClass {
         @apply appearance-none h-fit
-         block bg-gray-100 text-gray-700 border border-gray-200 rounded
+         block bg-gray-50 text-gray-700 border border-gray-200 rounded
         py-3 px-5 w-[15rem] focus:outline-none mx-1
-        focus:bg-white focus:border-gray-500
+        focus:bg-white focus:border-purple-500
     }
     .LabelClass {
-        @apply relative uppercase tracking-wide text-gray-700 font-bold my-2 text-xs
+        @apply relative uppercase tracking-wide text-gray-700 font-bold my-2 text-sm
+    }
+    .PricingLabel {
+        @apply text-sm
     }
 }
