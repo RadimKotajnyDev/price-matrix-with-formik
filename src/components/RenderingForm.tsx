@@ -20,7 +20,9 @@ export default function RenderingForm(props: any) {
           <FieldArray name="rulesets">
             {({push, remove}) => (
               <div className="relative">
-                <Heading dataName={props.dataName} dataID={props.dataID}/>
+                <Heading dataName={props.dataName} dataID={props.dataID}
+                         buttonOnClick={() => push('')}
+                />
                 {values.rulesets.map((ruleset: any, index: number) => {
                   //console.log(formConfig);
                   return (
@@ -41,16 +43,6 @@ export default function RenderingForm(props: any) {
                     </div>
                   )
                 })}
-                <div className="flex justify-center w-full">
-                  <div className="flex flex-col gap-6 w-fit">
-                    <Button
-                      classNameProp="ButtonClass AddRulesetClass flex flex-row items-center"
-                      onClickProp={() => push('')}><AiOutlinePlusCircle size={20} className="mr-2"/> Add
-                      ruleset</Button>
-                    <Button typeProp="submit"
-                            classNameProp="ButtonClass bg-teal-500">Submit</Button>
-                  </div>
-                </div>
               </div>
             )}
           </FieldArray>

@@ -15,9 +15,8 @@ export default function Pricing(props: Props) {
     bookingFeePercent,
     insideCommission,
     priceSelling} = props
-
   return (
-    <div className="flex flex-col">
+    <div className="flex flex-col gap-2">
       <p className="LabelClass">Pricing</p>
       <div className={rowClass}>
         <label className="PricingLabel">BookingFeeAbsolute</label>
