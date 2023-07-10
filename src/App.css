@@ -13,4 +13,19 @@
         justify-content: center;
         flex-direction: column;
     }
+    .AddRulesetClass {
+        @apply bg-purple-900
+    }
+    .ButtonClass {
+        @apply cursor-pointer p-3 uppercase rounded-md text-white hover:opacity-75 duration-700
+    }
+    .InputClass {
+        @apply appearance-none h-fit
+         block bg-gray-100 text-gray-700 border border-gray-200 rounded
+        py-3 px-5 w-[15rem] focus:outline-none mx-1
+        focus:bg-white focus:border-gray-500
+    }
+    .LabelClass {
+        @apply relative uppercase tracking-wide text-gray-700 font-bold my-2 text-xs
+    }
 }

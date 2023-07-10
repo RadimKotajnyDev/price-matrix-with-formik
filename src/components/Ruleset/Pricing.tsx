@@ -1,5 +1,4 @@
 import {Field} from "formik";
-import {InputClass} from "../../configs/classNames/ClassNames.tsx";
 
 interface Props {
   bookingFeeAbsolute?: number | string,
@@ -17,26 +16,24 @@ export default function Pricing(props: Props) {
     insideCommission,
     priceSelling} = props
 
-  //TODO: check if BookingFees are correctly connected
-
   return (
     <div className="flex flex-col">
-      <p className="font-semibold">Pricing</p>
+      <p className="LabelClass">Pricing</p>
       <div className={rowClass}>
         <label>BookingFeeAbsolute</label>
-        <Field className={InputClass + widthClass} type="number" name={bookingFeeAbsolute} />
+        <Field className={"InputClass" + widthClass} type="number" name={bookingFeeAbsolute} />
       </div>
       <div className={rowClass}>
         <label>BookingFeePercent</label>
-        <Field className={InputClass + widthClass} type="number" name={bookingFeePercent} />
+        <Field className={"InputClass" + widthClass} type="number" name={bookingFeePercent} />
       </div>
       <div className={rowClass}>
         <label>InsideCommission</label>
-        <Field className={InputClass + widthClass} type="number" name={insideCommission} />
+        <Field className={"InputClass" + widthClass} type="number" name={insideCommission} />
       </div>
       <div className={rowClass}>
         <label>PriceSelling</label>
-        <Field className={InputClass + widthClass} type="number" name={priceSelling} />
+        <Field className={"InputClass" + widthClass} type="number" name={priceSelling} />
       </div>
     </div>
   )
