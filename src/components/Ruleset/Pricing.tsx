@@ -7,7 +7,7 @@ interface Props {
   priceSelling?: number | string,
 }
 
-const rowClass = "flex flex-row gap-5 justify-between items-center"
+const rowClass = " flex flex-row gap-5 justify-between items-center"
 const widthClass = " w-full min-w-[100px] max-w-[120px] "
 export default function Pricing(props: Props) {
   const {

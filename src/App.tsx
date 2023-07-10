@@ -6,7 +6,7 @@ const data = await fetchData() //fetching data on parent component
 function App() {
   return (
     <div id="App">
-      <RenderingForm dataName={data.name} dataID={data.id} />
+      <RenderingForm data={data} />
     </div>
   )
 }

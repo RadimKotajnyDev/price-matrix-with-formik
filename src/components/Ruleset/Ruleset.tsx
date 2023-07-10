@@ -9,7 +9,6 @@ import {FieldArray} from "formik";
 interface RulesetProps {
   rulesetID: number,
   rulesetPriority: number,
-  rulesName: any,
   offerCode: string,
   bookingFeeAbsolute?: number | string,
   bookingFeePercent?: number | string,

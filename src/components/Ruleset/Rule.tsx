@@ -1,4 +1,4 @@
-import {Field} from "formik";
+import {FastField, Field} from "formik";
 import fieldOptions from "../../configs/options/FieldOptionsConfig.tsx";
 import operatorOptions from "../../configs/options/OperatorOptionsConfig.tsx";
 import Button from "../elements/Button.tsx";

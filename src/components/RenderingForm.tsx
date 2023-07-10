@@ -1,10 +1,7 @@
 import {FieldArray, Form, Formik} from 'formik';
 import {resolveRulesets} from "../API.tsx";
 import Ruleset from "./Ruleset/Ruleset.tsx";
-import Button from "./elements/Button.tsx";
 import {Heading} from "./Heading.tsx";
-import {AiOutlinePlusCircle} from "react-icons/ai";
-import Rule from "./Ruleset/Rule.tsx";
 
 const formConfig = await resolveRulesets()
 
@@ -20,7 +17,7 @@ export default function RenderingForm(props: any) {
           <FieldArray name="rulesets">
             {({push, remove}) => (
               <div className="relative">
-                <Heading dataName={props.dataName} dataID={props.dataID}
+                <Heading dataName={props.data.name} dataID={props.data.id}
                          buttonOnClick={() => push('')}
                 />
                 {values.rulesets.map((ruleset: any, index: number) => {
