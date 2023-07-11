@@ -1,5 +1,5 @@
 import './App.css'
-import RenderingForm from './components/RenderingForm.tsx'
+import RenderingForm from './components/RenderingForm/RenderingForm.tsx'
 import {fetchData} from "./API.tsx";
 
 const data = await fetchData() //fetching data on parent component
