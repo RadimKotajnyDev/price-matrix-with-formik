@@ -1,4 +1,4 @@
-export const AddRule = (values, setValues, rulesetIndex, ruleIndex) => {
+export const AddRule = (values: any, setValues: any, rulesetIndex: number) => {
 
   const newRule = {
     "ruleSetId": null,
