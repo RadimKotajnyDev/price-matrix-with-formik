@@ -2,7 +2,7 @@ import {FieldArray, Form, Formik} from 'formik';
 import {resolveRulesets} from "../../API.tsx";
 import Ruleset from "../Ruleset/Ruleset.tsx";
 import {Heading} from "../Heading.tsx";
-import {handleRemoveItem, addRuleset} from "./functions.tsx";
+import {HandleRemoveItem, AddRuleset} from "./RenderFunctions.ts";
 
 const formConfig = await resolveRulesets()
 
@@ -19,14 +19,15 @@ export default function RenderingForm(props: any) {
             {({push, remove}) => (
               <div className="relative">
                 <Heading data={props.data}
-                         buttonOnClick={() => addRuleset(values, setValues)}
+                         buttonOnClick={() => AddRuleset(values, setValues)}
                 />
                 {values.rulesets.map((ruleset: any, index: number) => {
                   //console.log(formConfig);
                   return (
                     <div key={index}>
                       <Ruleset
-                        removeRuleset={() => {handleRemoveItem(values, setValues, index)}}
+                        removeRuleset={() => {HandleRemoveItem(values, setValues, index)}}
+                        rulesetIndex={index}
                         rulesetPriority={ruleset.priority}
                         rulesetID={ruleset.ruleSetId}
                         rules={ruleset.rules}
@@ -37,6 +38,8 @@ export default function RenderingForm(props: any) {
                         insideCommission={`rulesets[${index}].insideCommissionRate`}
                         priceSelling={`rulesets[${index}].priceSelling`}
                         setFieldValue={setFieldValue}
+                        values={values}
+                        setValues={setValues}
                       />
                     </div>
                   )

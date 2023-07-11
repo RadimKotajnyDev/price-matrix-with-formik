@@ -3,8 +3,10 @@ import Pricing from "./Pricing.tsx";
 import OfferCode from "./OfferCode.tsx";
 import Button from "../elements/Button.tsx";
 import {AiOutlineClose} from "react-icons/all";
-import Rule from "./Rule.tsx";
+import Rule from "./Rule/Rule.tsx";
 import {FieldArray} from "formik";
+import {Labels} from "./Rule/Labels.tsx";
+import {AddRuleButton} from "./Rule/AddRuleButton.tsx";
 
 interface RulesetProps {
   rulesetID: number,
@@ -17,7 +19,10 @@ interface RulesetProps {
   removeRuleset: any,
   rules: any,
   rulesString: string,
-  setFieldValue: any
+  setFieldValue: any,
+  values: any,
+  setValues: any,
+  rulesetIndex: number
 }
 
 export default function Ruleset(props: RulesetProps) {
@@ -32,7 +37,10 @@ export default function Ruleset(props: RulesetProps) {
     removeRuleset,
     rules,
     rulesString,
-    setFieldValue
+    setFieldValue,
+    values,
+    setValues,
+    rulesetIndex
   }: RulesetProps = props
   return (
     <div
@@ -46,39 +54,43 @@ export default function Ruleset(props: RulesetProps) {
           <Button onClickProp={removeRuleset}
                   classNameProp="ButtonClass bg-red-600"
           >
-              <AiOutlineClose size={25} />
+            <AiOutlineClose size={25}/>
           </Button>
         </div>
         {/* TODO: Priority changer */}
-        <Note />
-        <div className="flex w-full -mb-4">
-          <label className="w-[15rem] ml-2 LabelClass">Field</label>
-          <label className="w-[15rem] ml-2 LabelClass">Operator</label>
-          <label className="w-[15rem] ml-2 LabelClass">Value</label>
-        </div>
+        <Note/>
+        <Labels/>
         <FieldArray name={`rulesets.rules`}>
           {({push, remove}) => (
-              <>
-                  {rules.map((rule: any, ruleIndex: number) => (
-                      <Rule key={ruleIndex}
-                            fieldName={rulesString + `[${ruleIndex}].fieldId`}
-                            optionName={props.rulesString + `[${ruleIndex}].compareOperatorId`}
-                            valueName={props.rulesString + `[${ruleIndex}].valueInt`}
-                            remove={() => remove(ruleIndex)}
-                            setFieldValue={setFieldValue}
-                      />
-                  ))}
-              </>
+            <>
+              {rules.map((rule: any, ruleIndex: number) => (
+                <Rule key={ruleIndex}
+                      fieldName={rulesString + `[${ruleIndex}].fieldId`}
+                      optionName={props.rulesString + `[${ruleIndex}].compareOperatorId`}
+                      valueName={props.rulesString + `[${ruleIndex}].valueInt`}
+                      setFieldValue={setFieldValue}
+                      ruleIndex={ruleIndex}
+                      values={values}
+                      setValues={setValues}
+                      rulesetIndex={rulesetIndex}
+                />
+              ))}
+              <AddRuleButton
+                setValues={setValues}
+                values={values}
+                rulesetIndex={rulesetIndex}
+              />
+            </>
           )}
         </FieldArray>
-        <div className="flex flex-row mt-5">
+        <div className="flex flex-row mt-5 border-t-2 pt-2">
           <Pricing
             bookingFeeAbsolute={bookingFeeAbsolute}
             bookingFeePercent={bookingFeePercent}
             insideCommission={insideCommission}
             priceSelling={priceSelling}
           />
-          <OfferCode nameProp={offerCode} />
+          <OfferCode nameProp={offerCode}/>
         </div>
       </div>
     </div>

@@ -1,11 +1,11 @@
 export const defaultRuleset = {
-    "ruleSetId": undefined,
+    "ruleSetId": null,
     "logicalOperatorId": 1,
-    "priority": undefined,
+    "priority": null,
     "rules": [
         {
-            "ruleSetId": 1,
-            "ruleId": undefined,
+            "ruleSetId": null,
+            "ruleId": null,
             "fieldId": 0,
             "compareOperatorId": 0,
             "valueInt": null,
