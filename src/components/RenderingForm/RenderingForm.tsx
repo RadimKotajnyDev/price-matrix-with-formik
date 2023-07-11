@@ -2,10 +2,9 @@ import {FieldArray, Form, Formik} from 'formik';
 import {resolveRulesets} from "../../API.tsx";
 import Ruleset from "../Ruleset/Ruleset.tsx";
 import {Heading} from "../Heading.tsx";
-import {handleRemoveItem} from "./functions.tsx";
+import {handleRemoveItem, addRuleset} from "./functions.tsx";
 
 const formConfig = await resolveRulesets()
-
 
 export default function RenderingForm(props: any) {
 
@@ -19,8 +18,8 @@ export default function RenderingForm(props: any) {
           <FieldArray name="rulesets">
             {({push, remove}) => (
               <div className="relative">
-                <Heading dataName={props.data.name} dataID={props.data.id}
-                         buttonOnClick={() => push('')}
+                <Heading data={props.data}
+                         buttonOnClick={() => addRuleset(values, setValues)}
                 />
                 {values.rulesets.map((ruleset: any, index: number) => {
                   //console.log(formConfig);

@@ -2,17 +2,16 @@ import Button from "./elements/Button.tsx";
 import {AiOutlinePlusCircle} from "react-icons/ai";
 
 interface HeadingProps {
-    dataName: string,
-    dataID: number,
+    data: any
     buttonOnClick: any
 }
 
-export const Heading = ({dataName, dataID, buttonOnClick}: HeadingProps) => {
+export const Heading = ({data, buttonOnClick}: HeadingProps) => {
     return (
         <div className="mt-5 sticky top-0 z-50 block w-full">
             <div className="p-3 bg-white bg-opacity-20 backdrop-blur-lg  drop-shadow-lg rounded-2xl text-center">
-                <h1 className="text-3xl text-gray-700">{dataName || null}</h1>
-                <h2 className="text-2xl font-light text-gray-700">MatrixID: {dataID || null}</h2>
+                <h1 className="text-3xl text-gray-700">{data.name || null}</h1>
+                <h2 className="text-2xl font-light text-gray-700">MatrixID: {data.id || null}</h2>
                 <div className="flex justify-center w-full">
                     <div className="flex flex-row gap-6 w-fit">
                         <Button

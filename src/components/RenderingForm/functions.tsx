@@ -1,3 +1,5 @@
+import {defaultRuleset} from "./defaultRuleset.tsx";
+
 export function remapPriorities(jsonData: any) {
 
     // Získání délky JSON objektu
@@ -24,5 +26,23 @@ export const handleRemoveItem = (values: any, setValues: any, index: number) => 
     const updatedValues = remapPriorities(values);
 
     // Aktualizace hodnot ve Formiku
+    setValues(updatedValues);
+};
+
+export const addRuleset = (values: any, setValues: any) => {
+    const min = 1000; // Minimální hodnota (v tomto případě 1000)
+    const max = 9999; // Maximální hodnota (v tomto případě 9999)
+
+    // Generování náhodného čtyřmístného čísla
+    const newRuleset = { ...defaultRuleset };
+    newRuleset.priority = values.rulesets.length + 1;
+    //TODO: dohodnout se na ID
+    newRuleset.ruleSetId = Math.floor(Math.random() * (max - min + 1)) + min;
+
+    // Aktualizace hodnot ve Formiku
+    const updatedValues = {
+        ...values,
+        rulesets: [...values.rulesets, newRuleset],
+    };
     setValues(updatedValues);
 };
