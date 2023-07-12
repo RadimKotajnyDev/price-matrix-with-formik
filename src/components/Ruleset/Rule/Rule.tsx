@@ -14,7 +14,7 @@ export default function Rule(props: any) {
           <Field component="select" className="InputClass w-[15rem]"
                  onChange={(e: any) => {
                    props.setFieldValue(props.fieldName, parseInt(e.target.value));
-                   props.setFieldValue(props.optionName, 0)
+                   props.setFieldValue(props.optionName, 0) //fixed compareOperatorId value when changing field
                  }}
                  name={props.fieldName} value={props.rule.fieldId}>
             {fieldOptions.map((current) => (

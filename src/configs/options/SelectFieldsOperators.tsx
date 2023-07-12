@@ -1,3 +1,6 @@
+export const EmptySelect = [
+  {name: "---select option---", id: 0},
+]
 export const SelectField1 = [
   {name: "---select option---", id: 0},
   {name: "LessThanOrEqual", id: 2},
