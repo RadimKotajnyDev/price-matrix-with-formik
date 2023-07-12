@@ -24,14 +24,16 @@ export const AddRule = (values: any, setValues: any, rulesetIndex: number) => {
   });
 }
 export function RemoveRule(values: any, setValues: any, rulesetIndex: number, ruleIndex: number) {
-  const updatedRuleSets = [...values.rulesets];
-  const updatedRules = [...updatedRuleSets[rulesetIndex].rules];
+  //const updatedRulesets = [...values.rulesets];
+  //const updatedRules = [...updatedRulesets[rulesetIndex].rules];
 
-  updatedRules.splice(ruleIndex, 1);
-  updatedRuleSets[rulesetIndex].rules = updatedRules;
+  //updatedRules.splice(ruleIndex, 1);
+  values.rulesets[rulesetIndex].rules.splice(ruleIndex, 1)
+  const updatedRulesets = [...values.rulesets]
+  //updatedRulesets[rulesetIndex].rules = [...updatedRules];
 
   setValues({
     ...values,
-    rulesets: updatedRuleSets,
+    rulesets: updatedRulesets,
   });
 }

@@ -11,7 +11,7 @@ export default function Rule(props: any) {
     <>
       <div className="flex flex-row my-3">
         <div className="flex flex-row relative">
-          <Field component="select" className="InputClass"
+          <Field component="select" className="InputClass w-[15rem]"
                  onChange={(e: any) => props.setFieldValue(props.fieldName, parseInt(e.target.value))}
                  name={props.fieldName}>
             {fieldOptions.map((current) => (
@@ -21,7 +21,7 @@ export default function Rule(props: any) {
           <ArrowOnSelect />
         </div>
         <div className="flex flex-row relative">
-          <Field component="select" className="InputClass"
+          <Field component="select" className="InputClass w-[15rem]"
                  onChange={(e: any) => props.setFieldValue(props.optionName, parseInt(e.target.value))}
                  name={props.optionName}>
             {operatorOptions.map((current) => (
@@ -31,7 +31,7 @@ export default function Rule(props: any) {
           <ArrowOnSelect />
         </div>
         <div className="flex flex-row">
-          <Field className="InputClass"
+          <Field className="InputClass w-[15rem]"
                  //TODO: parse int only if input = int
                  onChange={(e: any) => props.setFieldValue(props.valueName, parseInt(e.target.value))}
                  name={props.valueName} value={props.rule.valueInt} />

@@ -1,8 +1,8 @@
 import {FieldArray, Form, Formik} from 'formik';
 import {resolveRulesets} from "../../API.tsx";
 import Ruleset from "../Ruleset/Ruleset.tsx";
-import {Heading} from "../Heading.tsx";
-import {HandleRemoveItem, AddRuleset} from "./RenderFunctions.ts";
+import {Heading} from "./Heading.tsx";
+import {HandleRemoveRuleset, AddRuleset} from "./RenderFunctions.ts";
 
 const formConfig = await resolveRulesets()
 
@@ -16,7 +16,7 @@ export default function RenderingForm(props: any) {
       {({values, setFieldValue, setValues}) => (
         <Form className="flex justify-center">
           <FieldArray name="rulesets">
-            {({push, remove}) => (
+            {(/*{push, remove}*/) => (
               <div className="relative">
                 <Heading data={props.data}
                          buttonOnClick={() => AddRuleset(values, setValues)}
@@ -26,7 +26,7 @@ export default function RenderingForm(props: any) {
                   return (
                     <div key={index}>
                       <Ruleset
-                        removeRuleset={() => {HandleRemoveItem(values, setValues, index)}}
+                        removeRuleset={() => {HandleRemoveRuleset(values, setValues, index)}}
                         rulesetIndex={index}
                         rulesetPriority={ruleset.priority}
                         rulesetID={ruleset.ruleSetId}

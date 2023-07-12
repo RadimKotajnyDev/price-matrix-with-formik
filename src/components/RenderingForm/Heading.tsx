@@ -1,4 +1,4 @@
-import Button from "./elements/Button.tsx";
+import Button from "../elements/Button.tsx";
 import {AiOutlinePlusCircle} from "react-icons/ai";
 
 interface HeadingProps {

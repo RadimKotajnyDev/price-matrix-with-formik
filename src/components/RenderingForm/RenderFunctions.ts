@@ -1,23 +1,61 @@
 import {defaultRuleset} from "./defaultRuleset.tsx";
 
 export function RemapPriorities(jsonData: any) {
-    const jsonLength = jsonData.rulesets.length;
+    const ruleSets = [...jsonData]; // Vytvoření kopie pole jsonData.rulesets
+
+    const jsonLength = ruleSets.length;
 
     const priorities = Array.from({ length: jsonLength }, (_, index) => index + 1);
 
-    jsonData.rulesets.forEach((ruleset: any, index: number) => {
-        ruleset.priority = priorities[index];
+    ruleSets.forEach((ruleSet: any, index: number) => {
+        ruleSet.priority = priorities[index];
     });
 
-    return jsonData;
+    return ruleSets;
 }
 
-export const HandleRemoveItem = (values: any, setValues: any, index: number) => {
+
+export function PriorityUp(values: any, setValues: any, rulesetIndex: number) {
+    if (rulesetIndex > 0) {
+        let updatedRulesets = [...values.rulesets];
+
+        [updatedRulesets[rulesetIndex], updatedRulesets[rulesetIndex - 1]] = [
+            updatedRulesets[rulesetIndex - 1],
+            updatedRulesets[rulesetIndex],
+        ];
+
+        updatedRulesets = RemapPriorities(updatedRulesets)
+        setValues({
+            ...values,
+            rulesets: updatedRulesets,
+        });
+    }
+}
+
+export function PriorityDown(values: any, setValues: any, rulesetIndex: number) {
+    if (rulesetIndex < values.rulesets.length - 1) {
+        let updatedRulesets = [...values.rulesets];
+
+        [updatedRulesets[rulesetIndex], updatedRulesets[rulesetIndex + 1]] = [
+            updatedRulesets[rulesetIndex + 1],
+            updatedRulesets[rulesetIndex],
+        ];
+
+        updatedRulesets = RemapPriorities(updatedRulesets)
+
+        setValues({
+            ...values,
+            rulesets: updatedRulesets,
+        });
+    }
+}
+
+export const HandleRemoveRuleset = (values: any, setValues: any, index: number) => {
     values.rulesets.splice(index, 1);
 
-    const updatedValues = RemapPriorities(values);
+    RemapPriorities(values.rulesets)
 
-    setValues(updatedValues);
+    setValues(values);
 };
 
 export const AddRuleset = (values: any, setValues: any) => {
@@ -32,11 +70,3 @@ export const AddRuleset = (values: any, setValues: any) => {
     };
     setValues(updatedValues);
 };
-
-export function PriorityUp(values: any, setValues: any, rulesetIndex: number) {
-
-}
-
-export function PriorityDown(values: any, setValues: any, rulesetIndex: number) {
-
-}

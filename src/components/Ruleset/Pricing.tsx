@@ -7,8 +7,8 @@ interface Props {
   priceSelling?: number | string,
 }
 
-const rowClass = " flex flex-row gap-5 justify-between items-center"
-const widthClass = " w-full min-w-[100px] max-w-[120px] "
+const rowClass = " flex flex-row justify-between items-center"
+const widthClass = " w-full min-w-[100px] max-w-[120px]"
 export default function Pricing(props: Props) {
   const {
     bookingFeeAbsolute,
@@ -16,22 +16,22 @@ export default function Pricing(props: Props) {
     insideCommission,
     priceSelling} = props
   return (
-    <div className="flex flex-col gap-2">
+    <div className="flex flex-col gap-2 w-2/5">
       <p className="LabelClass">Pricing</p>
       <div className={rowClass}>
-        <label className="PricingLabel">BookingFeeAbsolute</label>
+        <label className="PricingLabel">BookingFeeAbsolute (&#163;)</label>
         <Field className={"InputClass" + widthClass} type="number" name={bookingFeeAbsolute} />
       </div>
       <div className={rowClass}>
-        <label className="PricingLabel">BookingFeePercent</label>
+        <label className="PricingLabel">BookingFeePercent (%)</label>
         <Field className={"InputClass" + widthClass} type="number" name={bookingFeePercent} />
       </div>
       <div className={rowClass}>
-        <label className="PricingLabel">InsideCommission</label>
+        <label className="PricingLabel">InsideCommission (%)</label>
         <Field className={"InputClass" + widthClass} type="number" name={insideCommission} />
       </div>
       <div className={rowClass}>
-        <label className="PricingLabel">PriceSelling</label>
+        <label className="PricingLabel">PriceSelling (&#163;)</label>
         <Field className={"InputClass" + widthClass} type="number" name={priceSelling} />
       </div>
     </div>
