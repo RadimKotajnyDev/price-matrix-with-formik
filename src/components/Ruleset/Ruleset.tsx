@@ -9,6 +9,7 @@ import {RemoveRulesetButton} from "./RemoveRulesetButton.tsx";
 import {Title} from "./Title.tsx";
 import {AiOutlineDown, AiOutlineUp} from "react-icons/ai";
 import {PriorityDown, PriorityUp} from "../RenderingForm/RenderFunctions.ts";
+import {PriorityButtons} from "./PriorityButtons.tsx";
 
 interface RulesetProps {
   rulesetID: number,
@@ -53,16 +54,10 @@ export default function Ruleset(props: RulesetProps) {
                  rulesetPriority={rulesetPriority} />
           <RemoveRulesetButton removeRuleset={removeRuleset} />
         </div>
-        <div className="flex flex-col absolute mt-10 -left-5 cursor-default gap-6">
-          <button className="ButtonClass" type="button"
-                  onClick={() => PriorityUp(values, setValues, rulesetIndex)}>
-            <AiOutlineUp size={35} className="ButtonIconClass" />
-          </button>
-          <button className="ButtonClass" type="button"
-                  onClick={() => PriorityDown(values, setValues, rulesetIndex)}>
-            <AiOutlineDown size={35} className="ButtonIconClass" />
-          </button>
-        </div>
+        <PriorityButtons
+          onUP={() => PriorityUp(values, setValues, rulesetIndex)}
+          onDOWN={() => PriorityDown(values, setValues, rulesetIndex)}
+        />
         <Note/>
         <Labels/>
         <FieldArray name={`rulesets.rules`}>
