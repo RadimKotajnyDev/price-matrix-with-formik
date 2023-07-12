@@ -1,5 +1,4 @@
 import {
-  EmptySelect,
   SelectField1,
   SelectField256,
   SelectField3,
@@ -9,9 +8,7 @@ import {
 export function MapOperators(fieldId: number) {
   switch(fieldId) {
     case 0:
-      return EmptySelect.map((current) => (
-        <option key={current.id} value={current.id}>{current.name}</option>
-      ))
+      return <option key={0} value={0}>---select option---</option>
     case 1:
       return SelectField1.map((current) => (
         <option key={current.id} value={current.id}>{current.name}</option>
@@ -33,5 +30,28 @@ export function MapOperators(fieldId: number) {
     default:
       alert("mapping error!")
       break;
+  }
+}
+
+export function mapValueType(fieldId: number, valueInt: number, valueDecimal: number, valueDateTime: any, valueString: string) {
+  switch(fieldId) {
+    case 1:
+      return valueInt
+      //valueInt
+    case 2:
+      return valueDateTime
+      //valueDateTime
+    case 3:
+      return valueInt
+      //valueInt
+    case 4:
+      return valueString
+      //valueString
+    case 5:
+      return valueDateTime
+      //valueDateTime
+    case 6:
+      return valueDecimal
+      //TODO: find out which value is going to be stored
   }
 }

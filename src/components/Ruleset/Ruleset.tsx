@@ -68,7 +68,10 @@ export default function Ruleset(props: RulesetProps) {
                     ruleIndex={ruleIndex}
                     fieldName={rulesString + `[${ruleIndex}].fieldId`}
                     optionName={rulesString + `[${ruleIndex}].compareOperatorId`}
-                    valueName={rulesString + `[${ruleIndex}].valueInt`}
+                    valueDateTimeName={rulesString + `[${ruleIndex}].valueDateTime`}
+                    valueDecimalName={rulesString + `[${ruleIndex}].valueDecimal`}
+                    valueIntName={rulesString + `[${ruleIndex}].valueInt`}
+                    valueStringName={rulesString + `[${ruleIndex}].valueString`}
                     setFieldValue={setFieldValue}
                     setValues={setValues}
                     values={values}
