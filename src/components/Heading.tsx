@@ -15,7 +15,7 @@ export const Heading = ({data, buttonOnClick}: HeadingProps) => {
                 <div className="flex justify-center w-full">
                     <div className="flex flex-row gap-6 w-fit">
                         <Button
-                            classNameProp="ButtonClass AddRulesetClass flex flex-row items-center"
+                            classNameProp="ButtonClass AddRulesetClass flex flex-row items-center p-2"
                             onClickProp={buttonOnClick}><AiOutlinePlusCircle size={20} className="mr-2"/>
                             ruleset</Button>
                         <Button typeProp="submit"

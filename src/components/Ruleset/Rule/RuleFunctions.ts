@@ -23,3 +23,15 @@ export const AddRule = (values: any, setValues: any, rulesetIndex: number) => {
     rulesets: updatedRuleSets,
   });
 }
+export function RemoveRule(values: any, setValues: any, rulesetIndex: number, ruleIndex: number) {
+  const updatedRuleSets = [...values.rulesets];
+  const updatedRules = [...updatedRuleSets[rulesetIndex].rules];
+
+  updatedRules.splice(ruleIndex, 1);
+  updatedRuleSets[rulesetIndex].rules = updatedRules;
+
+  setValues({
+    ...values,
+    rulesets: updatedRuleSets,
+  });
+}

@@ -1,12 +1,13 @@
 import Note from "./Note.tsx";
 import Pricing from "./Pricing.tsx";
 import OfferCode from "./OfferCode.tsx";
-import Button from "../elements/Button.tsx";
-import {AiOutlineClose} from "react-icons/all";
 import Rule from "./Rule/Rule.tsx";
 import {FieldArray} from "formik";
 import {Labels} from "./Rule/Labels.tsx";
 import {AddRuleButton} from "./Rule/AddRuleButton.tsx";
+import {RemoveRulesetButton} from "./RemoveRulesetButton.tsx";
+import {Title} from "./Title.tsx";
+import {AiOutlineDown, AiOutlineUp} from "react-icons/ai";
 
 interface RulesetProps {
   rulesetID: number,
@@ -47,32 +48,35 @@ export default function Ruleset(props: RulesetProps) {
       className="w-fit p-4 my-4 rounded-md bg-white border-2 outline-gray-100 shadow-lg">
       <div>
         <div className="flex flex-row justify-between mb-2">
-          <p className="font-semibold text-4xl text-gray-800">Ruleset {rulesetID}
-            <span className="font-thin mx-2">|</span>
-            Priority: #{rulesetPriority}
-          </p>
-          <Button onClickProp={removeRuleset}
-                  classNameProp="ButtonClass bg-red-600"
-          >
-            <AiOutlineClose size={25}/>
-          </Button>
+          <Title rulesetID={rulesetID}
+                 rulesetPriority={rulesetPriority} />
+          <RemoveRulesetButton removeRuleset={removeRuleset} />
         </div>
         {/* TODO: Priority changer */}
+        <div className="flex flex-col absolute mt-10 -left-5 cursor-default gap-6">
+          <button className="ButtonClass">
+            <AiOutlineUp size={35} className="ButtonIconClass" />
+          </button>
+          <button className="ButtonClass">
+            <AiOutlineDown size={35} className="ButtonIconClass" />
+          </button>
+        </div>
         <Note/>
         <Labels/>
         <FieldArray name={`rulesets.rules`}>
-          {({push, remove}) => (
+          {() => (
             <>
               {rules.map((rule: any, ruleIndex: number) => (
                 <Rule key={ruleIndex}
-                      fieldName={rulesString + `[${ruleIndex}].fieldId`}
-                      optionName={props.rulesString + `[${ruleIndex}].compareOperatorId`}
-                      valueName={props.rulesString + `[${ruleIndex}].valueInt`}
-                      setFieldValue={setFieldValue}
-                      ruleIndex={ruleIndex}
-                      values={values}
-                      setValues={setValues}
+                      rule={rule}
                       rulesetIndex={rulesetIndex}
+                      ruleIndex={ruleIndex}
+                      fieldName={rulesString + `[${ruleIndex}].fieldId`}
+                      optionName={rulesString + `[${ruleIndex}].compareOperatorId`}
+                      valueName={rulesString + `[${ruleIndex}].valueInt`}
+                      setFieldValue={setFieldValue}
+                      setValues={setValues}
+                      values={values}
                 />
               ))}
               <AddRuleButton
@@ -83,7 +87,7 @@ export default function Ruleset(props: RulesetProps) {
             </>
           )}
         </FieldArray>
-        <div className="flex flex-row mt-5 border-t-2 pt-2">
+        <section className="flex flex-row mt-5 border-t-2 pt-2">
           <Pricing
             bookingFeeAbsolute={bookingFeeAbsolute}
             bookingFeePercent={bookingFeePercent}
@@ -91,7 +95,7 @@ export default function Ruleset(props: RulesetProps) {
             priceSelling={priceSelling}
           />
           <OfferCode nameProp={offerCode}/>
-        </div>
+        </section>
       </div>
     </div>
   )

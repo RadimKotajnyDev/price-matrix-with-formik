@@ -17,7 +17,11 @@
         @apply bg-purple-900
     }
     .ButtonClass {
-        @apply cursor-pointer p-3 uppercase rounded-md text-white hover:opacity-75 duration-700
+        @apply cursor-pointer p-0 uppercase rounded-md text-white hover:opacity-75 duration-700
+    }
+    .ButtonIconClass {
+        @apply rounded text-white bg-slate-700 duration-200 cursor-pointer
+        hover:text-slate-900 hover:bg-transparent disabled:cursor-not-allowed
     }
     .InputClass {
         @apply appearance-none h-fit

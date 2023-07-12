@@ -32,3 +32,11 @@ export const AddRuleset = (values: any, setValues: any) => {
     };
     setValues(updatedValues);
 };
+
+export function PriorityUp(values: any, setValues: any, rulesetIndex: number) {
+
+}
+
+export function PriorityDown(values: any, setValues: any, rulesetIndex: number) {
+
+}
