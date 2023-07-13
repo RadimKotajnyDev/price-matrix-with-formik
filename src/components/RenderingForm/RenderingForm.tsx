@@ -3,6 +3,7 @@ import {resolveRulesets} from "../../API.tsx";
 import Ruleset from "../Ruleset/Ruleset.tsx";
 import {Heading} from "./Heading.tsx";
 import {HandleRemoveRuleset, AddRuleset} from "./RenderFunctions.ts";
+import {FormBottomButtons} from "./FormBottomButtons.tsx";
 
 const formConfig = await resolveRulesets()
 
@@ -12,15 +13,14 @@ export default function RenderingForm(props: any) {
   return (
     <Formik
       initialValues={{rulesets: formConfig}}
-      onSubmit={(values) => console.log(values)}
+      onSubmit={(values) => console.log(values.rulesets)}
     >
       {({values, setFieldValue, setValues}) => (
         <Form className="flex justify-center">
           <FieldArray name="rulesets">
             {(/*{push, remove}*/) => (
-              <div className="relative">
+              <div className="relative mb-20">
                 <Heading data={props.data}
-                         buttonOnClick={() => AddRuleset(values, setValues)}
                 />
                 {values.rulesets.map((ruleset: any, index: number) => {
                   //console.log(formConfig);
@@ -51,6 +51,7 @@ export default function RenderingForm(props: any) {
               </div>
             )}
           </FieldArray>
+          <FormBottomButtons addRuleset={() => AddRuleset(values, setValues)} />
         </Form>
       )}
     </Formik>
