@@ -4,7 +4,7 @@ import Button from "../../elements/Button.tsx";
 import {AiOutlineMinus} from "react-icons/ai";
 import {ArrowOnSelect} from "../../elements/ArrowOnSelect.tsx";
 import {RemoveRule} from "./RuleFunctions.ts"
-import {MapOperators, SelectStoreValue} from "./MapOperators.tsx";
+import {MapFunctions, SelectStoreValue} from "./MapFunctions.tsx";
 import ValueComponent from "./ValueComponent.tsx";
 
 export default function Rule(props: any) {
@@ -34,7 +34,7 @@ export default function Rule(props: any) {
                  onChange={(e: any) => props.setFieldValue(props.optionName, parseInt(e.target.value))}
                  name={props.optionName} value={props.rule.compareOperatorId}>
             {
-              MapOperators(props.rule.fieldId)
+              MapFunctions(props.rule.fieldId)
             }
           </Field>
           <ArrowOnSelect/>

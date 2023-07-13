@@ -5,7 +5,7 @@ import {
   SelectField4
 } from "../../../configs/options/SelectFieldsOperators.tsx";
 
-export function MapOperators(fieldId: number) {
+export function MapFunctions(fieldId: number) {
   switch (fieldId) {
     case 0:
       return <option key={0} value={0}>---select option---</option>
@@ -131,5 +131,15 @@ export function SelectStoreValue(fieldId: number, setFieldValue: any, valueInt: 
       break;
     // valueDecimal
     //TODO: find out which value is going to be stored
+  }
+}
+
+export function StoreInteger(fieldId: number, value: string) {
+  switch (fieldId) {
+    case 1:
+    case 3:
+    case 6:
+      return parseInt(value)
+    default: return value
   }
 }

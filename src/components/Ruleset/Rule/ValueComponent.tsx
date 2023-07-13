@@ -1,5 +1,5 @@
 import {Field} from "formik";
-import {MapValueStoreType, MapValueType} from "./MapOperators.tsx";
+import {MapValueStoreType, MapValueType, StoreInteger} from "./MapFunctions.tsx";
 import DaysOfWeekConfig from "../../../configs/options/DaysOfWeekConfig.tsx";
 import {ArrowOnSelect} from "../../elements/ArrowOnSelect.tsx";
 
@@ -36,7 +36,8 @@ export default function ValueComponent(props: any) {
           //TODO: parse int only if input = int
                onChange={(e: any) => props.setFieldValue(
                  MapValueStoreType(props.rule.fieldId, props.valueIntName,
-                   props.valueDecimalName, props.valueDateTimeName, props.valueStringName), e.target.value)} // parseInt(e.target.value)
+                   props.valueDecimalName, props.valueDateTimeName, props.valueStringName),
+                 StoreInteger(props.rule.fieldId, e.target.value))} // parseInt(e.target.value)
                name={MapValueStoreType(props.rule.fieldId, props.valueIntName,
                  props.valueDecimalName, props.valueDateTimeName, props.valueStringName)}
                value={MapValueStoreType(props.rule.fieldId, props.rule.valueInt,
