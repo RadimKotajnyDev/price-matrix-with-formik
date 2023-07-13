@@ -52,25 +52,3 @@ export default function RenderingForm(props: any) {
     </Formik>
   );
 }
-
-
-/*
-useEffect(() => {
-  setFormsConfig(
-    data.ruleSets.map((item: any) => {
-      return {
-        ruleSetId: item.ruleSetId,
-        logicalOperatorId: item.logicalOperatorId,
-        priority: item.priority,
-        rules: item.rules,
-        priceSelling: item.priceSelling,
-        bookingFeePercent: item.bookingFeePercent,
-        bookingFeeAbsolute: item.bookingFeeAbsolute,
-        insideCommissionRate: item.insideCommissionRate,
-        note: item.note,
-        offerCode: item.offerCode,
-      }
-    }))
-}, [])
-
-*/

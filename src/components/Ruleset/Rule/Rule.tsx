@@ -6,16 +6,8 @@ import {ArrowOnSelect} from "../../elements/ArrowOnSelect.tsx";
 import {RemoveRule} from "./RuleFunctions.ts"
 import {MapOperators, SelectStoreValue} from "./MapOperators.tsx";
 import ValueComponent from "./ValueComponent.tsx";
-import {useEffect} from "react";
 
 export default function Rule(props: any) {
-  useEffect(() => {
-    SelectStoreValue(props.rule.fieldId,
-      props.setFieldValue, props.valueIntName,
-      props.valueDecimalName, props.valueDateTimeName,
-      props.valueStringName
-    );
-  }, [props.rule.fieldId])
   return (
     <>
       <div className="flex flex-row my-3">
@@ -24,6 +16,11 @@ export default function Rule(props: any) {
                  onChange={(e: any) => {
                    props.setFieldValue(props.fieldName, parseInt(e.target.value));
                    props.setFieldValue(props.optionName, 0); //fixed compareOperatorId value when changing field
+                   SelectStoreValue(parseInt(e.target.value),
+                     props.setFieldValue, props.valueIntName,
+                     props.valueDecimalName, props.valueDateTimeName,
+                     props.valueStringName
+                   );
                  }}
                  name={props.fieldName} value={props.rule.fieldId}>
             {fieldOptions.map((current) => (
