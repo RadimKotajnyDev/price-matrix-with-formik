@@ -4,22 +4,41 @@ import Ruleset from "../Ruleset/Ruleset.tsx";
 import {Heading} from "./Heading.tsx";
 import {HandleRemoveRuleset, AddRuleset} from "./RenderFunctions.ts";
 import {FormBottomButtons} from "./FormBottomButtons.tsx";
+import {useEffect, useState} from "react";
+import Modal from "./Modal.tsx";
 
 const formConfig = await resolveRulesets()
 
 export default function RenderingForm(props: any) {
 
+  const [isOpen, setIsOpen] = useState(false)
+
+  useEffect(() => {
+    if (isOpen) {
+      const timeout = setTimeout(() => {
+        setIsOpen(false)
+      }, 1000);
+
+      return () => clearTimeout(timeout);
+    }
+  }, [isOpen]);
+
   //console.log(formConfig)
   return (
     <Formik
       initialValues={{rulesets: formConfig}}
-      onSubmit={(values) => console.log(values.rulesets)}
+      onSubmit={(values) => {console.log(values.rulesets); setIsOpen(true)}}
     >
       {({values, setFieldValue, setValues}) => (
         <Form className="flex justify-center">
           <FieldArray name="rulesets">
             {(/*{push, remove}*/) => (
               <div className="relative mb-20">
+                <Modal
+                  showState={isOpen}
+                  openModal={() => setIsOpen(true)}
+                  closeModal={() => setIsOpen(false)}
+                />
                 <Heading data={props.data}
                 />
                 {values.rulesets.map((ruleset: any, index: number) => {
