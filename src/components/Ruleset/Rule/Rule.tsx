@@ -4,9 +4,18 @@ import Button from "../../elements/Button.tsx";
 import {AiOutlineMinus} from "react-icons/ai";
 import {ArrowOnSelect} from "../../elements/ArrowOnSelect.tsx";
 import {RemoveRule} from "./RuleFunctions.ts"
-import {MapOperators, mapValueType} from "./MapOperators.tsx";
+import {MapOperators, SelectStoreValue} from "./MapOperators.tsx";
+import ValueComponent from "./ValueComponent.tsx";
+import {useEffect} from "react";
 
 export default function Rule(props: any) {
+  useEffect(() => {
+    SelectStoreValue(props.rule.fieldId,
+      props.setFieldValue, props.valueIntName,
+      props.valueDecimalName, props.valueDateTimeName,
+      props.valueStringName
+    );
+  }, [props.rule.fieldId])
   return (
     <>
       <div className="flex flex-row my-3">
@@ -14,14 +23,14 @@ export default function Rule(props: any) {
           <Field component="select" className="InputClass w-[15rem]"
                  onChange={(e: any) => {
                    props.setFieldValue(props.fieldName, parseInt(e.target.value));
-                   props.setFieldValue(props.optionName, 0) //fixed compareOperatorId value when changing field
+                   props.setFieldValue(props.optionName, 0); //fixed compareOperatorId value when changing field
                  }}
                  name={props.fieldName} value={props.rule.fieldId}>
             {fieldOptions.map((current) => (
               <option key={current.id} value={current.id}>{current.name}</option>
             ))}
           </Field>
-          <ArrowOnSelect />
+          <ArrowOnSelect/>
         </div>
         <div className="flex flex-row relative">
           <Field component="select" className="InputClass w-[15rem]"
@@ -31,20 +40,16 @@ export default function Rule(props: any) {
               MapOperators(props.rule.fieldId)
             }
           </Field>
-          <ArrowOnSelect />
+          <ArrowOnSelect/>
         </div>
-        <div className="flex flex-row">
-          <Field className="InputClass w-[15rem]"
-                 //TODO: parse int only if input = int
-                 onChange={(e: any) => props.setFieldValue(
-                   mapValueType(props.rule.fieldId, props.valueIntName,
-                     props.valueDecimalName, props.valueDateTimeName, props.valueStringName)
-                   , parseInt(e.target.value))}
-                 name={mapValueType(props.rule.fieldId, props.valueIntName,
-                   props.valueDecimalName, props.valueDateTimeName, props.valueStringName)}
-                 value={mapValueType(props.rule.fieldId, props.rule.valueInt,
-                   props.rule.valueDecimal, props.rule.valueDateTime, props.rule.valueString)} />
-        </div>
+        <ValueComponent rule={props.rule}
+                        valueIntName={props.valueIntName}
+                        valueDateTimeName={props.valueDateTimeName}
+                        valueStringName={props.valueStringName}
+                        valueDecimalName={props.valueDecimalName}
+                        setFieldValue={props.setFieldValue}
+
+        />
         <Button onClickProp={() => RemoveRule(props.values, props.setValues, props.rulesetIndex, props.ruleIndex)}>
           <AiOutlineMinus
             size="50"

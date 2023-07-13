@@ -56,8 +56,8 @@ export default function Ruleset(props: RulesetProps) {
         onUP={() => PriorityUp(values, setValues, rulesetIndex)}
         onDOWN={() => PriorityDown(values, setValues, rulesetIndex)}
       />
-      <Note/>
-      <Labels/>
+      <Note />
+      <Labels />
       <FieldArray name={`rulesets.rules`}>
         {() => (
           <>
