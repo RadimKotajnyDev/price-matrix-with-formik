@@ -5,7 +5,7 @@ import {
   SelectField4
 } from "../../../configs/options/SelectFieldsOperators.tsx";
 
-export function MapFunctions(fieldId: number) {
+export function MapOperators(fieldId: number) {
   switch (fieldId) {
     case 0:
       return <option key={0} value={0}>---select option---</option>

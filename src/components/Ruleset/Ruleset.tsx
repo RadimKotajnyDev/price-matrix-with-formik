@@ -14,6 +14,7 @@ interface RulesetProps {
   rulesetID: number,
   rulesetPriority: number,
   offerCode: string,
+  note: string,
   bookingFeeAbsolute?: number | string,
   bookingFeePercent?: number | string,
   insideCommission?: number | string,
@@ -32,6 +33,7 @@ export default function Ruleset(props: RulesetProps) {
     rulesetID,
     rulesetPriority,
     offerCode,
+    note,
     bookingFeeAbsolute,
     bookingFeePercent,
     insideCommission,
@@ -52,11 +54,11 @@ export default function Ruleset(props: RulesetProps) {
                rulesetPriority={rulesetPriority}/>
         <RemoveRulesetButton removeRuleset={removeRuleset}/>
       </div>
+      <Note nameProp={note} />
       <PriorityButtons
         onUP={() => PriorityUp(values, setValues, rulesetIndex)}
         onDOWN={() => PriorityDown(values, setValues, rulesetIndex)}
       />
-      <Note />
       <Labels />
       <FieldArray name={`rulesets.rules`}>
         {() => (

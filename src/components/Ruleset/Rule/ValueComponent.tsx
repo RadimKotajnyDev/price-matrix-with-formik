@@ -33,7 +33,6 @@ export default function ValueComponent(props: any) {
         <Field className="InputClass w-[15rem]"
                component="input"
                disabled={props.rule.fieldId === 0}
-          //TODO: parse int only if input = int
                onChange={(e: any) => props.setFieldValue(
                  MapValueStoreType(props.rule.fieldId, props.valueIntName,
                    props.valueDecimalName, props.valueDateTimeName, props.valueStringName),

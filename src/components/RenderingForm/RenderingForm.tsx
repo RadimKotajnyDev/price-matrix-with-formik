@@ -10,8 +10,9 @@ export default function RenderingForm(props: any) {
 
   //console.log(formConfig)
   return (
-    <Formik initialValues={{rulesets: formConfig}}
-            onSubmit={(values) => console.log(values)}
+    <Formik
+      initialValues={{rulesets: formConfig}}
+      onSubmit={(values) => console.log(values)}
     >
       {({values, setFieldValue, setValues}) => (
         <Form className="flex justify-center">
@@ -26,13 +27,16 @@ export default function RenderingForm(props: any) {
                   return (
                     <div key={index}>
                       <Ruleset
-                        removeRuleset={() => {HandleRemoveRuleset(values, setValues, index)}}
+                        removeRuleset={() => {
+                          HandleRemoveRuleset(values, setValues, index)
+                        }}
                         rulesetIndex={index}
                         rulesetPriority={ruleset.priority}
                         rulesetID={ruleset.ruleSetId}
                         rules={ruleset.rules}
                         rulesString={`rulesets[${index}].rules`}
                         offerCode={`rulesets[${index}].offerCode`}
+                        note={`rulesets[${index}].note`}
                         bookingFeeAbsolute={`rulesets[${index}].bookingFeeAbsolute`}
                         bookingFeePercent={`rulesets[${index}].bookingFeePercent`}
                         insideCommission={`rulesets[${index}].insideCommissionRate`}
