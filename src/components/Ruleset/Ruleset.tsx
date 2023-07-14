@@ -14,7 +14,7 @@ interface RulesetProps {
   rulesetID: number,
   rulesetPriority: number,
   offerCode: string,
-  note: string,
+  note?: string,
   bookingFeeAbsolute?: number | string,
   bookingFeePercent?: number | string,
   insideCommission?: number | string,

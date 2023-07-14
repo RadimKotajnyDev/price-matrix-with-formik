@@ -27,12 +27,12 @@ export default function Pricing(props: Props) {
         <Field className={"InputClass" + widthClass} type="number" name={bookingFeePercent} />
       </div>
       <div className={rowClass}>
-        <label className="PricingLabel">InsideCommission (%)</label>
-        <Field className={"InputClass" + widthClass} type="number" name={insideCommission} />
-      </div>
-      <div className={rowClass}>
         <label className="PricingLabel">PriceSelling (&#163;)</label>
         <Field className={"InputClass" + widthClass} type="number" name={priceSelling} />
+      </div>
+      <div className={rowClass}>
+        <label className="PricingLabel">InsideCommission (%)</label>
+        <Field className={"InputClass" + widthClass} type="number" name={insideCommission} />
       </div>
     </div>
   )

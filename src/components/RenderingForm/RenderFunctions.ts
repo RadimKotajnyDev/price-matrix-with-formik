@@ -1,4 +1,4 @@
-import {defaultRuleset} from "./defaultRuleset.tsx";
+import {defaultRuleset} from "../../configs/ruleset/defaultRuleset.tsx";
 
 export function RemapPriorities(jsonData: any) {
     const ruleSets = [...jsonData]; // Vytvoření kopie pole jsonData.rulesets

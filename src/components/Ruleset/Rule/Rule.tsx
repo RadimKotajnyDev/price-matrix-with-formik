@@ -1,6 +1,5 @@
 import {Field} from "formik";
 import fieldOptions from "../../../configs/options/FieldOptionsConfig.tsx";
-import Button from "../../elements/Button.tsx";
 import {AiOutlineMinus} from "react-icons/ai";
 import {ArrowOnSelect} from "../../elements/ArrowOnSelect.tsx";
 import {RemoveRule} from "./RuleFunctions.ts"
@@ -46,13 +45,13 @@ export default function Rule(props: any) {
                         valueDecimalName={props.valueDecimalName}
                         setFieldValue={props.setFieldValue}
         />
-        <Button onClickProp={() => RemoveRule(props.values, props.setValues, props.rulesetIndex, props.ruleIndex)}>
+        <button type="button" onClick={() => RemoveRule(props.values, props.setValues, props.rulesetIndex, props.ruleIndex)}>
           <AiOutlineMinus
             size={35}
             className="ml-2 rounded text-white bg-slate-800 duration-200
                        hover:text-slate-900 hover:bg-white disabled:cursor-not-allowed"
           />
-        </Button>
+        </button>
       </div>
     </>
   )
