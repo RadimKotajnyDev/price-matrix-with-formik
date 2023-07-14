@@ -45,7 +45,6 @@ export default function Rule(props: any) {
                         valueStringName={props.valueStringName}
                         valueDecimalName={props.valueDecimalName}
                         setFieldValue={props.setFieldValue}
-
         />
         <Button onClickProp={() => RemoveRule(props.values, props.setValues, props.rulesetIndex, props.ruleIndex)}>
           <AiOutlineMinus

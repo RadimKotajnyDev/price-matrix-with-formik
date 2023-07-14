@@ -4,14 +4,16 @@ import {AddRule} from "./RuleFunctions.ts";
 
 export const AddRuleButton = (props: any) => {
   return (
-    <div onClick={() => AddRule(props.values, props.setValues, props.rulesetIndex)}
-         className="w-full flex justify-center items-center gap-2 cursor-pointer">
-      <Button classNameProp=" cursor-default">
-        <AiOutlinePlus size={35}
-                       className="rounded text-white bg-slate-800 duration-200 cursor-pointer
+    <div className="w-full flex flex-row justify-center">
+      <button type="button" onClick={() => AddRule(props.values, props.setValues, props.rulesetIndex)}
+              className="w-fit flex justify-center items-center gap-2 cursor-pointer">
+        <Button classNameProp=" cursor-default">
+          <AiOutlinePlus size={35}
+                         className="rounded text-white bg-slate-800 duration-200 cursor-pointer
                        hover:text-slate-900 hover:bg-white disabled:cursor-not-allowed" />
-      </Button>
-      <p className="text-xl font-light">add rule</p>
+        </Button>
+        <p className="text-xl font-light">add rule</p>
+      </button>
     </div>
   )
 }

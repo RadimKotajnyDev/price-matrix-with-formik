@@ -76,7 +76,6 @@ export function MapValueType(fieldId: number) {
     case 6:
       return "number"
     // valueDecimal
-    //TODO: find out which value is going to be stored
   }
 }
 
@@ -130,7 +129,6 @@ export function SelectStoreValue(fieldId: number, setFieldValue: any, valueInt: 
       setFieldValue(valueInt, null)
       break;
     // valueDecimal
-    //TODO: find out which value is going to be stored
   }
 }
 
