@@ -1,6 +1,9 @@
 import {AiOutlinePlusCircle} from "react-icons/ai";
 
-export const FormBottomButtons = (props: any) => {
+interface Props {
+  addRuleset: () => void
+}
+export const FormBottomButtons = (props: Props) => {
   return (
     <div className="flex justify-center w-full fixed bottom-5 z-50">
       <div className="flex flex-row gap-6 w-fit p-3 bg-white

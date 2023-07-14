@@ -2,16 +2,28 @@ import {Field} from "formik";
 import {MapValueStoreType, MapValueType, StoreInteger} from "./MapFunctions.tsx";
 import DaysOfWeekConfig from "../../../configs/options/DaysOfWeekConfig.tsx";
 import {ArrowOnSelect} from "../../elements/ArrowOnSelect.tsx";
+import type {RuleType} from "../Ruleset.tsx";
+import {ChangeEvent} from "react";
 
-export default function ValueComponent(props: any) {
+interface valueProps {
+  setFieldValue: any,
+  rule: RuleType
+  valueIntName: number,
+  valueDecimalName: number,
+  valueDateTimeName: string,
+  valueStringName: string,
+
+}
+export default function ValueComponent(props: valueProps) {
+  const disabledBool = props.rule.fieldId === 0
   return (
     <div className="flex flex-row relative">
       {props.rule.fieldId === 3 ?
         <>
           <Field className="InputClass w-[15rem]"
                  component="select"
-                 disabled={props.rule.fieldId === 0}
-                 onChange={(e: any) => props.setFieldValue(
+                 disabled={disabledBool}
+                 onChange={(e: ChangeEvent<HTMLInputElement>) => props.setFieldValue(
                    MapValueStoreType(props.rule.fieldId, props.valueIntName,
                      props.valueDecimalName, props.valueDateTimeName, props.valueStringName), parseInt(e.target.value))
           }
@@ -33,7 +45,7 @@ export default function ValueComponent(props: any) {
         <Field className="InputClass w-[15rem]"
                component="input"
                disabled={props.rule.fieldId === 0}
-               onChange={(e: any) => props.setFieldValue(
+               onChange={(e: ChangeEvent<HTMLInputElement>) => props.setFieldValue(
                  MapValueStoreType(props.rule.fieldId, props.valueIntName,
                    props.valueDecimalName, props.valueDateTimeName, props.valueStringName),
                  StoreInteger(props.rule.fieldId, e.target.value))} // parseInt(e.target.value)

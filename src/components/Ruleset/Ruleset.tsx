@@ -10,9 +10,13 @@ import {Title} from "./Title.tsx";
 import {PriorityDown, PriorityUp} from "../RenderingForm/RenderFunctions.ts";
 import {PriorityButtons} from "./PriorityButtons.tsx";
 
-interface Rule {
+export interface RuleType {
   fieldId: number,
   compareOperatorId: number,
+  valueDecimal: number,
+  valueString: string,
+  valueDateTime: string,
+  valueInt: number,
 }
 
 interface RulesetProps {
@@ -24,8 +28,8 @@ interface RulesetProps {
   bookingFeePercent: number | string | null,
   priceSelling: number | string | null,
   insideCommission: number | string | null,
-  removeRuleset: any,
-  rules: any,
+  removeRuleset: () => void,
+  rules: Array<RuleType>,
   rulesString: string,
   setFieldValue: any,
   values: any,
@@ -68,7 +72,7 @@ export default function Ruleset(props: RulesetProps) {
       <FieldArray name={`rulesets.rules`}>
         {() => (
           <>
-            {rules.map((rule: Rule, ruleIndex: number) => (
+            {rules.map((rule: RuleType, ruleIndex: number) => (
               <Rule key={ruleIndex}
                     rule={rule}
                     rulesetIndex={rulesetIndex}

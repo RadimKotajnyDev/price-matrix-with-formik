@@ -9,7 +9,13 @@ import Modal from "./Modal.tsx";
 
 const formConfig = await resolveRulesets()
 
-export default function RenderingForm(props: any) {
+type Ruleset = {
+  priority: number,
+  ruleSetId: number,
+  rules: []
+}
+
+export default function RenderingForm(props: {data: []}) {
 
   const [modalVisible, setModalVisible] = useState(false)
 
@@ -41,7 +47,7 @@ export default function RenderingForm(props: any) {
                 />
                 <Heading data={props.data}
                 />
-                {values.rulesets.map((ruleset: any, index: number) => {
+                {values.rulesets.map((ruleset: Ruleset, index: number) => {
                   //console.log(formConfig);
                   return (
                     <div key={index}>

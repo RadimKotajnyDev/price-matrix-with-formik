@@ -6,25 +6,21 @@ import {RemoveRule} from "./RuleFunctions.ts"
 import {MapOperators, SelectStoreValue} from "./MapFunctions.tsx";
 import ValueComponent from "./ValueComponent.tsx";
 import {ChangeEvent} from "react";
-
-interface Rule {
-  fieldId: number,
-  compareOperatorId: number,
-}
+import type {RuleType} from "../Ruleset.tsx"
 
 interface RuleProps {
-  values: number | string,
+  values: { rulesets: object[]; },
   setValues: () => void
-  setFieldValue: (where: number | string, what: number | string) => void,
+  setFieldValue: any,
   fieldName: string,
   optionName: string,
-  valueIntName: number | string,
-  valueDecimalName: number | string,
+  valueIntName: number,
+  valueDecimalName: number,
   valueStringName: string,
   valueDateTimeName: string,
   rulesetIndex: number,
   ruleIndex: number,
-  rule: Rule,
+  rule: RuleType,
 }
 
 export default function Rule(props: RuleProps) {
