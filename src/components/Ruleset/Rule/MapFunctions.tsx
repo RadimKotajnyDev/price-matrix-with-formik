@@ -79,7 +79,7 @@ export function MapValueType(fieldId: number) {
   }
 }
 
-export function SelectStoreValue(fieldId: number, setFieldValue: any, valueInt: number, valueDecimal: number, valueDateTime: any, valueString: string) {
+export function SelectStoreValue(fieldId: number, setFieldValue: any, valueInt: number | string, valueDecimal: number | string, valueDateTime: any, valueString: string) {
   switch (fieldId) {
     case 0:
       setFieldValue(valueString, null)
@@ -132,7 +132,7 @@ export function SelectStoreValue(fieldId: number, setFieldValue: any, valueInt: 
   }
 }
 
-export function StoreInteger(fieldId: number, value: string) {
+export function StoreInteger(fieldId: number, value: string): string | number {
   switch (fieldId) {
     case 1:
     case 3:

@@ -1,10 +1,10 @@
 import {Field} from "formik";
 
 interface Props {
-  bookingFeeAbsolute?: number | string,
-  bookingFeePercent?: number | string,
-  insideCommission?: number | string,
-  priceSelling?: number | string,
+  bookingFeeAbsolute: number | string | null,
+  bookingFeePercent: number | string | null,
+  insideCommission: number | string | null,
+  priceSelling: number | string | null,
 }
 
 const rowClass = " flex flex-row justify-between items-center"

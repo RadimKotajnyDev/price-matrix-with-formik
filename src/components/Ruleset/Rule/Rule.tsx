@@ -5,14 +5,35 @@ import {ArrowOnSelect} from "../../elements/ArrowOnSelect.tsx";
 import {RemoveRule} from "./RuleFunctions.ts"
 import {MapOperators, SelectStoreValue} from "./MapFunctions.tsx";
 import ValueComponent from "./ValueComponent.tsx";
+import {ChangeEvent} from "react";
 
-export default function Rule(props: any) {
+interface Rule {
+  fieldId: number,
+  compareOperatorId: number,
+}
+
+interface RuleProps {
+  values: number | string,
+  setValues: () => void
+  setFieldValue: (where: number | string, what: number | string) => void,
+  fieldName: string,
+  optionName: string,
+  valueIntName: number | string,
+  valueDecimalName: number | string,
+  valueStringName: string,
+  valueDateTimeName: string,
+  rulesetIndex: number,
+  ruleIndex: number,
+  rule: Rule,
+}
+
+export default function Rule(props: RuleProps) {
   return (
     <>
       <div className="flex flex-row mb-3">
         <div className="flex flex-row relative">
           <Field component="select" className="InputClass w-[15rem]"
-                 onChange={(e: any) => {
+                 onChange={(e: ChangeEvent<HTMLInputElement>) => {
                    props.setFieldValue(props.fieldName, parseInt(e.target.value));
                    props.setFieldValue(props.optionName, 0); //fixed compareOperatorId value when changing field
                    SelectStoreValue(parseInt(e.target.value),
@@ -30,7 +51,7 @@ export default function Rule(props: any) {
         </div>
         <div className="flex flex-row relative">
           <Field component="select" className="InputClass w-[15rem]"
-                 onChange={(e: any) => props.setFieldValue(props.optionName, parseInt(e.target.value))}
+                 onChange={(e: ChangeEvent<HTMLInputElement>) => props.setFieldValue(props.optionName, parseInt(e.target.value))}
                  name={props.optionName} value={props.rule.compareOperatorId}>
             {
               MapOperators(props.rule.fieldId)
