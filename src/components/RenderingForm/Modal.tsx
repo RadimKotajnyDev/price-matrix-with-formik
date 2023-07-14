@@ -37,7 +37,7 @@ export default function Modal(props: any) {
                     className="text-lg font-medium leading-6 text-gray-900 gap-2 flex-row items-center flex"
                   >
                     <AiFillCheckCircle size={30} className="text-green-500" />
-                    Price Matrix sent successfully!
+                    Price Matrix submitted successfully!
                   </Dialog.Title>
                 </Dialog.Panel>
               </Transition.Child>

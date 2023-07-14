@@ -10,7 +10,7 @@ import ValueComponent from "./ValueComponent.tsx";
 export default function Rule(props: any) {
   return (
     <>
-      <div className="flex flex-row my-3">
+      <div className="flex flex-row mb-3">
         <div className="flex flex-row relative">
           <Field component="select" className="InputClass w-[15rem]"
                  onChange={(e: any) => {
@@ -49,7 +49,7 @@ export default function Rule(props: any) {
         />
         <Button onClickProp={() => RemoveRule(props.values, props.setValues, props.rulesetIndex, props.ruleIndex)}>
           <AiOutlineMinus
-            size="50"
+            size={35}
             className="ml-2 rounded text-white bg-slate-800 duration-200
                        hover:text-slate-900 hover:bg-white disabled:cursor-not-allowed"
           />

@@ -4,9 +4,9 @@ import Button from "../elements/Button.tsx";
 export const RemoveRulesetButton = (props: any) => {
   return (
     <Button onClickProp={props.removeRuleset}
-            classNameProp="ButtonClass bg-red-600 p-3"
+            classNameProp="ButtonClass bg-red-600 py-2 px-[10px]"
     >
-      <AiOutlineClose size={25}/>
+      <AiOutlineClose size={20}/>
     </Button>
   )
 }
