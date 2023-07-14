@@ -10,6 +10,7 @@ export const FormBottomButtons = (props: any) => {
           classNameProp="ButtonClass AddRulesetClass flex flex-row items-center p-2"
           onClickProp={props.addRuleset}><AiOutlinePlusCircle size={20} className="mr-2"/>
           ruleset</Button>
+        <span className="h-full w-[1px] border-[1px] border-gray-200" />
         <Button typeProp="submit"
                 classNameProp="ButtonClass bg-teal-500 px-8">Submit</Button>
       </div>
