@@ -28,7 +28,7 @@ interface RulesetProps {
   bookingFeePercent: number | string | null,
   priceSelling: number | string | null,
   insideCommission: number | string | null,
-  removeRuleset: () => void,
+  removeRuleSet: () => void,
   rules: Array<RuleType>,
   rulesString: string,
   setFieldValue: any,
@@ -47,7 +47,7 @@ export default function Ruleset(props: RulesetProps) {
     bookingFeePercent,
     insideCommission,
     priceSelling,
-    removeRuleset,
+    removeRuleSet,
     rules,
     rulesString,
     setFieldValue,
@@ -59,9 +59,9 @@ export default function Ruleset(props: RulesetProps) {
     <div
       className="w-full p-4 my-4 rounded-md bg-white border-2 outline-gray-100 shadow-lg">
       <div className="flex flex-row justify-between mb-2">
-        <Title rulesetID={ruleSetID}
-               rulesetPriority={ruleSetPriority}/>
-        <RemoveRulesetButton removeRuleset={removeRuleset}/>
+        <Title ruleSetID={ruleSetID}
+               ruleSetPriority={ruleSetPriority}/>
+        <RemoveRulesetButton removeRuleSet={removeRuleSet}/>
       </div>
       <Note nameProp={note} />
       <PriorityButtons

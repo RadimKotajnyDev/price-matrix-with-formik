@@ -136,7 +136,7 @@ export function PriorityDown(values: any, setValues: any, ruleSetIndex: number) 
     }
 }
 
-export const HandleRemoveRuleset = (values: any, setValues: any, index: number) => {
+export const HandleRemoveRuleSet = (values: any, setValues: any, index: number) => {
     values.ruleSets.splice(index, 1);
 
     RemapPriorities(values.ruleSets)

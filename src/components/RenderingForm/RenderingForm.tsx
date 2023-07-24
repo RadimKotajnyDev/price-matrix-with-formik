@@ -2,10 +2,11 @@ import {FieldArray, Form, Formik} from 'formik';
 import {resolveRulesets} from "../../API.tsx";
 import Ruleset from "../Ruleset/Ruleset.tsx";
 import {Heading} from "./Heading.tsx";
-import {HandleRemoveRuleset, AddRuleset, EmptyStringsDataToNull} from "./RenderFunctions.ts";
+import {HandleRemoveRuleset, AddRuleset, EmptyStringsDataToNull, HandleRemoveRuleSet} from "./RenderFunctions.ts";
 import {FormBottomButtons} from "./FormBottomButtons.tsx";
 import {useEffect, useState} from "react";
 import Modal from "./Modal.tsx";
+import * as yup from "yup";
 
 const formConfig = await resolveRulesets()
 
@@ -14,6 +15,37 @@ type Ruleset = {
   ruleSetId: number,
   rules: []
 }
+
+const schema = yup.object().shape({
+  id: yup.number(),
+  name: yup.string(),
+  ruleSets: yup.array().of(
+    yup.object().shape({
+      ruleSetId: yup.number(),
+      logicalOperatorId: yup.number(),
+      priority: yup.number().required(),
+      rules: yup.array().of(
+        yup.object().shape({
+          ruleSetId: yup.number().required(),
+          ruleId: yup.number().required(),
+          fieldId: yup.number().required(),
+          compareOperatorId: yup.number(),
+          valueInt: yup.number(),
+          valueString: yup.string(),
+          valueDateTime: yup.date(),
+          valueDecimal: yup.number(),
+          priority: yup.number(),
+        })
+      ),
+      priceSelling: yup.number(),
+      bookingFeePercent: yup.number(),
+      bookingFeeAbsolute: yup.number(),
+      insideCommissionRate: yup.number(),
+      note: yup.string(),
+      offerCode: yup.string(),
+    })
+  ),
+});
 
 export default function RenderingForm(props: {data: {id: number, name: string}}) {
 
@@ -33,16 +65,17 @@ export default function RenderingForm(props: {data: {id: number, name: string}})
   //console.log(formConfig)
   return (
     <Formik
+      //validationSchema={schema}
       initialValues={
       {id: props.data.id, name: props.data.name, ruleSets: formConfig}
     }
       onSubmit={
-      (values) => {console.log(values); setSuccessModal(true)}
+      (values) => {console.log(EmptyStringsDataToNull(values)); setSuccessModal(true)}
     }
     >
       {({values, setFieldValue, setValues}) => (
         <Form className="flex justify-center">
-          <FieldArray name="rulesets">
+          <FieldArray name={`ruleSets`}>
             {(/*{push, remove}*/) => (
               <div className="relative mb-20">
                 <Modal
@@ -57,8 +90,8 @@ export default function RenderingForm(props: {data: {id: number, name: string}})
                   return (
                     <div key={index}>
                       <Ruleset
-                        removeRuleset={() => {
-                          HandleRemoveRuleset(values, setValues, index)
+                        removeRuleSet={() => {
+                          HandleRemoveRuleSet(values, setValues, index)
                         }}
                         ruleSetIndex={index}
                         ruleSetPriority={ruleSet.priority}
