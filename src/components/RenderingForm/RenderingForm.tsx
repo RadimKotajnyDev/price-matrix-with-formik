@@ -2,7 +2,7 @@ import {FieldArray, Form, Formik} from 'formik';
 import {resolveRulesets} from "../../API.tsx";
 import Ruleset from "../Ruleset/Ruleset.tsx";
 import {Heading} from "./Heading.tsx";
-import {HandleRemoveRuleset, AddRuleset} from "./RenderFunctions.ts";
+import {HandleRemoveRuleset, AddRuleset, EmptyStringsDataToNull} from "./RenderFunctions.ts";
 import {FormBottomButtons} from "./FormBottomButtons.tsx";
 import {useEffect, useState} from "react";
 import Modal from "./Modal.tsx";
@@ -15,7 +15,7 @@ type Ruleset = {
   rules: []
 }
 
-export default function RenderingForm(props: {data: []}) {
+export default function RenderingForm(props: {data: {id: number, name: string}}) {
 
   const [successModal, setSuccessModal] = useState(false)
 
@@ -33,8 +33,8 @@ export default function RenderingForm(props: {data: []}) {
   //console.log(formConfig)
   return (
     <Formik
-      initialValues={{rulesets: formConfig}}
-      onSubmit={(values) => {console.log(values.rulesets); setSuccessModal(true)}}
+      initialValues={{id: props.data.id, name: props.data.name, ruleSets: formConfig}}
+      onSubmit={(values) => {console.log(values); setSuccessModal(true)}}
     >
       {({values, setFieldValue, setValues}) => (
         <Form className="flex justify-center">
@@ -48,7 +48,7 @@ export default function RenderingForm(props: {data: []}) {
                 />
                 <Heading data={props.data}
                 />
-                {values.rulesets.map((ruleset: Ruleset, index: number) => {
+                {values.ruleSets.map((ruleset: Ruleset, index: number) => {
                   //console.log(formConfig);
                   return (
                     <div key={index}>
@@ -60,13 +60,13 @@ export default function RenderingForm(props: {data: []}) {
                         rulesetPriority={ruleset.priority}
                         rulesetID={ruleset.ruleSetId}
                         rules={ruleset.rules}
-                        rulesString={`rulesets[${index}].rules`}
-                        offerCode={`rulesets[${index}].offerCode`}
-                        note={`rulesets[${index}].note`}
-                        bookingFeeAbsolute={`rulesets[${index}].bookingFeeAbsolute`}
-                        bookingFeePercent={`rulesets[${index}].bookingFeePercent`}
-                        insideCommission={`rulesets[${index}].insideCommissionRate`}
-                        priceSelling={`rulesets[${index}].priceSelling`}
+                        rulesString={`ruleSets[${index}].rules`}
+                        offerCode={`ruleSets[${index}].offerCode`}
+                        note={`ruleSets[${index}].note`}
+                        bookingFeeAbsolute={`ruleSets[${index}].bookingFeeAbsolute`}
+                        bookingFeePercent={`ruleSets[${index}].bookingFeePercent`}
+                        insideCommission={`ruleSets[${index}].insideCommissionRate`}
+                        priceSelling={`ruleSets[${index}].priceSelling`}
                         setFieldValue={setFieldValue}
                         values={values}
                         setValues={setValues}

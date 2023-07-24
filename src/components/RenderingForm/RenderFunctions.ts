@@ -2,11 +2,11 @@ import {defaultRuleset} from "../../configs/ruleset/defaultRuleset.tsx";
 
 interface Rules {
     map: any,
-    ruleSetId: number,
-    ruleId: number,
-    fieldId: number,
-    priority?: null,
-    compareOperatorId: number,
+    ruleSetId: number | string,
+    ruleId: number | string,
+    fieldId: number | string,
+    priority?: null | string,
+    compareOperatorId: number | string,
     valueInt: number | string,
     valueDecimal: number | string,
     valueDateTime: string,
@@ -25,8 +25,8 @@ interface ruleSets {
     offerCode: string
 }
 
-export function DataToEmptyString(data: any) {
-    return data.ruleSets.map((item: ruleSets, index: number) => {
+export function NullDataToEmptyStrings(data: any) {
+    data.ruleSets.map((item: ruleSets, index: number) => {
         data.ruleSets[index] = {
             ruleSetId: item.ruleSetId === null ? "" : item.ruleSetId,
             logicalOperatorId: item.logicalOperatorId === null ? "" : item.logicalOperatorId,
@@ -52,15 +52,17 @@ export function DataToEmptyString(data: any) {
             offerCode: item.offerCode === null ? "" : item.offerCode,
         }
     })
+    return console.log(data)
 }
 
-export function ReformatEmptyStrings(data: any, ) {
-    data.ruleSets.map((item: any, index: number) => {
+export function EmptyStringsDataToNull(data: any, ) {
+    console.log(data)
+    return data.ruleSets.map((item: ruleSets, index: number) => {
         data.ruleSets[index] = {
             ruleSetId: item.ruleSetId === "" ? null : item.ruleSetId,
             logicalOperatorId: item.logicalOperatorId === "" ? null : item.logicalOperatorId,
             priority: item.priority === "" ? null : item.priority,
-            rules: item.rules.map((rule: any) => {
+            rules: item.rules.map((rule: Rules) => {
                 return {
                     ruleSetId: rule.ruleSetId === "" ? null : rule.ruleSetId,
                     ruleId: rule.ruleId === "" ? null : rule.ruleId,
