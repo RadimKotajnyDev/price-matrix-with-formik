@@ -1,5 +1,88 @@
 import {defaultRuleset} from "../../configs/ruleset/defaultRuleset.tsx";
 
+interface Rules {
+    map: any,
+    ruleSetId: number,
+    ruleId: number,
+    fieldId: number,
+    priority?: null,
+    compareOperatorId: number,
+    valueInt: number | string,
+    valueDecimal: number | string,
+    valueDateTime: string,
+    valueString: string,
+}
+interface ruleSets {
+    ruleSetId: number,
+    logicalOperatorId: number,
+    priority: number,
+    rules: Rules,
+    priceSelling: number | string,
+    bookingFeePercent: number | string,
+    bookingFeeAbsolute: number | string,
+    insideCommissionRate: number | string,
+    note: string,
+    offerCode: string
+}
+
+export function DataToEmptyString(data: any) {
+    return data.ruleSets.map((item: ruleSets, index: number) => {
+        data.ruleSets[index] = {
+            ruleSetId: item.ruleSetId === null ? "" : item.ruleSetId,
+            logicalOperatorId: item.logicalOperatorId === null ? "" : item.logicalOperatorId,
+            priority: item.priority === null ? "" : item.priority,
+            rules: item.rules.map((rule: Rules) => {
+                return {
+                    ruleSetId: rule.ruleSetId === null ? "" : rule.ruleSetId,
+                    ruleId: rule.ruleId === null ? "" : rule.ruleId,
+                    fieldId: rule.fieldId === null ? "" : rule.fieldId,
+                    priority: rule.priority === null ? "" : rule.priority,
+                    compareOperatorId: rule.compareOperatorId === null ? "" : rule.compareOperatorId,
+                    valueInt: rule.valueInt === null ? "" : rule.valueInt,
+                    valueDecimal: rule.valueDecimal === null ? "" : rule.valueDecimal,
+                    valueDateTime: rule.valueDateTime === null ? "" : rule.valueDateTime,
+                    valueString: rule.valueString === null ? "" : rule.valueString,
+                }
+            }),
+            priceSelling: item.priceSelling === null ? "" : item.priceSelling,
+            bookingFeePercent: item.bookingFeePercent === null ? "" : item.bookingFeePercent,
+            bookingFeeAbsolute: item.bookingFeeAbsolute === null ? "" : item.bookingFeeAbsolute,
+            insideCommissionRate: item.insideCommissionRate === null ? "" : item.insideCommissionRate,
+            note: item.note === null ? "" : item.note,
+            offerCode: item.offerCode === null ? "" : item.offerCode,
+        }
+    })
+}
+
+export function ReformatEmptyStrings(data: any, ) {
+    data.ruleSets.map((item: any, index: number) => {
+        data.ruleSets[index] = {
+            ruleSetId: item.ruleSetId === "" ? null : item.ruleSetId,
+            logicalOperatorId: item.logicalOperatorId === "" ? null : item.logicalOperatorId,
+            priority: item.priority === "" ? null : item.priority,
+            rules: item.rules.map((rule: any) => {
+                return {
+                    ruleSetId: rule.ruleSetId === "" ? null : rule.ruleSetId,
+                    ruleId: rule.ruleId === "" ? null : rule.ruleId,
+                    fieldId: rule.fieldId === "" ? null : rule.fieldId,
+                    priority: rule.priority === "" ? null : rule.priority,
+                    compareOperatorId: rule.compareOperatorId === "" ? null : rule.compareOperatorId,
+                    valueInt: rule.valueInt === "" ? null : rule.valueInt,
+                    valueDecimal: rule.valueDecimal === "" ? null : rule.valueDecimal,
+                    valueDateTime: rule.valueDateTime === "" ? null : rule.valueDateTime,
+                    valueString: rule.valueString === "" ? null : rule.valueString,
+                }
+            }),
+            priceSelling: item.priceSelling === "" ? null : item.priceSelling,
+            bookingFeePercent: item.bookingFeePercent === "" ? null : item.bookingFeePercent,
+            bookingFeeAbsolute: item.bookingFeeAbsolute === "" ? null : item.bookingFeeAbsolute,
+            insideCommissionRate: item.insideCommissionRate === "" ? null : item.insideCommissionRate,
+            note: item.note === "" ? null : item.note,
+            offerCode: item.offerCode === "" ? null : item.offerCode,
+        }
+    })
+}
+
 export function RemapPriorities(jsonData: any) {
     const ruleSets = [...jsonData]; // Vytvoření kopie pole jsonData.rulesets
 
@@ -61,8 +144,7 @@ export const HandleRemoveRuleset = (values: any, setValues: any, index: number) 
 export const AddRuleset = (values: any, setValues: any) => {
     const newRuleset = { ...defaultRuleset };
     newRuleset.priority = values.rulesets.length + 1;
-    //TODO: dohodnout se na ID
-    newRuleset.ruleSetId = null //backend will create new ID
+    newRuleset.ruleSetId = "" //backend will create new ID
 
     const updatedValues = {
         ...values,

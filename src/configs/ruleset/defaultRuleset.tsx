@@ -1,24 +1,26 @@
+//reformat empty string to null on submit
+
 export const defaultRuleset = {
-    "ruleSetId": null,
+    "ruleSetId": "",
     "logicalOperatorId": 1,
-    "priority": null,
+    "priority": "",
     "rules": [
         {
-            "ruleSetId": null,
-            "ruleId": null,
+            "ruleSetId": "",
+            "ruleId": "",
             "fieldId": 0,
             "compareOperatorId": 0,
-            "valueInt": null,
-            "valueString": null,
-            "valueDateTime": null,
-            "valueDecimal": null,
-            "priority": null
+            "valueInt": "",
+            "valueString": "",
+            "valueDateTime": "",
+            "valueDecimal": "",
+            "priority": ""
         }
     ],
-    "priceSelling": null,
-    "bookingFeePercent": null,
-    "bookingFeeAbsolute": null,
-    "insideCommissionRate": null,
-    "note": null,
+    "priceSelling": "",
+    "bookingFeePercent": "",
+    "bookingFeeAbsolute": "",
+    "insideCommissionRate": "",
+    "note": "",
     "offerCode": ""
 }

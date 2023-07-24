@@ -2,7 +2,13 @@ import { Dialog, Transition } from '@headlessui/react'
 import { Fragment } from 'react'
 import {AiFillCheckCircle} from "react-icons/ai";
 
-export default function Modal(props: any) {
+interface ModalProps {
+  showState: boolean,
+  closeModal: (value: boolean) => void,
+  openModal: (value: boolean) => void,
+}
+
+export default function Modal(props: ModalProps) {
 
   return (
     <>

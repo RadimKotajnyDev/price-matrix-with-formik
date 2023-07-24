@@ -17,23 +17,24 @@ type Ruleset = {
 
 export default function RenderingForm(props: {data: []}) {
 
-  const [modalVisible, setModalVisible] = useState(false)
+  const [successModal, setSuccessModal] = useState(false)
 
   useEffect(() => {
-    if (modalVisible) {
+    if (successModal) {
       const timeout = setTimeout(() => {
-        setModalVisible(false)
+        setSuccessModal(false)
       }, 1000);
 
       return () => clearTimeout(timeout);
     }
-  }, [modalVisible]);
+  }, [successModal]);
+
 
   //console.log(formConfig)
   return (
     <Formik
       initialValues={{rulesets: formConfig}}
-      onSubmit={(values) => {console.log(values.rulesets); setModalVisible(true)}}
+      onSubmit={(values) => {console.log(values.rulesets); setSuccessModal(true)}}
     >
       {({values, setFieldValue, setValues}) => (
         <Form className="flex justify-center">
@@ -41,9 +42,9 @@ export default function RenderingForm(props: {data: []}) {
             {(/*{push, remove}*/) => (
               <div className="relative mb-20">
                 <Modal
-                  showState={modalVisible}
-                  openModal={() => setModalVisible(true)}
-                  closeModal={() => setModalVisible(false)}
+                  showState={successModal}
+                  openModal={() => setSuccessModal(true)}
+                  closeModal={() => setSuccessModal(false)}
                 />
                 <Heading data={props.data}
                 />
