@@ -42,7 +42,7 @@ export default function RenderingForm(props: { data: { id: number, name: string 
         }
       }
     >
-      {({values, setFieldValue, setValues}) => (
+      {({values, setFieldValue, setValues, errors}) => (
         <Form className="flex justify-center">
           <FieldArray name={`ruleSets`}>
             {(/*{push, remove}*/) => (
@@ -61,6 +61,7 @@ export default function RenderingForm(props: { data: { id: number, name: string 
                         removeRuleSet={() => {
                           HandleRemoveRuleSet(values, setValues, index)
                         }}
+                        errors={errors}
                         ruleSetIndex={index}
                         ruleSetPriority={ruleSet.priority}
                         ruleSetID={ruleSet.ruleSetId}

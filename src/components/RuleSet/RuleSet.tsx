@@ -34,7 +34,8 @@ interface RuleSetProps {
   setFieldValue: any,
   values: any,
   setValues: any,
-  ruleSetIndex: number
+  ruleSetIndex: number,
+  errors: any
 }
 
 export default function RuleSet(props: RuleSetProps) {
@@ -53,7 +54,8 @@ export default function RuleSet(props: RuleSetProps) {
     setFieldValue,
     values,
     setValues,
-    ruleSetIndex
+    ruleSetIndex,
+    errors
   }: RuleSetProps = props
   return (
     <div
@@ -86,6 +88,7 @@ export default function RuleSet(props: RuleSetProps) {
                     setFieldValue={setFieldValue}
                     setValues={setValues}
                     values={values}
+                    errors={errors}
               />
             ))}
             <AddRuleButton
