@@ -33,8 +33,12 @@ export default function RenderingForm(props: {data: {id: number, name: string}})
   //console.log(formConfig)
   return (
     <Formik
-      initialValues={{id: props.data.id, name: props.data.name, ruleSets: formConfig}}
-      onSubmit={(values) => {console.log(values); setSuccessModal(true)}}
+      initialValues={
+      {id: props.data.id, name: props.data.name, ruleSets: formConfig}
+    }
+      onSubmit={
+      (values) => {console.log(values); setSuccessModal(true)}
+    }
     >
       {({values, setFieldValue, setValues}) => (
         <Form className="flex justify-center">
@@ -48,7 +52,7 @@ export default function RenderingForm(props: {data: {id: number, name: string}})
                 />
                 <Heading data={props.data}
                 />
-                {values.ruleSets.map((ruleset: Ruleset, index: number) => {
+                {values.ruleSets.map((ruleSet: Ruleset, index: number) => {
                   //console.log(formConfig);
                   return (
                     <div key={index}>
@@ -56,10 +60,10 @@ export default function RenderingForm(props: {data: {id: number, name: string}})
                         removeRuleset={() => {
                           HandleRemoveRuleset(values, setValues, index)
                         }}
-                        rulesetIndex={index}
-                        rulesetPriority={ruleset.priority}
-                        rulesetID={ruleset.ruleSetId}
-                        rules={ruleset.rules}
+                        ruleSetIndex={index}
+                        ruleSetPriority={ruleSet.priority}
+                        ruleSetID={ruleSet.ruleSetId}
+                        rules={ruleSet.rules}
                         rulesString={`ruleSets[${index}].rules`}
                         offerCode={`ruleSets[${index}].offerCode`}
                         note={`ruleSets[${index}].note`}

@@ -55,9 +55,9 @@ export function NullDataToEmptyStrings(data: any) {
     return console.log(data)
 }
 
-export function EmptyStringsDataToNull(data: any, ) {
+export function EmptyStringsDataToNull(data: any) {
     console.log(data)
-    return data.ruleSets.map((item: ruleSets, index: number) => {
+    data.ruleSets.map((item: ruleSets, index: number) => {
         data.ruleSets[index] = {
             ruleSetId: item.ruleSetId === "" ? null : item.ruleSetId,
             logicalOperatorId: item.logicalOperatorId === "" ? null : item.logicalOperatorId,
@@ -83,10 +83,11 @@ export function EmptyStringsDataToNull(data: any, ) {
             offerCode: item.offerCode === "" ? null : item.offerCode,
         }
     })
+    return data;
 }
 
 export function RemapPriorities(jsonData: any) {
-    const ruleSets = [...jsonData]; // Vytvoření kopie pole jsonData.rulesets
+    const ruleSets = [...jsonData]; // Vytvoření kopie pole jsonData.ruleSets
 
     const jsonLength = ruleSets.length;
 
@@ -100,57 +101,57 @@ export function RemapPriorities(jsonData: any) {
 }
 
 
-export function PriorityUp(values: any, setValues: any, rulesetIndex: number) {
-    if (rulesetIndex > 0) {
-        let updatedRulesets = [...values.rulesets];
+export function PriorityUp(values: any, setValues: any, ruleSetIndex: number) {
+    if (ruleSetIndex > 0) {
+        let updatedRuleSets = [...values.ruleSets];
 
-        [updatedRulesets[rulesetIndex], updatedRulesets[rulesetIndex - 1]] = [
-            updatedRulesets[rulesetIndex - 1],
-            updatedRulesets[rulesetIndex],
+        [updatedRuleSets[ruleSetIndex], updatedRuleSets[ruleSetIndex - 1]] = [
+            updatedRuleSets[ruleSetIndex - 1],
+            updatedRuleSets[ruleSetIndex],
         ];
 
-        updatedRulesets = RemapPriorities(updatedRulesets)
+        updatedRuleSets = RemapPriorities(updatedRuleSets)
         setValues({
             ...values,
-            rulesets: updatedRulesets,
+            ruleSets: updatedRuleSets,
         });
     }
 }
 
-export function PriorityDown(values: any, setValues: any, rulesetIndex: number) {
-    if (rulesetIndex < values.rulesets.length - 1) {
-        let updatedRulesets = [...values.rulesets];
+export function PriorityDown(values: any, setValues: any, ruleSetIndex: number) {
+    if (ruleSetIndex < values.ruleSets.length - 1) {
+        let updatedRuleSets = [...values.ruleSets];
 
-        [updatedRulesets[rulesetIndex], updatedRulesets[rulesetIndex + 1]] = [
-            updatedRulesets[rulesetIndex + 1],
-            updatedRulesets[rulesetIndex],
+        [updatedRuleSets[ruleSetIndex], updatedRuleSets[ruleSetIndex + 1]] = [
+            updatedRuleSets[ruleSetIndex + 1],
+            updatedRuleSets[ruleSetIndex],
         ];
 
-        updatedRulesets = RemapPriorities(updatedRulesets)
+        updatedRuleSets = RemapPriorities(updatedRuleSets)
 
         setValues({
             ...values,
-            rulesets: updatedRulesets,
+            ruleSets: updatedRuleSets,
         });
     }
 }
 
 export const HandleRemoveRuleset = (values: any, setValues: any, index: number) => {
-    values.rulesets.splice(index, 1);
+    values.ruleSets.splice(index, 1);
 
-    RemapPriorities(values.rulesets)
+    RemapPriorities(values.ruleSets)
 
     setValues(values);
 };
 
 export const AddRuleset = (values: any, setValues: any) => {
     const newRuleset = { ...defaultRuleset };
-    newRuleset.priority = values.rulesets.length + 1;
+    newRuleset.priority = values.ruleSets.length + 1;
     newRuleset.ruleSetId = "" //backend will create new ID
 
     const updatedValues = {
         ...values,
-        rulesets: [...values.rulesets, newRuleset],
+        ruleSets: [...values.ruleSets, newRuleset],
     };
     setValues(updatedValues);
 };

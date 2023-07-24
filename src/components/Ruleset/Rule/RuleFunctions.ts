@@ -1,4 +1,4 @@
-export const AddRule = (values: any, setValues: any, rulesetIndex: number) => {
+export const AddRule = (values: any, setValues: any, ruleSetIndex: number) => {
 
   const newRule = {
     "ruleSetId": "",
@@ -12,28 +12,23 @@ export const AddRule = (values: any, setValues: any, rulesetIndex: number) => {
     "priority": ""
   }
 
-  const updatedRuleSets = [...values.rulesets];
-  const updatedRules = [...updatedRuleSets[rulesetIndex].rules];
+  const updatedRuleSets = [...values.ruleSets];
+  const updatedRules = [...updatedRuleSets[ruleSetIndex].rules];
 
   updatedRules.push(newRule);
-  updatedRuleSets[rulesetIndex].rules = updatedRules;
+  updatedRuleSets[ruleSetIndex].rules = updatedRules;
 
   setValues({
     ...values,
-    rulesets: updatedRuleSets,
+    ruleSets: updatedRuleSets,
   });
 }
-export function RemoveRule(values: any, setValues: any, rulesetIndex: number, ruleIndex: number) {
-  //const updatedRulesets = [...values.rulesets];
-  //const updatedRules = [...updatedRulesets[rulesetIndex].rules];
-
-  //updatedRules.splice(ruleIndex, 1);
-  values.rulesets[rulesetIndex].rules.splice(ruleIndex, 1)
-  const updatedRulesets = [...values.rulesets]
-  //updatedRulesets[rulesetIndex].rules = [...updatedRules];
+export function RemoveRule(values: any, setValues: any, ruleSetIndex: number, ruleIndex: number) {
+  values.ruleSets[ruleSetIndex].rules.splice(ruleIndex, 1)
+  const updatedRulesets = [...values.ruleSets]
 
   setValues({
     ...values,
-    rulesets: updatedRulesets,
+    ruleSets: updatedRulesets,
   });
 }

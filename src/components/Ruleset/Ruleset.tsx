@@ -20,8 +20,8 @@ export interface RuleType {
 }
 
 interface RulesetProps {
-  rulesetID: number,
-  rulesetPriority: number,
+  ruleSetID: number,
+  ruleSetPriority: number,
   offerCode: string,
   note?: string,
   bookingFeeAbsolute: number | string | null,
@@ -34,13 +34,13 @@ interface RulesetProps {
   setFieldValue: any,
   values: any,
   setValues: any,
-  rulesetIndex: number
+  ruleSetIndex: number
 }
 
 export default function Ruleset(props: RulesetProps) {
   const {
-    rulesetID,
-    rulesetPriority,
+    ruleSetID,
+    ruleSetPriority,
     offerCode,
     note,
     bookingFeeAbsolute,
@@ -53,29 +53,29 @@ export default function Ruleset(props: RulesetProps) {
     setFieldValue,
     values,
     setValues,
-    rulesetIndex
+    ruleSetIndex
   }: RulesetProps = props
   return (
     <div
       className="w-full p-4 my-4 rounded-md bg-white border-2 outline-gray-100 shadow-lg">
       <div className="flex flex-row justify-between mb-2">
-        <Title rulesetID={rulesetID}
-               rulesetPriority={rulesetPriority}/>
+        <Title rulesetID={ruleSetID}
+               rulesetPriority={ruleSetPriority}/>
         <RemoveRulesetButton removeRuleset={removeRuleset}/>
       </div>
       <Note nameProp={note} />
       <PriorityButtons
-        onUP={() => PriorityUp(values, setValues, rulesetIndex)}
-        onDOWN={() => PriorityDown(values, setValues, rulesetIndex)}
+        onUP={() => PriorityUp(values, setValues, ruleSetIndex)}
+        onDOWN={() => PriorityDown(values, setValues, ruleSetIndex)}
       />
       <Labels />
-      <FieldArray name={`rulesets.rules`}>
+      <FieldArray name={`ruleSets.rules`}>
         {() => (
           <>
             {rules.map((rule: RuleType, ruleIndex: number) => (
               <Rule key={ruleIndex}
                     rule={rule}
-                    rulesetIndex={rulesetIndex}
+                    ruleSetIndex={ruleSetIndex}
                     ruleIndex={ruleIndex}
                     fieldName={rulesString + `[${ruleIndex}].fieldId`}
                     optionName={rulesString + `[${ruleIndex}].compareOperatorId`}
@@ -91,7 +91,7 @@ export default function Ruleset(props: RulesetProps) {
             <AddRuleButton
               setValues={setValues}
               values={values}
-              rulesetIndex={rulesetIndex}
+              rulesetIndex={ruleSetIndex}
             />
           </>
         )}

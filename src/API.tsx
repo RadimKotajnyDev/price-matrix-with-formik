@@ -18,6 +18,6 @@ export async function resolveRulesets() {
   const data = await fetchData()
   await NullDataToEmptyStrings(data) //uncontrolled input warning fixed
   // reformat data before submit in RenderingForm.tsx
-  // sorting rulesets by priority
+  // sorting ruleSets by priority
   return [...data.ruleSets].sort((a, b) => a.priority - b.priority);
 }

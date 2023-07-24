@@ -9,7 +9,7 @@ import {ChangeEvent} from "react";
 import type {RuleType} from "../Ruleset.tsx"
 
 interface RuleProps {
-  values: { rulesets: object[]; },
+  values: { ruleSets: object[]; },
   setValues: () => void
   setFieldValue: any,
   fieldName: string,
@@ -18,7 +18,7 @@ interface RuleProps {
   valueDecimalName: number,
   valueStringName: string,
   valueDateTimeName: string,
-  rulesetIndex: number,
+  ruleSetIndex: number,
   ruleIndex: number,
   rule: RuleType,
 }
@@ -62,7 +62,7 @@ export default function Rule(props: RuleProps) {
                         valueDecimalName={props.valueDecimalName}
                         setFieldValue={props.setFieldValue}
         />
-        <button type="button" onClick={() => RemoveRule(props.values, props.setValues, props.rulesetIndex, props.ruleIndex)}>
+        <button type="button" onClick={() => RemoveRule(props.values, props.setValues, props.ruleSetIndex, props.ruleIndex)}>
           <AiOutlineMinus
             size={35}
             className="ml-2 rounded text-white bg-slate-800 duration-200
