@@ -1,1 +1,1182 @@
-{"id":1,"name":"The Play That Goes Wrong NBF","ruleSets":[{"ruleSetId":1,"logicalOperatorId":1,"priority":16,"rules":[{"ruleSetId":1,"ruleId":23052,"fieldId":2,"compareOperatorId":4,"valueInt":null,"valueString":null,"valueDateTime":"2020-01-05T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":1,"ruleId":23053,"fieldId":2,"compareOperatorId":2,"valueInt":null,"valueString":null,"valueDateTime":"2020-02-02T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":1,"ruleId":23054,"fieldId":3,"compareOperatorId":1,"valueInt":7,"valueString":null,"valueDateTime":null,"valueDecimal":null,"priority":null},{"ruleSetId":1,"ruleId":23055,"fieldId":5,"compareOperatorId":2,"valueInt":null,"valueString":null,"valueDateTime":"2019-12-02T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":1,"ruleId":23056,"fieldId":4,"compareOperatorId":1,"valueInt":null,"valueString":"11481","valueDateTime":null,"valueDecimal":null,"priority":null}],"priceSelling":20,"bookingFeePercent":null,"bookingFeeAbsolute":null,"insideCommissionRate":20,"note":null,"offerCode":"LT3"},{"ruleSetId":2,"logicalOperatorId":1,"priority":15,"rules":[{"ruleSetId":2,"ruleId":23037,"fieldId":2,"compareOperatorId":4,"valueInt":null,"valueString":null,"valueDateTime":"2020-01-05T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":2,"ruleId":23038,"fieldId":2,"compareOperatorId":2,"valueInt":null,"valueString":null,"valueDateTime":"2020-02-02T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":2,"ruleId":23039,"fieldId":3,"compareOperatorId":1,"valueInt":7,"valueString":null,"valueDateTime":null,"valueDecimal":null,"priority":null},{"ruleSetId":2,"ruleId":23040,"fieldId":5,"compareOperatorId":2,"valueInt":null,"valueString":null,"valueDateTime":"2019-12-02T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":2,"ruleId":23041,"fieldId":4,"compareOperatorId":1,"valueInt":null,"valueString":"11480","valueDateTime":null,"valueDecimal":null,"priority":null}],"priceSelling":38,"bookingFeePercent":null,"bookingFeeAbsolute":null,"insideCommissionRate":20,"note":null,"offerCode":"LT3"},{"ruleSetId":3,"logicalOperatorId":1,"priority":14,"rules":[{"ruleSetId":3,"ruleId":23032,"fieldId":2,"compareOperatorId":4,"valueInt":null,"valueString":null,"valueDateTime":"2020-01-05T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":3,"ruleId":23033,"fieldId":2,"compareOperatorId":2,"valueInt":null,"valueString":null,"valueDateTime":"2020-02-02T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":3,"ruleId":23034,"fieldId":3,"compareOperatorId":1,"valueInt":7,"valueString":null,"valueDateTime":null,"valueDecimal":null,"priority":null},{"ruleSetId":3,"ruleId":23035,"fieldId":5,"compareOperatorId":2,"valueInt":null,"valueString":null,"valueDateTime":"2019-12-02T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":3,"ruleId":23036,"fieldId":4,"compareOperatorId":1,"valueInt":null,"valueString":"11479","valueDateTime":null,"valueDecimal":null,"priority":null}],"priceSelling":48,"bookingFeePercent":null,"bookingFeeAbsolute":null,"insideCommissionRate":20,"note":null,"offerCode":"LT3"},{"ruleSetId":4,"logicalOperatorId":1,"priority":13,"rules":[{"ruleSetId":4,"ruleId":840,"fieldId":2,"compareOperatorId":4,"valueInt":null,"valueString":null,"valueDateTime":"2020-01-05T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":4,"ruleId":841,"fieldId":2,"compareOperatorId":2,"valueInt":null,"valueString":null,"valueDateTime":"2020-02-02T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":4,"ruleId":842,"fieldId":3,"compareOperatorId":1,"valueInt":7,"valueString":null,"valueDateTime":null,"valueDecimal":null,"priority":null},{"ruleSetId":4,"ruleId":843,"fieldId":5,"compareOperatorId":2,"valueInt":null,"valueString":null,"valueDateTime":"2019-12-02T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":4,"ruleId":844,"fieldId":4,"compareOperatorId":1,"valueInt":null,"valueString":"11478","valueDateTime":null,"valueDecimal":null,"priority":null}],"priceSelling":65,"bookingFeePercent":null,"bookingFeeAbsolute":null,"insideCommissionRate":20,"note":null,"offerCode":"LT3"},{"ruleSetId":5,"logicalOperatorId":1,"priority":12,"rules":[{"ruleSetId":5,"ruleId":834,"fieldId":2,"compareOperatorId":4,"valueInt":null,"valueString":null,"valueDateTime":"2020-01-05T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":5,"ruleId":835,"fieldId":2,"compareOperatorId":2,"valueInt":null,"valueString":null,"valueDateTime":"2020-02-02T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":5,"ruleId":836,"fieldId":3,"compareOperatorId":4,"valueInt":2,"valueString":null,"valueDateTime":null,"valueDecimal":null,"priority":null},{"ruleSetId":5,"ruleId":837,"fieldId":3,"compareOperatorId":2,"valueInt":5,"valueString":null,"valueDateTime":null,"valueDecimal":null,"priority":null},{"ruleSetId":5,"ruleId":838,"fieldId":5,"compareOperatorId":2,"valueInt":null,"valueString":null,"valueDateTime":"2019-12-02T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":5,"ruleId":839,"fieldId":4,"compareOperatorId":1,"valueInt":null,"valueString":"11481","valueDateTime":null,"valueDecimal":null,"priority":null}],"priceSelling":20,"bookingFeePercent":null,"bookingFeeAbsolute":null,"insideCommissionRate":20,"note":null,"offerCode":"LT3"},{"ruleSetId":6,"logicalOperatorId":1,"priority":11,"rules":[{"ruleSetId":6,"ruleId":828,"fieldId":2,"compareOperatorId":4,"valueInt":null,"valueString":null,"valueDateTime":"2020-01-05T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":6,"ruleId":829,"fieldId":2,"compareOperatorId":2,"valueInt":null,"valueString":null,"valueDateTime":"2020-02-02T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":6,"ruleId":830,"fieldId":3,"compareOperatorId":4,"valueInt":2,"valueString":null,"valueDateTime":null,"valueDecimal":null,"priority":null},{"ruleSetId":6,"ruleId":831,"fieldId":3,"compareOperatorId":2,"valueInt":5,"valueString":null,"valueDateTime":null,"valueDecimal":null,"priority":null},{"ruleSetId":6,"ruleId":832,"fieldId":5,"compareOperatorId":2,"valueInt":null,"valueString":null,"valueDateTime":"2019-12-02T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":6,"ruleId":833,"fieldId":4,"compareOperatorId":1,"valueInt":null,"valueString":"11480","valueDateTime":null,"valueDecimal":null,"priority":null}],"priceSelling":38,"bookingFeePercent":null,"bookingFeeAbsolute":null,"insideCommissionRate":20,"note":null,"offerCode":"LT3"},{"ruleSetId":7,"logicalOperatorId":1,"priority":10,"rules":[{"ruleSetId":7,"ruleId":822,"fieldId":2,"compareOperatorId":4,"valueInt":null,"valueString":null,"valueDateTime":"2020-01-05T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":7,"ruleId":823,"fieldId":2,"compareOperatorId":2,"valueInt":null,"valueString":null,"valueDateTime":"2020-02-02T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":7,"ruleId":824,"fieldId":3,"compareOperatorId":4,"valueInt":2,"valueString":null,"valueDateTime":null,"valueDecimal":null,"priority":null},{"ruleSetId":7,"ruleId":825,"fieldId":3,"compareOperatorId":2,"valueInt":5,"valueString":null,"valueDateTime":null,"valueDecimal":null,"priority":null},{"ruleSetId":7,"ruleId":826,"fieldId":5,"compareOperatorId":2,"valueInt":null,"valueString":null,"valueDateTime":"2019-12-02T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":7,"ruleId":827,"fieldId":4,"compareOperatorId":1,"valueInt":null,"valueString":"11479","valueDateTime":null,"valueDecimal":null,"priority":null}],"priceSelling":48,"bookingFeePercent":null,"bookingFeeAbsolute":null,"insideCommissionRate":20,"note":null,"offerCode":"LT3"},{"ruleSetId":8,"logicalOperatorId":1,"priority":9,"rules":[{"ruleSetId":8,"ruleId":816,"fieldId":2,"compareOperatorId":4,"valueInt":null,"valueString":null,"valueDateTime":"2020-01-05T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":8,"ruleId":817,"fieldId":2,"compareOperatorId":2,"valueInt":null,"valueString":null,"valueDateTime":"2020-02-02T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":8,"ruleId":818,"fieldId":3,"compareOperatorId":4,"valueInt":2,"valueString":null,"valueDateTime":null,"valueDecimal":null,"priority":null},{"ruleSetId":8,"ruleId":819,"fieldId":3,"compareOperatorId":2,"valueInt":5,"valueString":null,"valueDateTime":null,"valueDecimal":null,"priority":null},{"ruleSetId":8,"ruleId":820,"fieldId":5,"compareOperatorId":2,"valueInt":null,"valueString":null,"valueDateTime":"2019-12-02T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":8,"ruleId":821,"fieldId":4,"compareOperatorId":1,"valueInt":null,"valueString":"11478","valueDateTime":null,"valueDecimal":null,"priority":null}],"priceSelling":65,"bookingFeePercent":null,"bookingFeeAbsolute":null,"insideCommissionRate":20,"note":null,"offerCode":"LT3"},{"ruleSetId":9,"logicalOperatorId":1,"priority":8,"rules":[{"ruleSetId":9,"ruleId":811,"fieldId":2,"compareOperatorId":4,"valueInt":null,"valueString":null,"valueDateTime":"2019-11-28T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":9,"ruleId":812,"fieldId":2,"compareOperatorId":2,"valueInt":null,"valueString":null,"valueDateTime":"2019-12-15T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":9,"ruleId":813,"fieldId":3,"compareOperatorId":1,"valueInt":7,"valueString":null,"valueDateTime":null,"valueDecimal":null,"priority":null},{"ruleSetId":9,"ruleId":814,"fieldId":5,"compareOperatorId":2,"valueInt":null,"valueString":null,"valueDateTime":"2019-12-02T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":9,"ruleId":815,"fieldId":4,"compareOperatorId":1,"valueInt":null,"valueString":"11481","valueDateTime":null,"valueDecimal":null,"priority":null}],"priceSelling":20,"bookingFeePercent":null,"bookingFeeAbsolute":null,"insideCommissionRate":20,"note":null,"offerCode":"LT3"},{"ruleSetId":10,"logicalOperatorId":1,"priority":7,"rules":[{"ruleSetId":10,"ruleId":806,"fieldId":2,"compareOperatorId":4,"valueInt":null,"valueString":null,"valueDateTime":"2019-11-28T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":10,"ruleId":807,"fieldId":2,"compareOperatorId":2,"valueInt":null,"valueString":null,"valueDateTime":"2019-12-15T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":10,"ruleId":808,"fieldId":3,"compareOperatorId":1,"valueInt":7,"valueString":null,"valueDateTime":null,"valueDecimal":null,"priority":null},{"ruleSetId":10,"ruleId":809,"fieldId":5,"compareOperatorId":2,"valueInt":null,"valueString":null,"valueDateTime":"2019-12-02T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":10,"ruleId":810,"fieldId":4,"compareOperatorId":1,"valueInt":null,"valueString":"11480","valueDateTime":null,"valueDecimal":null,"priority":null}],"priceSelling":38,"bookingFeePercent":null,"bookingFeeAbsolute":null,"insideCommissionRate":20,"note":null,"offerCode":"LT3"},{"ruleSetId":11,"logicalOperatorId":1,"priority":6,"rules":[{"ruleSetId":11,"ruleId":801,"fieldId":2,"compareOperatorId":4,"valueInt":null,"valueString":null,"valueDateTime":"2019-11-28T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":11,"ruleId":802,"fieldId":2,"compareOperatorId":2,"valueInt":null,"valueString":null,"valueDateTime":"2019-12-15T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":11,"ruleId":803,"fieldId":3,"compareOperatorId":1,"valueInt":7,"valueString":null,"valueDateTime":null,"valueDecimal":null,"priority":null},{"ruleSetId":11,"ruleId":804,"fieldId":5,"compareOperatorId":2,"valueInt":null,"valueString":null,"valueDateTime":"2019-12-02T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":11,"ruleId":805,"fieldId":4,"compareOperatorId":1,"valueInt":null,"valueString":"11479","valueDateTime":null,"valueDecimal":null,"priority":null}],"priceSelling":48,"bookingFeePercent":null,"bookingFeeAbsolute":null,"insideCommissionRate":20,"note":null,"offerCode":"LT3"},{"ruleSetId":12,"logicalOperatorId":1,"priority":5,"rules":[{"ruleSetId":12,"ruleId":796,"fieldId":2,"compareOperatorId":4,"valueInt":null,"valueString":null,"valueDateTime":"2019-11-28T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":12,"ruleId":797,"fieldId":2,"compareOperatorId":2,"valueInt":null,"valueString":null,"valueDateTime":"2019-12-15T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":12,"ruleId":798,"fieldId":3,"compareOperatorId":1,"valueInt":7,"valueString":null,"valueDateTime":null,"valueDecimal":null,"priority":null},{"ruleSetId":12,"ruleId":799,"fieldId":5,"compareOperatorId":2,"valueInt":null,"valueString":null,"valueDateTime":"2019-12-02T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":12,"ruleId":800,"fieldId":4,"compareOperatorId":1,"valueInt":null,"valueString":"11478","valueDateTime":null,"valueDecimal":null,"priority":null}],"priceSelling":65,"bookingFeePercent":null,"bookingFeeAbsolute":null,"insideCommissionRate":20,"note":null,"offerCode":"LT3"},{"ruleSetId":13,"logicalOperatorId":1,"priority":4,"rules":[{"ruleSetId":13,"ruleId":790,"fieldId":2,"compareOperatorId":4,"valueInt":null,"valueString":null,"valueDateTime":"2019-11-28T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":13,"ruleId":791,"fieldId":2,"compareOperatorId":2,"valueInt":null,"valueString":null,"valueDateTime":"2019-12-15T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":13,"ruleId":792,"fieldId":3,"compareOperatorId":4,"valueInt":2,"valueString":null,"valueDateTime":null,"valueDecimal":null,"priority":null},{"ruleSetId":13,"ruleId":793,"fieldId":3,"compareOperatorId":2,"valueInt":5,"valueString":null,"valueDateTime":null,"valueDecimal":null,"priority":null},{"ruleSetId":13,"ruleId":794,"fieldId":5,"compareOperatorId":2,"valueInt":null,"valueString":null,"valueDateTime":"2019-12-02T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":13,"ruleId":795,"fieldId":4,"compareOperatorId":1,"valueInt":null,"valueString":"11481","valueDateTime":null,"valueDecimal":null,"priority":null}],"priceSelling":20,"bookingFeePercent":null,"bookingFeeAbsolute":null,"insideCommissionRate":20,"note":null,"offerCode":"LT3"},{"ruleSetId":14,"logicalOperatorId":1,"priority":3,"rules":[{"ruleSetId":14,"ruleId":784,"fieldId":2,"compareOperatorId":4,"valueInt":null,"valueString":null,"valueDateTime":"2019-11-28T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":14,"ruleId":785,"fieldId":2,"compareOperatorId":2,"valueInt":null,"valueString":null,"valueDateTime":"2019-12-15T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":14,"ruleId":786,"fieldId":3,"compareOperatorId":4,"valueInt":2,"valueString":null,"valueDateTime":null,"valueDecimal":null,"priority":null},{"ruleSetId":14,"ruleId":787,"fieldId":3,"compareOperatorId":2,"valueInt":5,"valueString":null,"valueDateTime":null,"valueDecimal":null,"priority":null},{"ruleSetId":14,"ruleId":788,"fieldId":5,"compareOperatorId":2,"valueInt":null,"valueString":null,"valueDateTime":"2019-12-02T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":14,"ruleId":789,"fieldId":4,"compareOperatorId":1,"valueInt":null,"valueString":"11480","valueDateTime":null,"valueDecimal":null,"priority":null}],"priceSelling":38,"bookingFeePercent":null,"bookingFeeAbsolute":null,"insideCommissionRate":20,"note":null,"offerCode":"LT3"},{"ruleSetId":15,"logicalOperatorId":1,"priority":2,"rules":[{"ruleSetId":15,"ruleId":778,"fieldId":2,"compareOperatorId":4,"valueInt":null,"valueString":null,"valueDateTime":"2019-11-28T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":15,"ruleId":779,"fieldId":2,"compareOperatorId":2,"valueInt":null,"valueString":null,"valueDateTime":"2019-12-15T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":15,"ruleId":780,"fieldId":3,"compareOperatorId":4,"valueInt":2,"valueString":null,"valueDateTime":null,"valueDecimal":null,"priority":null},{"ruleSetId":15,"ruleId":781,"fieldId":3,"compareOperatorId":2,"valueInt":5,"valueString":null,"valueDateTime":null,"valueDecimal":null,"priority":null},{"ruleSetId":15,"ruleId":782,"fieldId":5,"compareOperatorId":2,"valueInt":null,"valueString":null,"valueDateTime":"2019-12-02T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":15,"ruleId":783,"fieldId":4,"compareOperatorId":1,"valueInt":null,"valueString":"11479","valueDateTime":null,"valueDecimal":null,"priority":null}],"priceSelling":48,"bookingFeePercent":null,"bookingFeeAbsolute":null,"insideCommissionRate":20,"note":null,"offerCode":"LT3"},{"ruleSetId":16,"logicalOperatorId":1,"priority":1,"rules":[{"ruleSetId":16,"ruleId":772,"fieldId":2,"compareOperatorId":4,"valueInt":null,"valueString":null,"valueDateTime":"2019-11-28T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":16,"ruleId":773,"fieldId":2,"compareOperatorId":2,"valueInt":null,"valueString":null,"valueDateTime":"2019-12-15T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":16,"ruleId":774,"fieldId":3,"compareOperatorId":4,"valueInt":2,"valueString":null,"valueDateTime":null,"valueDecimal":null,"priority":null},{"ruleSetId":16,"ruleId":775,"fieldId":3,"compareOperatorId":2,"valueInt":5,"valueString":null,"valueDateTime":null,"valueDecimal":null,"priority":null},{"ruleSetId":16,"ruleId":776,"fieldId":5,"compareOperatorId":2,"valueInt":null,"valueString":null,"valueDateTime":"2019-12-02T00:00:00","valueDecimal":null,"priority":null},{"ruleSetId":16,"ruleId":777,"fieldId":4,"compareOperatorId":1,"valueInt":null,"valueString":"11478","valueDateTime":null,"valueDecimal":null,"priority":null}],"priceSelling":65,"bookingFeePercent":null,"bookingFeeAbsolute":null,"insideCommissionRate":20,"note":null,"offerCode":"LT3"}]}
+{
+  "id": 1,
+  "name": "The Play That Goes Wrong NBF",
+  "ruleSets": [
+    {
+      "ruleSetId": 1,
+      "logicalOperatorId": 1,
+      "priority": 16,
+      "rules": [
+        {
+          "ruleSetId": 1,
+          "ruleId": 23052,
+          "fieldId": 2,
+          "compareOperatorId": 4,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2020-01-05T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 1,
+          "ruleId": 23053,
+          "fieldId": 2,
+          "compareOperatorId": 2,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2020-02-02T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 1,
+          "ruleId": 23054,
+          "fieldId": 3,
+          "compareOperatorId": 1,
+          "valueInt": 7,
+          "valueString": null,
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 1,
+          "ruleId": 23055,
+          "fieldId": 5,
+          "compareOperatorId": 2,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2019-12-02T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 1,
+          "ruleId": 23056,
+          "fieldId": 4,
+          "compareOperatorId": 1,
+          "valueInt": null,
+          "valueString": "11481",
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        }
+      ],
+      "priceSelling": 20,
+      "bookingFeePercent": null,
+      "bookingFeeAbsolute": null,
+      "insideCommissionRate": 20,
+      "note": null,
+      "offerCode": "LT3"
+    },
+    {
+      "ruleSetId": 2,
+      "logicalOperatorId": 1,
+      "priority": 15,
+      "rules": [
+        {
+          "ruleSetId": 2,
+          "ruleId": 23037,
+          "fieldId": 2,
+          "compareOperatorId": 4,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2020-01-05T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 2,
+          "ruleId": 23038,
+          "fieldId": 2,
+          "compareOperatorId": 2,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2020-02-02T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 2,
+          "ruleId": 23039,
+          "fieldId": 3,
+          "compareOperatorId": 1,
+          "valueInt": 7,
+          "valueString": null,
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 2,
+          "ruleId": 23040,
+          "fieldId": 5,
+          "compareOperatorId": 2,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2019-12-02T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 2,
+          "ruleId": 23041,
+          "fieldId": 4,
+          "compareOperatorId": 1,
+          "valueInt": null,
+          "valueString": "11480",
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        }
+      ],
+      "priceSelling": 38,
+      "bookingFeePercent": null,
+      "bookingFeeAbsolute": null,
+      "insideCommissionRate": 20,
+      "note": null,
+      "offerCode": "LT3"
+    },
+    {
+      "ruleSetId": 3,
+      "logicalOperatorId": 1,
+      "priority": 14,
+      "rules": [
+        {
+          "ruleSetId": 3,
+          "ruleId": 23032,
+          "fieldId": 2,
+          "compareOperatorId": 4,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2020-01-05T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 3,
+          "ruleId": 23033,
+          "fieldId": 2,
+          "compareOperatorId": 2,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2020-02-02T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 3,
+          "ruleId": 23034,
+          "fieldId": 3,
+          "compareOperatorId": 1,
+          "valueInt": 7,
+          "valueString": null,
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 3,
+          "ruleId": 23035,
+          "fieldId": 5,
+          "compareOperatorId": 2,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2019-12-02T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 3,
+          "ruleId": 23036,
+          "fieldId": 4,
+          "compareOperatorId": 1,
+          "valueInt": null,
+          "valueString": "11479",
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        }
+      ],
+      "priceSelling": 48,
+      "bookingFeePercent": null,
+      "bookingFeeAbsolute": null,
+      "insideCommissionRate": 20,
+      "note": null,
+      "offerCode": "LT3"
+    },
+    {
+      "ruleSetId": 4,
+      "logicalOperatorId": 1,
+      "priority": 13,
+      "rules": [
+        {
+          "ruleSetId": 4,
+          "ruleId": 840,
+          "fieldId": 2,
+          "compareOperatorId": 4,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2020-01-05T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 4,
+          "ruleId": 841,
+          "fieldId": 2,
+          "compareOperatorId": 2,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2020-02-02T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 4,
+          "ruleId": 842,
+          "fieldId": 3,
+          "compareOperatorId": 1,
+          "valueInt": 7,
+          "valueString": null,
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 4,
+          "ruleId": 843,
+          "fieldId": 5,
+          "compareOperatorId": 2,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2019-12-02T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 4,
+          "ruleId": 844,
+          "fieldId": 4,
+          "compareOperatorId": 1,
+          "valueInt": null,
+          "valueString": "11478",
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        }
+      ],
+      "priceSelling": 65,
+      "bookingFeePercent": null,
+      "bookingFeeAbsolute": null,
+      "insideCommissionRate": 20,
+      "note": null,
+      "offerCode": "LT3"
+    },
+    {
+      "ruleSetId": 5,
+      "logicalOperatorId": 1,
+      "priority": 12,
+      "rules": [
+        {
+          "ruleSetId": 5,
+          "ruleId": 834,
+          "fieldId": 2,
+          "compareOperatorId": 4,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2020-01-05T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 5,
+          "ruleId": 835,
+          "fieldId": 2,
+          "compareOperatorId": 2,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2020-02-02T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 5,
+          "ruleId": 836,
+          "fieldId": 3,
+          "compareOperatorId": 4,
+          "valueInt": 2,
+          "valueString": null,
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 5,
+          "ruleId": 837,
+          "fieldId": 3,
+          "compareOperatorId": 2,
+          "valueInt": 5,
+          "valueString": null,
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 5,
+          "ruleId": 838,
+          "fieldId": 5,
+          "compareOperatorId": 2,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2019-12-02T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 5,
+          "ruleId": 839,
+          "fieldId": 4,
+          "compareOperatorId": 1,
+          "valueInt": null,
+          "valueString": "11481",
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        }
+      ],
+      "priceSelling": 20,
+      "bookingFeePercent": null,
+      "bookingFeeAbsolute": null,
+      "insideCommissionRate": 20,
+      "note": null,
+      "offerCode": "LT3"
+    },
+    {
+      "ruleSetId": 6,
+      "logicalOperatorId": 1,
+      "priority": 11,
+      "rules": [
+        {
+          "ruleSetId": 6,
+          "ruleId": 828,
+          "fieldId": 2,
+          "compareOperatorId": 4,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2020-01-05T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 6,
+          "ruleId": 829,
+          "fieldId": 2,
+          "compareOperatorId": 2,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2020-02-02T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 6,
+          "ruleId": 830,
+          "fieldId": 3,
+          "compareOperatorId": 4,
+          "valueInt": 2,
+          "valueString": null,
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 6,
+          "ruleId": 831,
+          "fieldId": 3,
+          "compareOperatorId": 2,
+          "valueInt": 5,
+          "valueString": null,
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 6,
+          "ruleId": 832,
+          "fieldId": 5,
+          "compareOperatorId": 2,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2019-12-02T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 6,
+          "ruleId": 833,
+          "fieldId": 4,
+          "compareOperatorId": 1,
+          "valueInt": null,
+          "valueString": "11480",
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        }
+      ],
+      "priceSelling": 38,
+      "bookingFeePercent": null,
+      "bookingFeeAbsolute": null,
+      "insideCommissionRate": 20,
+      "note": null,
+      "offerCode": "LT3"
+    },
+    {
+      "ruleSetId": 7,
+      "logicalOperatorId": 1,
+      "priority": 10,
+      "rules": [
+        {
+          "ruleSetId": 7,
+          "ruleId": 822,
+          "fieldId": 2,
+          "compareOperatorId": 4,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2020-01-05T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 7,
+          "ruleId": 823,
+          "fieldId": 2,
+          "compareOperatorId": 2,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2020-02-02T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 7,
+          "ruleId": 824,
+          "fieldId": 3,
+          "compareOperatorId": 4,
+          "valueInt": 2,
+          "valueString": null,
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 7,
+          "ruleId": 825,
+          "fieldId": 3,
+          "compareOperatorId": 2,
+          "valueInt": 5,
+          "valueString": null,
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 7,
+          "ruleId": 826,
+          "fieldId": 5,
+          "compareOperatorId": 2,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2019-12-02T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 7,
+          "ruleId": 827,
+          "fieldId": 4,
+          "compareOperatorId": 1,
+          "valueInt": null,
+          "valueString": "11479",
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        }
+      ],
+      "priceSelling": 48,
+      "bookingFeePercent": null,
+      "bookingFeeAbsolute": null,
+      "insideCommissionRate": 20,
+      "note": null,
+      "offerCode": "LT3"
+    },
+    {
+      "ruleSetId": 8,
+      "logicalOperatorId": 1,
+      "priority": 9,
+      "rules": [
+        {
+          "ruleSetId": 8,
+          "ruleId": 816,
+          "fieldId": 2,
+          "compareOperatorId": 4,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2020-01-05T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 8,
+          "ruleId": 817,
+          "fieldId": 2,
+          "compareOperatorId": 2,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2020-02-02T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 8,
+          "ruleId": 818,
+          "fieldId": 3,
+          "compareOperatorId": 4,
+          "valueInt": 2,
+          "valueString": null,
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 8,
+          "ruleId": 819,
+          "fieldId": 3,
+          "compareOperatorId": 2,
+          "valueInt": 5,
+          "valueString": null,
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 8,
+          "ruleId": 820,
+          "fieldId": 5,
+          "compareOperatorId": 2,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2019-12-02T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 8,
+          "ruleId": 821,
+          "fieldId": 4,
+          "compareOperatorId": 1,
+          "valueInt": null,
+          "valueString": "11478",
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        }
+      ],
+      "priceSelling": 65,
+      "bookingFeePercent": null,
+      "bookingFeeAbsolute": null,
+      "insideCommissionRate": 20,
+      "note": null,
+      "offerCode": "LT3"
+    },
+    {
+      "ruleSetId": 9,
+      "logicalOperatorId": 1,
+      "priority": 8,
+      "rules": [
+        {
+          "ruleSetId": 9,
+          "ruleId": 811,
+          "fieldId": 2,
+          "compareOperatorId": 4,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2019-11-28T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 9,
+          "ruleId": 812,
+          "fieldId": 2,
+          "compareOperatorId": 2,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2019-12-15T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 9,
+          "ruleId": 813,
+          "fieldId": 3,
+          "compareOperatorId": 1,
+          "valueInt": 7,
+          "valueString": null,
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 9,
+          "ruleId": 814,
+          "fieldId": 5,
+          "compareOperatorId": 2,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2019-12-02T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 9,
+          "ruleId": 815,
+          "fieldId": 4,
+          "compareOperatorId": 1,
+          "valueInt": null,
+          "valueString": "11481",
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        }
+      ],
+      "priceSelling": 20,
+      "bookingFeePercent": null,
+      "bookingFeeAbsolute": null,
+      "insideCommissionRate": 20,
+      "note": null,
+      "offerCode": "LT3"
+    },
+    {
+      "ruleSetId": 10,
+      "logicalOperatorId": 1,
+      "priority": 7,
+      "rules": [
+        {
+          "ruleSetId": 10,
+          "ruleId": 806,
+          "fieldId": 2,
+          "compareOperatorId": 4,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2019-11-28T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 10,
+          "ruleId": 807,
+          "fieldId": 2,
+          "compareOperatorId": 2,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2019-12-15T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 10,
+          "ruleId": 808,
+          "fieldId": 3,
+          "compareOperatorId": 1,
+          "valueInt": 7,
+          "valueString": null,
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 10,
+          "ruleId": 809,
+          "fieldId": 5,
+          "compareOperatorId": 2,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2019-12-02T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 10,
+          "ruleId": 810,
+          "fieldId": 4,
+          "compareOperatorId": 1,
+          "valueInt": null,
+          "valueString": "11480",
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        }
+      ],
+      "priceSelling": 38,
+      "bookingFeePercent": null,
+      "bookingFeeAbsolute": null,
+      "insideCommissionRate": 20,
+      "note": null,
+      "offerCode": "LT3"
+    },
+    {
+      "ruleSetId": 11,
+      "logicalOperatorId": 1,
+      "priority": 6,
+      "rules": [
+        {
+          "ruleSetId": 11,
+          "ruleId": 801,
+          "fieldId": 2,
+          "compareOperatorId": 4,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2019-11-28T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 11,
+          "ruleId": 802,
+          "fieldId": 2,
+          "compareOperatorId": 2,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2019-12-15T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 11,
+          "ruleId": 803,
+          "fieldId": 3,
+          "compareOperatorId": 1,
+          "valueInt": 7,
+          "valueString": null,
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 11,
+          "ruleId": 804,
+          "fieldId": 5,
+          "compareOperatorId": 2,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2019-12-02T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 11,
+          "ruleId": 805,
+          "fieldId": 4,
+          "compareOperatorId": 1,
+          "valueInt": null,
+          "valueString": "11479",
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        }
+      ],
+      "priceSelling": 48,
+      "bookingFeePercent": null,
+      "bookingFeeAbsolute": null,
+      "insideCommissionRate": 20,
+      "note": null,
+      "offerCode": "LT3"
+    },
+    {
+      "ruleSetId": 12,
+      "logicalOperatorId": 1,
+      "priority": 5,
+      "rules": [
+        {
+          "ruleSetId": 12,
+          "ruleId": 796,
+          "fieldId": 2,
+          "compareOperatorId": 4,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2019-11-28T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 12,
+          "ruleId": 797,
+          "fieldId": 2,
+          "compareOperatorId": 2,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2019-12-15T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 12,
+          "ruleId": 798,
+          "fieldId": 3,
+          "compareOperatorId": 1,
+          "valueInt": 7,
+          "valueString": null,
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 12,
+          "ruleId": 799,
+          "fieldId": 5,
+          "compareOperatorId": 2,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2019-12-02T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 12,
+          "ruleId": 800,
+          "fieldId": 4,
+          "compareOperatorId": 1,
+          "valueInt": null,
+          "valueString": "11478",
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        }
+      ],
+      "priceSelling": 65,
+      "bookingFeePercent": null,
+      "bookingFeeAbsolute": null,
+      "insideCommissionRate": 20,
+      "note": null,
+      "offerCode": "LT3"
+    },
+    {
+      "ruleSetId": 13,
+      "logicalOperatorId": 1,
+      "priority": 4,
+      "rules": [
+        {
+          "ruleSetId": 13,
+          "ruleId": 790,
+          "fieldId": 2,
+          "compareOperatorId": 4,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2019-11-28T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 13,
+          "ruleId": 791,
+          "fieldId": 2,
+          "compareOperatorId": 2,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2019-12-15T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 13,
+          "ruleId": 792,
+          "fieldId": 3,
+          "compareOperatorId": 4,
+          "valueInt": 2,
+          "valueString": null,
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 13,
+          "ruleId": 793,
+          "fieldId": 3,
+          "compareOperatorId": 2,
+          "valueInt": 5,
+          "valueString": null,
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 13,
+          "ruleId": 794,
+          "fieldId": 5,
+          "compareOperatorId": 2,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2019-12-02T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 13,
+          "ruleId": 795,
+          "fieldId": 4,
+          "compareOperatorId": 1,
+          "valueInt": null,
+          "valueString": "11481",
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        }
+      ],
+      "priceSelling": 20,
+      "bookingFeePercent": null,
+      "bookingFeeAbsolute": null,
+      "insideCommissionRate": 20,
+      "note": null,
+      "offerCode": "LT3"
+    },
+    {
+      "ruleSetId": 14,
+      "logicalOperatorId": 1,
+      "priority": 3,
+      "rules": [
+        {
+          "ruleSetId": 14,
+          "ruleId": 784,
+          "fieldId": 2,
+          "compareOperatorId": 4,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2019-11-28T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 14,
+          "ruleId": 785,
+          "fieldId": 2,
+          "compareOperatorId": 2,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2019-12-15T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 14,
+          "ruleId": 786,
+          "fieldId": 3,
+          "compareOperatorId": 4,
+          "valueInt": 2,
+          "valueString": null,
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 14,
+          "ruleId": 787,
+          "fieldId": 3,
+          "compareOperatorId": 2,
+          "valueInt": 5,
+          "valueString": null,
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 14,
+          "ruleId": 788,
+          "fieldId": 5,
+          "compareOperatorId": 2,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2019-12-02T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 14,
+          "ruleId": 789,
+          "fieldId": 4,
+          "compareOperatorId": 1,
+          "valueInt": null,
+          "valueString": "11480",
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        }
+      ],
+      "priceSelling": 38,
+      "bookingFeePercent": null,
+      "bookingFeeAbsolute": null,
+      "insideCommissionRate": 20,
+      "note": null,
+      "offerCode": "LT3"
+    },
+    {
+      "ruleSetId": 15,
+      "logicalOperatorId": 1,
+      "priority": 2,
+      "rules": [
+        {
+          "ruleSetId": 15,
+          "ruleId": 778,
+          "fieldId": 2,
+          "compareOperatorId": 4,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2019-11-28T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 15,
+          "ruleId": 779,
+          "fieldId": 2,
+          "compareOperatorId": 2,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2019-12-15T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 15,
+          "ruleId": 780,
+          "fieldId": 3,
+          "compareOperatorId": 4,
+          "valueInt": 2,
+          "valueString": null,
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 15,
+          "ruleId": 781,
+          "fieldId": 3,
+          "compareOperatorId": 2,
+          "valueInt": 5,
+          "valueString": null,
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 15,
+          "ruleId": 782,
+          "fieldId": 5,
+          "compareOperatorId": 2,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2019-12-02T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 15,
+          "ruleId": 783,
+          "fieldId": 4,
+          "compareOperatorId": 1,
+          "valueInt": null,
+          "valueString": "11479",
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        }
+      ],
+      "priceSelling": 48,
+      "bookingFeePercent": null,
+      "bookingFeeAbsolute": null,
+      "insideCommissionRate": 20,
+      "note": null,
+      "offerCode": "LT3"
+    },
+    {
+      "ruleSetId": 16,
+      "logicalOperatorId": 1,
+      "priority": 1,
+      "rules": [
+        {
+          "ruleSetId": 16,
+          "ruleId": 772,
+          "fieldId": 2,
+          "compareOperatorId": 4,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2019-11-28T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 16,
+          "ruleId": 773,
+          "fieldId": 2,
+          "compareOperatorId": 2,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2019-12-15T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 16,
+          "ruleId": 774,
+          "fieldId": 3,
+          "compareOperatorId": 4,
+          "valueInt": 2,
+          "valueString": null,
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 16,
+          "ruleId": 775,
+          "fieldId": 3,
+          "compareOperatorId": 2,
+          "valueInt": 5,
+          "valueString": null,
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 16,
+          "ruleId": 776,
+          "fieldId": 5,
+          "compareOperatorId": 2,
+          "valueInt": null,
+          "valueString": null,
+          "valueDateTime": "2019-12-02T00:00:00",
+          "valueDecimal": null,
+          "priority": null
+        },
+        {
+          "ruleSetId": 16,
+          "ruleId": 777,
+          "fieldId": 4,
+          "compareOperatorId": 1,
+          "valueInt": null,
+          "valueString": "11478",
+          "valueDateTime": null,
+          "valueDecimal": null,
+          "priority": null
+        }
+      ],
+      "priceSelling": 65,
+      "bookingFeePercent": null,
+      "bookingFeeAbsolute": null,
+      "insideCommissionRate": 20,
+      "note": null,
+      "offerCode": "LT3"
+    }
+  ]
+}

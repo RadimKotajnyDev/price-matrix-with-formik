@@ -1,8 +1,8 @@
 import {FieldArray, Form, Formik} from 'formik';
 import {resolveRulesets} from "../../API.tsx";
-import Ruleset from "../Ruleset/Ruleset.tsx";
+import RuleSet from "../RuleSet/RuleSet.tsx";
 import {Heading} from "./Heading.tsx";
-import {HandleRemoveRuleset, AddRuleset, EmptyStringsDataToNull, HandleRemoveRuleSet} from "./RenderFunctions.ts";
+import {AddRuleset, EmptyStringsDataToNull, HandleRemoveRuleSet} from "./RenderFunctions.ts";
 import {FormBottomButtons} from "./FormBottomButtons.tsx";
 import {useEffect, useState} from "react";
 import Modal from "./Modal.tsx";
@@ -10,47 +10,45 @@ import * as yup from "yup";
 
 const formConfig = await resolveRulesets()
 
-type Ruleset = {
+type RuleSet = {
   priority: number,
   ruleSetId: number,
   rules: []
 }
-
 const schema = yup.object().shape({
   id: yup.number(),
   name: yup.string(),
-  ruleSets: yup.array().of(
+  ruleSets: yup.array().min(1).of(
     yup.object().shape({
       ruleSetId: yup.number(),
       logicalOperatorId: yup.number(),
       priority: yup.number().required(),
       rules: yup.array().of(
         yup.object().shape({
-          ruleSetId: yup.number().required(),
-          ruleId: yup.number().required(),
-          fieldId: yup.number().required(),
-          compareOperatorId: yup.number(),
+          ruleSetId: yup.number(),
+          ruleId: yup.number(),
+          fieldId: yup.number().required().min(1),
+          compareOperatorId: yup.number().required().min(1),
           valueInt: yup.number(),
           valueString: yup.string(),
-          valueDateTime: yup.date(),
+          valueDateTime: yup.string(),
           valueDecimal: yup.number(),
-          priority: yup.number(),
+          priority: yup.number().optional(),
         })
       ),
       priceSelling: yup.number(),
       bookingFeePercent: yup.number(),
       bookingFeeAbsolute: yup.number(),
       insideCommissionRate: yup.number(),
-      note: yup.string(),
-      offerCode: yup.string(),
+      note: yup.string().optional(),
+      offerCode: yup.string().optional(),
     })
   ),
 });
 
-export default function RenderingForm(props: {data: {id: number, name: string}}) {
+export default function RenderingForm(props: { data: { id: number, name: string } }) {
 
   const [successModal, setSuccessModal] = useState(false)
-
   useEffect(() => {
     if (successModal) {
       const timeout = setTimeout(() => {
@@ -61,17 +59,18 @@ export default function RenderingForm(props: {data: {id: number, name: string}})
     }
   }, [successModal]);
 
-
-  //console.log(formConfig)
   return (
     <Formik
-      //validationSchema={schema}
+      validationSchema={schema}
       initialValues={
-      {id: props.data.id, name: props.data.name, ruleSets: formConfig}
-    }
+        {id: props.data.id, name: props.data.name, ruleSets: formConfig}
+      }
       onSubmit={
-      (values) => {console.log(EmptyStringsDataToNull(values)); setSuccessModal(true)}
-    }
+        (values) => {
+          console.log(values); // EmptyStringsDataToNull(values) and refetch data
+          setSuccessModal(true)
+        }
+      }
     >
       {({values, setFieldValue, setValues}) => (
         <Form className="flex justify-center">
@@ -85,11 +84,10 @@ export default function RenderingForm(props: {data: {id: number, name: string}})
                 />
                 <Heading data={props.data}
                 />
-                {values.ruleSets.map((ruleSet: Ruleset, index: number) => {
-                  //console.log(formConfig);
+                {values.ruleSets.map((ruleSet: RuleSet, index: number) => {
                   return (
                     <div key={index}>
-                      <Ruleset
+                      <RuleSet
                         removeRuleSet={() => {
                           HandleRemoveRuleSet(values, setValues, index)
                         }}
@@ -114,7 +112,7 @@ export default function RenderingForm(props: {data: {id: number, name: string}})
               </div>
             )}
           </FieldArray>
-          <FormBottomButtons addRuleset={() => AddRuleset(values, setValues)} />
+          <FormBottomButtons addRuleset={() => AddRuleset(values, setValues)}/>
         </Form>
       )}
     </Formik>

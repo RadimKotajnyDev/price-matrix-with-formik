@@ -5,7 +5,7 @@ import Rule from "./Rule/Rule.tsx";
 import {FieldArray} from "formik";
 import {Labels} from "./Rule/Labels.tsx";
 import {AddRuleButton} from "./Rule/AddRuleButton.tsx";
-import {RemoveRulesetButton} from "./RemoveRulesetButton.tsx";
+import {RemoveRuleSetButton} from "./RemoveRuleSetButton.tsx";
 import {Title} from "./Title.tsx";
 import {PriorityDown, PriorityUp} from "../RenderingForm/RenderFunctions.ts";
 import {PriorityButtons} from "./PriorityButtons.tsx";
@@ -19,7 +19,7 @@ export interface RuleType {
   valueInt: number,
 }
 
-interface RulesetProps {
+interface RuleSetProps {
   ruleSetID: number,
   ruleSetPriority: number,
   offerCode: string,
@@ -37,7 +37,7 @@ interface RulesetProps {
   ruleSetIndex: number
 }
 
-export default function Ruleset(props: RulesetProps) {
+export default function RuleSet(props: RuleSetProps) {
   const {
     ruleSetID,
     ruleSetPriority,
@@ -54,21 +54,21 @@ export default function Ruleset(props: RulesetProps) {
     values,
     setValues,
     ruleSetIndex
-  }: RulesetProps = props
+  }: RuleSetProps = props
   return (
     <div
       className="w-full p-4 my-4 rounded-md bg-white border-2 outline-gray-100 shadow-lg">
       <div className="flex flex-row justify-between mb-2">
         <Title ruleSetID={ruleSetID}
                ruleSetPriority={ruleSetPriority}/>
-        <RemoveRulesetButton removeRuleSet={removeRuleSet}/>
+        <RemoveRuleSetButton removeRuleSet={removeRuleSet}/>
       </div>
-      <Note nameProp={note} />
+      <Note nameProp={note}/>
       <PriorityButtons
         onUP={() => PriorityUp(values, setValues, ruleSetIndex)}
         onDOWN={() => PriorityDown(values, setValues, ruleSetIndex)}
       />
-      <Labels />
+      <Labels/>
       <FieldArray name={`ruleSets.rules`}>
         {() => (
           <>
