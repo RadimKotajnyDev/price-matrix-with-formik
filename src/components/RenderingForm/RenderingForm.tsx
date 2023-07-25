@@ -30,6 +30,7 @@ export default function RenderingForm(props: { data: { id: number, name: string 
   };
 
   const [lastItemAdded, setLastItemAdded] = useState(false);
+  const [itemToRemove, setItemToRemove] = useState(null);
 
   const addItem = () => {
     setLastItemAdded(true);
@@ -78,10 +79,15 @@ export default function RenderingForm(props: { data: { id: number, name: string 
                 <div ref={ref}>
                   {values.ruleSets.map((ruleSet: RuleSet, index: number) => {
                     return (
-                      <div key={index} className={`list-item list-none ${index === values.ruleSets.length - 1 && lastItemAdded ? 'animate' : ''}`}>
+                      <div key={index} className={`list-item list-none ${index + 1 === values.ruleSets.length && lastItemAdded ? 'animate' : ''}
+                       ${itemToRemove === index ? 'animate-leave' : ''}`}>
                         <RuleSet
                           removeRuleSet={() => {
-                            HandleRemoveRuleSet(values, setValues, index)
+                              setItemToRemove(index);
+                              setTimeout(() => {
+                                setItemToRemove(null)
+                                HandleRemoveRuleSet(values, setValues, index)
+                              }, 500);
                           }}
                           errors={errors}
                           ruleSetIndex={index}
@@ -110,7 +116,11 @@ export default function RenderingForm(props: { data: { id: number, name: string 
               </div>
             )}
           </FieldArray>
-          <FormBottomButtons addRuleset={() => {AddRuleset(values, setValues); addItem()}}/>
+          <FormBottomButtons addRuleset={
+            () => {
+              AddRuleset(values, setValues);
+              addItem()
+          }}/>
         </Form>
       )}
     </Formik>
