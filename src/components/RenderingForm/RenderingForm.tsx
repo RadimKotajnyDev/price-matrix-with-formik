@@ -41,7 +41,7 @@ export default function RenderingForm(props: { data: { id: number, name: string 
       }
       onSubmit={
         (values) => {
-          console.log(values); // EmptyStringsDataToNull(values) and refetch data
+          console.log(values); // EmptyStringsDataToNull(values) and re-fetch data
           setSuccessModal(true)
         }
       }
@@ -60,7 +60,7 @@ export default function RenderingForm(props: { data: { id: number, name: string 
                 />
                 {values.ruleSets.map((ruleSet: RuleSet, index: number) => {
                   return (
-                    <div key={index}>
+                    <div key={index} className="">
                       <RuleSet
                         removeRuleSet={() => {
                           HandleRemoveRuleSet(values, setValues, index)

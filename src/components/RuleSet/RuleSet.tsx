@@ -11,11 +11,11 @@ import {PriorityDown, PriorityUp} from "../RenderingForm/RenderFunctions.ts";
 import {PriorityButtons} from "./PriorityButtons.tsx";
 
 export interface RuleType {
-  fieldId: number,
-  compareOperatorId: number,
+  fieldId: number | "",
+  compareOperatorId: number | "",
   valueDecimal: number | "",
   valueString: string | "",
-  valueDateTime: "" | string,
+  valueDateTime: string | "",
   valueInt: number | "",
 }
 

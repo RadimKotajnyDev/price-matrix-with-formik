@@ -2,9 +2,9 @@ import {defaultRuleset} from "../../configs/ruleset/defaultRuleset.tsx";
 
 interface Rules {
   map: any,
-  ruleSetId: number | string,
-  ruleId: number | string,
-  fieldId: number | string,
+  ruleSetId: number | "",
+  ruleId: number | "",
+  fieldId: number | "",
   priority?: null | string,
   compareOperatorId: number | string,
   valueInt: number | string,
