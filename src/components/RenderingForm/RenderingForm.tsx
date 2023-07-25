@@ -7,18 +7,9 @@ import {FormBottomButtons} from "./FormBottomButtons.tsx";
 import {useEffect, useRef, useState} from "react";
 import Modal from "./Modal.tsx";
 import {schema} from "./validationSchema.ts";
+import {RuleSetType} from "./RuleSetType.ts";
 
 const formConfig = await resolveRulesets()
-
-type RuleSet = {
-  priority: number,
-  ruleSetId: number,
-  rules: [],
-  bookingFeeAbsolute: number | "",
-  bookingFeePercent: number | "",
-  priceSelling: number | "",
-  insideCommissionRate: number | ""
-}
 
 export default function RenderingForm(props: { data: { id: number, name: string } }) {
 
@@ -26,16 +17,17 @@ export default function RenderingForm(props: { data: { id: number, name: string 
 
   const ScrollToLastElement = () => {
     const lastChildElement = ref.current as HTMLElement | null;
-    lastChildElement?.lastElementChild?.scrollIntoView({ behavior: 'smooth' });
+    lastChildElement?.lastElementChild?.scrollIntoView({behavior: 'smooth'});
   };
 
-  const [lastItemAdded, setLastItemAdded] = useState(false);
-  const [itemToRemove, setItemToRemove] = useState(null);
+  const [lastRuleSetAdded, setLastRuleSetAdded] = useState(false);
 
-  const addItem = () => {
-    setLastItemAdded(true);
+  const [ruleSetToRemoveAnimation, setRuleSetToRemoveAnimation] = useState<number | null>(null);
+
+  const AddRulesetAnimate = () => {
+    setLastRuleSetAdded(true);
     setTimeout(() => {
-      setLastItemAdded(false);
+      setLastRuleSetAdded(false);
       ScrollToLastElement();
     }, 500);
   };
@@ -77,17 +69,18 @@ export default function RenderingForm(props: { data: { id: number, name: string 
                 <Heading data={props.data}
                 />
                 <div ref={ref}>
-                  {values.ruleSets.map((ruleSet: RuleSet, index: number) => {
+                  {values.ruleSets.map((ruleSet: RuleSetType, index: number) => {
                     return (
-                      <div key={index} className={`list-item list-none ${index + 1 === values.ruleSets.length && lastItemAdded ? 'animate' : ''}
-                       ${itemToRemove === index ? 'animate-leave' : ''}`}>
+                      <div key={index}
+                           className={`list-item list-none ${index + 1 === values.ruleSets.length && lastRuleSetAdded ? 'animate' : ''}
+                       ${ruleSetToRemoveAnimation === index ? 'animate' : ''}`}>
                         <RuleSet
                           removeRuleSet={() => {
-                              setItemToRemove(index);
-                              setTimeout(() => {
-                                setItemToRemove(null)
-                                HandleRemoveRuleSet(values, setValues, index)
-                              }, 500);
+                            setRuleSetToRemoveAnimation(index);
+                            setTimeout(() => {
+                              setRuleSetToRemoveAnimation(null)
+                              HandleRemoveRuleSet(values, setValues, index)
+                            }, 500);
                           }}
                           errors={errors}
                           ruleSetIndex={index}
@@ -119,8 +112,8 @@ export default function RenderingForm(props: { data: { id: number, name: string 
           <FormBottomButtons addRuleset={
             () => {
               AddRuleset(values, setValues);
-              addItem()
-          }}/>
+              AddRulesetAnimate()
+            }}/>
         </Form>
       )}
     </Formik>
