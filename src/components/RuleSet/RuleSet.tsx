@@ -109,7 +109,6 @@ export default function RuleSet(props: RuleSetProps) {
       </FieldArray>
       <section className="flex flex-row mt-5 border-t-2 pt-2">
         <Pricing
-          values={values}
           bookingFeeAbsoluteValue={bookingFeeAbsoluteValue}
           bookingFeePercentValue={bookingFeePercentValue}
           insideCommissionRateValue={insideCommissionRateValue}

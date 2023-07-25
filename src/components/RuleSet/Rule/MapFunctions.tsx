@@ -33,25 +33,25 @@ export function MapOperators(fieldId: number) {
   }
 }
 
-export function MapValueStoreType(fieldId: number, valueInt: number, valueDecimal: number, valueDateTime: any, valueString: string) {
+export function MapValueStoreType(fieldId: number, valueIntName: string | number, valueDecimalName: string | number, valueDateTimeName: string | number, valueStringName: string | number) {
   switch (fieldId) {
     case 1:
-      return valueInt
+      return valueIntName
     //valueInt
     case 2:
-      return valueDateTime
+      return valueDateTimeName
     //valueDateTime
     case 3:
-      return valueInt
+      return valueIntName
     //valueInt
     case 4:
-      return valueString
+      return valueStringName
     //valueString
     case 5:
-      return valueDateTime
+      return valueDateTimeName
     //valueDateTime
     case 6:
-      return valueDecimal
+      return valueDecimalName
   }
 }
 
@@ -77,65 +77,12 @@ export function MapValueType(fieldId: number) {
     // valueDecimal
   }
 }
-//TODO: refactor function SelectStoreValue
 
-export function SelectStoreValue(fieldId: number, setFieldValue: any, valueInt: number | string, valueDecimal: number | string, valueDateTime: any, valueString: string) {
+export function ResetValues(setFieldValue: any, valueInt: number | string, valueDecimal: number | string, valueDateTime: any, valueString: string) {
   setFieldValue(valueString, "")
   setFieldValue(valueDateTime, "")
   setFieldValue(valueDecimal, "")
   setFieldValue(valueInt, "")
-  /*
-  switch (fieldId) {
-    case 0:
-      setFieldValue(valueString, undefined)
-      setFieldValue(valueDateTime, undefined)
-      setFieldValue(valueDecimal, undefined)
-      setFieldValue(valueInt, undefined)
-      break;
-    case 1:
-      setFieldValue(valueString, undefined)
-      setFieldValue(valueDateTime, undefined)
-      setFieldValue(valueDecimal, undefined)
-      setFieldValue(valueInt, "")
-      break;
-    //valueInt
-    case 2:
-      setFieldValue(valueString, undefined)
-      setFieldValue(valueDateTime, "")
-      setFieldValue(valueDecimal, undefined)
-      setFieldValue(valueInt, undefined)
-      break;
-    //valueDateTime
-    case 3:
-      setFieldValue(valueString, undefined)
-      setFieldValue(valueDateTime, undefined)
-      setFieldValue(valueDecimal, undefined)
-      setFieldValue(valueInt, "")
-      break;
-    //valueInt
-    case 4:
-      setFieldValue(valueString, "")
-      setFieldValue(valueDateTime, undefined)
-      setFieldValue(valueDecimal, undefined)
-      setFieldValue(valueInt, undefined)
-      break;
-    //valueString
-    case 5:
-      setFieldValue(valueString, undefined)
-      setFieldValue(valueDateTime, "")
-      setFieldValue(valueDecimal, undefined)
-      setFieldValue(valueInt, undefined)
-      break;
-    //valueDateTime
-    case 6:
-      setFieldValue(valueString, undefined)
-      setFieldValue(valueDateTime, undefined)
-      setFieldValue(valueDecimal, "")
-      setFieldValue(valueInt, undefined)
-      break;
-    // valueDecimal
-  }
-   */
 }
 
 export function StoreInteger(fieldId: number, value: string): string | number {

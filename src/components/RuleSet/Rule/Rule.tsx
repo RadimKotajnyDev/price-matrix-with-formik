@@ -3,7 +3,7 @@ import fieldOptions from "../../../configs/options/FieldOptionsConfig.tsx";
 import {AiOutlineMinus} from "react-icons/ai";
 import {ArrowOnSelect} from "../../elements/ArrowOnSelect.tsx";
 import {RemoveRule} from "./RuleFunctions.ts"
-import {MapOperators, SelectStoreValue} from "./MapFunctions.tsx";
+import {MapOperators, ResetValues} from "./MapFunctions.tsx";
 import ValueComponent from "./ValueComponent.tsx";
 import {ChangeEvent} from "react";
 import type {RuleType} from "../RuleSet.tsx"
@@ -14,8 +14,8 @@ interface RuleProps {
   setFieldValue: any,
   fieldName: string,
   optionName: string,
-  valueIntName: number,
-  valueDecimalName: number,
+  valueIntName: string,
+  valueDecimalName: string,
   valueStringName: string,
   valueDateTimeName: string,
   ruleSetIndex: number,
@@ -34,7 +34,7 @@ export default function Rule(props: RuleProps) {
                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
                    props.setFieldValue(props.fieldName, parseInt(e.target.value));
                    props.setFieldValue(props.optionName, 0); //fixed compareOperatorId value when changing field
-                   SelectStoreValue(parseInt(e.target.value),
+                   ResetValues(
                      props.setFieldValue, props.valueIntName,
                      props.valueDecimalName, props.valueDateTimeName,
                      props.valueStringName

@@ -8,8 +8,8 @@ import {ChangeEvent} from "react";
 interface valueProps {
   setFieldValue: any,
   rule: RuleType
-  valueIntName: number,
-  valueDecimalName: number,
+  valueIntName: string,
+  valueDecimalName: string,
   valueDateTimeName: string,
   valueStringName: string,
 

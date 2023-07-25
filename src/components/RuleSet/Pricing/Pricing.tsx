@@ -9,14 +9,12 @@ interface Props {
   bookingFeePercent: string,
   insideCommissionRate: string,
   priceSelling: string,
-  values: any,
 }
 
 const rowClass = " flex flex-row justify-between items-center"
 const widthClass = " w-full min-w-[100px] max-w-[120px]"
 export default function Pricing(props: Props) {
   const {
-    values,
     bookingFeePercentValue,
     insideCommissionRateValue,
     priceSellingValue,
