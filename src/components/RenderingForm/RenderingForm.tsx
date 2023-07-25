@@ -2,7 +2,7 @@ import {FieldArray, Form, Formik} from 'formik';
 import {resolveRulesets} from "../../API.tsx";
 import RuleSet from "../RuleSet/RuleSet.tsx";
 import {Heading} from "./Heading.tsx";
-import {AddRuleset, EmptyStringsDataToNull, HandleRemoveRuleSet} from "./RenderFunctions.ts";
+import {AddRuleset, HandleRemoveRuleSet} from "./RenderFunctions.ts";
 import {FormBottomButtons} from "./FormBottomButtons.tsx";
 import {useEffect, useState} from "react";
 import Modal from "./Modal.tsx";
@@ -13,7 +13,11 @@ const formConfig = await resolveRulesets()
 type RuleSet = {
   priority: number,
   ruleSetId: number,
-  rules: []
+  rules: [],
+  bookingFeeAbsolute: number | "",
+  bookingFeePercent: number | "",
+  priceSelling: number | "",
+  insideCommissionRate: number | ""
 }
 
 export default function RenderingForm(props: { data: { id: number, name: string } }) {
@@ -69,9 +73,13 @@ export default function RenderingForm(props: { data: { id: number, name: string 
                         rulesString={`ruleSets[${index}].rules`}
                         offerCode={`ruleSets[${index}].offerCode`}
                         note={`ruleSets[${index}].note`}
+                        bookingFeeAbsoluteValue={ruleSet.bookingFeeAbsolute}
+                        bookingFeePercentValue={ruleSet.bookingFeePercent}
+                        priceSellingValue={ruleSet.priceSelling}
+                        insideCommissionRateValue={ruleSet.insideCommissionRate}
                         bookingFeeAbsolute={`ruleSets[${index}].bookingFeeAbsolute`}
                         bookingFeePercent={`ruleSets[${index}].bookingFeePercent`}
-                        insideCommission={`ruleSets[${index}].insideCommissionRate`}
+                        insideCommissionRate={`ruleSets[${index}].insideCommissionRate`}
                         priceSelling={`ruleSets[${index}].priceSelling`}
                         setFieldValue={setFieldValue}
                         values={values}

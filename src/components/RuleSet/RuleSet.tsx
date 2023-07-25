@@ -1,5 +1,5 @@
 import Note from "./Note.tsx";
-import Pricing from "./Pricing.tsx";
+import Pricing from "./Pricing/Pricing.tsx";
 import OfferCode from "./OfferCode.tsx";
 import Rule from "./Rule/Rule.tsx";
 import {FieldArray} from "formik";
@@ -13,10 +13,10 @@ import {PriorityButtons} from "./PriorityButtons.tsx";
 export interface RuleType {
   fieldId: number,
   compareOperatorId: number,
-  valueDecimal: number,
-  valueString: string,
-  valueDateTime: string,
-  valueInt: number,
+  valueDecimal: number | "",
+  valueString: string | "",
+  valueDateTime: "" | string,
+  valueInt: number | "",
 }
 
 interface RuleSetProps {
@@ -24,10 +24,14 @@ interface RuleSetProps {
   ruleSetPriority: number,
   offerCode: string,
   note?: string,
-  bookingFeeAbsolute: number | string | null,
-  bookingFeePercent: number | string | null,
-  priceSelling: number | string | null,
-  insideCommission: number | string | null,
+  bookingFeeAbsoluteValue: number | "",
+  bookingFeePercentValue: number | "",
+  priceSellingValue: number | "",
+  insideCommissionRateValue: number | "",
+  bookingFeeAbsolute: string,
+  bookingFeePercent: string,
+  priceSelling: string,
+  insideCommissionRate: string,
   removeRuleSet: () => void,
   rules: Array<RuleType>,
   rulesString: string,
@@ -44,9 +48,13 @@ export default function RuleSet(props: RuleSetProps) {
     ruleSetPriority,
     offerCode,
     note,
+    bookingFeeAbsoluteValue,
+    bookingFeePercentValue,
+    priceSellingValue,
+    insideCommissionRateValue,
     bookingFeeAbsolute,
     bookingFeePercent,
-    insideCommission,
+    insideCommissionRate,
     priceSelling,
     removeRuleSet,
     rules,
@@ -101,9 +109,14 @@ export default function RuleSet(props: RuleSetProps) {
       </FieldArray>
       <section className="flex flex-row mt-5 border-t-2 pt-2">
         <Pricing
+          values={values}
+          bookingFeeAbsoluteValue={bookingFeeAbsoluteValue}
+          bookingFeePercentValue={bookingFeePercentValue}
+          insideCommissionRateValue={insideCommissionRateValue}
+          priceSellingValue={priceSellingValue}
           bookingFeeAbsolute={bookingFeeAbsolute}
           bookingFeePercent={bookingFeePercent}
-          insideCommission={insideCommission}
+          insideCommissionRate={insideCommissionRate}
           priceSelling={priceSelling}
         />
         <OfferCode nameProp={offerCode}/>

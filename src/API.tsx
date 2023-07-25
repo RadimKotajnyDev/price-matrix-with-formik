@@ -4,7 +4,6 @@ import {NullDataToEmptyStrings} from "./components/RenderingForm/RenderFunctions
 export async function fetchData() {
   try {
     // Change url to connect to right API
-    //const response = await axios.get("/test.json");
     const response = await axios.get('https://localhost:7062/pricematrix/1');
     //const response = await axios.get('/offlineTestingData.json') //offline data testing
     return response.data
