@@ -4,7 +4,7 @@ import RuleSet from "../RuleSet/RuleSet.tsx";
 import {Heading} from "./Heading.tsx";
 import {AddRuleset, HandleRemoveRuleSet} from "./RenderFunctions.ts";
 import {FormBottomButtons} from "./FormBottomButtons.tsx";
-import {useEffect, useState} from "react";
+import {useEffect, useRef, useState} from "react";
 import Modal from "./Modal.tsx";
 import {schema} from "./validationSchema.ts";
 
@@ -21,6 +21,23 @@ type RuleSet = {
 }
 
 export default function RenderingForm(props: { data: { id: number, name: string } }) {
+
+  const ref = useRef(null)
+
+  const ScrollToLastElement = () => {
+    const lastChildElement = ref.current?.lastElementChild;
+    lastChildElement?.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  const [lastItemAdded, setLastItemAdded] = useState(false);
+
+  const addItem = () => {
+    setLastItemAdded(true);
+    setTimeout(() => {
+      setLastItemAdded(false);
+      ScrollToLastElement();
+    }, 500);
+  };
 
   const [successModal, setSuccessModal] = useState(false)
   useEffect(() => {
@@ -58,40 +75,42 @@ export default function RenderingForm(props: { data: { id: number, name: string 
                 />
                 <Heading data={props.data}
                 />
-                {values.ruleSets.map((ruleSet: RuleSet, index: number) => {
-                  return (
-                    <div key={index} className="">
-                      <RuleSet
-                        removeRuleSet={() => {
-                          HandleRemoveRuleSet(values, setValues, index)
-                        }}
-                        errors={errors}
-                        ruleSetIndex={index}
-                        ruleSetPriority={ruleSet.priority}
-                        ruleSetID={ruleSet.ruleSetId}
-                        rules={ruleSet.rules}
-                        rulesString={`ruleSets[${index}].rules`}
-                        offerCode={`ruleSets[${index}].offerCode`}
-                        note={`ruleSets[${index}].note`}
-                        bookingFeeAbsoluteValue={ruleSet.bookingFeeAbsolute}
-                        bookingFeePercentValue={ruleSet.bookingFeePercent}
-                        priceSellingValue={ruleSet.priceSelling}
-                        insideCommissionRateValue={ruleSet.insideCommissionRate}
-                        bookingFeeAbsolute={`ruleSets[${index}].bookingFeeAbsolute`}
-                        bookingFeePercent={`ruleSets[${index}].bookingFeePercent`}
-                        insideCommissionRate={`ruleSets[${index}].insideCommissionRate`}
-                        priceSelling={`ruleSets[${index}].priceSelling`}
-                        setFieldValue={setFieldValue}
-                        values={values}
-                        setValues={setValues}
-                      />
-                    </div>
-                  )
-                })}
+                <div ref={ref}>
+                  {values.ruleSets.map((ruleSet: RuleSet, index: number) => {
+                    return (
+                      <div key={index} className={`list-item list-none ${index === values.ruleSets.length - 1 && lastItemAdded ? 'animate' : ''}`}>
+                        <RuleSet
+                          removeRuleSet={() => {
+                            HandleRemoveRuleSet(values, setValues, index)
+                          }}
+                          errors={errors}
+                          ruleSetIndex={index}
+                          ruleSetPriority={ruleSet.priority}
+                          ruleSetID={ruleSet.ruleSetId}
+                          rules={ruleSet.rules}
+                          rulesString={`ruleSets[${index}].rules`}
+                          offerCode={`ruleSets[${index}].offerCode`}
+                          note={`ruleSets[${index}].note`}
+                          bookingFeeAbsoluteValue={ruleSet.bookingFeeAbsolute}
+                          bookingFeePercentValue={ruleSet.bookingFeePercent}
+                          priceSellingValue={ruleSet.priceSelling}
+                          insideCommissionRateValue={ruleSet.insideCommissionRate}
+                          bookingFeeAbsolute={`ruleSets[${index}].bookingFeeAbsolute`}
+                          bookingFeePercent={`ruleSets[${index}].bookingFeePercent`}
+                          insideCommissionRate={`ruleSets[${index}].insideCommissionRate`}
+                          priceSelling={`ruleSets[${index}].priceSelling`}
+                          setFieldValue={setFieldValue}
+                          values={values}
+                          setValues={setValues}
+                        />
+                      </div>
+                    )
+                  })}
+                </div>
               </div>
             )}
           </FieldArray>
-          <FormBottomButtons addRuleset={() => AddRuleset(values, setValues)}/>
+          <FormBottomButtons addRuleset={() => {AddRuleset(values, setValues); addItem()}}/>
         </Form>
       )}
     </Formik>

@@ -9,8 +9,9 @@ export const FormBottomButtons = (props: Props) => {
       <div className="flex flex-row gap-6 w-fit p-3 bg-white
   bg-opacity-20 backdrop-blur-lg  drop-shadow-lg rounded-2xl text-center">
         <button type="button" className="ButtonClass AddRulesetClass flex flex-row items-center p-2"
-                onClick={props.addRuleset}><AiOutlinePlusCircle size={20} className="mr-2"/>
-          ruleset
+                onClick={props.addRuleset}>
+            <AiOutlinePlusCircle size={20} className="mr-2"/>
+            ruleset
         </button>
         <span className="h-full w-[1px] border-[1px] border-gray-200" />
         <button type="submit" className="ButtonClass bg-teal-500 px-8">Submit</button>
