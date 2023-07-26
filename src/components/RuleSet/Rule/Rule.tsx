@@ -30,10 +30,7 @@ export default function Rule(props: RuleProps) {
     <>
       <div className="flex flex-row mb-3">
         <div className="flex flex-row relative">
-          <Field component="select" className={`InputClass w-[15rem] ${
-            props.errors[props.ruleSetIndex] &&
-          props.errors[props.ruleSetIndex][props.ruleIndex] &&
-          props.errors[props.ruleSetIndex][props.ruleIndex].fieldId ? "border-red-400" : ""}`}
+          <Field component="select" className={`InputClass w-[15rem] ${props.rule.fieldId ? "" : "border-red-400"}`}
             required={true}
                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
                    props.setFieldValue(props.fieldName, parseInt(e.target.value));
