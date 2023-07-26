@@ -8,10 +8,11 @@ import ValueComponent from "./ValueComponent.tsx";
 import {ChangeEvent} from "react";
 import type {RuleType} from "../RuleSet.tsx"
 
+type FormikErrors<Values> = { [K in keyof Values]?: string };
 interface RuleProps {
   values: { ruleSets: object[]; },
   setValues: () => void
-  setFieldValue: any,
+  setFieldValue: (field: string | number | undefined, value: string | number, shouldValidate?: boolean | undefined) => void,
   fieldName: string,
   optionName: string,
   valueIntName: string,
@@ -21,7 +22,7 @@ interface RuleProps {
   ruleSetIndex: number,
   ruleIndex: number,
   rule: RuleType,
-  errors: any
+  errors: any | FormikErrors<{  ruleSets: object[]; }>
 }
 
 export default function Rule(props: RuleProps) {
@@ -29,7 +30,10 @@ export default function Rule(props: RuleProps) {
     <>
       <div className="flex flex-row mb-3">
         <div className="flex flex-row relative">
-          <Field component="select" className={`InputClass w-[15rem] ${props.rule.fieldId ? "" : "border-red-400"}`}
+          <Field component="select" className={`InputClass w-[15rem] ${
+            props.errors[props.ruleSetIndex] &&
+          props.errors[props.ruleSetIndex][props.ruleIndex] &&
+          props.errors[props.ruleSetIndex][props.ruleIndex].fieldId ? "border-red-400" : ""}`}
             required={true}
                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
                    props.setFieldValue(props.fieldName, parseInt(e.target.value));

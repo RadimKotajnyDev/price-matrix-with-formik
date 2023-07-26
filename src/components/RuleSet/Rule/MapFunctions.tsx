@@ -5,7 +5,7 @@ import {
   SelectField4
 } from "../../../configs/options/SelectFieldsOperators.tsx";
 
-export function MapOperators(fieldId: number) {
+export function MapOperators(fieldId: number | "") {
   switch (fieldId) {
     case 0:
       return <option key={0} value={0}>---select operator---</option>
@@ -33,7 +33,7 @@ export function MapOperators(fieldId: number) {
   }
 }
 
-export function MapValueStoreType(fieldId: number, valueIntName: string | number, valueDecimalName: string | number, valueDateTimeName: string | number, valueStringName: string | number) {
+export function MapValueStoreType(fieldId: number | "", valueIntName: string | number, valueDecimalName: string | number, valueDateTimeName: string | number, valueStringName: string | number) {
   switch (fieldId) {
     case 1:
       return valueIntName
@@ -55,7 +55,7 @@ export function MapValueStoreType(fieldId: number, valueIntName: string | number
   }
 }
 
-export function MapValueType(fieldId: number) {
+export function MapValueType(fieldId: number | "") {
   switch (fieldId) {
     case 1:
       return "number"
@@ -85,7 +85,7 @@ export function ResetValues(setFieldValue: any, valueInt: number | string, value
   setFieldValue(valueInt, "")
 }
 
-export function StoreInteger(fieldId: number, value: string): string | number {
+export function StoreInteger(fieldId: number | "", value: string): string | number {
   switch (fieldId) {
     case 1:
     case 3:

@@ -1,7 +1,8 @@
 import {AiOutlinePlusCircle} from "react-icons/ai";
 
 interface Props {
-  addRuleset: () => void
+  addRuleset: () => void,
+  onClickProp: () => void
 }
 export const FormBottomButtons = (props: Props) => {
   return (
@@ -14,7 +15,7 @@ export const FormBottomButtons = (props: Props) => {
             ruleset
         </button>
         <span className="h-full w-[1px] border-[1px] border-gray-200" />
-        <button type="submit" className="ButtonClass bg-teal-500 px-8">Submit</button>
+        <button type="submit" onClick={props.onClickProp} className="ButtonClass bg-teal-500 px-8">Submit</button>
       </div>
     </div>
   )

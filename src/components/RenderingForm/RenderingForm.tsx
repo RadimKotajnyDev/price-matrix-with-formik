@@ -1,5 +1,5 @@
 import {FieldArray, Form, Formik} from 'formik';
-import {resolveRulesets} from "../../API.tsx";
+import {ResolveRuleSets} from "../../API.tsx";
 import RuleSet from "../RuleSet/RuleSet.tsx";
 import {Heading} from "./Heading.tsx";
 import {AddRuleset, HandleRemoveRuleSet} from "./RenderFunctions.ts";
@@ -9,7 +9,7 @@ import Modal from "./Modal.tsx";
 import {schema} from "./validationSchema.ts";
 import {RuleSetType} from "./RuleSetType.ts";
 
-const formConfig = await resolveRulesets()
+const resolvedRuleSets = await ResolveRuleSets()
 
 export default function RenderingForm(props: { data: { id: number, name: string } }) {
 
@@ -20,8 +20,7 @@ export default function RenderingForm(props: { data: { id: number, name: string 
     lastChildElement?.lastElementChild?.scrollIntoView({behavior: 'smooth'});
   };
 
-  const [lastRuleSetAdded, setLastRuleSetAdded] = useState(false);
-
+  const [lastRuleSetAdded, setLastRuleSetAdded] = useState<boolean>(false);
   const [ruleSetToRemoveAnimation, setRuleSetToRemoveAnimation] = useState<number | null>(null);
 
   const AddRulesetAnimate = () => {
@@ -32,39 +31,54 @@ export default function RenderingForm(props: { data: { id: number, name: string 
     }, 500);
   };
 
-  const [successModal, setSuccessModal] = useState(false)
+  const [ModalState, setModalState] = useState<boolean>(false)
+  const [ErrorModal, setErrorModal] = useState<boolean>(false)
   useEffect(() => {
-    if (successModal) {
+    if (ModalState) {
       const timeout = setTimeout(() => {
-        setSuccessModal(false)
+        setModalState(false)
       }, 1000);
-
+      //setErrorModal(false)
       return () => clearTimeout(timeout);
     }
-  }, [successModal]);
+  }, [ModalState]);
+
+  function DisplayError() {
+    setErrorModal(true)
+    setModalState(true)
+  }
 
   return (
     <Formik
       validationSchema={schema}
       initialValues={
-        {id: props.data.id, name: props.data.name, ruleSets: formConfig}
+        {id: props.data.id, name: props.data.name, ruleSets: resolvedRuleSets}
       }
       onSubmit={
         (values) => {
+          setErrorModal(false)
           console.log(values); // EmptyStringsDataToNull(values) and re-fetch data
-          setSuccessModal(true)
+          setModalState(true)
         }
       }
+
     >
-      {({values, setFieldValue, setValues, errors}) => (
+      {({values, setFieldValue, setValues, errors, isValid}: {
+        values: any,
+        setFieldValue: any,
+        setValues: any,
+        errors: any,
+        isValid: boolean
+      }) => (
         <Form className="flex justify-center">
           <FieldArray name={`ruleSets`}>
             {(/*{push, remove}*/) => (
               <div className="relative mb-20">
                 <Modal
-                  showState={successModal}
-                  openModal={() => setSuccessModal(true)}
-                  closeModal={() => setSuccessModal(false)}
+                  errorModal={ErrorModal}
+                  showState={ModalState}
+                  openModal={() => setModalState(true)}
+                  closeModal={() => setModalState(false)}
                 />
                 <Heading data={props.data}
                 />
@@ -113,7 +127,9 @@ export default function RenderingForm(props: { data: { id: number, name: string 
             () => {
               AddRuleset(values, setValues);
               AddRulesetAnimate()
-            }}/>
+            }}
+          onClickProp={() => {if(!isValid) {DisplayError()}}}
+          />
         </Form>
       )}
     </Formik>

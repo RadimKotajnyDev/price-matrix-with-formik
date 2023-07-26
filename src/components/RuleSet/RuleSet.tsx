@@ -10,6 +10,8 @@ import {Title} from "./Title.tsx";
 import {PriorityDown, PriorityUp} from "../RenderingForm/RenderFunctions.ts";
 import {PriorityButtons} from "./PriorityButtons.tsx";
 
+type FormikErrors<Values> = { [K in keyof Values]?: string };
+
 export interface RuleType {
   fieldId: number | "",
   compareOperatorId: number | "",
@@ -35,11 +37,11 @@ interface RuleSetProps {
   removeRuleSet: () => void,
   rules: Array<RuleType>,
   rulesString: string,
-  setFieldValue: any,
-  values: any,
-  setValues: any,
+  setFieldValue: (field: string | number | undefined, value: string | number, shouldValidate?: boolean | undefined) => void,
+  values: { ruleSets: object[]; },
+  setValues: () => void,
   ruleSetIndex: number,
-  errors: any
+  errors: FormikErrors<{ ruleSets: object[]; }>,
 }
 
 export default function RuleSet(props: RuleSetProps) {

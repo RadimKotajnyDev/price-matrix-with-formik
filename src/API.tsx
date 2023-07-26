@@ -13,7 +13,7 @@ export async function fetchData() {
   }
 }
 
-export async function resolveRulesets() {
+export async function ResolveRuleSets() {
   const data = await fetchData()
   await NullDataToEmptyStrings(data) //uncontrolled input warning fixed
   // reformat data before submit in RenderingForm.tsx

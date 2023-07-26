@@ -6,14 +6,14 @@ import type {RuleType} from "../RuleSet.tsx";
 import {ChangeEvent} from "react";
 
 interface valueProps {
-  setFieldValue: any,
+  setFieldValue: (field: string | number | undefined, value: number | string, shouldValidate?: boolean) => void,
   rule: RuleType
   valueIntName: string,
   valueDecimalName: string,
   valueDateTimeName: string,
   valueStringName: string,
-
 }
+
 export default function ValueComponent(props: valueProps) {
   const disabledBool = props.rule.fieldId === 0
   return (
@@ -26,7 +26,7 @@ export default function ValueComponent(props: valueProps) {
                  onChange={(e: ChangeEvent<HTMLInputElement>) => props.setFieldValue(
                    MapValueStoreType(props.rule.fieldId, props.valueIntName,
                      props.valueDecimalName, props.valueDateTimeName, props.valueStringName), parseInt(e.target.value))
-          }
+                 }
                  name={MapValueStoreType(props.rule.fieldId, props.valueIntName,
                    props.valueDecimalName, props.valueDateTimeName, props.valueStringName)}
                  value={MapValueStoreType(props.rule.fieldId, props.rule.valueInt,
@@ -39,7 +39,7 @@ export default function ValueComponent(props: valueProps) {
               ))
             }
           </Field>
-          <ArrowOnSelect />
+          <ArrowOnSelect/>
         </>
         :
         <Field className="InputClass w-[15rem]"

@@ -1,5 +1,28 @@
 import {defaultRuleset} from "../../configs/ruleset/defaultRuleset.tsx";
 
+type defaultRuleSet = {
+  insideCommissionRate: string;
+  note: string;
+  bookingFeeAbsolute: string;
+  offerCode: string;
+  priceSelling: string;
+  bookingFeePercent: string;
+  rules: {
+    compareOperatorId: number;
+    valueString: string;
+    valueDecimal: string;
+    valueDateTime: string;
+    ruleId: string;
+    valueInt: string;
+    priority: string;
+    ruleSetId: string;
+    fieldId: number
+  }[];
+  logicalOperatorId: number;
+  priority: string | number;
+  ruleSetId: string
+}
+
 interface Rules {
   map: any,
   ruleSetId: number | "",
@@ -14,9 +37,9 @@ interface Rules {
 }
 
 interface ruleSets {
-  ruleSetId: number,
-  logicalOperatorId: number,
-  priority: number,
+  ruleSetId: number | "",
+  logicalOperatorId: number | "",
+  priority: number | "",
   rules: Rules,
   priceSelling: number | string,
   bookingFeePercent: number | string,
@@ -25,6 +48,8 @@ interface ruleSets {
   note: string,
   offerCode: string
 }
+
+type Values = { ruleSets: ruleSets[]; }
 
 export function NullDataToEmptyStrings(data: any) {
   data.ruleSets.map((item: ruleSets, index: number) => {
@@ -94,7 +119,7 @@ export function RemapPriorities(jsonData: any) {
 
   const priorities = Array.from({length: jsonLength}, (_, index) => index + 1);
 
-  ruleSets.forEach((ruleSet: any, index: number) => {
+  ruleSets.forEach((ruleSet: { priority: number }, index: number) => {
     ruleSet.priority = priorities[index];
   });
 
@@ -102,7 +127,7 @@ export function RemapPriorities(jsonData: any) {
 }
 
 
-export function PriorityUp(values: any, setValues: any, ruleSetIndex: number) {
+export function PriorityUp(values: any, setValues: (values: Values) => void, ruleSetIndex: number) {
   if (ruleSetIndex > 0) {
     let updatedRuleSets = [...values.ruleSets];
 
@@ -119,7 +144,7 @@ export function PriorityUp(values: any, setValues: any, ruleSetIndex: number) {
   }
 }
 
-export function PriorityDown(values: any, setValues: any, ruleSetIndex: number) {
+export function PriorityDown(values: any, setValues: (values: Values) => void, ruleSetIndex: number) {
   if (ruleSetIndex < values.ruleSets.length - 1) {
     let updatedRuleSets = [...values.ruleSets];
 
@@ -137,7 +162,7 @@ export function PriorityDown(values: any, setValues: any, ruleSetIndex: number) 
   }
 }
 
-export const HandleRemoveRuleSet = (values: any, setValues: any, index: number) => {
+export const HandleRemoveRuleSet = (values: Values, setValues: (values: Values) => void, index: number) => {
   values.ruleSets.splice(index, 1);
 
   RemapPriorities(values.ruleSets)
@@ -145,8 +170,8 @@ export const HandleRemoveRuleSet = (values: any, setValues: any, index: number) 
   setValues(values);
 };
 
-export const AddRuleset = (values: any, setValues: any) => {
-  const newRuleset = {...defaultRuleset};
+export const AddRuleset = (values: Values, setValues: (values: object) => void) => {
+  const newRuleset: defaultRuleSet = {...defaultRuleset};
   newRuleset.priority = values.ruleSets.length + 1;
   newRuleset.ruleSetId = "" //backend will create new ID
 
