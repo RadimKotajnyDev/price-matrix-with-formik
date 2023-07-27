@@ -1,6 +1,6 @@
 import Note from "./Note.tsx";
-import Pricing from "./Pricing/Pricing.tsx";
-import OfferCode from "./OfferCode.tsx";
+import Pricing from "./Pricing.tsx";
+import CodeAndCommission from "./CodeAndCommission/CodeAndCommission.tsx";
 import Rule from "./Rule/Rule.tsx";
 import {FieldArray} from "formik";
 import {Labels} from "./Rule/Labels.tsx";
@@ -29,7 +29,6 @@ interface RuleSetProps {
   bookingFeeAbsoluteValue: number | "",
   bookingFeePercentValue: number | "",
   priceSellingValue: number | "",
-  insideCommissionRateValue: number | "",
   bookingFeeAbsolute: string,
   bookingFeePercent: string,
   priceSelling: string,
@@ -53,7 +52,6 @@ export default function RuleSet(props: RuleSetProps) {
     bookingFeeAbsoluteValue,
     bookingFeePercentValue,
     priceSellingValue,
-    insideCommissionRateValue,
     bookingFeeAbsolute,
     bookingFeePercent,
     insideCommissionRate,
@@ -74,12 +72,12 @@ export default function RuleSet(props: RuleSetProps) {
         <Title ruleSetID={ruleSetID}
                ruleSetPriority={ruleSetPriority}/>
         <RemoveRuleSetButton removeRuleSet={removeRuleSet}/>
+        <PriorityButtons
+          onUP={() => PriorityUp(values, setValues, ruleSetIndex)}
+          onDOWN={() => PriorityDown(values, setValues, ruleSetIndex)}
+        />
       </div>
       <Note nameProp={note}/>
-      <PriorityButtons
-        onUP={() => PriorityUp(values, setValues, ruleSetIndex)}
-        onDOWN={() => PriorityDown(values, setValues, ruleSetIndex)}
-      />
       <Labels/>
       <FieldArray name={`ruleSets.rules`}>
         {() => (
@@ -113,14 +111,12 @@ export default function RuleSet(props: RuleSetProps) {
         <Pricing
           bookingFeeAbsoluteValue={bookingFeeAbsoluteValue}
           bookingFeePercentValue={bookingFeePercentValue}
-          insideCommissionRateValue={insideCommissionRateValue}
           priceSellingValue={priceSellingValue}
           bookingFeeAbsolute={bookingFeeAbsolute}
           bookingFeePercent={bookingFeePercent}
-          insideCommissionRate={insideCommissionRate}
           priceSelling={priceSelling}
         />
-        <OfferCode nameProp={offerCode}/>
+        <CodeAndCommission nameProp={offerCode} insideCommissionRate={insideCommissionRate}/>
       </section>
     </div>
   )
