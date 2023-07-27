@@ -1,6 +1,4 @@
 import Note from "./Note.tsx";
-import Pricing from "./Pricing.tsx";
-import CodeAndCommission from "./CodeAndCommission/CodeAndCommission.tsx";
 import Rule from "./Rule/Rule.tsx";
 import {FieldArray} from "formik";
 import {Labels} from "./Rule/Labels.tsx";
@@ -9,6 +7,7 @@ import {RemoveRuleSetButton} from "./RemoveRuleSetButton.tsx";
 import {Title} from "./Title.tsx";
 import {PriorityDown, PriorityUp} from "../RenderingForm/RenderFunctions.ts";
 import {PriorityButtons} from "./PriorityButtons.tsx";
+import {BottomSection} from "./BottomSection/BottomSection.tsx";
 
 type FormikErrors<Values> = { [K in keyof Values]?: string };
 
@@ -107,17 +106,15 @@ export default function RuleSet(props: RuleSetProps) {
           </>
         )}
       </FieldArray>
-      <section className="flex flex-row mt-5 border-t-2 pt-2">
-        <Pricing
-          bookingFeeAbsoluteValue={bookingFeeAbsoluteValue}
-          bookingFeePercentValue={bookingFeePercentValue}
-          priceSellingValue={priceSellingValue}
-          bookingFeeAbsolute={bookingFeeAbsolute}
-          bookingFeePercent={bookingFeePercent}
-          priceSelling={priceSelling}
-        />
-        <CodeAndCommission nameProp={offerCode} insideCommissionRate={insideCommissionRate}/>
-      </section>
+      <BottomSection
+        bookingFeeAbsolute={bookingFeeAbsolute}
+        bookingFeeAbsoluteValue={bookingFeeAbsoluteValue}
+        bookingFeePercent={bookingFeePercent}
+        bookingFeePercentValue={bookingFeePercentValue}
+        priceSelling={priceSelling}
+        priceSellingValue={priceSellingValue}
+        offerCode={offerCode}
+        insideCommissionRate={insideCommissionRate} />
     </div>
   )
 }

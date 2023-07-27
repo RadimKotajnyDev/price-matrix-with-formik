@@ -60,7 +60,7 @@ export default function RenderingForm(props: { data: { id: number, name: string 
           setModalState(true)
         }
       }
-
+      validateOnChange={false}
     >
       {({values, setFieldValue, setValues, errors, isValid}: {
         values: any,
@@ -106,7 +106,6 @@ export default function RenderingForm(props: { data: { id: number, name: string 
                           bookingFeeAbsoluteValue={ruleSet.bookingFeeAbsolute}
                           bookingFeePercentValue={ruleSet.bookingFeePercent}
                           priceSellingValue={ruleSet.priceSelling}
-                          insideCommissionRateValue={ruleSet.insideCommissionRate}
                           bookingFeeAbsolute={`ruleSets[${index}].bookingFeeAbsolute`}
                           bookingFeePercent={`ruleSets[${index}].bookingFeePercent`}
                           insideCommissionRate={`ruleSets[${index}].insideCommissionRate`}
