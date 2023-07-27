@@ -14,7 +14,6 @@ const resolvedRuleSets = await ResolveRuleSets()
 export default function RenderingForm(props: { data: { id: number, name: string } }) {
 
   const ref = useRef(null)
-
   const ScrollToLastElement = () => {
     const lastChildElement = ref.current as HTMLElement | null;
     lastChildElement?.lastElementChild?.scrollIntoView({behavior: 'smooth'});

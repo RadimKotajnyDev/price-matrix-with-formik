@@ -50,7 +50,7 @@ export default function Modal(props: ModalProps) {
                     </>) : (
                       <>
                         <AiFillCloseCircle size={30} className="text-red-500"/>
-                        Price Matrix submit failed!
+                        Price Matrix submit failed! <br /> Check unfilled inputs.
                       </>
                     )}
                   </Dialog.Title>
