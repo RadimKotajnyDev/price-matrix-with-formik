@@ -1,9 +1,9 @@
 import {Field} from "formik";
 
 interface Props {
-  commissionableBookingFeeAbsoluteValue: number | string,
-  commissionableBookingFeePercentValue: number | string,
-  commissionablePriceSellingValue: number | string,
+  commissionableBookingFeeAbsoluteValue: number | string | null,
+  commissionableBookingFeePercentValue: number | string | null,
+  commissionablePriceSellingValue: number | string | null,
   commissionableBookingFeeAbsolute: string,
   commissionableBookingFeePercent: string,
   commissionablePriceSelling: string,

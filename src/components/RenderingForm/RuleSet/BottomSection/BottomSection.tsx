@@ -5,17 +5,17 @@ import PriceCommissionable from "./PricingSections/PriceCommissionable.tsx";
 
 interface Props {
   netBookingFeeAbsolute: string,
-  netBookingFeeAbsoluteValue: number | string,
+  netBookingFeeAbsoluteValue: number | string | null,
   netBookingFeePercent: string,
-  netBookingFeePercentValue: number | string,
+  netBookingFeePercentValue: number | string | null,
   netPriceSelling: string,
-  netPriceSellingValue: number | string,
+  netPriceSellingValue: number | string | null,
   commissionableBookingFeeAbsolute: string,
-  commissionableBookingFeeAbsoluteValue: number | string,
+  commissionableBookingFeeAbsoluteValue: number | string | null,
   commissionableBookingFeePercent: string,
-  commissionableBookingFeePercentValue: number | string,
+  commissionableBookingFeePercentValue: number | string | null,
   commissionablePriceSelling: string,
-  commissionablePriceSellingValue: number | string,
+  commissionablePriceSellingValue: number | string | null,
   offerCode: string,
   insideCommissionRate: string,
 }
