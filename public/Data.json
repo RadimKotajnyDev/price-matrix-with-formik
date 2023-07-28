@@ -1,0 +1,31 @@
+{
+  "id": 0,
+  "name": "string",
+  "ruleSets": [
+    {
+      "ruleSetId": null,
+      "priority": 0,
+      "rules": [
+        {
+          "ruleId": 0,
+          "fieldId": 0,
+          "compareOperatorId": 0,
+          "value": "0"
+        }
+      ],
+      "priceCommissionable": {
+        "priceSelling":  2,
+        "bookingFeePercent": null,
+        "bookingFeeAbsolute": null
+      },
+      "priceNet": {
+        "priceSelling": null,
+        "bookingFeePercent": 23,
+        "bookingFeeAbsolute": 11
+      },
+      "insideCommissionRate": 12,
+      "note": "string",
+      "offerCode": "string"
+    }
+  ]
+}

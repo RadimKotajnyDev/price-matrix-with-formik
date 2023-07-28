@@ -7,7 +7,7 @@ import {FormBottomButtons} from "./elements/FormBottomButtons.tsx";
 import {useEffect, useRef, useState} from "react";
 import Modal from "./elements/Modal.tsx";
 import {schema} from "./functions/validationSchema.ts";
-import {RuleSetType} from "./functions/RuleSetType.ts";
+import {ruleSet} from "./functions/RuleSetType.ts";
 
 const resolvedRuleSets = await ResolveRuleSets()
 
@@ -78,7 +78,7 @@ export default function RenderingForm(props: { data: { id: number, name: string 
                 <Heading data={props.data}
                 />
                 <div ref={ref}>
-                  {values.ruleSets.map((ruleSet: RuleSetType, index: number) => {
+                  {values.ruleSets.map((ruleSet: ruleSet, index: number) => {
                     return (
                       <div key={index}
                            className={`list-item list-none ${index + 1 === values.ruleSets.length && lastRuleSetAdded ? 'animate' : ''}
@@ -99,13 +99,19 @@ export default function RenderingForm(props: { data: { id: number, name: string 
                           rulesString={`ruleSets[${index}].rules`}
                           offerCode={`ruleSets[${index}].offerCode`}
                           note={`ruleSets[${index}].note`}
-                          bookingFeeAbsoluteValue={ruleSet.bookingFeeAbsolute}
-                          bookingFeePercentValue={ruleSet.bookingFeePercent}
-                          priceSellingValue={ruleSet.priceSelling}
-                          bookingFeeAbsolute={`ruleSets[${index}].bookingFeeAbsolute`}
-                          bookingFeePercent={`ruleSets[${index}].bookingFeePercent`}
-                          insideCommissionRate={`ruleSets[${index}].insideCommissionRate`}
-                          priceSelling={`ruleSets[${index}].priceSelling`}
+                          netBookingFeeAbsoluteValue={ruleSet.priceNet.bookingFeeAbsolute}
+                          netBookingFeePercentValue={ruleSet.priceNet.bookingFeePercent}
+                          netPriceSellingValue={ruleSet.priceNet.priceSelling}
+                          netBookingFeeAbsolute={`ruleSets[${index}].priceNet.bookingFeeAbsolute`}
+                          netBookingFeePercent={`ruleSets[${index}].priceNet.bookingFeePercent`}
+                          netPriceSelling={`ruleSets[${index}].priceNet.priceSelling`}
+                          commissionableBookingFeeAbsoluteValue={ruleSet.priceCommissionable.bookingFeeAbsolute}
+                          commissionableBookingFeePercentValue={ruleSet.priceCommissionable.bookingFeePercent}
+                          commissionablePriceSellingValue={ruleSet.priceCommissionable.priceSelling}
+                          commissionableBookingFeeAbsolute={`ruleSets[${index}].priceCommissionable.bookingFeeAbsolute`}
+                          commissionableBookingFeePercent={`ruleSets[${index}].priceCommissionable.bookingFeePercent`}
+                          commissionablePriceSelling={`ruleSets[${index}].priceCommissionable.priceSelling`}
+                          insideCommissionRate={`ruleSets[${index}].priceCommissionable.insideCommissionRate`}
                           setFieldValue={setFieldValue}
                           values={values}
                           setValues={setValues}

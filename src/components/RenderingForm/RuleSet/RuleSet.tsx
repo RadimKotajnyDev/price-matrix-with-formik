@@ -1,4 +1,4 @@
-import Note from "./Note.tsx";
+import Note from "./elements/Note.tsx";
 import Rule from "./Rule/Rule.tsx";
 import {FieldArray} from "formik";
 import {Labels} from "./Rule/Labels.tsx";
@@ -12,25 +12,28 @@ import {BottomSection} from "./BottomSection/BottomSection.tsx";
 type FormikErrors<Values> = { [K in keyof Values]?: string };
 
 export interface RuleType {
-  fieldId: number | "",
-  compareOperatorId: number | "",
-  valueDecimal: number | "",
-  valueString: string | "",
-  valueDateTime: string | "",
-  valueInt: number | "",
+  fieldId: number | string,
+  compareOperatorId: number | string,
+  value: string,
 }
 
 interface RuleSetProps {
-  ruleSetID: number,
-  ruleSetPriority: number,
+  ruleSetID: number | string,
+  ruleSetPriority: number | string | null,
   offerCode: string,
-  note?: string,
-  bookingFeeAbsoluteValue: number | "",
-  bookingFeePercentValue: number | "",
-  priceSellingValue: number | "",
-  bookingFeeAbsolute: string,
-  bookingFeePercent: string,
-  priceSelling: string,
+  note: string,
+  netBookingFeeAbsoluteValue: number | string,
+  netBookingFeePercentValue: number | string,
+  netPriceSellingValue: number | string,
+  netBookingFeeAbsolute: string,
+  netBookingFeePercent: string,
+  netPriceSelling: string,
+  commissionableBookingFeeAbsoluteValue: number | string,
+  commissionableBookingFeePercentValue: number | string,
+  commissionablePriceSellingValue: number | string,
+  commissionableBookingFeeAbsolute: string,
+  commissionableBookingFeePercent: string,
+  commissionablePriceSelling: string,
   insideCommissionRate: string,
   removeRuleSet: () => void,
   rules: Array<RuleType>,
@@ -48,13 +51,19 @@ export default function RuleSet(props: RuleSetProps) {
     ruleSetPriority,
     offerCode,
     note,
-    bookingFeeAbsoluteValue,
-    bookingFeePercentValue,
-    priceSellingValue,
-    bookingFeeAbsolute,
-    bookingFeePercent,
+    netBookingFeeAbsoluteValue,
+    netBookingFeePercentValue,
+    netPriceSellingValue,
+    netBookingFeeAbsolute,
+    netBookingFeePercent,
+    netPriceSelling,
+    commissionableBookingFeeAbsoluteValue,
+    commissionableBookingFeePercentValue,
+    commissionablePriceSellingValue,
+    commissionableBookingFeeAbsolute,
+    commissionableBookingFeePercent,
+    commissionablePriceSelling,
     insideCommissionRate,
-    priceSelling,
     removeRuleSet,
     rules,
     rulesString,
@@ -107,12 +116,19 @@ export default function RuleSet(props: RuleSetProps) {
         )}
       </FieldArray>
       <BottomSection
-        bookingFeeAbsolute={bookingFeeAbsolute}
-        bookingFeeAbsoluteValue={bookingFeeAbsoluteValue}
-        bookingFeePercent={bookingFeePercent}
-        bookingFeePercentValue={bookingFeePercentValue}
-        priceSelling={priceSelling}
-        priceSellingValue={priceSellingValue}
+        netBookingFeeAbsolute={netBookingFeeAbsolute}
+        netBookingFeeAbsoluteValue={netBookingFeeAbsoluteValue}
+        netBookingFeePercent={netBookingFeePercent}
+        netBookingFeePercentValue={netBookingFeePercentValue}
+        netPriceSelling={netPriceSelling}
+        netPriceSellingValue={netPriceSellingValue}
+
+        commissionableBookingFeeAbsolute={commissionableBookingFeeAbsolute}
+        commissionableBookingFeeAbsoluteValue={commissionableBookingFeeAbsoluteValue}
+        commissionableBookingFeePercent={commissionableBookingFeePercent}
+        commissionableBookingFeePercentValue={commissionableBookingFeePercentValue}
+        commissionablePriceSelling={commissionablePriceSelling}
+        commissionablePriceSellingValue={commissionablePriceSellingValue}
         offerCode={offerCode}
         insideCommissionRate={insideCommissionRate} />
     </div>

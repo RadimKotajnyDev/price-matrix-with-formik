@@ -1,78 +1,35 @@
 import {defaultRuleset} from "../../../configs/ruleset/defaultRuleset.tsx";
+import {ruleSet, rulesType} from "./RuleSetType.ts";
 
-type defaultRuleSet = {
-  insideCommissionRate: string;
-  note: string;
-  bookingFeeAbsolute: string;
-  offerCode: string;
-  priceSelling: string;
-  bookingFeePercent: string;
-  rules: {
-    compareOperatorId: number;
-    valueString: string;
-    valueDecimal: string;
-    valueDateTime: string;
-    ruleId: string;
-    valueInt: string;
-    priority: string;
-    ruleSetId: string;
-    fieldId: number
-  }[];
-  logicalOperatorId: number;
-  priority: string | number;
-  ruleSetId: string
-}
 
-interface Rules {
-  map: any,
-  ruleSetId: number | "",
-  ruleId: number | "",
-  fieldId: number | "",
-  priority?: null | string,
-  compareOperatorId: number | string,
-  valueInt: number | string,
-  valueDecimal: number | string,
-  valueDateTime: string,
-  valueString: string,
-}
+type Values = { ruleSets: ruleSet[]; }
 
-interface ruleSets {
-  ruleSetId: number | "",
-  logicalOperatorId: number | "",
-  priority: number | "",
-  rules: Rules,
-  priceSelling: number | string,
-  bookingFeePercent: number | string,
-  bookingFeeAbsolute: number | string,
-  insideCommissionRate: number | string,
-  note: string,
-  offerCode: string
-}
-
-type Values = { ruleSets: ruleSets[]; }
-
-export function NullDataToEmptyStrings(data: any) {
-  data.ruleSets.map((item: ruleSets, index: number) => {
+export function NullDataToEmptyStrings(data: {id: number, name: string, ruleSets: ruleSet[]}) {
+  data.ruleSets.map((item: ruleSet, index: number) => {
     data.ruleSets[index] = {
       ruleSetId: item.ruleSetId === null ? "" : item.ruleSetId,
-      logicalOperatorId: item.logicalOperatorId === null ? "" : item.logicalOperatorId,
       priority: item.priority === null ? "" : item.priority,
-      rules: item.rules.map((rule: Rules) => {
+      rules: item.rules.map((rule: rulesType) => {
         return {
-          ruleSetId: rule.ruleSetId === null ? "" : rule.ruleSetId,
           ruleId: rule.ruleId === null ? "" : rule.ruleId,
           fieldId: rule.fieldId === null ? "" : rule.fieldId,
-          priority: rule.priority === null ? "" : rule.priority,
           compareOperatorId: rule.compareOperatorId === null ? "" : rule.compareOperatorId,
-          valueInt: rule.valueInt === null ? "" : rule.valueInt,
-          valueDecimal: rule.valueDecimal === null ? "" : rule.valueDecimal,
-          valueDateTime: rule.valueDateTime === null ? "" : rule.valueDateTime,
-          valueString: rule.valueString === null ? "" : rule.valueString,
+          value: rule.value === null ? "" : rule.value
         }
       }),
-      priceSelling: item.priceSelling === null ? "" : item.priceSelling,
-      bookingFeePercent: item.bookingFeePercent === null ? "" : item.bookingFeePercent,
-      bookingFeeAbsolute: item.bookingFeeAbsolute === null ? "" : item.bookingFeeAbsolute,
+      priceCommissionable: {
+        priceSelling:
+          item.priceCommissionable.priceSelling === null ? "" : item.priceCommissionable.priceSelling,
+        bookingFeeAbsolute:
+          item.priceCommissionable.bookingFeeAbsolute === null ? "" : item.priceCommissionable.bookingFeeAbsolute,
+        bookingFeePercent:
+          item.priceCommissionable.bookingFeePercent === null ? "" : item.priceCommissionable.bookingFeePercent,
+      },
+      priceNet: {
+        priceSelling: item.priceNet.priceSelling === null ? "" : item.priceNet.priceSelling,
+        bookingFeeAbsolute: item.priceNet.bookingFeeAbsolute === null ? "" : item.priceNet.bookingFeeAbsolute,
+        bookingFeePercent: item.priceNet.bookingFeePercent === null ? "" : item.priceNet.bookingFeePercent,
+      },
       insideCommissionRate: item.insideCommissionRate === null ? "" : item.insideCommissionRate,
       note: item.note === null ? "" : item.note,
       offerCode: item.offerCode === null ? "" : item.offerCode,
@@ -81,45 +38,49 @@ export function NullDataToEmptyStrings(data: any) {
   return console.log(data)
 }
 
-export function EmptyStringsDataToNull(data: any) {
-  console.log(data)
-  data.ruleSets.map((item: ruleSets, index: number) => {
+export function EmptyStringsToNull(data: {id: number, name: string, ruleSets: ruleSet[]}) {
+  data.ruleSets.map((item: ruleSet, index: number) => {
     data.ruleSets[index] = {
       ruleSetId: item.ruleSetId === "" ? null : item.ruleSetId,
-      logicalOperatorId: item.logicalOperatorId === "" ? null : item.logicalOperatorId,
       priority: item.priority === "" ? null : item.priority,
-      rules: item.rules.map((rule: Rules) => {
+      rules: item.rules.map((rule: rulesType) => {
         return {
-          ruleSetId: rule.ruleSetId === "" ? null : rule.ruleSetId,
           ruleId: rule.ruleId === "" ? null : rule.ruleId,
           fieldId: rule.fieldId === "" ? null : rule.fieldId,
-          priority: rule.priority === "" ? null : rule.priority,
           compareOperatorId: rule.compareOperatorId === "" ? null : rule.compareOperatorId,
-          valueInt: rule.valueInt === "" ? null : rule.valueInt,
-          valueDecimal: rule.valueDecimal === "" ? null : rule.valueDecimal,
-          valueDateTime: rule.valueDateTime === "" ? null : rule.valueDateTime,
-          valueString: rule.valueString === "" ? null : rule.valueString,
+          value: rule.value === "" ? null : rule.value
         }
       }),
-      priceSelling: item.priceSelling === "" ? null : item.priceSelling,
-      bookingFeePercent: item.bookingFeePercent === "" ? null : item.bookingFeePercent,
-      bookingFeeAbsolute: item.bookingFeeAbsolute === "" ? null : item.bookingFeeAbsolute,
+      priceCommissionable: {
+        priceSelling:
+          item.priceCommissionable.priceSelling === "" ? null : item.priceCommissionable.priceSelling,
+        bookingFeeAbsolute:
+          item.priceCommissionable.bookingFeeAbsolute === "" ? null : item.priceCommissionable.bookingFeeAbsolute,
+        bookingFeePercent:
+          item.priceCommissionable.bookingFeePercent === "" ? null : item.priceCommissionable.bookingFeePercent,
+      },
+      priceNet: {
+        priceSelling: item.priceNet.priceSelling === "" ? null : item.priceNet.priceSelling,
+        bookingFeeAbsolute: item.priceNet.bookingFeeAbsolute === "" ? null : item.priceNet.bookingFeeAbsolute,
+        bookingFeePercent: item.priceNet.bookingFeePercent === "" ? null : item.priceNet.bookingFeePercent,
+      },
       insideCommissionRate: item.insideCommissionRate === "" ? null : item.insideCommissionRate,
       note: item.note === "" ? null : item.note,
       offerCode: item.offerCode === "" ? null : item.offerCode,
     }
   })
-  return data;
+  return console.log(data)
 }
 
-export function RemapPriorities(jsonData: any) {
+
+export function RemapPriorities(jsonData: ruleSet[]) {
   const ruleSets = [...jsonData]; // Vytvoření kopie pole jsonData.ruleSets
 
   const jsonLength = ruleSets.length;
 
   const priorities = Array.from({length: jsonLength}, (_, index) => index + 1);
 
-  ruleSets.forEach((ruleSet: { priority: number }, index: number) => {
+  ruleSets.forEach((ruleSet: ruleSet, index: number) => {
     ruleSet.priority = priorities[index];
   });
 
@@ -171,7 +132,7 @@ export const HandleRemoveRuleSet = (values: Values, setValues: (values: Values) 
 };
 
 export const AddRuleset = (values: Values, setValues: (values: object) => void) => {
-  const newRuleset: defaultRuleSet = {...defaultRuleset};
+  const newRuleset: ruleSet = {...defaultRuleset};
   newRuleset.priority = values.ruleSets.length + 1;
   newRuleset.ruleSetId = "" //backend will create new ID
 

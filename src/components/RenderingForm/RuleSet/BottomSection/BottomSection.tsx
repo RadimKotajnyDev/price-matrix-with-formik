@@ -1,15 +1,21 @@
-import Pricing from "./Pricing.tsx";
+import PriceNet from "./PricingSections/PriceNet.tsx";
 import {Divider} from "../../../elements/Divider.tsx";
 import CodeAndCommission from "./CodeAndCommission/CodeAndCommission.tsx";
-import Commissionable from "./Commissionable.tsx";
+import PriceCommissionable from "./PricingSections/PriceCommissionable.tsx";
 
 interface Props {
-  bookingFeeAbsolute: string,
-  bookingFeePercent: string,
-  bookingFeeAbsoluteValue: number | "",
-  bookingFeePercentValue: number | "",
-  priceSelling: string,
-  priceSellingValue: number | "",
+  netBookingFeeAbsolute: string,
+  netBookingFeeAbsoluteValue: number | string,
+  netBookingFeePercent: string,
+  netBookingFeePercentValue: number | string,
+  netPriceSelling: string,
+  netPriceSellingValue: number | string,
+  commissionableBookingFeeAbsolute: string,
+  commissionableBookingFeeAbsoluteValue: number | string,
+  commissionableBookingFeePercent: string,
+  commissionableBookingFeePercentValue: number | string,
+  commissionablePriceSelling: string,
+  commissionablePriceSellingValue: number | string,
   offerCode: string,
   insideCommissionRate: string,
 }
@@ -17,34 +23,40 @@ interface Props {
 export const BottomSection = (props: Props) => {
 
   const {
-    bookingFeeAbsolute,
-    bookingFeePercent,
-    bookingFeeAbsoluteValue,
-    bookingFeePercentValue,
-    priceSelling,
-    priceSellingValue,
-    offerCode,
+    netBookingFeeAbsolute,
+    netBookingFeeAbsoluteValue,
+    netBookingFeePercent,
+    netBookingFeePercentValue,
+    netPriceSelling,
+    netPriceSellingValue,
+    commissionableBookingFeeAbsolute,
+    commissionableBookingFeeAbsoluteValue,
+    commissionableBookingFeePercent,
+    commissionableBookingFeePercentValue,
+    commissionablePriceSelling,
+    commissionablePriceSellingValue,
     insideCommissionRate,
+    offerCode,
   } = props
 
   return (
     <section className="flex flex-row mt-5 border-t-2 pt-2">
-      <Pricing
-        bookingFeeAbsoluteValue={bookingFeeAbsoluteValue}
-        bookingFeePercentValue={bookingFeePercentValue}
-        priceSellingValue={priceSellingValue}
-        bookingFeeAbsolute={bookingFeeAbsolute}
-        bookingFeePercent={bookingFeePercent}
-        priceSelling={priceSelling}
+      <PriceNet
+        netBookingFeeAbsolute={netBookingFeeAbsolute}
+        netBookingFeeAbsoluteValue={netBookingFeeAbsoluteValue}
+        netBookingFeePercent={netBookingFeePercent}
+        netBookingFeePercentValue={netBookingFeePercentValue}
+        netPriceSelling={netPriceSelling}
+        netPriceSellingValue={netPriceSellingValue}
       />
       <Divider />
-      <Commissionable
-        bookingFeeAbsoluteValue={bookingFeeAbsoluteValue}
-        bookingFeePercentValue={bookingFeePercentValue}
-        priceSellingValue={priceSellingValue}
-        bookingFeeAbsolute={bookingFeeAbsolute}
-        bookingFeePercent={bookingFeePercent}
-        priceSelling={priceSelling}
+      <PriceCommissionable
+        commissionableBookingFeeAbsolute={commissionableBookingFeeAbsolute}
+        commissionableBookingFeeAbsoluteValue={commissionableBookingFeeAbsoluteValue}
+        commissionableBookingFeePercent={commissionableBookingFeePercent}
+        commissionableBookingFeePercentValue={commissionableBookingFeePercentValue}
+        commissionablePriceSelling={commissionablePriceSelling}
+        commissionablePriceSellingValue={commissionablePriceSellingValue}
       />
       <Divider />
       <CodeAndCommission nameProp={offerCode} insideCommissionRate={insideCommissionRate}/>

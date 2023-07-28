@@ -12,7 +12,7 @@ export const InsideCommissionRate = (props: Props) => {
   } = props
   return (
     <div className="flex flex-col">
-      <label className="LabelClass">InsideCommission (%)</label>
+      <label className="LabelClass">Inside Commission (%)</label>
       <Field
         className={"InputClass" + widthClass}
         type="number"

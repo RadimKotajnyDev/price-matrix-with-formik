@@ -1,8 +1,8 @@
 import './App.css'
 import RenderingForm from './components/RenderingForm/RenderingForm.tsx'
-import {fetchData} from "./configs/API.tsx";
+import {FetchData} from "./configs/API.tsx";
 
-const data = await fetchData() //fetching data on parent component
+const data = await FetchData() //fetching data on parent component
 function App() {
   return (
     <div id="App">
