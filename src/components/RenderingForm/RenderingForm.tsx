@@ -36,7 +36,7 @@ export default function RenderingForm(props: { data: { id: number, name: string 
     if (ModalState) {
       const timeout = setTimeout(() => {
         setModalState(false)
-      }, 1000);
+      }, 1250);
       //setErrorModal(false)
       return () => clearTimeout(timeout);
     }
