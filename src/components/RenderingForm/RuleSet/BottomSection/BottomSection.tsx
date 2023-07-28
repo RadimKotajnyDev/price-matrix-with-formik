@@ -1,5 +1,5 @@
 import Pricing from "./Pricing.tsx";
-import {Divider} from "../../elements/Divider.tsx";
+import {Divider} from "../../../elements/Divider.tsx";
 import CodeAndCommission from "./CodeAndCommission/CodeAndCommission.tsx";
 import Commissionable from "./Commissionable.tsx";
 

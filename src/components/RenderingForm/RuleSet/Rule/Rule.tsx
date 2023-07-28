@@ -1,7 +1,7 @@
 import {Field} from "formik";
-import fieldOptions from "../../../configs/options/FieldOptionsConfig.tsx";
+import fieldOptions from "../../../../configs/options/FieldOptionsConfig.tsx";
 import {AiOutlineMinus} from "react-icons/ai";
-import {ArrowOnSelect} from "../../elements/ArrowOnSelect.tsx";
+import {ArrowOnSelect} from "../../../elements/ArrowOnSelect.tsx";
 import {RemoveRule} from "./RuleFunctions.ts"
 import {MapOperators, ResetValues} from "./MapFunctions.tsx";
 import ValueComponent from "./ValueComponent.tsx";

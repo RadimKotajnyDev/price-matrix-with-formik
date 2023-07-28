@@ -3,10 +3,10 @@ import Rule from "./Rule/Rule.tsx";
 import {FieldArray} from "formik";
 import {Labels} from "./Rule/Labels.tsx";
 import {AddRuleButton} from "./Rule/AddRuleButton.tsx";
-import {RemoveRuleSetButton} from "./RemoveRuleSetButton.tsx";
-import {Title} from "./Title.tsx";
-import {PriorityDown, PriorityUp} from "../RenderingForm/RenderFunctions.ts";
-import {PriorityButtons} from "./PriorityButtons.tsx";
+import {RemoveRuleSetButton} from "./elements/RemoveRuleSetButton.tsx";
+import {Title} from "./elements/Title.tsx";
+import {PriorityDown, PriorityUp} from "../functions/RenderFunctions.ts";
+import {PriorityButtons} from "./elements/PriorityButtons.tsx";
 import {BottomSection} from "./BottomSection/BottomSection.tsx";
 
 type FormikErrors<Values> = { [K in keyof Values]?: string };

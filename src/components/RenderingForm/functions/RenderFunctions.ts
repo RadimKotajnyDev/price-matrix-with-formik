@@ -1,4 +1,4 @@
-import {defaultRuleset} from "../../configs/ruleset/defaultRuleset.tsx";
+import {defaultRuleset} from "../../../configs/ruleset/defaultRuleset.tsx";
 
 type defaultRuleSet = {
   insideCommissionRate: string;
@@ -180,4 +180,9 @@ export const AddRuleset = (values: Values, setValues: (values: object) => void) 
     ruleSets: [...values.ruleSets, newRuleset],
   };
   setValues(updatedValues);
+};
+
+export const ScrollToLastElement = (ref: any) => {
+  const lastChildElement = ref.current as HTMLElement | null;
+  lastChildElement?.lastElementChild?.scrollIntoView({behavior: 'smooth'});
 };

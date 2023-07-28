@@ -1,5 +1,5 @@
 import axios from "axios";
-import {NullDataToEmptyStrings} from "./components/RenderingForm/RenderFunctions.ts";
+import {NullDataToEmptyStrings} from "../components/RenderingForm/functions/RenderFunctions.ts";
 
 export async function fetchData() {
   try {
@@ -15,7 +15,7 @@ export async function fetchData() {
 
 export async function ResolveRuleSets() {
   const data = await fetchData()
-  await NullDataToEmptyStrings(data) //uncontrolled input warning fixed
+  NullDataToEmptyStrings(data) //uncontrolled input warning fixed
   // reformat data before submit in RenderingForm.tsx
   // sorting ruleSets by priority
   return [...data.ruleSets].sort((a, b) => a.priority - b.priority);

@@ -1,23 +1,19 @@
 import {FieldArray, Form, Formik} from 'formik';
-import {ResolveRuleSets} from "../../API.tsx";
-import RuleSet from "../RuleSet/RuleSet.tsx";
-import {Heading} from "./Heading.tsx";
-import {AddRuleset, HandleRemoveRuleSet} from "./RenderFunctions.ts";
-import {FormBottomButtons} from "./FormBottomButtons.tsx";
+import {ResolveRuleSets} from "../../configs/API.tsx";
+import RuleSet from "./RuleSet/RuleSet.tsx";
+import {Heading} from "./elements/Heading.tsx";
+import {AddRuleset, HandleRemoveRuleSet, ScrollToLastElement} from "./functions/RenderFunctions.ts";
+import {FormBottomButtons} from "./elements/FormBottomButtons.tsx";
 import {useEffect, useRef, useState} from "react";
-import Modal from "./Modal.tsx";
-import {schema} from "./validationSchema.ts";
-import {RuleSetType} from "./RuleSetType.ts";
+import Modal from "./elements/Modal.tsx";
+import {schema} from "./functions/validationSchema.ts";
+import {RuleSetType} from "./functions/RuleSetType.ts";
 
 const resolvedRuleSets = await ResolveRuleSets()
 
 export default function RenderingForm(props: { data: { id: number, name: string } }) {
 
   const ref = useRef(null)
-  const ScrollToLastElement = () => {
-    const lastChildElement = ref.current as HTMLElement | null;
-    lastChildElement?.lastElementChild?.scrollIntoView({behavior: 'smooth'});
-  };
 
   const [lastRuleSetAdded, setLastRuleSetAdded] = useState<boolean>(false);
   const [ruleSetToRemoveAnimation, setRuleSetToRemoveAnimation] = useState<number | null>(null);
@@ -26,7 +22,7 @@ export default function RenderingForm(props: { data: { id: number, name: string 
     setLastRuleSetAdded(true);
     setTimeout(() => {
       setLastRuleSetAdded(false);
-      ScrollToLastElement();
+      ScrollToLastElement(ref);
     }, 500);
   };
 
