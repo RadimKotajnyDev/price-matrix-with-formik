@@ -3,7 +3,7 @@ import {Field} from "formik";
 const widthClass = " w-full min-w-[100px] max-w-[120px]"
 
 interface Props {
-  insideCommissionRate: string | ""
+  insideCommissionRate: string | null
 }
 
 export const InsideCommissionRate = (props: Props) => {

@@ -111,7 +111,7 @@ export default function RenderingForm(props: { data: { id: number, name: string 
                           commissionableBookingFeeAbsolute={`ruleSets[${index}].priceCommissionable.bookingFeeAbsolute`}
                           commissionableBookingFeePercent={`ruleSets[${index}].priceCommissionable.bookingFeePercent`}
                           commissionablePriceSelling={`ruleSets[${index}].priceCommissionable.priceSelling`}
-                          insideCommissionRate={`ruleSets[${index}].priceCommissionable.insideCommissionRate`}
+                          insideCommissionRate={`ruleSets[${index}].insideCommissionRate`}
                           setFieldValue={setFieldValue}
                           values={values}
                           setValues={setValues}
