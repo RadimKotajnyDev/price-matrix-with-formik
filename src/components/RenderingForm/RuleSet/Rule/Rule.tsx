@@ -3,7 +3,7 @@ import fieldOptions from "../../../../configs/options/FieldOptionsConfig.tsx";
 import {AiOutlineMinus} from "react-icons/ai";
 import {ArrowOnSelect} from "../../../elements/ArrowOnSelect.tsx";
 import {RemoveRule} from "./RuleFunctions.ts"
-import {MapOperators, ResetValues} from "./MapFunctions.tsx";
+import {MapOperators} from "./MapFunctions.tsx";
 import ValueComponent from "./ValueComponent.tsx";
 import {ChangeEvent} from "react";
 import type {RuleType} from "../RuleSet.tsx"
@@ -15,10 +15,8 @@ interface RuleProps {
   setFieldValue: (field: string | number | undefined, value: string | number, shouldValidate?: boolean | undefined) => void,
   fieldName: string,
   optionName: string,
-  valueIntName: string,
-  valueDecimalName: string,
-  valueStringName: string,
-  valueDateTimeName: string,
+  valueName: string,
+  value: string | null,
   ruleSetIndex: number,
   ruleIndex: number,
   rule: RuleType,
@@ -35,11 +33,7 @@ export default function Rule(props: RuleProps) {
                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
                    props.setFieldValue(props.fieldName, parseInt(e.target.value));
                    props.setFieldValue(props.optionName, 0); //fixed compareOperatorId value when changing field
-                   ResetValues(
-                     props.setFieldValue, props.valueIntName,
-                     props.valueDecimalName, props.valueDateTimeName,
-                     props.valueStringName
-                   );
+                   props.setFieldValue(props.valueName, "")
                  }}
                  name={props.fieldName} value={props.rule.fieldId}>
             {fieldOptions.map((current) => (
@@ -60,10 +54,8 @@ export default function Rule(props: RuleProps) {
           <ArrowOnSelect/>
         </div>
         <ValueComponent rule={props.rule}
-                        valueIntName={props.valueIntName}
-                        valueDateTimeName={props.valueDateTimeName}
-                        valueStringName={props.valueStringName}
-                        valueDecimalName={props.valueDecimalName}
+                        valueName={props.valueName}
+                        value={props.value}
                         setFieldValue={props.setFieldValue}
         />
         <button type="button" onClick={() => RemoveRule(props.values, props.setValues, props.ruleSetIndex, props.ruleIndex)}>

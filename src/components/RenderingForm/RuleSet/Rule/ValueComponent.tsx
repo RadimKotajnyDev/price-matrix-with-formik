@@ -1,5 +1,5 @@
 import {Field} from "formik";
-import {MapValueStoreType, MapValueType, StoreInteger} from "./MapFunctions.tsx";
+import {MapValueType} from "./MapFunctions.tsx";
 import DaysOfWeekConfig from "../../../../configs/options/DaysOfWeekConfig.tsx";
 import {ArrowOnSelect} from "../../../elements/ArrowOnSelect.tsx";
 import type {RuleType} from "../RuleSet.tsx";
@@ -8,10 +8,8 @@ import {ChangeEvent} from "react";
 interface valueProps {
   setFieldValue: (field: string | number | undefined, value: number | string, shouldValidate?: boolean) => void,
   rule: RuleType
-  valueIntName: string,
-  valueDecimalName: string,
-  valueDateTimeName: string,
-  valueStringName: string,
+  valueName: string,
+  value: string | null
 }
 
 export default function ValueComponent(props: valueProps) {
@@ -24,13 +22,10 @@ export default function ValueComponent(props: valueProps) {
                  component="select"
                  disabled={disabledBool}
                  onChange={(e: ChangeEvent<HTMLInputElement>) => props.setFieldValue(
-                   MapValueStoreType(props.rule.fieldId, props.valueIntName,
-                     props.valueDecimalName, props.valueDateTimeName, props.valueStringName), parseInt(e.target.value))
+                   props.valueName, e.target.value)
                  }
-                 name={MapValueStoreType(props.rule.fieldId, props.valueIntName,
-                   props.valueDecimalName, props.valueDateTimeName, props.valueStringName)}
-                 value={MapValueStoreType(props.rule.fieldId, props.rule.valueInt,
-                   props.rule.valueDecimal, props.rule.valueDateTime, props.rule.valueString)}
+                 name={props.valueName}
+                 value={props.value}
                  type={MapValueType(props.rule.fieldId)}
           >
             {
@@ -45,14 +40,9 @@ export default function ValueComponent(props: valueProps) {
         <Field className="InputClass w-[15rem]"
                component="input"
                disabled={props.rule.fieldId === 0}
-               onChange={(e: ChangeEvent<HTMLInputElement>) => props.setFieldValue(
-                 MapValueStoreType(props.rule.fieldId, props.valueIntName,
-                   props.valueDecimalName, props.valueDateTimeName, props.valueStringName),
-                 StoreInteger(props.rule.fieldId, e.target.value))} // parseInt(e.target.value)
-               name={MapValueStoreType(props.rule.fieldId, props.valueIntName,
-                 props.valueDecimalName, props.valueDateTimeName, props.valueStringName)}
-               value={MapValueStoreType(props.rule.fieldId, props.rule.valueInt,
-                 props.rule.valueDecimal, props.rule.valueDateTime, props.rule.valueString)}
+               onChange={(e: ChangeEvent<HTMLInputElement>) => props.setFieldValue(props.valueName, e.target.value)} // parseInt(e.target.value)
+               name={props.valueName}
+               value={props.value}
                type={MapValueType(props.rule.fieldId)}
         ></Field>
       }

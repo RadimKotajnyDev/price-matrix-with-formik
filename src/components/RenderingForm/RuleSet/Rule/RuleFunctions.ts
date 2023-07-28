@@ -5,11 +5,7 @@ export const AddRule = (values: any, setValues: any, ruleSetIndex: number) => {
     "ruleId": "",
     "fieldId": 0,
     "compareOperatorId": 0,
-    "valueInt": "",
-    "valueString": "",
-    "valueDateTime": "",
-    "valueDecimal": "",
-    "priority": ""
+    "value" : ""
   }
 
   const updatedRuleSets = [...values.ruleSets];
