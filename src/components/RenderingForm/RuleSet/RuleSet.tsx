@@ -1,8 +1,8 @@
 import Note from "./elements/Note.tsx";
 import Rule from "./Rule/Rule.tsx";
 import {FieldArray} from "formik";
-import {Labels} from "./Rule/Labels.tsx";
-import {AddRuleButton} from "./Rule/AddRuleButton.tsx";
+import {Labels} from "./Rule/elements/Labels.tsx";
+import {AddRuleButton} from "./Rule/elements/AddRuleButton.tsx";
 import {RemoveRuleSetButton} from "./elements/RemoveRuleSetButton.tsx";
 import {Title} from "./elements/Title.tsx";
 import {PriorityDown, PriorityUp} from "../functions/RenderFunctions.ts";

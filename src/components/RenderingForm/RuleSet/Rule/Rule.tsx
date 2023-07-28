@@ -2,9 +2,9 @@ import {Field} from "formik";
 import fieldOptions from "../../../../configs/options/FieldOptionsConfig.tsx";
 import {AiOutlineMinus} from "react-icons/ai";
 import {ArrowOnSelect} from "../../../elements/ArrowOnSelect.tsx";
-import {RemoveRule} from "./RuleFunctions.ts"
-import {MapOperators} from "./MapFunctions.tsx";
-import ValueComponent from "./ValueComponent.tsx";
+import {RemoveRule} from "./functions/RuleFunctions.ts"
+import {MapOperators} from "./functions/MapFunctions.tsx";
+import ValueComponent from "./elements/ValueComponent.tsx";
 import {ChangeEvent} from "react";
 import type {RuleType} from "../RuleSet.tsx"
 

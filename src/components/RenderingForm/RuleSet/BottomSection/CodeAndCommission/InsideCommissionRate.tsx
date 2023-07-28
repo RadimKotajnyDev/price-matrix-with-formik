@@ -16,6 +16,9 @@ export const InsideCommissionRate = (props: Props) => {
       <Field
         className={"InputClass" + widthClass}
         type="number"
+        pattern="/^\d+$/"
+        min={0}
+        //max={100}
         name={insideCommissionRate}
       />
     </div>

@@ -28,6 +28,7 @@ export default function PriceNet(props: Props) {
         <Field
           className={"InputClass" + widthClass}
           type="number"
+          pattern="/^\d+$/"
           name={netBookingFeeAbsolute}
           value={netBookingFeeAbsoluteValue}
           disabled={netPriceSellingValue != ""}
@@ -38,9 +39,12 @@ export default function PriceNet(props: Props) {
         <Field
           className={"InputClass" + widthClass}
           type="number"
+          pattern="/^\d+$/"
           name={netBookingFeePercent}
           value={netBookingFeePercentValue}
           disabled={netPriceSellingValue != ""}
+          min={0}
+          //max={100}
         />
       </div>
       <div className={rowClass}>
@@ -48,6 +52,7 @@ export default function PriceNet(props: Props) {
         <Field
           className={"InputClass" + widthClass}
           type="number"
+          pattern="/^\d+$/"
           name={netPriceSelling}
           value={netPriceSellingValue}
           disabled={netBookingFeeAbsoluteValue != "" || netBookingFeePercentValue != ""}

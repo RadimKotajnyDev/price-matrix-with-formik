@@ -3,7 +3,7 @@ import {
   SelectField256,
   SelectField3,
   SelectField4
-} from "../../../../configs/options/SelectFieldsOperators.tsx";
+} from "../../../../../configs/options/SelectFieldsOperators.tsx";
 
 export function MapOperators(fieldId: string | number | null) {
   switch (fieldId) {

@@ -1,8 +1,8 @@
 import {Field} from "formik";
-import {MapValueType} from "./MapFunctions.tsx";
-import DaysOfWeekConfig from "../../../../configs/options/DaysOfWeekConfig.tsx";
-import {ArrowOnSelect} from "../../../elements/ArrowOnSelect.tsx";
-import type {RuleType} from "../RuleSet.tsx";
+import {MapValueType} from "../functions/MapFunctions.tsx";
+import DaysOfWeekConfig from "../../../../../configs/options/DaysOfWeekConfig.tsx";
+import {ArrowOnSelect} from "../../../../elements/ArrowOnSelect.tsx";
+import type {RuleType} from "../../RuleSet.tsx";
 import {ChangeEvent} from "react";
 
 interface valueProps {

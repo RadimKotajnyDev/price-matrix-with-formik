@@ -1,5 +1,5 @@
 import {AiOutlinePlus} from "react-icons/ai";
-import {AddRule} from "./RuleFunctions.ts";
+import {AddRule} from "../functions/RuleFunctions.ts";
 
 export const AddRuleButton = (props: any) => {
   return (
@@ -9,7 +9,6 @@ export const AddRuleButton = (props: any) => {
         <button className="flex flex-row p-2 pr-3 items-center rounded text-white bg-slate-800 duration-200 cursor-pointer
                        hover:text-slate-900 hover:bg-white disabled:cursor-not-allowed" type="button">
           <AiOutlinePlus size={30}
-                         className=""
           />
                   <span className="text-lg font-normal uppercase">rule</span>
         </button>

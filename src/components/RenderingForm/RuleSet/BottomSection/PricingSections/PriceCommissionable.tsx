@@ -28,6 +28,7 @@ export default function PriceCommissionable(props: Props) {
         <Field
           className={"InputClass" + widthClass}
           type="number"
+          pattern="/^\d+$/"
           name={commissionableBookingFeeAbsolute}
           value={commissionableBookingFeeAbsoluteValue}
           disabled={commissionablePriceSellingValue != ""}
@@ -38,9 +39,12 @@ export default function PriceCommissionable(props: Props) {
         <Field
           className={"InputClass" + widthClass}
           type="number"
+          pattern="/^\d+$/"
           name={commissionableBookingFeePercent}
           value={commissionableBookingFeePercentValue}
           disabled={commissionablePriceSellingValue != ""}
+          min={0}
+          //max={100}
         />
       </div>
       <div className={rowClass}>
@@ -48,6 +52,7 @@ export default function PriceCommissionable(props: Props) {
         <Field
           className={"InputClass" + widthClass}
           type="number"
+          pattern="/^\d+$/"
           name={commissionablePriceSelling}
           value={commissionablePriceSellingValue}
           disabled={commissionableBookingFeeAbsoluteValue != "" || commissionableBookingFeePercentValue != ""}
