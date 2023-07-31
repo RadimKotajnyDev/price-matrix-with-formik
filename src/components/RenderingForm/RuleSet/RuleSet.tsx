@@ -8,6 +8,7 @@ import {Title} from "./elements/Title.tsx";
 import {PriorityDown, PriorityUp} from "../functions/RenderFunctions.ts";
 import {PriorityButtons} from "./elements/PriorityButtons.tsx";
 import {BottomSection} from "./BottomSection/BottomSection.tsx";
+import {SaveRuleSetButton} from "./elements/SaveRuleSetButton.tsx";
 
 type FormikErrors<Values> = { [K in keyof Values]?: string };
 
@@ -18,6 +19,7 @@ export interface RuleType {
 }
 
 interface RuleSetProps {
+  onSaveClick: () => void,
   ruleSetID: number | string | null,
   ruleSetPriority: number | string | null,
   offerCode: string,
@@ -64,6 +66,7 @@ export default function RuleSet(props: RuleSetProps) {
     commissionableBookingFeePercent,
     commissionablePriceSelling,
     insideCommissionRate,
+    onSaveClick,
     removeRuleSet,
     rules,
     rulesString,
@@ -128,7 +131,9 @@ export default function RuleSet(props: RuleSetProps) {
         commissionablePriceSelling={commissionablePriceSelling}
         commissionablePriceSellingValue={commissionablePriceSellingValue}
         offerCode={offerCode}
-        insideCommissionRate={insideCommissionRate} />
+        insideCommissionRate={insideCommissionRate}
+      />
+      <SaveRuleSetButton onSaveClick={onSaveClick} />
     </div>
   )
 }

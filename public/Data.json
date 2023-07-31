@@ -1,6 +1,6 @@
 {
   "id": 0,
-  "name": "string",
+  "name": "matrix sample name",
   "ruleSets": [
     {
       "ruleSetId": null,
@@ -10,22 +10,22 @@
           "ruleId": null,
           "fieldId": 2,
           "compareOperatorId": 3,
-          "value": ""
+          "value": "2020-01-05T00:00:00"
         }
       ],
       "priceCommissionable": {
         "priceSelling":  2,
-        "bookingFeePercent": null,
-        "bookingFeeAbsolute": null
+        "bookingFeeAbsolute": null,
+        "bookingFeePercent": null
       },
       "priceNet": {
         "priceSelling": null,
-        "bookingFeePercent": 23,
-        "bookingFeeAbsolute": 11
+        "bookingFeeAbsolute": 11,
+        "bookingFeePercent": 23
       },
       "insideCommissionRate": 12,
-      "note": "string",
-      "offerCode": "string"
+      "note": "some note text",
+      "offerCode": "offer-code-sample-text"
     }
   ]
 }

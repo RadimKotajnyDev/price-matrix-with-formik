@@ -1,10 +1,43 @@
 import {defaultRuleset} from "../../../configs/ruleset/defaultRuleset.tsx";
 import {ruleSet, rulesType} from "./RuleSetType.ts";
+import axios from "axios";
 
 
 type Values = { ruleSets: ruleSet[]; }
 
-export function NullDataToEmptyStrings(data: {id: number, name: string, ruleSets: ruleSet[]}) {
+export function RuleSetEmptyStringsToNull(object: ruleSet) {
+  return {
+    ruleSetId: object.ruleSetId === "" ? null : object.ruleSetId,
+    priority: object.priority === "" ? null : object.priority,
+    rules: object.rules.map((rule: rulesType) => {
+      return {
+        ruleId: rule.ruleId === "" ? null : rule.ruleId,
+        fieldId: rule.fieldId === "" ? null : rule.fieldId,
+        compareOperatorId: rule.compareOperatorId === "" ? null : rule.compareOperatorId,
+        value: rule.value === "" ? null : rule.value
+      }
+    }),
+    priceCommissionable: {
+      priceSelling:
+        object.priceCommissionable.priceSelling === "" ? null : object.priceCommissionable.priceSelling,
+      bookingFeeAbsolute:
+        object.priceCommissionable.bookingFeeAbsolute === "" ? null : object.priceCommissionable.bookingFeeAbsolute,
+      bookingFeePercent:
+        object.priceCommissionable.bookingFeePercent === "" ? null : object.priceCommissionable.bookingFeePercent,
+    },
+    priceNet: {
+      priceSelling: object.priceNet.priceSelling === "" ? null : object.priceNet.priceSelling,
+      bookingFeeAbsolute: object.priceNet.bookingFeeAbsolute === "" ? null : object.priceNet.bookingFeeAbsolute,
+      bookingFeePercent: object.priceNet.bookingFeePercent === "" ? null : object.priceNet.bookingFeePercent,
+    },
+    insideCommissionRate: object.insideCommissionRate === "" ? null : object.insideCommissionRate,
+    note: object.note === "" ? null : object.note,
+    offerCode: object.offerCode === "" ? null : object.offerCode,
+  }
+}
+
+
+export function NullDataToEmptyStrings(data: { id: number, name: string, ruleSets: ruleSet[] }) {
   data.ruleSets.map((item: ruleSet, index: number) => {
     data.ruleSets[index] = {
       ruleSetId: item.ruleSetId === null ? "" : item.ruleSetId,
@@ -38,7 +71,7 @@ export function NullDataToEmptyStrings(data: {id: number, name: string, ruleSets
   return console.log(data)
 }
 
-export function EmptyStringsToNull(data: {id: number, name: string, ruleSets: ruleSet[]}) {
+export function EmptyStringsToNull(data: { id: number, name: string, ruleSets: ruleSet[] }) {
   data.ruleSets.map((item: ruleSet, index: number) => {
     data.ruleSets[index] = {
       ruleSetId: item.ruleSetId === "" ? null : item.ruleSetId,
@@ -78,7 +111,7 @@ export function RemapPriorities(jsonData: ruleSet[]) {
 
   const jsonLength = ruleSets.length;
 
-  const priorities = Array.from({length: jsonLength}, (_, index) => index + 1);
+  const priorities = Array.from({length: jsonLength}, (_, index) => jsonLength - index - 1);
 
   ruleSets.forEach((ruleSet: ruleSet, index: number) => {
     ruleSet.priority = priorities[index];
@@ -131,14 +164,22 @@ export const HandleRemoveRuleSet = (values: Values, setValues: (values: Values) 
   setValues(values);
 };
 
-export const AddRuleset = (values: Values, setValues: (values: object) => void) => {
+export const AddRuleset = (values: Values, setValues: (values: object) => void, matrixId: number) => {
+  axios.post(`https://localhost:7062/pricematrix/${matrixId}/ruleset`)
+    .then(response => {
+    console.log('RuleSet added successfully.', response.data);
+  })
+    .catch(error => {
+      console.error('Error: \n', error);
+    });
+
   const newRuleset: ruleSet = {...defaultRuleset};
-  newRuleset.priority = values.ruleSets.length + 1;
+  newRuleset.priority = values.ruleSets.length;
   newRuleset.ruleSetId = "" //backend will create new ID
 
   const updatedValues = {
     ...values,
-    ruleSets: [...values.ruleSets, newRuleset],
+    ruleSets: [newRuleset, ...values.ruleSets],
   };
   setValues(updatedValues);
 };

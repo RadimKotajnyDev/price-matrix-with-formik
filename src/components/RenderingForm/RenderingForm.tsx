@@ -1,9 +1,8 @@
 import {FieldArray, Form, Formik} from 'formik';
-import {ResolveRuleSets} from "../../configs/API.tsx";
+import {ResolveRuleSets, SaveRuleSet} from "../../configs/API.tsx";
 import RuleSet from "./RuleSet/RuleSet.tsx";
 import {Heading} from "./elements/Heading.tsx";
-import {AddRuleset, HandleRemoveRuleSet, ScrollToLastElement} from "./functions/RenderFunctions.ts";
-import {FormBottomButtons} from "./elements/FormBottomButtons.tsx";
+import {AddRuleset, HandleRemoveRuleSet} from "./functions/RenderFunctions.ts";
 import {useEffect, useRef, useState} from "react";
 import Modal from "./elements/Modal.tsx";
 import {schema} from "./functions/validationSchema.ts";
@@ -11,7 +10,7 @@ import {ruleSet} from "./functions/RuleSetType.ts";
 
 const resolvedRuleSets = await ResolveRuleSets()
 
-export default function RenderingForm(props: { data: { id: number, name: string } }) {
+export default function RenderingForm(props: { matrix: { id: number, name: string } }) {
 
   const ref = useRef(null)
 
@@ -22,7 +21,7 @@ export default function RenderingForm(props: { data: { id: number, name: string 
     setLastRuleSetAdded(true);
     setTimeout(() => {
       setLastRuleSetAdded(false);
-      ScrollToLastElement(ref);
+      //ScrollToLastElement(ref);
     }, 500);
   };
 
@@ -47,7 +46,7 @@ export default function RenderingForm(props: { data: { id: number, name: string 
     <Formik
       validationSchema={schema}
       initialValues={
-        {id: props.data.id, name: props.data.name, ruleSets: resolvedRuleSets}
+        {id: props.matrix.id, name: props.matrix.name, ruleSets: resolvedRuleSets}
       }
       onSubmit={
         (values) => {
@@ -56,7 +55,7 @@ export default function RenderingForm(props: { data: { id: number, name: string 
           setModalState(true)
         }
       }
-      validateOnChange={false}
+      //validateOnChange={false}
     >
       {({values, setFieldValue, setValues, errors, isValid}: {
         values: any,
@@ -75,46 +74,50 @@ export default function RenderingForm(props: { data: { id: number, name: string 
                   openModal={() => setModalState(true)}
                   closeModal={() => setModalState(false)}
                 />
-                <Heading data={props.data}
+                <Heading matrix={props.matrix} addRuleSet={() => {
+                  AddRulesetAnimate()
+                  AddRuleset(values, setValues, props.matrix.id);
+                }}
                 />
                 <div ref={ref}>
-                  {values.ruleSets.map((ruleSet: ruleSet, index: number) => {
+                  {values.ruleSets.map((ruleSet: ruleSet, ruleSetIndex: number) => {
                     return (
-                      <div key={index}
-                           className={`list-item list-none ${index + 1 === values.ruleSets.length && lastRuleSetAdded ? 'animate' : ''}
-                       ${ruleSetToRemoveAnimation === index ? 'animate' : ''}`}>
+                      <div key={ruleSetIndex}
+                           className={`list-item list-none ${ruleSetIndex === 0 && lastRuleSetAdded ? 'animate' : ''}
+                       ${ruleSetToRemoveAnimation === ruleSetIndex ? 'animate' : ''}`}>
                         <RuleSet
                           removeRuleSet={() => {
-                            setRuleSetToRemoveAnimation(index);
+                            setRuleSetToRemoveAnimation(ruleSetIndex);
                             setTimeout(() => {
                               setRuleSetToRemoveAnimation(null)
-                              HandleRemoveRuleSet(values, setValues, index)
+                              HandleRemoveRuleSet(values, setValues, ruleSetIndex)
                             }, 500);
                           }}
                           errors={errors}
-                          ruleSetIndex={index}
+                          ruleSetIndex={ruleSetIndex}
                           ruleSetPriority={ruleSet.priority}
                           ruleSetID={ruleSet.ruleSetId}
                           rules={ruleSet.rules}
-                          rulesString={`ruleSets[${index}].rules`}
-                          offerCode={`ruleSets[${index}].offerCode`}
-                          note={`ruleSets[${index}].note`}
+                          rulesString={`ruleSets[${ruleSetIndex}].rules`}
+                          offerCode={`ruleSets[${ruleSetIndex}].offerCode`}
+                          note={`ruleSets[${ruleSetIndex}].note`}
                           netBookingFeeAbsoluteValue={ruleSet.priceNet.bookingFeeAbsolute}
                           netBookingFeePercentValue={ruleSet.priceNet.bookingFeePercent}
                           netPriceSellingValue={ruleSet.priceNet.priceSelling}
-                          netBookingFeeAbsolute={`ruleSets[${index}].priceNet.bookingFeeAbsolute`}
-                          netBookingFeePercent={`ruleSets[${index}].priceNet.bookingFeePercent`}
-                          netPriceSelling={`ruleSets[${index}].priceNet.priceSelling`}
+                          netBookingFeeAbsolute={`ruleSets[${ruleSetIndex}].priceNet.bookingFeeAbsolute`}
+                          netBookingFeePercent={`ruleSets[${ruleSetIndex}].priceNet.bookingFeePercent`}
+                          netPriceSelling={`ruleSets[${ruleSetIndex}].priceNet.priceSelling`}
                           commissionableBookingFeeAbsoluteValue={ruleSet.priceCommissionable.bookingFeeAbsolute}
                           commissionableBookingFeePercentValue={ruleSet.priceCommissionable.bookingFeePercent}
                           commissionablePriceSellingValue={ruleSet.priceCommissionable.priceSelling}
-                          commissionableBookingFeeAbsolute={`ruleSets[${index}].priceCommissionable.bookingFeeAbsolute`}
-                          commissionableBookingFeePercent={`ruleSets[${index}].priceCommissionable.bookingFeePercent`}
-                          commissionablePriceSelling={`ruleSets[${index}].priceCommissionable.priceSelling`}
-                          insideCommissionRate={`ruleSets[${index}].insideCommissionRate`}
+                          commissionableBookingFeeAbsolute={`ruleSets[${ruleSetIndex}].priceCommissionable.bookingFeeAbsolute`}
+                          commissionableBookingFeePercent={`ruleSets[${ruleSetIndex}].priceCommissionable.bookingFeePercent`}
+                          commissionablePriceSelling={`ruleSets[${ruleSetIndex}].priceCommissionable.priceSelling`}
+                          insideCommissionRate={`ruleSets[${ruleSetIndex}].insideCommissionRate`}
                           setFieldValue={setFieldValue}
                           values={values}
                           setValues={setValues}
+                          onSaveClick={() => SaveRuleSet(props.matrix.id, ruleSet.ruleSetId, ruleSet)}
                         />
                       </div>
                     )
@@ -123,13 +126,6 @@ export default function RenderingForm(props: { data: { id: number, name: string 
               </div>
             )}
           </FieldArray>
-          <FormBottomButtons addRuleset={
-            () => {
-              AddRuleset(values, setValues);
-              AddRulesetAnimate()
-            }}
-          onClickProp={() => {if(!isValid) {DisplayError()}}}
-          />
         </Form>
       )}
     </Formik>

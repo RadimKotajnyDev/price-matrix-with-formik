@@ -3,30 +3,31 @@ import * as yup from "yup";
 export const schema = yup.object().shape({
   id: yup.number(),
   name: yup.string(),
-  ruleSets: yup.array().min(1).of(
+  ruleSets: yup.array().of(
     yup.object().shape({
-      ruleSetId: yup.number(),
-      logicalOperatorId: yup.number(),
-      priority: yup.number().required(),
+      ruleSetId: yup.number().nullable(),
+      priority: yup.number(),
       rules: yup.array().of(
         yup.object().shape({
-          ruleSetId: yup.number(),
-          ruleId: yup.number(),
-          fieldId: yup.number().required().min(1),
-          compareOperatorId: yup.number().required().min(1),
-          valueInt: yup.number(),
-          valueString: yup.string(),
-          valueDateTime: yup.string(),
-          valueDecimal: yup.number(),
-          priority: yup.number().optional(),
+          ruleId: yup.number().nullable(),
+          fieldId: yup.number().required(),
+          compareOperatorId: yup.number().required(),
+          value: yup.string().nullable().required(),
         })
       ),
-      priceSelling: yup.number(),
-      bookingFeePercent: yup.number(),
-      bookingFeeAbsolute: yup.number(),
-      insideCommissionRate: yup.number(),
-      note: yup.string().optional(),
-      offerCode: yup.string().optional(),
+      priceCommissionable: yup.object().shape({
+        priceSelling: yup.number().nullable(),
+        bookingFeePercent: yup.number().nullable(),
+        bookingFeeAbsolute: yup.number().nullable(),
+      }),
+      priceNet: yup.object().shape({
+        priceSelling: yup.number().nullable(),
+        bookingFeePercent: yup.number().nullable(),
+        bookingFeeAbsolute: yup.number().nullable(),
+      }),
+      insideCommissionRate: yup.number().nullable(),
+      note: yup.string().nullable(),
+      offerCode: yup.string().nullable(),
     })
   ),
 });

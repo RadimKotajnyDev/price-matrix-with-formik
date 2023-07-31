@@ -28,7 +28,7 @@ export default function Rule(props: RuleProps) {
     <>
       <div className="flex flex-row mb-3">
         <div className="flex flex-row relative">
-          <Field component="select" className={`InputClass w-[15rem] ${props.rule.fieldId ? "" : "border-red-400"}`}
+          <Field component="select" className={`InputClass w-[18rem] ${props.rule.fieldId ? "" : "border-red-400"}`}
             required={true}
                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
                    props.setFieldValue(props.fieldName, parseInt(e.target.value));
@@ -43,7 +43,7 @@ export default function Rule(props: RuleProps) {
           <ArrowOnSelect/>
         </div>
         <div className="flex flex-row relative">
-          <Field component="select" className={`InputClass w-[15rem] ${props.rule.compareOperatorId ? "" : "border-red-400"}`}
+          <Field component="select" className={`InputClass w-[18rem] ${props.rule.compareOperatorId ? "" : "border-red-400"}`}
                  required={true}
                  onChange={(e: ChangeEvent<HTMLInputElement>) => props.setFieldValue(props.optionName, parseInt(e.target.value))}
                  name={props.optionName} value={props.rule.compareOperatorId}>

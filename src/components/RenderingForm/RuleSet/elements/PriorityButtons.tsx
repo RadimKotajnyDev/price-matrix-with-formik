@@ -1,15 +1,26 @@
 import {AiOutlineDown, AiOutlineUp} from "react-icons/ai";
 
-export const PriorityButtons = (props: any) => {
+interface PriorityButtonsProps {
+  onUP: () => void,
+  onDOWN: () => void
+}
+
+export const PriorityButtons = (props: PriorityButtonsProps) => {
   return (
     <div className="flex flex-col absolute mt-10 -left-6 gap-6">
-      <button className="ButtonClass" type="button"
+      <button type="button"
               onClick={props.onUP}>
-        <AiOutlineUp size={35} className="ButtonIconClass" />
+        <AiOutlineUp
+          size={35}
+          className="ButtonIconClass"
+        />
       </button>
-      <button className="ButtonClass" type="button"
+      <button type="button"
               onClick={props.onDOWN}>
-        <AiOutlineDown size={35} className="ButtonIconClass" />
+        <AiOutlineDown
+          size={35}
+          className="ButtonIconClass"
+        />
       </button>
     </div>
   )

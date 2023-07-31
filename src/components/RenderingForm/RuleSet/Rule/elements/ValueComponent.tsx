@@ -18,7 +18,7 @@ export default function ValueComponent(props: valueProps) {
     <div className="flex flex-row relative">
       {props.rule.fieldId === 3 ?
         <>
-          <Field className="InputClass w-[15rem]"
+          <Field className="InputClass w-[18rem]"
                  component="select"
                  disabled={disabledBool}
                  onChange={(e: ChangeEvent<HTMLInputElement>) => props.setFieldValue(
@@ -37,7 +37,7 @@ export default function ValueComponent(props: valueProps) {
           <ArrowOnSelect/>
         </>
         :
-        <Field className="InputClass w-[15rem]"
+        <Field className="InputClass w-[18rem]"
                component="input"
                disabled={props.rule.fieldId === 0}
                onChange={(e: ChangeEvent<HTMLInputElement>) => props.setFieldValue(props.valueName, e.target.value)} // parseInt(e.target.value)
