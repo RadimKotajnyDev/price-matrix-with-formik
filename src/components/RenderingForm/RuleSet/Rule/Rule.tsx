@@ -9,6 +9,7 @@ import {ChangeEvent} from "react";
 import type {RuleType} from "../RuleSetTypes.ts"
 
 type FormikErrors<Values> = { [K in keyof Values]?: string };
+
 interface RuleProps {
   values: { ruleSets: object[]; },
   setValues: () => void
@@ -20,7 +21,7 @@ interface RuleProps {
   ruleSetIndex: number,
   ruleIndex: number,
   rule: RuleType,
-  errors: any | FormikErrors<{  ruleSets: object[]; }>
+  errors: any | FormikErrors<{ ruleSets: object[]; }>
 }
 
 
@@ -37,7 +38,7 @@ export default function Rule(props: RuleProps) {
           && props.errors?.ruleSets[props.ruleSetIndex].rules
           && props.errors?.ruleSets[props.ruleSetIndex].rules[props.ruleIndex]
           && props.errors?.ruleSets[props.ruleSetIndex].rules[props.ruleIndex].fieldId ? "border-red-400 text-red-600" : ""}`}
-            required={true}
+                 required={true}
                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
                    props.setFieldValue(props.fieldName, parseInt(e.target.value));
                    props.setFieldValue(props.optionName, 0); //fixed compareOperatorId value when changing field
@@ -65,7 +66,7 @@ export default function Rule(props: RuleProps) {
               MapOperators(props.rule.fieldId)
             }
           </Field>
-          <ArrowOnSelect/>
+          <ArrowOnSelect />
         </div>
         <ValueComponent rule={props.rule}
                         valueName={props.valueName}
@@ -80,7 +81,8 @@ export default function Rule(props: RuleProps) {
                         }
                         setFieldValue={props.setFieldValue}
         />
-        <button type="button" onClick={() => RemoveRule(props.values, props.setValues, props.ruleSetIndex, props.ruleIndex)}>
+        <button type="button"
+                onClick={() => RemoveRule(props.values, props.setValues, props.ruleSetIndex, props.ruleIndex)}>
           <AiOutlineMinus
             size={35}
             className="ml-2 rounded text-white bg-slate-800 duration-200

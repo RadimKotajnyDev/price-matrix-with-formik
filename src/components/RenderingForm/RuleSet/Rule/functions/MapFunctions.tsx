@@ -10,21 +10,21 @@ export function MapOperators(fieldId: string | number | null) {
     case 0:
       return <option key={0} value={0}>---select operator---</option>
     case 1:
-      return SelectField1.map((current) => (
+      return SelectField1.map((current: {name: string, id: number}) => (
         <option key={current.id} value={current.id}>{current.name}</option>
       ))
     case 2:
     case 5:
     case 6:
-      return SelectField256.map((current) => (
+      return SelectField256.map((current: {name: string, id: number}) => (
         <option key={current.id} value={current.id}>{current.name}</option>
       ))
     case 3:
-      return SelectField3.map((current) => (
+      return SelectField3.map((current: {name: string, id: number}) => (
         <option key={current.id} value={current.id}>{current.name}</option>
       ))
     case 4:
-      return SelectField4.map((current) => (
+      return SelectField4.map((current: {name: string, id: number}) => (
         <option key={current.id} value={current.id}>{current.name}</option>
       ))
     default:

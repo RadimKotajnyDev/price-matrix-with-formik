@@ -12,7 +12,11 @@ export const schema = yup.object().shape({
           ruleId: yup.number().nullable(),
           fieldId: yup.number().required().min(1),
           compareOperatorId: yup.number().required().min(1),
-          value: yup.string().nullable().required(),
+          value: yup.string().nullable().required() /*
+          .test('not-zero', 'Hodnota nemůže být 0', function (value) {
+            return value !== "0";
+          }),
+          */
         })
       ),
       priceCommissionable: yup.object().shape({
