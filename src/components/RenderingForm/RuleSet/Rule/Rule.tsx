@@ -31,7 +31,7 @@ export default function Rule(props: RuleProps) {
     <>
       <div className="flex flex-row mb-3">
         <div className="flex flex-row relative">
-          <Field component="select" className={`InputClass w-[18rem]
+          <Field component="select" className={`InputClass w-[17.7rem]
            ${props.errors
           && props.errors?.ruleSets
           && props.errors?.ruleSets[props.ruleSetIndex]
@@ -52,7 +52,7 @@ export default function Rule(props: RuleProps) {
           <ArrowOnSelect/>
         </div>
         <div className="flex flex-row relative">
-          <Field component="select" className={`InputClass w-[18rem]
+          <Field component="select" className={`InputClass w-[17.7rem]
            ${props.errors
           && props.errors?.ruleSets
           && props.errors?.ruleSets[props.ruleSetIndex]
