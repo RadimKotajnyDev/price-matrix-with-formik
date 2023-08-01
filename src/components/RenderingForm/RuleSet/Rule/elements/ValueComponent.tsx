@@ -50,7 +50,7 @@ export default function ValueComponent(props: valueProps) {
         :
         <Field className={`InputClass w-[18rem] ${props.errorExists ? "border-red-400 text-red-600" : ""}`}
                component="input"
-               disabled={props.rule.fieldId === 0}
+               disabled={disabledBool}
                onChange={(e: ChangeEvent<HTMLInputElement>) => props.setFieldValue(props.valueName, e.target.value)} // parseInt(e.target.value)
                name={props.valueName}
                value={props.value}

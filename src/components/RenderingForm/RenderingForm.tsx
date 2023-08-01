@@ -7,6 +7,7 @@ import {useEffect, useRef, useState} from "react";
 import Modal from "./elements/Modal.tsx";
 import {schema} from "./functions/validationSchema.ts";
 import {ruleSet} from "./functions/RuleSetType.ts";
+import {FormBottomButtons} from "./elements/FormBottomButtons.tsx";
 
 const resolvedRuleSets = await ResolveRuleSets()
 
@@ -76,7 +77,7 @@ export default function RenderingForm(props: { matrix: { id: number, name: strin
                   closeModal={() => setModalState(false)}
                 />
                 <Heading matrix={props.matrix} addRuleSet={() => {
-                  AddRulesetAnimate()
+                  AddRulesetAnimate();
                   AddRuleset(values, setValues, props.matrix.id);
                 }}
                 />
@@ -90,8 +91,8 @@ export default function RenderingForm(props: { matrix: { id: number, name: strin
                           removeRuleSet={() => {
                             setRuleSetToRemoveAnimation(ruleSetIndex);
                             setTimeout(() => {
-                              setRuleSetToRemoveAnimation(null)
-                              HandleRemoveRuleSet(values, setValues, ruleSetIndex, props.matrix.id, ruleSet.ruleSetId)
+                              setRuleSetToRemoveAnimation(null);
+                              HandleRemoveRuleSet(values, setValues, ruleSetIndex, props.matrix.id, ruleSet.ruleSetId);
                             }, 500);
                           }}
                           errors={errors}
@@ -127,6 +128,7 @@ export default function RenderingForm(props: { matrix: { id: number, name: strin
               </div>
             )}
           </FieldArray>
+          {/*<FormBottomButtons/>*/}
         </Form>
       )}
     </Formik>

@@ -8,7 +8,7 @@ export const defaultRuleset = {
       "ruleId": "",
       "fieldId": 0,
       "compareOperatorId": 0,
-      "value": "0"
+      "value": ""
     }
   ],
   "priceCommissionable": {
