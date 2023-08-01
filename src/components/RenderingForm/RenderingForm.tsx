@@ -7,7 +7,6 @@ import {useEffect, useRef, useState} from "react";
 import Modal from "./elements/Modal.tsx";
 import {schema} from "./functions/validationSchema.ts";
 import {ruleSet} from "./functions/RuleSetType.ts";
-import {FormBottomButtons} from "./elements/FormBottomButtons.tsx";
 
 const resolvedRuleSets = await ResolveRuleSets()
 
