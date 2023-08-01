@@ -84,7 +84,7 @@ export default function Rule(props: RuleProps) {
         <button type="button"
                 onClick={() => RemoveRule(props.values, props.setValues, props.ruleSetIndex, props.ruleIndex)}>
           <AiOutlineMinus
-            size={35}
+            size={30}
             className="ml-2 rounded text-white bg-slate-800 duration-200
                        hover:text-slate-900 hover:bg-white disabled:cursor-not-allowed"
           />
