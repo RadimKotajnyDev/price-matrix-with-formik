@@ -37,10 +37,11 @@ export default function RenderingForm(props: { matrix: { id: number, name: strin
     }
   }, [ModalState]);
 
+  /*
   function DisplayError() {
     setErrorModal(true)
     setModalState(true)
-  }
+  } */
 
   return (
     <Formik
@@ -57,7 +58,7 @@ export default function RenderingForm(props: { matrix: { id: number, name: strin
       }
       //validateOnChange={false}
     >
-      {({values, setFieldValue, setValues, errors, isValid}: {
+      {({values, setFieldValue, setValues, errors, /*isValid*/}: {
         values: any,
         setFieldValue: any,
         setValues: any,
@@ -90,7 +91,7 @@ export default function RenderingForm(props: { matrix: { id: number, name: strin
                             setRuleSetToRemoveAnimation(ruleSetIndex);
                             setTimeout(() => {
                               setRuleSetToRemoveAnimation(null)
-                              HandleRemoveRuleSet(values, setValues, ruleSetIndex)
+                              HandleRemoveRuleSet(values, setValues, ruleSetIndex, props.matrix.id, ruleSet.ruleSetId)
                             }, 500);
                           }}
                           errors={errors}

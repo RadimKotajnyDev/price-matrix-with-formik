@@ -3,7 +3,10 @@ import {
   NullDataToEmptyStrings,
   RuleSetEmptyStringsToNull
 } from "../components/RenderingForm/functions/RenderFunctions.ts";
-import {ruleSet, rulesType} from "../components/RenderingForm/functions/RuleSetType.ts";
+import {ruleSet} from "../components/RenderingForm/functions/RuleSetType.ts";
+
+//export const defaultURL = "https://localhost:7062"
+export const defaultURL = ""
 
 export async function FetchData() {
   try {
@@ -30,7 +33,7 @@ export async function ResolveRuleSets() {
 export function SaveRuleSet(matrixId: number, ruleSetId: number | string | null, ruleSet: ruleSet) {
   //check empty strings, reformat them
   console.log("Ruleset " + ruleSetId + " has been updated.")
-  const apiUrl = `https://localhost:7062/pricematrix/${matrixId}/ruleset/${ruleSetId}`
+  const apiUrl = `${defaultURL}/pricematrix/${matrixId}/ruleset/${ruleSetId}`
   axios.put(apiUrl, RuleSetEmptyStringsToNull(ruleSet))
     .then(response => {
       console.log('Successfully updated', response.data);

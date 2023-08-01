@@ -9,7 +9,8 @@ interface valueProps {
   setFieldValue: (field: string | number | undefined, value: number | string, shouldValidate?: boolean) => void,
   rule: RuleType
   valueName: string,
-  value: string | null
+  value: string | null,
+  errorExists: any
 }
 
 export default function ValueComponent(props: valueProps) {
@@ -18,7 +19,7 @@ export default function ValueComponent(props: valueProps) {
     <div className="flex flex-row relative">
       {props.rule.fieldId === 3 ?
         <>
-          <Field className="InputClass w-[18rem]"
+          <Field className={`InputClass w-[18rem] ${props.errorExists ? "border-red-400 text-red-600" : "" }`}
                  component="select"
                  disabled={disabledBool}
                  onChange={(e: ChangeEvent<HTMLInputElement>) => props.setFieldValue(
@@ -37,7 +38,7 @@ export default function ValueComponent(props: valueProps) {
           <ArrowOnSelect/>
         </>
         :
-        <Field className="InputClass w-[18rem]"
+        <Field className={`InputClass w-[18rem] ${props.errorExists ? "border-red-400 text-red-600" : "" }`}
                component="input"
                disabled={props.rule.fieldId === 0}
                onChange={(e: ChangeEvent<HTMLInputElement>) => props.setFieldValue(props.valueName, e.target.value)} // parseInt(e.target.value)

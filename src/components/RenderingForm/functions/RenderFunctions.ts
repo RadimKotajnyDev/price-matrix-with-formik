@@ -1,7 +1,7 @@
 import {defaultRuleset} from "../../../configs/ruleset/defaultRuleset.tsx";
 import {ruleSet, rulesType} from "./RuleSetType.ts";
 import axios from "axios";
-
+import {defaultURL} from "../../../configs/API.tsx"
 
 type Values = { ruleSets: ruleSet[]; }
 
@@ -156,7 +156,15 @@ export function PriorityDown(values: any, setValues: (values: Values) => void, r
   }
 }
 
-export const HandleRemoveRuleSet = (values: Values, setValues: (values: Values) => void, index: number) => {
+export const HandleRemoveRuleSet = (values: Values, setValues: (values: Values) => void, index: number, matrixId: number, ruleSetId: number | string | null) => {
+  axios.delete(`${defaultURL}/pricematrix/${matrixId}/ruleset/${ruleSetId}`)
+    .then(response => {
+    console.log('RuleSet removed successfully.', response.data);
+  })
+    .catch(error => {
+      console.error('Error: \n', error);
+    });
+
   values.ruleSets.splice(index, 1);
 
   RemapPriorities(values.ruleSets)
@@ -165,7 +173,7 @@ export const HandleRemoveRuleSet = (values: Values, setValues: (values: Values) 
 };
 
 export const AddRuleset = (values: Values, setValues: (values: object) => void, matrixId: number) => {
-  axios.post(`https://localhost:7062/pricematrix/${matrixId}/ruleset`)
+  axios.post(`${defaultURL}/pricematrix/${matrixId}/ruleset`)
     .then(response => {
     console.log('RuleSet added successfully.', response.data);
   })

@@ -10,8 +10,8 @@ export const schema = yup.object().shape({
       rules: yup.array().of(
         yup.object().shape({
           ruleId: yup.number().nullable(),
-          fieldId: yup.number().required(),
-          compareOperatorId: yup.number().required(),
+          fieldId: yup.number().required().min(1),
+          compareOperatorId: yup.number().required().min(1),
           value: yup.string().nullable().required(),
         })
       ),
