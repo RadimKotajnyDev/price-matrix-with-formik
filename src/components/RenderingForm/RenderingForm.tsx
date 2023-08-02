@@ -1,5 +1,5 @@
 import {FieldArray, Form, Formik} from 'formik';
-import {ResolveRuleSets} from "../../configs/API.tsx";
+import {ReformatRuleSets} from "../../configs/API.tsx";
 import RuleSet from "./RuleSet/RuleSet.tsx";
 import {Heading} from "./elements/Heading.tsx";
 import {AddRuleset, HandleRemoveRuleSet, ScrollToTop} from "./functions/RenderFunctions.ts";
@@ -9,7 +9,7 @@ import {schema} from "./functions/validationSchema.ts";
 import {ruleSet} from "./functions/RuleSetType.ts";
 import {SubmitMatrixButton} from "./elements/SubmitMatrixButton.tsx";
 
-const resolvedRuleSets = await ResolveRuleSets()
+const resolvedRuleSets = await ReformatRuleSets()
 
 export default function RenderingForm(props: { matrix: { id: number, name: string } }) {
 
