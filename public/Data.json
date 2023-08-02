@@ -10,7 +10,7 @@
           "ruleId": null,
           "fieldId": 2,
           "compareOperatorId": 3,
-          "value": "2020-01-05T00:00:00"
+          "value": "2014-01-23T00:00"
         }
       ],
       "priceCommissionable": {

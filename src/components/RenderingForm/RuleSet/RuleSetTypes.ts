@@ -7,7 +7,6 @@ export interface RuleType {
 }
 
 export interface RuleSetProps {
-  onSaveClick: () => void,
   ruleSetID: number | string | null,
   ruleSetPriority: number | string | null,
   offerCode: string,

@@ -1,5 +1,5 @@
 import {FieldArray, Form, Formik} from 'formik';
-import {ResolveRuleSets, SaveRuleSet} from "../../configs/API.tsx";
+import {ResolveRuleSets} from "../../configs/API.tsx";
 import RuleSet from "./RuleSet/RuleSet.tsx";
 import {Heading} from "./elements/Heading.tsx";
 import {AddRuleset, HandleRemoveRuleSet, ScrollToTop} from "./functions/RenderFunctions.ts";
@@ -7,6 +7,7 @@ import {useEffect, useRef, useState} from "react";
 import Modal from "./elements/Modal.tsx";
 import {schema} from "./functions/validationSchema.ts";
 import {ruleSet} from "./functions/RuleSetType.ts";
+import {SubmitMatrixButton} from "./elements/SubmitMatrixButton.tsx";
 
 const resolvedRuleSets = await ResolveRuleSets()
 
@@ -118,7 +119,6 @@ export default function RenderingForm(props: { matrix: { id: number, name: strin
                           setFieldValue={setFieldValue}
                           values={values}
                           setValues={setValues}
-                          onSaveClick={() => SaveRuleSet(props.matrix.id, ruleSet.ruleSetId, ruleSet)}
                         />
                       </div>
                     )
@@ -127,7 +127,7 @@ export default function RenderingForm(props: { matrix: { id: number, name: strin
               </div>
             )}
           </FieldArray>
-          {/*<FormBottomButtons/>*/}
+          <SubmitMatrixButton/>
         </Form>
       )}
     </Formik>

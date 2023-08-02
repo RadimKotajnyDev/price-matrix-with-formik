@@ -8,7 +8,6 @@ import {Title} from "./elements/Title.tsx";
 import {PriorityDown, PriorityUp} from "../functions/RenderFunctions.ts";
 import {PriorityButtons} from "./elements/PriorityButtons.tsx";
 import {BottomSection} from "./BottomSection/BottomSection.tsx";
-import {SaveRuleSetButton} from "./elements/SaveRuleSetButton.tsx";
 import {RuleSetProps, RuleType} from "./RuleSetTypes.ts";
 
 export default function RuleSet(props: RuleSetProps) {
@@ -30,7 +29,6 @@ export default function RuleSet(props: RuleSetProps) {
     commissionableBookingFeePercent,
     commissionablePriceSelling,
     insideCommissionRate,
-    onSaveClick,
     removeRuleSet,
     rules,
     rulesString,
@@ -97,7 +95,6 @@ export default function RuleSet(props: RuleSetProps) {
         offerCode={offerCode}
         insideCommissionRate={insideCommissionRate}
       />
-      <SaveRuleSetButton onSaveClick={onSaveClick} />
     </div>
   )
 }
