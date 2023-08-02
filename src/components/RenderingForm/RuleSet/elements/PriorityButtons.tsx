@@ -7,18 +7,18 @@ interface PriorityButtonsProps {
 
 export const PriorityButtons = (props: PriorityButtonsProps) => {
   return (
-    <div className="flex flex-col absolute mt-10 -left-4 gap-6">
+    <div className="flex flex-col absolute mt-10 -left-3 gap-4">
       <button type="button"
               onClick={props.onUP}>
         <AiOutlineUp
-          size={30}
+          size={25}
           className="ButtonIconClass"
         />
       </button>
       <button type="button"
               onClick={props.onDOWN}>
         <AiOutlineDown
-          size={30}
+          size={25}
           className="ButtonIconClass"
         />
       </button>
