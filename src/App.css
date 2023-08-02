@@ -51,6 +51,6 @@
     }
     .list-item.animate {
         opacity: 0;
-        transition: opacity 500ms, transform 500ms;
+        transition: opacity 250ms, transform 1000ms;
     }
 }
