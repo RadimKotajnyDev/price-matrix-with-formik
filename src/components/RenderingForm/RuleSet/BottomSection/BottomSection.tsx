@@ -41,15 +41,6 @@ export const BottomSection = (props: Props) => {
 
   return (
     <section className="flex flex-row mt-5 border-t-2 border-b-2 py-2">
-      <PriceNet
-        netBookingFeeAbsolute={netBookingFeeAbsolute}
-        netBookingFeeAbsoluteValue={netBookingFeeAbsoluteValue}
-        netBookingFeePercent={netBookingFeePercent}
-        netBookingFeePercentValue={netBookingFeePercentValue}
-        netPriceSelling={netPriceSelling}
-        netPriceSellingValue={netPriceSellingValue}
-      />
-      <Divider />
       <PriceCommissionable
         commissionableBookingFeeAbsolute={commissionableBookingFeeAbsolute}
         commissionableBookingFeeAbsoluteValue={commissionableBookingFeeAbsoluteValue}
@@ -57,6 +48,15 @@ export const BottomSection = (props: Props) => {
         commissionableBookingFeePercentValue={commissionableBookingFeePercentValue}
         commissionablePriceSelling={commissionablePriceSelling}
         commissionablePriceSellingValue={commissionablePriceSellingValue}
+      />
+      <Divider />
+      <PriceNet
+        netBookingFeeAbsolute={netBookingFeeAbsolute}
+        netBookingFeeAbsoluteValue={netBookingFeeAbsoluteValue}
+        netBookingFeePercent={netBookingFeePercent}
+        netBookingFeePercentValue={netBookingFeePercentValue}
+        netPriceSelling={netPriceSelling}
+        netPriceSellingValue={netPriceSellingValue}
       />
       <Divider />
       <CodeAndCommission nameProp={offerCode} insideCommissionRate={insideCommissionRate}/>
