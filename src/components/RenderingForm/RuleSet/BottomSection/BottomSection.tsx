@@ -40,7 +40,7 @@ export const BottomSection = (props: Props) => {
   } = props
 
   return (
-    <section className="flex flex-row mt-5 border-t-2 border-b-2 py-2">
+    <section className="flex flex-row mt-5 border-t-2 py-2">
       <PriceCommissionable
         commissionableBookingFeeAbsolute={commissionableBookingFeeAbsolute}
         commissionableBookingFeeAbsoluteValue={commissionableBookingFeeAbsoluteValue}

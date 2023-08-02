@@ -8,6 +8,7 @@ import Modal from "./elements/Modal.tsx";
 import {schema} from "./functions/validationSchema.ts";
 import {ruleSet} from "./functions/RuleSetType.ts";
 import {SubmitMatrixButton} from "./elements/SubmitMatrixButton.tsx";
+import {AddRuleSetButton} from "./elements/AddRuleSetButton.tsx";
 
 const resolvedRuleSets = await ResolveRuleSets()
 
@@ -76,10 +77,7 @@ export default function RenderingForm(props: { matrix: { id: number, name: strin
                   openModal={() => setModalState(true)}
                   closeModal={() => setModalState(false)}
                 />
-                <Heading matrix={props.matrix} addRuleSet={() => {
-                  AddRulesetAnimate();
-                  AddRuleset(values, setValues, props.matrix.id);
-                }}
+                <Heading matrix={props.matrix}
                 />
                 <div>
                   {values.ruleSets.map((ruleSet: ruleSet, ruleSetIndex: number) => {
@@ -120,6 +118,10 @@ export default function RenderingForm(props: { matrix: { id: number, name: strin
                           values={values}
                           setValues={setValues}
                         />
+                        <AddRuleSetButton onAddRuleSetClick={() => {
+                          AddRulesetAnimate();
+                          AddRuleset(values, setValues, props.matrix.id);
+                        }} />
                       </div>
                     )
                   })}
