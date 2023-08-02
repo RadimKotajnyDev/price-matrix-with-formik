@@ -1,4 +1,4 @@
-export const AddRuleSetButton = (props: any) => {
+export const AddRuleSetButton = (props: {onAddRuleSetClick: () => void}) => {
   return (
     <div className="w-full flex justify-center">
       <button onClick={props.onAddRuleSetClick} className="flex flex-row px-2 p-1 items-center rounded text-white bg-slate-800 duration-200 cursor-pointer
