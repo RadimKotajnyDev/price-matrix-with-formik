@@ -192,7 +192,7 @@ export const AddRuleset = (values: Values, setValues: (values: object) => void, 
   setValues(updatedValues);
 };
 
-export const ScrollToLastElement = (ref: any) => {
-  const lastChildElement = ref.current as HTMLElement | null;
-  lastChildElement?.lastElementChild?.scrollIntoView({behavior: 'smooth'});
+export const ScrollToTop = (ref: any) => {
+  const firstChildElement = ref.current as HTMLElement | null;
+  firstChildElement?.firstElementChild?.scrollIntoView({ behavior: 'smooth' });
 };

@@ -2,7 +2,7 @@ import {FieldArray, Form, Formik} from 'formik';
 import {ResolveRuleSets, SaveRuleSet} from "../../configs/API.tsx";
 import RuleSet from "./RuleSet/RuleSet.tsx";
 import {Heading} from "./elements/Heading.tsx";
-import {AddRuleset, HandleRemoveRuleSet} from "./functions/RenderFunctions.ts";
+import {AddRuleset, HandleRemoveRuleSet, ScrollToTop} from "./functions/RenderFunctions.ts";
 import {useEffect, useRef, useState} from "react";
 import Modal from "./elements/Modal.tsx";
 import {schema} from "./functions/validationSchema.ts";
@@ -12,7 +12,7 @@ const resolvedRuleSets = await ResolveRuleSets()
 
 export default function RenderingForm(props: { matrix: { id: number, name: string } }) {
 
-  const ref = useRef(null)
+  const RefOnTop = useRef(null)
 
   const [lastRuleSetAdded, setLastRuleSetAdded] = useState<boolean>(false);
   const [ruleSetToRemoveAnimation, setRuleSetToRemoveAnimation] = useState<number | null>(null);
@@ -21,7 +21,7 @@ export default function RenderingForm(props: { matrix: { id: number, name: strin
     setLastRuleSetAdded(true);
     setTimeout(() => {
       setLastRuleSetAdded(false);
-      //ScrollToLastElement(ref);
+      ScrollToTop(RefOnTop);
     }, 500);
   };
 
@@ -65,7 +65,7 @@ export default function RenderingForm(props: { matrix: { id: number, name: strin
         errors: any,
         isValid: boolean
       }) => (
-        <Form className="flex justify-center">
+        <Form className="flex justify-center" ref={RefOnTop}>
           <FieldArray name={`ruleSets`}>
             {(/*{push, remove}*/) => (
               <div className="relative mb-20">
@@ -80,7 +80,7 @@ export default function RenderingForm(props: { matrix: { id: number, name: strin
                   AddRuleset(values, setValues, props.matrix.id);
                 }}
                 />
-                <div ref={ref}>
+                <div>
                   {values.ruleSets.map((ruleSet: ruleSet, ruleSetIndex: number) => {
                     return (
                       <div key={ruleSetIndex}
