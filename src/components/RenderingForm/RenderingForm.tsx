@@ -77,7 +77,7 @@ export default function RenderingForm(props: { matrix: { id: number, name: strin
                 />
                 <Heading matrix={props.matrix} AddRuleSet={() => {
                   AddRulesetAnimate();
-                  AddRuleset(values, setValues, props.matrix.id);
+                  AddRuleset(values, setValues);
                 }}
                 />
                 <div>
@@ -91,7 +91,7 @@ export default function RenderingForm(props: { matrix: { id: number, name: strin
                             setRuleSetToRemoveAnimation(ruleSetIndex);
                             setTimeout(() => {
                               setRuleSetToRemoveAnimation(null);
-                              HandleRemoveRuleSet(values, setValues, ruleSetIndex, props.matrix.id, ruleSet.ruleSetId);
+                              HandleRemoveRuleSet(values, setValues, ruleSetIndex);
                             }, 500);
                           }}
                           errors={errors}

@@ -1,9 +1,5 @@
 import axios from "axios";
-import {
-  NullDataToEmptyStrings,
-  RuleSetEmptyStringsToNull
-} from "../components/RenderingForm/functions/RenderFunctions.ts";
-import {ruleSet} from "../components/RenderingForm/functions/RuleSetType.ts";
+import {NullDataToEmptyStrings} from "../components/RenderingForm/functions/RenderFunctions.ts";
 
 //export const defaultURL = "https://localhost:7062"
 export const defaultURL = ""
@@ -28,17 +24,4 @@ export async function ReformatRuleSets() {
   // sorting ruleSets by priority
   //return [...data.ruleSets].sort((a, b) => b.priority - a.priority);
   return data.ruleSets;
-}
-
-export function SaveRuleSet(matrixId: number, ruleSetId: number | string | null, ruleSet: ruleSet) {
-  //check empty strings, reformat them
-  console.log("Ruleset " + ruleSetId + " has been updated.")
-  const apiUrl = `${defaultURL}/pricematrix/${matrixId}/ruleset/${ruleSetId}`
-  axios.put(apiUrl, RuleSetEmptyStringsToNull(ruleSet))
-    .then(response => {
-      console.log('Successfully updated', response.data);
-    })
-    .catch(error => {
-      console.error('Error: \n', error);
-    });
 }
