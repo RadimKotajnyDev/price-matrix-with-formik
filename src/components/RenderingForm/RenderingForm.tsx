@@ -38,11 +38,10 @@ export default function RenderingForm(props: { matrix: { id: number, name: strin
     }
   }, [ModalState]);
 
-  /*
   function DisplayError() {
     setErrorModal(true)
     setModalState(true)
-  } */
+  }
 
   return (
     <Formik
@@ -59,7 +58,7 @@ export default function RenderingForm(props: { matrix: { id: number, name: strin
       }
       //validateOnChange={false}
     >
-      {({values, setFieldValue, setValues, errors, /*isValid*/}: {
+      {({values, setFieldValue, setValues, errors, isValid}: {
         values: any,
         setFieldValue: any,
         setValues: any,
@@ -127,7 +126,8 @@ export default function RenderingForm(props: { matrix: { id: number, name: strin
               </div>
             )}
           </FieldArray>
-          <SubmitMatrixButton/>
+          <SubmitMatrixButton onClickProp={() => {if(!isValid) {DisplayError()}}}
+          />
         </Form>
       )}
     </Formik>
