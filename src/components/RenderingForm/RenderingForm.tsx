@@ -56,7 +56,7 @@ export default function RenderingForm(props: { matrix: { id: number, name: strin
           setModalState(true)
         }
       }
-      //validateOnChange={false}
+      validateOnChange={false}
     >
       {({values, setFieldValue, setValues, errors, isValid}: {
         values: any,
