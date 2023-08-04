@@ -36,7 +36,7 @@ export function RuleSetEmptyStringsToNull(object: ruleSet) {
 
 
 export function NullDataToEmptyStrings(data: { id: number, name: string, ruleSets: ruleSet[] }) {
-  data.ruleSets.map((item: ruleSet, index: number) => {
+  return data.ruleSets.map((item: ruleSet, index: number) => {
     data.ruleSets[index] = {
       ruleSetId: item.ruleSetId === null ? "" : item.ruleSetId,
       priority: item.priority === null ? "" : item.priority,
@@ -66,7 +66,6 @@ export function NullDataToEmptyStrings(data: { id: number, name: string, ruleSet
       offerCode: item.offerCode === null ? "" : item.offerCode,
     }
   })
-  return console.log(data)
 }
 
 export function EmptyStringsToNull(data: { id: number, name: string, ruleSets: ruleSet[] }) {

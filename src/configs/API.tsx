@@ -23,5 +23,5 @@ export async function ReformatRuleSets() {
   // reformat data before submit in RenderingForm.tsx
   // sorting ruleSets by priority
   //return [...data.ruleSets].sort((a, b) => b.priority - a.priority);
-  return data.ruleSets;
+  return await data.ruleSets;
 }
