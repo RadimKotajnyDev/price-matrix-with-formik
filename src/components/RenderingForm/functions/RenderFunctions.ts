@@ -3,40 +3,8 @@ import {ruleSet, rulesType} from "./RuleSetType.ts";
 
 type Values = { ruleSets: ruleSet[]; }
 
-export function RuleSetEmptyStringsToNull(object: ruleSet) {
-  return {
-    ruleSetId: object.ruleSetId === "" ? null : object.ruleSetId,
-    priority: object.priority === "" ? null : object.priority,
-    rules: object.rules.map((rule: rulesType) => {
-      return {
-        ruleId: rule.ruleId === "" ? null : rule.ruleId,
-        fieldId: rule.fieldId === "" ? null : rule.fieldId,
-        compareOperatorId: rule.compareOperatorId === "" ? null : rule.compareOperatorId,
-        value: rule.value === "" ? null : rule.value
-      }
-    }),
-    priceCommissionable: {
-      priceSelling:
-        object.priceCommissionable.priceSelling === "" ? null : object.priceCommissionable.priceSelling,
-      bookingFeeAbsolute:
-        object.priceCommissionable.bookingFeeAbsolute === "" ? null : object.priceCommissionable.bookingFeeAbsolute,
-      bookingFeePercent:
-        object.priceCommissionable.bookingFeePercent === "" ? null : object.priceCommissionable.bookingFeePercent,
-    },
-    priceNet: {
-      priceSelling: object.priceNet.priceSelling === "" ? null : object.priceNet.priceSelling,
-      bookingFeeAbsolute: object.priceNet.bookingFeeAbsolute === "" ? null : object.priceNet.bookingFeeAbsolute,
-      bookingFeePercent: object.priceNet.bookingFeePercent === "" ? null : object.priceNet.bookingFeePercent,
-    },
-    insideCommissionRate: object.insideCommissionRate === "" ? null : object.insideCommissionRate,
-    note: object.note === "" ? null : object.note,
-    offerCode: object.offerCode === "" ? null : object.offerCode,
-  }
-}
-
-
-export function NullDataToEmptyStrings(data: { id: number, name: string, ruleSets: ruleSet[] }) {
-  return data.ruleSets.map((item: ruleSet, index: number) => {
+export async function NullDataToEmptyStrings(data: { id: number, name: string, ruleSets: ruleSet[] }) {
+  data.ruleSets.map((item: ruleSet, index: number) => {
     data.ruleSets[index] = {
       ruleSetId: item.ruleSetId === null ? "" : item.ruleSetId,
       priority: item.priority === null ? "" : item.priority,
@@ -66,9 +34,10 @@ export function NullDataToEmptyStrings(data: { id: number, name: string, ruleSet
       offerCode: item.offerCode === null ? "" : item.offerCode,
     }
   })
+  return data;
 }
 
-export function EmptyStringsToNull(data: { id: number, name: string, ruleSets: ruleSet[] }) {
+export async function EmptyStringToNullData(data: { id: number, name: string, ruleSets: ruleSet[] }) {
   data.ruleSets.map((item: ruleSet, index: number) => {
     data.ruleSets[index] = {
       ruleSetId: item.ruleSetId === "" ? null : item.ruleSetId,
@@ -99,16 +68,15 @@ export function EmptyStringsToNull(data: { id: number, name: string, ruleSets: r
       offerCode: item.offerCode === "" ? null : item.offerCode,
     }
   })
-  return console.log(data)
+  return data;
 }
 
-
 export function RemapPriorities(jsonData: ruleSet[]) {
-  const ruleSets = [...jsonData]; // Vytvoření kopie pole jsonData.ruleSets
+  const ruleSets = [...jsonData];
 
   const jsonLength = ruleSets.length;
 
-  const priorities = Array.from({length: jsonLength}, (_, index) => jsonLength - index - 1);
+  const priorities = Array.from({length: jsonLength}, (_, index) => jsonLength - index);
 
   ruleSets.forEach((ruleSet: ruleSet, index: number) => {
     ruleSet.priority = priorities[index];

@@ -1,15 +1,14 @@
 import axios from "axios";
-import {NullDataToEmptyStrings} from "../components/RenderingForm/functions/RenderFunctions.ts";
+import {EmptyStringToNullData, NullDataToEmptyStrings} from "../components/RenderingForm/functions/RenderFunctions.ts";
+import {ruleSet} from "../components/RenderingForm/functions/RuleSetType.ts";
 
-//export const defaultURL = "https://localhost:7062"
-export const defaultURL = ""
+export const defaultURL = "https://localhost:7062"
+//export const defaultURL = ""
 
 export async function FetchData() {
   try {
-    // Change url to connect to right API
-    //const response = await axios.get('https://localhost:7062/pricematrix/1');
-    //await axios.post('https://localhost:7062/seed')
-    const response = await axios.get('/Data.json') //offline data testing
+    const response = await axios.get(defaultURL + `/pricematrix/1`)
+    //console.log(response.data)
     return response.data
   } catch (error) {
     console.error(error);
@@ -24,4 +23,15 @@ export async function ReformatRuleSets() {
   // sorting ruleSets by priority
   //return [...data.ruleSets].sort((a, b) => b.priority - a.priority);
   return await data.ruleSets;
+}
+
+export async function SubmitMatrix(values: { id: number, name: string, ruleSets: ruleSet[] }) {
+  const refactoredData = await EmptyStringToNullData(values);
+  try {
+    const response = await axios.put(defaultURL + "/pricematrix/1", refactoredData);
+    return response.data;
+  } catch (error) {
+    console.error(error);
+    throw error; // re-throw the error to handle it in the calling code
+  }
 }
