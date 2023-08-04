@@ -9,6 +9,7 @@ import {schema} from "./functions/validationSchema.ts";
 import {ruleSet} from "./functions/RuleSetType.ts";
 import {SubmitMatrixButton} from "./elements/SubmitMatrixButton.tsx";
 import {LoadingWheel} from "./elements/LoadingWheel.tsx";
+import {FormikInterface} from "./functions/FormikInterface.ts";
 
 export default function RenderingForm() {
 
@@ -23,7 +24,7 @@ export default function RenderingForm() {
         setResolvedRuleSets(res);
         setLoading(false);
       })
-  }, [])
+  }, [loading])
 
   const RefOnTop = useRef(null)
 
@@ -54,11 +55,12 @@ export default function RenderingForm() {
     setErrorModal(true)
     setModalState(true)
   }
+
   if (loading) {
     return <LoadingWheel/>
   } else {
     return (
-      <Formik
+      <Formik<FormikInterface>
         validationSchema={schema}
         initialValues={
           {id: matrix.id, name: matrix.name, ruleSets: resolvedRuleSets}
@@ -70,6 +72,7 @@ export default function RenderingForm() {
             const reformatedData = await NullDataToEmptyStrings(result)
 
             setValues(reformatedData)
+            setLoading(true)
 
             setModalState(true);
           } catch (error) {
