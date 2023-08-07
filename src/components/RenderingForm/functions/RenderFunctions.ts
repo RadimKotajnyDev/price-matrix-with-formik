@@ -3,6 +3,7 @@ import {ruleSet, rulesType} from "./RuleSetType.ts";
 
 type Values = { ruleSets: ruleSet[]; }
 
+
 export async function NullDataToEmptyStrings(data: { id: number, name: string, ruleSets: ruleSet[] }) {
   data.ruleSets.map((item: ruleSet, index: number) => {
     data.ruleSets[index] = {

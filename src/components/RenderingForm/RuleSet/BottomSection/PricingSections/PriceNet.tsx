@@ -7,6 +7,7 @@ interface Props {
   netBookingFeeAbsolute: number | string,
   netBookingFeePercent: number | string,
   netPriceSelling: number | string,
+  disabledProp: boolean
 }
 
 const rowClass = " flex flex-row justify-between items-center"
@@ -18,7 +19,8 @@ export default function PriceNet(props: Props) {
     netBookingFeeAbsoluteValue,
     netBookingFeeAbsolute,
     netBookingFeePercent,
-    netPriceSelling
+    netPriceSelling,
+    disabledProp
   } = props
   return (
     <div className="flex flex-col gap-2 w-2/5">
@@ -31,7 +33,7 @@ export default function PriceNet(props: Props) {
           pattern="/^\d+$/"
           name={netBookingFeeAbsolute}
           value={netBookingFeeAbsoluteValue}
-          disabled={netPriceSellingValue != ""}
+          disabled={netPriceSellingValue != "" || disabledProp}
         />
       </div>
       <div className={rowClass}>
@@ -42,7 +44,7 @@ export default function PriceNet(props: Props) {
           pattern="/^\d+$/"
           name={netBookingFeePercent}
           value={netBookingFeePercentValue}
-          disabled={netPriceSellingValue != ""}
+          disabled={netPriceSellingValue != "" || disabledProp}
           min={0}
           //max={100}
         />
@@ -55,7 +57,11 @@ export default function PriceNet(props: Props) {
           pattern="/^\d+$/"
           name={netPriceSelling}
           value={netPriceSellingValue}
-          disabled={netBookingFeeAbsoluteValue != "" || netBookingFeePercentValue != ""}
+          disabled={
+          netBookingFeeAbsoluteValue != ""
+            || netBookingFeePercentValue != ""
+            || disabledProp
+        }
         />
       </div>
     </div>

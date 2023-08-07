@@ -7,6 +7,7 @@ interface Props {
   commissionableBookingFeeAbsolute: string,
   commissionableBookingFeePercent: string,
   commissionablePriceSelling: string,
+  disabledProp: boolean
 }
 
 const rowClass = " flex flex-row justify-between items-center"
@@ -18,7 +19,8 @@ export default function PriceCommissionable(props: Props) {
     commissionableBookingFeeAbsoluteValue,
     commissionableBookingFeeAbsolute,
     commissionableBookingFeePercent,
-    commissionablePriceSelling
+    commissionablePriceSelling,
+    disabledProp
   } = props
   return (
     <div className="flex flex-col gap-2 w-2/5">
@@ -31,7 +33,7 @@ export default function PriceCommissionable(props: Props) {
           pattern="/^\d+$/"
           name={commissionableBookingFeeAbsolute}
           value={commissionableBookingFeeAbsoluteValue}
-          disabled={commissionablePriceSellingValue != ""}
+          disabled={commissionablePriceSellingValue != "" || disabledProp}
         />
       </div>
       <div className={rowClass}>
@@ -42,7 +44,7 @@ export default function PriceCommissionable(props: Props) {
           pattern="/^\d+$/"
           name={commissionableBookingFeePercent}
           value={commissionableBookingFeePercentValue}
-          disabled={commissionablePriceSellingValue != ""}
+          disabled={commissionablePriceSellingValue != "" || disabledProp}
           min={0}
           //max={100}
         />
@@ -55,7 +57,11 @@ export default function PriceCommissionable(props: Props) {
           pattern="/^\d+$/"
           name={commissionablePriceSelling}
           value={commissionablePriceSellingValue}
-          disabled={commissionableBookingFeeAbsoluteValue != "" || commissionableBookingFeePercentValue != ""}
+          disabled={
+          commissionableBookingFeeAbsoluteValue != ""
+            || commissionableBookingFeePercentValue != ""
+            || disabledProp
+        }
         />
       </div>
     </div>
