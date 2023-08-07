@@ -27,7 +27,7 @@ export async function ReformatRuleSets() {
 
 export async function SubmitMatrix(values: { id: number, name: string, ruleSets: ruleSet[] }) {
   const refactoredData = await EmptyStringToNullData(values);
-  console.log(refactoredData)
+  //console.log(refactoredData)
   try {
     const response = await axios.put(defaultURL + "/pricematrix/1", refactoredData);
     return response.data;

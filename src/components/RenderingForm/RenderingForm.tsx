@@ -69,7 +69,6 @@ export default function RenderingForm() {
             setErrorModal(false);
             const result = await SubmitMatrix(values);
             const reformattedData = await NullDataToEmptyStrings(result)
-            console.log(result)
             setValues(reformattedData)
             setLoading(true)
             setModalState(true);
