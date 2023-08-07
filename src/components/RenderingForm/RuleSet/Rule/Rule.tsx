@@ -7,13 +7,14 @@ import {MapOperators} from "./functions/MapFunctions.tsx";
 import ValueComponent from "./elements/ValueComponent.tsx";
 import {ChangeEvent} from "react";
 import type {RuleType} from "../RuleSetTypes.ts"
+import * as React from "react";
 
 type FormikErrors<Values> = { [K in keyof Values]?: string };
 
 interface RuleProps {
   values: FormikValues,
-  setValues: () => void
-  setFieldValue: (field: string | number | undefined, value: string | number, shouldValidate?: boolean | undefined) => void,
+  setValues: (values: React.SetStateAction<any>, shouldValidate?: boolean) => void,
+  setFieldValue: any,
   fieldName: string,
   optionName: string,
   valueName: string,

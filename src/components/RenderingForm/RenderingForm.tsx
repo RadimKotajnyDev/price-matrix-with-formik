@@ -1,65 +1,41 @@
-import {FieldArray, Form, Formik, FormikValues} from 'formik';
-import {FetchData, ReformatRuleSets, SubmitMatrix} from "../../configs/API.tsx";
+import {FieldArray, Form, Formik} from 'formik';
+import {SubmitMatrix} from "../../configs/API.tsx";
 import RuleSet from "./RuleSet/RuleSet.tsx";
 import {Heading} from "./elements/Heading.tsx";
-import {AddRuleset, HandleRemoveRuleSet, NullDataToEmptyStrings, ScrollToTop} from "./functions/RenderFunctions.ts";
-import {useEffect, useRef, useState} from "react";
+import {AddRuleset, HandleRemoveRuleSet, NullDataToEmptyStrings} from "./functions/RenderFunctions.ts";
 import Modal from "./elements/Modal.tsx";
 import {schema} from "./functions/validationSchema.ts";
 import {ruleSet} from "./functions/RuleSetType.ts";
 import {SubmitMatrixButton} from "./elements/SubmitMatrixButton.tsx";
 import {LoadingWheel} from "./elements/LoadingWheel.tsx";
-import {FormikInterface} from "./functions/FormikInterface.ts";
+import {useRenderingForm} from "../../hooks/useRenderingForm.ts";
+import {FormInterface} from "./functions/FormInterface.ts";
+
 
 export default function RenderingForm() {
+  const {
+    RefOnTop,
+    setLoading,
+    loading,
+    resolvedRuleSets,
+    setModalState,
+    ModalState,
+    matrix,
+    lastRuleSetAdded,
+    setRuleSetToRemoveAnimation,
+    ruleSetToRemoveAnimation,
+    AddRulesetAnimate,
+    setErrorModal,
+    ErrorModal,
+    DisplayError
+  } = useRenderingForm()
 
-  const [resolvedRuleSets, setResolvedRuleSets] = useState([])
-  const [matrix, setMatrix] = useState({name: "", id: 0})
-
-  const [loading, setLoading] = useState<boolean>(true);
-  useEffect(() => {
-    FetchData().then((res) => setMatrix(res))
-    ReformatRuleSets()
-      .then((res) => {
-        setResolvedRuleSets(res);
-        setLoading(false);
-      })
-  }, [loading])
-
-  const RefOnTop = useRef(null)
-
-  const [lastRuleSetAdded, setLastRuleSetAdded] = useState<boolean>(false);
-  const [ruleSetToRemoveAnimation, setRuleSetToRemoveAnimation] = useState<number | null>(null);
-
-  const AddRulesetAnimate = () => {
-    setLastRuleSetAdded(true);
-    setTimeout(() => {
-      setLastRuleSetAdded(false);
-      ScrollToTop(RefOnTop);
-    }, 500);
-  };
-
-  const [ModalState, setModalState] = useState<boolean>(false)
-  const [ErrorModal, setErrorModal] = useState<boolean>(false)
-  useEffect(() => {
-    if (ModalState) {
-      const timeout = setTimeout(() => {
-        setModalState(false)
-      }, 1250);
-      return () => clearTimeout(timeout);
-    }
-  }, [ModalState]);
-
-  function DisplayError() {
-    setErrorModal(true)
-    setModalState(true)
-  }
 
   if (loading) {
     return <LoadingWheel/>
   } else {
     return (
-      <Formik<FormikInterface>
+      <Formik<FormInterface>
         validationSchema={schema}
         initialValues={
           {id: matrix.id, name: matrix.name, ruleSets: resolvedRuleSets}
@@ -80,14 +56,7 @@ export default function RenderingForm() {
         }}
         validateOnChange={false}
       >
-        {({values, setFieldValue, setValues, errors, isValid, isSubmitting}: {
-          values: FormikValues,
-          setFieldValue: any,
-          setValues: any,
-          errors: any,
-          isValid: boolean,
-          isSubmitting: boolean
-        }) => (
+        {({values, setFieldValue, setValues, errors, isValid, isSubmitting}) => (
           <Form className="flex justify-center" ref={RefOnTop}>
             <FieldArray name={`ruleSets`}>
               {(/*{push, remove}*/) => (
@@ -149,7 +118,11 @@ export default function RenderingForm() {
                 </div>
               )}
             </FieldArray>
-            <SubmitMatrixButton disabledOption={isSubmitting} onClickProp={() => {if (!isValid) {DisplayError()}}}
+            <SubmitMatrixButton disabledOption={isSubmitting} onClickProp={() => {
+              if (!isValid) {
+                DisplayError()
+              }
+            }}
             />
           </Form>
         )}

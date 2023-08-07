@@ -1,6 +1,6 @@
 import {ruleSet} from "./RuleSetType.ts";
 
-export interface FormikInterface {
+export interface FormInterface {
   id: number;
   name: string;
   ruleSets: ruleSet[];

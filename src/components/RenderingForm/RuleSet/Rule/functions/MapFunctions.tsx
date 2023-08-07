@@ -33,28 +33,6 @@ export function MapOperators(fieldId: string | number | null) {
   }
 }
 
-export function MapValueStoreType(fieldId: number | "", valueIntName: string | number, valueDecimalName: string | number, valueDateTimeName: string | number, valueStringName: string | number) {
-  switch (fieldId) {
-    case 1:
-      return valueIntName
-    //valueInt
-    case 2:
-      return valueDateTimeName
-    //valueDateTime
-    case 3:
-      return valueIntName
-    //valueInt
-    case 4:
-      return valueStringName
-    //valueString
-    case 5:
-      return valueDateTimeName
-    //valueDateTime
-    case 6:
-      return valueDecimalName
-  }
-}
-
 export function MapValueType(fieldId: string | number | null) {
   switch (fieldId) {
     case 1:

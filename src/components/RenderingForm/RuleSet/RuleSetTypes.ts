@@ -1,4 +1,5 @@
 import {FormikValues} from "formik";
+import * as React from "react";
 
 export type FormikErrors<Values> = { [K in keyof Values]?: string };
 
@@ -29,9 +30,9 @@ export interface RuleSetProps {
   removeRuleSet: () => void,
   rules: Array<RuleType>,
   rulesString: string,
-  setFieldValue: (field: string | number | undefined, value: string | number, shouldValidate?: boolean | undefined) => void,
+  setFieldValue: (field: string, value: any, shouldValidate?: boolean | undefined) => void,
   values: FormikValues,
-  setValues: () => void,
+  setValues: (values: React.SetStateAction<any>, shouldValidate?: boolean) => void,
   ruleSetIndex: number,
-  errors: FormikErrors<{ ruleSets: object[]; }>,
+  errors: any,
 }

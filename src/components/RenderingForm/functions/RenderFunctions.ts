@@ -1,5 +1,6 @@
 import {defaultRuleset} from "../../../configs/ruleset/defaultRuleset.tsx";
 import {ruleSet, rulesType} from "./RuleSetType.ts";
+import * as React from "react";
 import {RefObject} from "react";
 import {FormikValues} from "formik";
 
@@ -122,7 +123,7 @@ export function PriorityDown(values: FormikValues, setValues: (values: FormikVal
   }
 }
 
-export const HandleRemoveRuleSet = (values: FormikValues, setValues: (values: FormikValues) => void, index: number) => {
+export const HandleRemoveRuleSet = (values: FormikValues, setValues: (values: React.SetStateAction<any>, shouldValidate?: boolean) => void, index: number) => {
 
   values.ruleSets.splice(index, 1);
 
@@ -131,7 +132,7 @@ export const HandleRemoveRuleSet = (values: FormikValues, setValues: (values: Fo
   setValues(values);
 };
 
-export const AddRuleset = (values: FormikValues, setValues: (values: FormikValues) => void) => {
+export const AddRuleset = (values: FormikValues, setValues: (values: React.SetStateAction<any>, shouldValidate?: boolean) => void) => {
 
   const newRuleset: ruleSet = {...defaultRuleset};
   newRuleset.priority = values.ruleSets.length + 1;
