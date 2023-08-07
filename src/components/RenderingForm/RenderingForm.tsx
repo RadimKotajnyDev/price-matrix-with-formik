@@ -46,7 +46,6 @@ export default function RenderingForm() {
       const timeout = setTimeout(() => {
         setModalState(false)
       }, 1250);
-      //setErrorModal(false)
       return () => clearTimeout(timeout);
     }
   }, [ModalState]);
@@ -66,14 +65,13 @@ export default function RenderingForm() {
           {id: matrix.id, name: matrix.name, ruleSets: resolvedRuleSets}
         }
         onSubmit={async (values, {setValues, setSubmitting}) => {
-          setErrorModal(false);
           try {
+            setErrorModal(false);
             const result = await SubmitMatrix(values);
-            const reformatedData = await NullDataToEmptyStrings(result)
-
-            setValues(reformatedData)
+            const reformattedData = await NullDataToEmptyStrings(result)
+            console.log(result)
+            setValues(reformattedData)
             setLoading(true)
-
             setModalState(true);
           } catch (error) {
             setErrorModal(true)

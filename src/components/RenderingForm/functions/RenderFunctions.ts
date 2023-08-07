@@ -133,7 +133,7 @@ export const HandleRemoveRuleSet = (values: Values, setValues: (values: Values) 
 export const AddRuleset = (values: Values, setValues: (values: object) => void) => {
 
   const newRuleset: ruleSet = {...defaultRuleset};
-  newRuleset.priority = values.ruleSets.length;
+  newRuleset.priority = values.ruleSets.length + 1;
   newRuleset.ruleSetId = "" //backend will create new ID
 
   const updatedValues = {

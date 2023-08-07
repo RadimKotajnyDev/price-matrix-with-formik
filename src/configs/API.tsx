@@ -18,7 +18,7 @@ export async function FetchData() {
 
 export async function ReformatRuleSets() {
   const data = await FetchData()
-  NullDataToEmptyStrings(data) //uncontrolled input warning fixed
+  await NullDataToEmptyStrings(data) //uncontrolled input warning fixed
   // reformat data before submit in RenderingForm.tsx
   // sorting ruleSets by priority
   //return [...data.ruleSets].sort((a, b) => b.priority - a.priority);
@@ -27,6 +27,7 @@ export async function ReformatRuleSets() {
 
 export async function SubmitMatrix(values: { id: number, name: string, ruleSets: ruleSet[] }) {
   const refactoredData = await EmptyStringToNullData(values);
+  console.log(refactoredData)
   try {
     const response = await axios.put(defaultURL + "/pricematrix/1", refactoredData);
     return response.data;
