@@ -58,7 +58,7 @@ export function MapValueStoreType(fieldId: number | "", valueIntName: string | n
 export function MapValueType(fieldId: string | number | null) {
   switch (fieldId) {
     case 1:
-      return "time"
+      return "datetime-local"
     //valueInt
     case 2:
       return "datetime-local"
