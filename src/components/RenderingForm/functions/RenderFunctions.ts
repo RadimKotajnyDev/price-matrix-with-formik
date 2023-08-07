@@ -1,7 +1,7 @@
 import {defaultRuleset} from "../../../configs/ruleset/defaultRuleset.tsx";
 import {ruleSet, rulesType} from "./RuleSetType.ts";
-
-type Values = { ruleSets: ruleSet[]; }
+import {RefObject} from "react";
+import {FormikValues} from "formik";
 
 
 export async function NullDataToEmptyStrings(data: { id: number, name: string, ruleSets: ruleSet[] }) {
@@ -87,7 +87,7 @@ export function RemapPriorities(jsonData: ruleSet[]) {
 }
 
 
-export function PriorityUp(values: any, setValues: (values: Values) => void, ruleSetIndex: number) {
+export function PriorityUp(values: FormikValues, setValues: (values: FormikValues) => void, ruleSetIndex: number) {
   if (ruleSetIndex > 0) {
     let updatedRuleSets = [...values.ruleSets];
 
@@ -104,7 +104,7 @@ export function PriorityUp(values: any, setValues: (values: Values) => void, rul
   }
 }
 
-export function PriorityDown(values: any, setValues: (values: Values) => void, ruleSetIndex: number) {
+export function PriorityDown(values: FormikValues, setValues: (values: FormikValues) => void, ruleSetIndex: number) {
   if (ruleSetIndex < values.ruleSets.length - 1) {
     let updatedRuleSets = [...values.ruleSets];
 
@@ -122,7 +122,7 @@ export function PriorityDown(values: any, setValues: (values: Values) => void, r
   }
 }
 
-export const HandleRemoveRuleSet = (values: Values, setValues: (values: Values) => void, index: number) => {
+export const HandleRemoveRuleSet = (values: FormikValues, setValues: (values: FormikValues) => void, index: number) => {
 
   values.ruleSets.splice(index, 1);
 
@@ -131,7 +131,7 @@ export const HandleRemoveRuleSet = (values: Values, setValues: (values: Values) 
   setValues(values);
 };
 
-export const AddRuleset = (values: Values, setValues: (values: object) => void) => {
+export const AddRuleset = (values: FormikValues, setValues: (values: FormikValues) => void) => {
 
   const newRuleset: ruleSet = {...defaultRuleset};
   newRuleset.priority = values.ruleSets.length + 1;
@@ -144,7 +144,7 @@ export const AddRuleset = (values: Values, setValues: (values: object) => void) 
   setValues(updatedValues);
 };
 
-export const ScrollToTop = (ref: any) => {
+export const ScrollToTop = (ref: RefObject<HTMLElement>) => {
   const firstChildElement = ref.current as HTMLElement | null;
   firstChildElement?.firstElementChild?.scrollIntoView({ behavior: 'smooth' });
 };

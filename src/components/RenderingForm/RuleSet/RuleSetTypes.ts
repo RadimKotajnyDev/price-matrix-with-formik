@@ -1,3 +1,5 @@
+import {FormikValues} from "formik";
+
 export type FormikErrors<Values> = { [K in keyof Values]?: string };
 
 export interface RuleType {
@@ -28,7 +30,7 @@ export interface RuleSetProps {
   rules: Array<RuleType>,
   rulesString: string,
   setFieldValue: (field: string | number | undefined, value: string | number, shouldValidate?: boolean | undefined) => void,
-  values: { ruleSets: object[]; },
+  values: FormikValues,
   setValues: () => void,
   ruleSetIndex: number,
   errors: FormikErrors<{ ruleSets: object[]; }>,

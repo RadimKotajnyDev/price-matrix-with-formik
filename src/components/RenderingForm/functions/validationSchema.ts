@@ -27,7 +27,7 @@ export const schema = yup.object().shape({
       }),
       insideCommissionRate: yup.number().nullable(),
       note: yup.string().nullable(),
-      offerCode: yup.string().nullable(),
+      offerCode: yup.string().nullable().required(),
     })
   ),
 });

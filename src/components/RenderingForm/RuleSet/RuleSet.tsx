@@ -93,6 +93,8 @@ export default function RuleSet(props: RuleSetProps) {
         commissionablePriceSelling={commissionablePriceSelling}
         commissionablePriceSellingValue={commissionablePriceSellingValue}
 
+        errors={errors}
+        ruleSetIndex={ruleSetIndex}
         offerCode={offerCode}
         insideCommissionRate={insideCommissionRate}
       />

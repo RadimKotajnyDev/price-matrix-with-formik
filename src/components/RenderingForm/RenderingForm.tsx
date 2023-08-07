@@ -1,4 +1,4 @@
-import {FieldArray, Form, Formik} from 'formik';
+import {FieldArray, Form, Formik, FormikValues} from 'formik';
 import {FetchData, ReformatRuleSets, SubmitMatrix} from "../../configs/API.tsx";
 import RuleSet from "./RuleSet/RuleSet.tsx";
 import {Heading} from "./elements/Heading.tsx";
@@ -81,7 +81,7 @@ export default function RenderingForm() {
         validateOnChange={false}
       >
         {({values, setFieldValue, setValues, errors, isValid, isSubmitting}: {
-          values: any,
+          values: FormikValues,
           setFieldValue: any,
           setValues: any,
           errors: any,

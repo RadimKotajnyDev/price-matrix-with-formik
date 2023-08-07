@@ -29,7 +29,7 @@ export default function ValueComponent(props: valueProps) {
         <>
           <Field
             validate={() => ValidateDays(props.value)}
-            className={`InputClass w-[17.7rem] ${props.errorExists ? "border-red-400 text-red-600" : ""}`}
+            className={`InputClass w-[17.7rem] ${props.errorExists ? "border-red-400 text-red-600 bg-red-100" : ""}`}
             component="select"
             disabled={disabledBool}
             onChange={(e: ChangeEvent<HTMLInputElement>) => props.setFieldValue(
@@ -48,7 +48,7 @@ export default function ValueComponent(props: valueProps) {
           <ArrowOnSelect/>
         </>
         :
-        <Field className={`InputClass w-[17.7rem] ${props.errorExists ? "border-red-400 text-red-600" : ""}`}
+        <Field className={`InputClass w-[17.7rem] ${props.errorExists ? "border-red-400 text-red-600 bg-red-100" : ""}`}
                component="input"
                disabled={disabledBool}
                onChange={(e: ChangeEvent<HTMLInputElement>) => props.setFieldValue(props.valueName, e.target.value)} // parseInt(e.target.value)

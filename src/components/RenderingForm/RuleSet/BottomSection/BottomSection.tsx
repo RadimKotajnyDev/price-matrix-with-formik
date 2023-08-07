@@ -18,6 +18,8 @@ interface Props {
   commissionablePriceSellingValue: number | string | null,
   offerCode: string,
   insideCommissionRate: string,
+  errors: any,
+  ruleSetIndex: number
 }
 
 export const BottomSection = (props: Props) => {
@@ -37,6 +39,8 @@ export const BottomSection = (props: Props) => {
     commissionablePriceSellingValue,
     insideCommissionRate,
     offerCode,
+    errors,
+    ruleSetIndex
   } = props
 
   return (
@@ -69,7 +73,7 @@ export const BottomSection = (props: Props) => {
         netPriceSellingValue={netPriceSellingValue}
       />
       <Divider />
-      <CodeAndCommission nameProp={offerCode} insideCommissionRate={insideCommissionRate}/>
+      <CodeAndCommission errors={errors} ruleSetIndex={ruleSetIndex} nameProp={offerCode} insideCommissionRate={insideCommissionRate}/>
     </section>
   )
 }

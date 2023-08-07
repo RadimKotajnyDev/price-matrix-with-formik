@@ -1,4 +1,4 @@
-import {Field} from "formik";
+import {Field, FormikValues} from "formik";
 import fieldOptions from "../../../../configs/options/FieldOptionsConfig.tsx";
 import {AiOutlineMinus} from "react-icons/ai";
 import {ArrowOnSelect} from "../../../elements/ArrowOnSelect.tsx";
@@ -11,7 +11,7 @@ import type {RuleType} from "../RuleSetTypes.ts"
 type FormikErrors<Values> = { [K in keyof Values]?: string };
 
 interface RuleProps {
-  values: { ruleSets: object[]; },
+  values: FormikValues,
   setValues: () => void
   setFieldValue: (field: string | number | undefined, value: string | number, shouldValidate?: boolean | undefined) => void,
   fieldName: string,
@@ -37,7 +37,7 @@ export default function Rule(props: RuleProps) {
           && props.errors?.ruleSets[props.ruleSetIndex]
           && props.errors?.ruleSets[props.ruleSetIndex].rules
           && props.errors?.ruleSets[props.ruleSetIndex].rules[props.ruleIndex]
-          && props.errors?.ruleSets[props.ruleSetIndex].rules[props.ruleIndex].fieldId ? "border-red-400 text-red-600" : ""}`}
+          && props.errors?.ruleSets[props.ruleSetIndex].rules[props.ruleIndex].fieldId ? "border-red-400 text-red-600 bg-red-100" : ""}`}
                  required={true}
                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
                    props.setFieldValue(props.fieldName, parseInt(e.target.value));
@@ -58,7 +58,7 @@ export default function Rule(props: RuleProps) {
           && props.errors?.ruleSets[props.ruleSetIndex]
           && props.errors?.ruleSets[props.ruleSetIndex].rules
           && props.errors?.ruleSets[props.ruleSetIndex].rules[props.ruleIndex]
-          && props.errors?.ruleSets[props.ruleSetIndex].rules[props.ruleIndex].compareOperatorId ? "border-red-400 text-red-600" : ""}`}
+          && props.errors?.ruleSets[props.ruleSetIndex].rules[props.ruleIndex].compareOperatorId ? "border-red-400 text-red-600 bg-red-100" : ""}`}
                  required={true}
                  onChange={(e: ChangeEvent<HTMLInputElement>) => props.setFieldValue(props.optionName, parseInt(e.target.value))}
                  name={props.optionName} value={props.rule.compareOperatorId}>
