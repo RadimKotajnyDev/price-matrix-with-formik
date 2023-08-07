@@ -2,12 +2,13 @@ import axios from "axios";
 import {EmptyStringToNullData, NullDataToEmptyStrings} from "../components/RenderingForm/functions/RenderFunctions.ts";
 import {ruleSet} from "../components/RenderingForm/functions/RuleSetType.ts";
 
-export const defaultURL = "https://localhost:7062"
-//export const defaultURL = ""
+const defaultURL = "https://localhost:7062"
+const matrixID = "7"
+//const URL = window.location.pathname
 
 export async function FetchData() {
   try {
-    const response = await axios.get(defaultURL + `/pricematrix/1`)
+    const response = await axios.get(`${defaultURL}/pricematrix/${matrixID}`)
     //console.log(response.data)
     return response.data
   } catch (error) {
@@ -29,7 +30,7 @@ export async function SubmitMatrix(values: { id: number, name: string, ruleSets:
   const refactoredData = await EmptyStringToNullData(values);
   //console.log(refactoredData)
   try {
-    const response = await axios.put(defaultURL + "/pricematrix/1", refactoredData);
+    const response = await axios.put(`${defaultURL}/pricematrix/${matrixID}`, refactoredData);
     return response.data;
   } catch (error) {
     console.error(error);
