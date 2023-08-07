@@ -1,5 +1,5 @@
 import {Dialog, Transition} from '@headlessui/react'
-import {Fragment} from 'react'
+import {Fragment, useRef} from 'react'
 import {AiFillCheckCircle, AiFillCloseCircle} from "react-icons/ai";
 
 interface ModalProps {
@@ -10,11 +10,15 @@ interface ModalProps {
 }
 
 export default function Modal(props: ModalProps) {
+  //fixed "There are no focusable elements inside the <FocusTrap />"
+  const modalRef = useRef(null);
 
   return (
     <>
       <Transition appear show={props.showState} as={Fragment}>
-        <Dialog as="div" className="relative z-50" onClose={props.closeModal}>
+        <Dialog
+          initialFocus={modalRef}
+          as="div" className="relative z-50" onClose={props.closeModal}>
           <Transition.Child
             as={Fragment}
             enter="ease-out duration-300"
@@ -54,6 +58,7 @@ export default function Modal(props: ModalProps) {
                       </>
                     )}
                   </Dialog.Title>
+                  <span ref={modalRef} />
                 </Dialog.Panel>
               </Transition.Child>
             </div>
