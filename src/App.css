@@ -13,29 +13,26 @@
         justify-content: center;
         flex-direction: column;
     }
-    .AddRulesetClass {
-        @apply bg-purple-900
-    }
     .ButtonClass {
         @apply cursor-pointer p-0 uppercase rounded-md
         text-white hover:opacity-75 duration-700
     }
     .ButtonIconClass {
-        @apply rounded text-white bg-slate-900 duration-200 cursor-pointer
-        hover:text-slate-900 hover:bg-transparent disabled:cursor-not-allowed
+        @apply rounded text-white bg-primary duration-200 cursor-pointer
+        hover:text-secondary hover:bg-transparent disabled:cursor-not-allowed
     }
     .InputClass {
         @apply appearance-none h-fit
-         block bg-gray-50 text-gray-700 border border-gray-200 rounded
+         block bg-gray-50 text-secondary border border-gray-200 rounded
         disabled:bg-gray-200 disabled:text-gray-200
         py-1 px-5 focus:outline-none mx-1
         focus:bg-white focus:border-purple-500
     }
     .LabelClass {
-        @apply relative uppercase tracking-wide text-gray-700 font-bold my-2 text-sm
+        @apply relative uppercase tracking-wide text-secondary font-bold my-2 text-sm
     }
     .PricingLabel {
-        @apply text-sm
+        @apply text-sm text-secondary
     }
     .fade-in {
         opacity: 1;

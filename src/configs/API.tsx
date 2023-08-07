@@ -3,7 +3,7 @@ import {EmptyStringToNullData, NullDataToEmptyStrings} from "../components/Rende
 import {ruleSet} from "../components/RenderingForm/functions/RuleSetType.ts";
 
 const defaultURL = "https://localhost:7062"
-const matrixID = "7"
+const matrixID = "3"
 //const URL = window.location.pathname
 
 export async function FetchData() {

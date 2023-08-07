@@ -11,7 +11,6 @@ import {LoadingWheel} from "./elements/LoadingWheel.tsx";
 import {useRenderingForm} from "../../hooks/useRenderingForm.ts";
 import {FormInterface} from "./functions/FormInterface.ts";
 
-
 export default function RenderingForm() {
   const {
     RefOnTop,
