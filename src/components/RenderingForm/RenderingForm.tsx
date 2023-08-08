@@ -7,49 +7,49 @@ import ResponseModal from "./elements/Modal.tsx";
 import {schema} from "./functions/validationSchema.ts";
 import {ruleSet} from "./functions/RuleSetType.ts";
 import {SubmitMatrixButton} from "./elements/SubmitMatrixButton.tsx";
-import {LoadingWheel} from "./elements/LoadingWheel.tsx";
+import {LoadingSpinner} from "./elements/LoadingSpinner.tsx";
 import {useRenderingForm} from "../../hooks/useRenderingForm.ts";
 import {FormInterface} from "./functions/FormInterface.ts";
 
 export default function RenderingForm() {
   const {
     RefOnTop,
-    setLoading,
-    loading,
-    resolvedRuleSets,
-    setModalState,
-    ModalState,
-    matrix,
-    lastRuleSetAdded,
-    setRuleSetToRemoveAnimation,
-    ruleSetToRemoveAnimation,
-    AddRulesetAnimate,
-    setErrorModal,
-    ErrorModal,
-    DisplayError
+      setLoadingSpin,
+      loadingSpin,
+      resolvedRuleSets,
+      matrixData,
+      setRequestModalState,
+      requestModalState,
+      lastRuleSetAdded,
+      setRuleSetToRemoveAnimation,
+      ruleSetToRemoveAnimation,
+      AddRulesetAnimate,
+      setErrorStateModal,
+      ErrorStateModal,
+      DisplayError
   } = useRenderingForm()
 
 
-  if (loading) {
-    return <LoadingWheel/>
+  if (loadingSpin) {
+    return <LoadingSpinner/>
   } else {
     return (
       <Formik<FormInterface>
         validationSchema={schema}
         initialValues={
-          {id: matrix.id, name: matrix.name, ruleSets: resolvedRuleSets}
+          {id: matrixData.id, name: matrixData.name, ruleSets: resolvedRuleSets}
         }
         onSubmit={async (values, {setValues, setSubmitting}) => {
           try {
-            setErrorModal(false);
+            setErrorStateModal(false);
             const result = await SubmitMatrix(values);
             const reformattedData = await NullDataToEmptyStrings(result)
             setValues(reformattedData)
-            setLoading(true)
-            setModalState(true);
+            setLoadingSpin(true)
+            setRequestModalState(true);
           } catch (error) {
-            setErrorModal(true)
-            setModalState(true)
+            setErrorStateModal(true)
+            setRequestModalState(true)
           }
           setSubmitting(false)
         }}
@@ -61,12 +61,12 @@ export default function RenderingForm() {
               {(/*{push, remove}*/) => (
                 <div className="relative mb-20">
                   <ResponseModal
-                    errorModal={ErrorModal}
-                    showState={ModalState}
-                    openModal={() => setModalState(true)}
-                    closeModal={() => setModalState(false)}
+                    errorModal={ErrorStateModal}
+                    showState={requestModalState}
+                    openModal={() => setRequestModalState(true)}
+                    closeModal={() => setRequestModalState(false)}
                   />
-                  <Heading matrix={matrix} AddRuleSet={() => {
+                  <Heading matrix={matrixData} AddRuleSet={() => {
                     AddRulesetAnimate();
                     AddRuleset(values, setValues);
                   }}

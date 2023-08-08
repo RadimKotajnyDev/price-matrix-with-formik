@@ -1,6 +1,5 @@
 import {Field} from "formik";
 
-const widthClass = " w-full min-w-[100px] max-w-[120px]"
 
 interface Props {
   insideCommissionRate: string | null
@@ -14,7 +13,7 @@ export const InsideCommissionRate = (props: Props) => {
     <div className="flex flex-col">
       <label className="LabelClass">Inside Commission (%)</label>
       <Field
-        className={"InputClass" + widthClass}
+        className={"InputClass w-full"}
         type="number"
         pattern="/^\d+$/"
         min={0}

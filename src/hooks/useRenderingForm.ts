@@ -5,17 +5,17 @@ import {ScrollToTop} from "../components/RenderingForm/functions/RenderFunctions
 export function useRenderingForm() {
 
   const [resolvedRuleSets, setResolvedRuleSets] = useState([])
-  const [matrix, setMatrix] = useState({name: "", id: 0})
+  const [matrixData, setMatrixData] = useState({name: "", id: 0})
 
-  const [loading, setLoading] = useState<boolean>(true);
+  const [loadingSpin, setLoadingSpin] = useState<boolean>(true);
   useEffect(() => {
-    FetchData().then((res) => setMatrix(res))
+    FetchData().then((res) => setMatrixData(res))
     ReformatRuleSets()
       .then((res) => {
         setResolvedRuleSets(res);
-        setLoading(false);
+        setLoadingSpin(false);
       })
-  }, [loading])
+  }, [loadingSpin])
 
   const RefOnTop = useRef(null)
 
@@ -30,35 +30,35 @@ export function useRenderingForm() {
     }, 500);
   };
 
-  const [ModalState, setModalState] = useState<boolean>(false)
-  const [ErrorModal, setErrorModal] = useState<boolean>(false)
+  const [requestModalState, setRequestModalState] = useState<boolean>(false)
+  const [ErrorStateModal, setErrorStateModal] = useState<boolean>(false)
   useEffect(() => {
-    if (ModalState) {
+    if (requestModalState) {
       const timeout = setTimeout(() => {
-        setModalState(false)
+        setRequestModalState(false)
       }, 1250);
       return () => clearTimeout(timeout);
     }
-  }, [ModalState]);
+  }, [requestModalState]);
 
   function DisplayError() {
-    setErrorModal(true)
-    setModalState(true)
+    setErrorStateModal(true)
+    setRequestModalState(true)
   }
   return {
     RefOnTop,
-    setLoading,
-    loading,
+    setLoadingSpin,
+    loadingSpin,
     resolvedRuleSets,
-    matrix,
-    setModalState,
-    ModalState,
+    matrixData,
+    setRequestModalState,
+    requestModalState,
     lastRuleSetAdded,
     setRuleSetToRemoveAnimation,
     ruleSetToRemoveAnimation,
     AddRulesetAnimate,
-    setErrorModal,
-    ErrorModal,
+    setErrorStateModal,
+    ErrorStateModal,
     DisplayError
   }
 }

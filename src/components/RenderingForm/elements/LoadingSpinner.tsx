@@ -1,4 +1,4 @@
-export const LoadingWheel = () => {
+export const LoadingSpinner = () => {
   return (
     <div role="status" className="min-h-screen w-full flex flex-col gap-3 justify-center items-center">
       <svg aria-hidden="true" className="w-16 h-16 mr-2 text-gray-200 animate-spin fill-purple-600"
