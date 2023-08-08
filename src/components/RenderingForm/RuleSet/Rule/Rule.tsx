@@ -1,5 +1,5 @@
 import {Field, FormikValues} from "formik";
-import fieldOptions from "../../../../configs/options/FieldOptionsConfig.tsx";
+import fieldOptions from "../../../../configs/options/FieldOptionsOptions.tsx";
 import {AiOutlineMinus} from "react-icons/ai";
 import {ArrowOnSelect} from "../../../elements/ArrowOnSelect.tsx";
 import {RemoveRule} from "./functions/RuleFunctions.ts"

@@ -4,7 +4,7 @@ import {ruleSet} from "../components/RenderingForm/functions/RuleSetType.ts";
 
 const defaultURL = "https://localhost:7062"
 const matrixID = "3"
-//const URL = window.location.pathname
+//const requestsURL = window.location.pathname
 
 export async function FetchData() {
   try {
