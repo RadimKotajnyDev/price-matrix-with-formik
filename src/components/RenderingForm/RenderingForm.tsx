@@ -29,7 +29,6 @@ export default function RenderingForm() {
     DisplayError
   } = useRenderingForm()
 
-
   if (loadingSpin) {
     return <LoadingSpinner/>
   } else {

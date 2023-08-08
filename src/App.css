@@ -14,11 +14,11 @@
         flex-direction: column;
     }
     .ButtonClass {
-        @apply cursor-pointer uppercase rounded-md
+        @apply cursor-pointer uppercase rounded-md duration-700 delay-0
         text-white hover:opacity-75
     }
     .ButtonIconClass {
-        @apply rounded text-white bg-primary duration-200 cursor-pointer
+        @apply rounded text-white bg-primary duration-700 delay-0 cursor-pointer
         hover:text-white hover:opacity-75 disabled:cursor-not-allowed
     }
     .InputClass {
