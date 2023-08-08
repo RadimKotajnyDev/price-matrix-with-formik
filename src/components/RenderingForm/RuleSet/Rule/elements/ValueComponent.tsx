@@ -36,7 +36,7 @@ export default function ValueComponent(props: valueProps) {
                  value={props.value}
                  type={MapValueType(props.rule.fieldId)}
           ></Field>
-          : ""
+          : null
       }
       {
         props.rule.fieldId === 1 ?
@@ -60,7 +60,7 @@ export default function ValueComponent(props: valueProps) {
               }
             </Field>
             <ArrowOnSelect/>
-          </> : ""
+          </> : null
       }
       {props.rule.fieldId === 3 ?
         <>
@@ -84,7 +84,7 @@ export default function ValueComponent(props: valueProps) {
           </Field>
           <ArrowOnSelect/>
         </>
-        : ""
+        : null
       }
     </div>
   )

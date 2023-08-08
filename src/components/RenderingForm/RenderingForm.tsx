@@ -3,7 +3,7 @@ import {SubmitMatrix} from "../../configs/API.tsx";
 import RuleSet from "./RuleSet/RuleSet.tsx";
 import {Heading} from "./elements/Heading.tsx";
 import {AddRuleset, HandleRemoveRuleSet, NullDataToEmptyStrings} from "./functions/RenderFunctions.ts";
-import ResponseModal from "./elements/Modal.tsx";
+import ResponseModal from "./elements/ResponseModal.tsx";
 import {schema} from "./functions/validationSchema.ts";
 import {ruleSet} from "./functions/RuleSetType.ts";
 import {SubmitMatrixButton} from "./elements/SubmitMatrixButton.tsx";
@@ -118,9 +118,7 @@ export default function RenderingForm() {
               )}
             </FieldArray>
             <SubmitMatrixButton disabledOption={isSubmitting} onClickProp={() => {
-              if (!isValid) {
-                DisplayError()
-              }
+              !isValid ? DisplayError() : null
             }}
             />
           </Form>

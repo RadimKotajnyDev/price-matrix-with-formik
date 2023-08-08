@@ -1,6 +1,6 @@
 import {Field} from "formik";
 
-interface Props {
+interface PriceCommissionableProps {
   commissionableBookingFeeAbsoluteValue: number | string | null,
   commissionableBookingFeePercentValue: number | string | null,
   commissionablePriceSellingValue: number | string | null,
@@ -12,7 +12,7 @@ interface Props {
 
 const rowClass = " flex flex-row justify-between items-center"
 const widthClass = " w-full min-w-[100px] max-w-[120px]"
-export default function PriceCommissionable(props: Props) {
+export default function PriceCommissionable(props: PriceCommissionableProps) {
   const {
     commissionableBookingFeePercentValue,
     commissionablePriceSellingValue,

@@ -4,25 +4,25 @@ import * as React from "react";
 export type FormikErrors<Values> = { [K in keyof Values]?: string };
 
 export interface RuleType {
-  fieldId: number | string | null,
-  compareOperatorId: number | string | null,
-  value: string | null,
+  fieldId: number | string,
+  compareOperatorId: number | string,
+  value: string,
 }
 
 export interface RuleSetProps {
-  ruleSetID: number | string | null,
-  ruleSetPriority: number | string | null,
+  ruleSetID: number | string,
+  ruleSetPriority: number | string,
   offerCode: string,
   note: string,
-  netBookingFeeAbsoluteValue: number | string | null,
-  netBookingFeePercentValue: number | string | null,
-  netPriceSellingValue: number | string | null,
+  netBookingFeeAbsoluteValue: number | string,
+  netBookingFeePercentValue: number | string,
+  netPriceSellingValue: number | string,
   netBookingFeeAbsolute: string,
   netBookingFeePercent: string,
   netPriceSelling: string,
-  commissionableBookingFeeAbsoluteValue: number | string | null,
-  commissionableBookingFeePercentValue: number | string | null,
-  commissionablePriceSellingValue: number | string | null,
+  commissionableBookingFeeAbsoluteValue: number | string,
+  commissionableBookingFeePercentValue: number | string,
+  commissionablePriceSellingValue: number | string,
   commissionableBookingFeeAbsolute: string,
   commissionableBookingFeePercent: string,
   commissionablePriceSelling: string,

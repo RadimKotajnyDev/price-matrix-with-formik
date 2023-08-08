@@ -1,6 +1,10 @@
 import {AiOutlineDelete} from "react-icons/ai";
 
-export const RemoveRuleSetButton = (props: any) => {
+interface RemoveRuleSetButtonProps {
+  removeRuleSet: () => void
+}
+
+export const RemoveRuleSetButton = (props: RemoveRuleSetButtonProps) => {
   return (
     <button onClick={props.removeRuleSet} type="button"
             className="ButtonClass text-sm flex flex-row items-center justify-center bg-red-600 py-1 px-2"

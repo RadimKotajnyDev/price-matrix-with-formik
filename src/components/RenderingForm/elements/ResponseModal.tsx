@@ -9,7 +9,7 @@ interface ModalProps {
   openModal: (value: boolean) => void,
 }
 
-export default function Modal(props: ModalProps) {
+export default function ResponseModal(props: ModalProps) {
   //fixed "There are no focusable elements inside the <FocusTrap />"
   const modalRef = useRef(null);
 

@@ -55,13 +55,3 @@ export function MapValueType(fieldId: string | number | null) {
     // valueDecimal
   }
 }
-
-export function StoreInteger(fieldId: number | "", value: string): string | number {
-  switch (fieldId) {
-    case 1:
-    case 3:
-    case 6:
-      return parseInt(value)
-    default: return value
-  }
-}

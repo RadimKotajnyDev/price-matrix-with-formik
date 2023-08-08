@@ -1,13 +1,13 @@
 import {Field, FormikValues} from "formik";
 import fieldOptions from "../../../../configs/options/FieldOptionsOptions.tsx";
-import {AiOutlineMinus} from "react-icons/ai";
 import {ArrowOnSelect} from "../../../elements/ArrowOnSelect.tsx";
 import {RemoveRule} from "./functions/RuleFunctions.ts"
 import {MapOperators} from "./functions/MapFunctions.tsx";
 import ValueComponent from "./elements/ValueComponent.tsx";
+import * as React from "react";
 import {ChangeEvent} from "react";
 import type {RuleType} from "../RuleSetTypes.ts"
-import * as React from "react";
+import {RemoveRuleButton} from "./elements/RemoveRuleButton.tsx";
 
 type FormikErrors<Values> = { [K in keyof Values]?: string };
 
@@ -24,7 +24,6 @@ interface RuleProps {
   rule: RuleType,
   errors: any | FormikErrors<{ ruleSets: object[]; }>
 }
-
 
 export default function Rule(props: RuleProps) {
 
@@ -82,14 +81,7 @@ export default function Rule(props: RuleProps) {
                         }
                         setFieldValue={props.setFieldValue}
         />
-        <button type="button"
-                onClick={() => RemoveRule(props.values, props.setValues, props.ruleSetIndex, props.ruleIndex)}>
-          <AiOutlineMinus
-            size={30}
-            className="ml-2 rounded text-white bg-secondary duration-200
-                       hover:text-secondary hover:bg-white disabled:cursor-not-allowed"
-          />
-        </button>
+        <RemoveRuleButton onRemoveRuleButtonClick={() => RemoveRule(props.values, props.setValues, props.ruleSetIndex, props.ruleIndex)} />
       </div>
     </>
   )

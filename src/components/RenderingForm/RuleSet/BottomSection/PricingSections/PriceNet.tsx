@@ -1,6 +1,6 @@
 import {Field} from "formik";
 
-interface Props {
+interface PriceNetProps {
   netBookingFeeAbsoluteValue: number | string | null,
   netBookingFeePercentValue: number | string | null,
   netPriceSellingValue: number | string | null,
@@ -12,7 +12,7 @@ interface Props {
 
 const rowClass = " flex flex-row justify-between items-center"
 const widthClass = " w-full min-w-[100px] max-w-[120px]"
-export default function PriceNet(props: Props) {
+export default function PriceNet(props: PriceNetProps) {
   const {
     netBookingFeePercentValue,
     netPriceSellingValue,

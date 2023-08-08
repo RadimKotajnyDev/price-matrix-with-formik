@@ -1,11 +1,11 @@
 import {Field} from "formik";
 
 
-interface Props {
+interface InsideCommissionRateProps {
   insideCommissionRate: string | null
 }
 
-export const InsideCommissionRate = (props: Props) => {
+export const InsideCommissionRate = (props: InsideCommissionRateProps) => {
   const {
     insideCommissionRate
   } = props
