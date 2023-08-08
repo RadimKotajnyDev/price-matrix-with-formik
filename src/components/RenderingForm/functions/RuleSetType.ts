@@ -1,28 +1,28 @@
 export type priceCommissionableType = {
-  priceSelling: number | string,
-  bookingFeeAbsolute: number | string,
-  bookingFeePercent: number | string,
+  priceSelling: number | string | null,
+  bookingFeeAbsolute: number | string | null,
+  bookingFeePercent: number | string | null,
 }
 export type priceNetType = {
-  priceSelling: number | string,
-  bookingFeeAbsolute: number | string,
-  bookingFeePercent: number | string,
+  priceSelling: number | string | null,
+  bookingFeeAbsolute: number | string | null,
+  bookingFeePercent: number | string | null,
 }
 
 export type rulesType = {
-  ruleId: number | string,
-  fieldId: number | string,
-  compareOperatorId: number | string,
-  value: string
+  ruleId: number | string | null,
+  fieldId: number | string | null,
+  compareOperatorId: number | string | null,
+  value: string | null
 }
 
 export interface ruleSet {
-  ruleSetId: number | string,
-  priority: number | string,
+  ruleSetId: number | string | null,
+  priority: number | string | null,
   rules: rulesType[],
   priceCommissionable: priceCommissionableType,
   priceNet: priceNetType,
-  insideCommissionRate: number | string,
-  note: string,
-  offerCode: string
+  insideCommissionRate: number | string | null,
+  note: string | null,
+  offerCode: string | null
 }
