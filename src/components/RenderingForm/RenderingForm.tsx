@@ -3,7 +3,7 @@ import {SubmitMatrix} from "../../configs/API.tsx";
 import RuleSet from "./RuleSet/RuleSet.tsx";
 import {Heading} from "./elements/Heading.tsx";
 import {AddRuleset, HandleRemoveRuleSet, NullDataToEmptyStrings} from "./functions/RenderFunctions.ts";
-import Modal from "./elements/Modal.tsx";
+import ResponseModal from "./elements/Modal.tsx";
 import {schema} from "./functions/validationSchema.ts";
 import {ruleSet} from "./functions/RuleSetType.ts";
 import {SubmitMatrixButton} from "./elements/SubmitMatrixButton.tsx";
@@ -60,7 +60,7 @@ export default function RenderingForm() {
             <FieldArray name={`ruleSets`}>
               {(/*{push, remove}*/) => (
                 <div className="relative mb-20">
-                  <Modal
+                  <ResponseModal
                     errorModal={ErrorModal}
                     showState={ModalState}
                     openModal={() => setModalState(true)}
