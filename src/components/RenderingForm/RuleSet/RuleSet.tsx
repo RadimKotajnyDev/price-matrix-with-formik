@@ -8,7 +8,7 @@ import {Title} from "./elements/Title.tsx";
 import {PriorityDown, PriorityUp} from "../functions/RenderFunctions.ts";
 import {PriorityButtons} from "./elements/PriorityButtons.tsx";
 import {BottomSection} from "./BottomSection/BottomSection.tsx";
-import {RuleSetProps, RuleType} from "./RuleSetTypes.ts";
+import {RuleSetProps, RuleType} from "./functions/RuleSetTypes.ts";
 
 export default function RuleSet(props: RuleSetProps) {
   const {

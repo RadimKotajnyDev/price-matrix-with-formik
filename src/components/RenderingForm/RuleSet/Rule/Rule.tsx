@@ -6,7 +6,7 @@ import {MapOperators} from "./functions/MapFunctions.tsx";
 import ValueComponent from "./elements/ValueComponent.tsx";
 import * as React from "react";
 import {ChangeEvent} from "react";
-import type {RuleType} from "../RuleSetTypes.ts"
+import type {RuleType} from "../functions/RuleSetTypes.ts"
 import {RemoveRuleButton} from "./elements/RemoveRuleButton.tsx";
 
 type FormikErrors<Values> = { [K in keyof Values]?: string };
