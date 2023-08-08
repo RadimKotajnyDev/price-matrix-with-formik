@@ -14,19 +14,19 @@ import {FormInterface} from "./functions/FormInterface.ts";
 export default function RenderingForm() {
   const {
     RefOnTop,
-      setLoadingSpin,
-      loadingSpin,
-      resolvedRuleSets,
-      matrixData,
-      setRequestModalState,
-      requestModalState,
-      lastRuleSetAdded,
-      setRuleSetToRemoveAnimation,
-      ruleSetToRemoveAnimation,
-      AddRulesetAnimate,
-      setErrorStateModal,
-      ErrorStateModal,
-      DisplayError
+    setLoadingSpin,
+    loadingSpin,
+    resolvedRuleSets,
+    matrixData,
+    setRequestModalState,
+    requestModalState,
+    lastRuleSetAdded,
+    setRuleSetToRemoveAnimation,
+    ruleSetToRemoveAnimation,
+    AddRulesetAnimate,
+    setErrorStateModal,
+    ErrorStateModal,
+    DisplayError
   } = useRenderingForm()
 
 

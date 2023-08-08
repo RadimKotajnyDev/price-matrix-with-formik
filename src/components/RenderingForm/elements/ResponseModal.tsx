@@ -49,7 +49,7 @@ export default function ResponseModal(props: ModalProps) {
                     className="text-lg font-medium leading-6 text-gray-900 gap-2 flex-row items-center flex"
                   >
                     {!props.errorModal ? (<>
-                      <AiFillCheckCircle size={30} className="text-green-500"/>
+                      <AiFillCheckCircle size={30} className="text-action"/>
                       Price Matrix submitted successfully!
                     </>) : (
                       <>
