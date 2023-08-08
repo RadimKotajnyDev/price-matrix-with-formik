@@ -2,7 +2,7 @@ import {Field} from "formik";
 import {MapValueType} from "../functions/MapFunctions.tsx";
 import DaysOfWeekConfig from "../../../../../configs/options/DaysOfWeekOptions.tsx";
 import {ArrowOnSelect} from "../../../../elements/ArrowOnSelect.tsx";
-import type {RuleType} from "../../RuleSetTypes.tsx";
+import type {RuleType} from "../../functions/RuleSetTypes.ts"
 import {ChangeEvent} from "react";
 import PerformanceDateOptions from "../../../../../configs/options/PerformanceDateOptions.tsx";
 

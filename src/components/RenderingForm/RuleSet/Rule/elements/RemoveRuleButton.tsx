@@ -11,8 +11,7 @@ export const RemoveRuleButton = (props: RemoveRuleProps) => {
             onClick={onRemoveRuleButtonClick}>
       <AiOutlineMinus
         size={30}
-        className="ml-2 rounded text-white bg-secondary duration-200
-                       ButtonIconClass disabled:cursor-not-allowed"
+        className="ml-2 ButtonClass bg-secondary rounded"
       />
     </button>
   )
