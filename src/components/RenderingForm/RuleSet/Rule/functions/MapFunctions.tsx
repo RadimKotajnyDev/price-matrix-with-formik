@@ -39,7 +39,7 @@ export function MapValueType(fieldId: string | number | null) {
       return "number"
     //valueInt
     case 2:
-      return "datetime-local"
+      return "date"
     //valueDateTime
     case 3:
       return "number"
@@ -48,7 +48,7 @@ export function MapValueType(fieldId: string | number | null) {
       return "text"
     //valueString
     case 5:
-      return "datetime-local"
+      return "date"
     //valueDateTime
     case 6:
       return "number"
