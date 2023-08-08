@@ -73,7 +73,7 @@ export default function RuleSet(props: RuleSetProps) {
             <AddRuleButton
               setValues={setValues}
               values={values}
-              rulesetIndex={ruleSetIndex}
+              ruleSetIndex={ruleSetIndex}
             />
           </>
         )}
