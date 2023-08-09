@@ -1,9 +1,10 @@
 import {AiOutlinePlus} from "react-icons/ai";
 import {AddRule} from "../functions/RuleFunctions.ts";
+import {RuleSetPropsInterface} from "../../../../../configs/interface/RuleSetPropsInterface.ts";
 
 interface AddRuleButtonInterface {
-  values: any,
-  setValues: any,
+  values: RuleSetPropsInterface['values'],
+  setValues: RuleSetPropsInterface['setValues'],
   ruleSetIndex: number
 }
 

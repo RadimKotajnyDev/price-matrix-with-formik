@@ -1,16 +1,15 @@
 import {defaultRuleset} from "../../../configs/ruleset/defaultRuleset.tsx";
-import {ruleSet, rulesType} from "./RuleSetType.ts";
-import * as React from "react";
 import {RefObject} from "react";
-import {FormikValues} from "formik";
+import {RuleSetPropsInterface} from "../../../configs/interface/RuleSetPropsInterface.ts";
+import {RuleSetInterface, RulesType} from "../../../configs/interface/PriceMatrixInterface.ts";
 
 
-export async function NullDataToEmptyStrings(data: { id: number, name: string, ruleSets: ruleSet[] }) {
-  data.ruleSets.map((item: ruleSet, index: number) => {
+export async function NullDataToEmptyStrings(data: { id: number, name: string, ruleSets: RuleSetInterface[] }) {
+  data.ruleSets.map((item: RuleSetInterface, index: number) => {
     data.ruleSets[index] = {
       ruleSetId: item.ruleSetId === null ? "" : item.ruleSetId,
       priority: item.priority === null ? "" : item.priority,
-      rules: item.rules.map((rule: rulesType) => {
+      rules: item.rules.map((rule: RulesType) => {
         return {
           ruleId: rule.ruleId === null ? "" : rule.ruleId,
           fieldId: rule.fieldId === null ? "" : rule.fieldId,
@@ -39,12 +38,12 @@ export async function NullDataToEmptyStrings(data: { id: number, name: string, r
   return data;
 }
 
-export async function EmptyStringToNullData(data: { id: number, name: string, ruleSets: ruleSet[] }) {
-  data.ruleSets.map((item: ruleSet, index: number) => {
+export async function EmptyStringToNullData(data: { id: number, name: string, ruleSets: RuleSetInterface[] }) {
+  data.ruleSets.map((item: RuleSetInterface, index: number) => {
     data.ruleSets[index] = {
       ruleSetId: item.ruleSetId === "" ? null : item.ruleSetId,
       priority: item.priority === "" ? null : item.priority,
-      rules: item.rules.map((rule: rulesType) => {
+      rules: item.rules.map((rule: RulesType) => {
         return {
           ruleId: rule.ruleId === "" ? null : rule.ruleId,
           fieldId: rule.fieldId === "" ? null : rule.fieldId,
@@ -73,14 +72,14 @@ export async function EmptyStringToNullData(data: { id: number, name: string, ru
   return data;
 }
 
-export function RemapPriorities(jsonData: ruleSet[]) {
+export function RemapPriorities(jsonData: RuleSetInterface[]) {
   const ruleSets = [...jsonData];
 
   const jsonLength = ruleSets.length;
 
   const priorities = Array.from({length: jsonLength}, (_, index) => jsonLength - index);
 
-  ruleSets.forEach((ruleSet: ruleSet, index: number) => {
+  ruleSets.forEach((ruleSet: RuleSetInterface, index: number) => {
     ruleSet.priority = priorities[index];
   });
 
@@ -88,7 +87,7 @@ export function RemapPriorities(jsonData: ruleSet[]) {
 }
 
 
-export function PriorityUp(values: FormikValues, setValues: (values: FormikValues) => void, ruleSetIndex: number) {
+export function PriorityUp(values: RuleSetPropsInterface['values'], setValues: RuleSetPropsInterface['setValues'], ruleSetIndex: number) {
   if (ruleSetIndex > 0) {
     let updatedRuleSets = [...values.ruleSets];
 
@@ -105,7 +104,7 @@ export function PriorityUp(values: FormikValues, setValues: (values: FormikValue
   }
 }
 
-export function PriorityDown(values: FormikValues, setValues: (values: FormikValues) => void, ruleSetIndex: number) {
+export function PriorityDown(values: RuleSetPropsInterface['values'], setValues: RuleSetPropsInterface['setValues'], ruleSetIndex: number) {
   if (ruleSetIndex < values.ruleSets.length - 1) {
     let updatedRuleSets = [...values.ruleSets];
 
@@ -123,7 +122,7 @@ export function PriorityDown(values: FormikValues, setValues: (values: FormikVal
   }
 }
 
-export const HandleRemoveRuleSet = (values: FormikValues, setValues: (values: React.SetStateAction<any>, shouldValidate?: boolean) => void, index: number) => {
+export const HandleRemoveRuleSet = (values: RuleSetPropsInterface['values'], setValues: RuleSetPropsInterface['setValues'], index: number) => {
 
   values.ruleSets.splice(index, 1);
 
@@ -132,9 +131,9 @@ export const HandleRemoveRuleSet = (values: FormikValues, setValues: (values: Re
   setValues(values);
 };
 
-export const AddRuleset = (values: FormikValues, setValues: (values: React.SetStateAction<any>, shouldValidate?: boolean) => void) => {
+export const AddRuleset = (values: RuleSetPropsInterface['values'], setValues: RuleSetPropsInterface['setValues'],) => {
 
-  const newRuleset: ruleSet = {...defaultRuleset};
+  const newRuleset: RuleSetInterface = {...defaultRuleset};
   newRuleset.priority = values.ruleSets.length + 1;
   newRuleset.ruleSetId = "" //backend will create new ID
 

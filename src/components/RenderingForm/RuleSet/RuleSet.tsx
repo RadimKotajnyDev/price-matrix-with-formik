@@ -8,12 +8,13 @@ import {Title} from "./elements/Title.tsx";
 import {PriorityDown, PriorityUp} from "../functions/RenderFunctions.ts";
 import {PriorityButtons} from "./elements/PriorityButtons.tsx";
 import {BottomSection} from "./BottomSection/BottomSection.tsx";
-import {RuleSetProps, RuleType} from "./functions/RuleSetTypes.ts";
+import {RuleSetPropsInterface} from "../../../configs/interface/RuleSetPropsInterface.ts";
+import {RulesType} from "../../../configs/interface/PriceMatrixInterface.ts";
 
-export default function RuleSet(props: RuleSetProps) {
+export default function RuleSet(props: RuleSetPropsInterface) {
   const {
-    ruleSetID,
-    ruleSetPriority,
+    ruleSetId,
+    priority,
     offerCode,
     note,
     netBookingFeeAbsoluteValue,
@@ -37,13 +38,13 @@ export default function RuleSet(props: RuleSetProps) {
     setValues,
     ruleSetIndex,
     errors
-  }: RuleSetProps = props
+  } = props
   return (
     <div
       className="w-full p-4 my-4 rounded-md bg-white border-2 outline-gray-100 shadow-lg">
       <div className="flex flex-row justify-between mb-2">
-        <Title ruleSetID={ruleSetID}
-               ruleSetPriority={ruleSetPriority}/>
+        <Title ruleSetId={ruleSetId}
+               ruleSetPriority={priority}/>
         <RemoveRuleSetButton removeRuleSet={removeRuleSet}/>
         <PriorityButtons
           onUP={() => PriorityUp(values, setValues, ruleSetIndex)}
@@ -55,7 +56,7 @@ export default function RuleSet(props: RuleSetProps) {
       <FieldArray name={`ruleSets.rules`}>
         {() => (
           <>
-            {rules.map((rule: RuleType, ruleIndex: number) => (
+            {rules.map((rule: RulesType, ruleIndex: number) => (
               <Rule key={ruleIndex}
                     rule={rule}
                     ruleSetIndex={ruleSetIndex}

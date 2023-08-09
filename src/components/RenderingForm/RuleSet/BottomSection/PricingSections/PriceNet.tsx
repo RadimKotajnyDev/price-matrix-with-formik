@@ -1,18 +1,9 @@
 import {Field} from "formik";
-
-interface PriceNetProps {
-  netBookingFeeAbsoluteValue: number | string | null,
-  netBookingFeePercentValue: number | string | null,
-  netPriceSellingValue: number | string | null,
-  netBookingFeeAbsolute: number | string,
-  netBookingFeePercent: number | string,
-  netPriceSelling: number | string,
-  disabledProp: boolean
-}
+import {PriceNetInterface} from "../../../../../configs/interface/BottomSectionInterface.ts";
 
 const rowClass = " flex flex-row justify-between items-center"
 const widthClass = " w-full min-w-[100px] max-w-[120px]"
-export default function PriceNet(props: PriceNetProps) {
+export default function PriceNet(props: PriceNetInterface) {
   const {
     netBookingFeePercentValue,
     netPriceSellingValue,

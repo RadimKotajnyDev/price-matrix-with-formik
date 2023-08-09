@@ -1,28 +1,10 @@
 import PriceNet from "./PricingSections/PriceNet.tsx";
 import {Divider} from "../../../elements/Divider.tsx";
-import CodeAndCommission from "./CodeAndCommission/CodeAndCommission.tsx";
 import PriceCommissionable from "./PricingSections/PriceCommissionable.tsx";
-
-interface Props {
-  netBookingFeeAbsolute: string,
-  netBookingFeeAbsoluteValue: number | string | null,
-  netBookingFeePercent: string,
-  netBookingFeePercentValue: number | string | null,
-  netPriceSelling: string,
-  netPriceSellingValue: number | string | null,
-  commissionableBookingFeeAbsolute: string,
-  commissionableBookingFeeAbsoluteValue: number | string | null,
-  commissionableBookingFeePercent: string,
-  commissionableBookingFeePercentValue: number | string | null,
-  commissionablePriceSelling: string,
-  commissionablePriceSellingValue: number | string | null,
-  offerCode: string,
-  insideCommissionRate: string,
-  errors: any,
-  ruleSetIndex: number
-}
-
-export const BottomSection = (props: Props) => {
+import {BottomSectionInterface} from "../../../../configs/interface/BottomSectionInterface.ts";
+import {OfferCode} from "./CodeAndCommission/OfferCode.tsx";
+import {InsideCommissionRate} from "./CodeAndCommission/InsideCommissionRate.tsx";
+export const BottomSection = (props: BottomSectionInterface) => {
 
   const {
     netBookingFeeAbsolute,
@@ -38,9 +20,9 @@ export const BottomSection = (props: Props) => {
     commissionablePriceSelling,
     commissionablePriceSellingValue,
     insideCommissionRate,
-    offerCode,
     errors,
-    ruleSetIndex
+    ruleSetIndex,
+    offerCode,
   } = props
 
   return (
@@ -73,7 +55,10 @@ export const BottomSection = (props: Props) => {
         netPriceSellingValue={netPriceSellingValue}
       />
       <Divider />
-      <CodeAndCommission errors={errors} ruleSetIndex={ruleSetIndex} nameProp={offerCode} insideCommissionRate={insideCommissionRate}/>
+      <div className="flex flex-col gap-4">
+        <OfferCode errors={errors} ruleSetIndex={ruleSetIndex} offerCode={offerCode}/>
+        <InsideCommissionRate insideCommissionRate={insideCommissionRate} />
+      </div>
     </section>
   )
 }

@@ -1,4 +1,6 @@
-export const AddRule = (values: any, setValues: any, ruleSetIndex: number) => {
+import {RuleSetPropsInterface} from "../../../../../configs/interface/RuleSetPropsInterface.ts";
+
+export const AddRule = (values: RuleSetPropsInterface['values'], setValues: RuleSetPropsInterface['setValues'], ruleSetIndex: number) => {
 
   const newRule = {
     "ruleSetId": "",
@@ -19,7 +21,7 @@ export const AddRule = (values: any, setValues: any, ruleSetIndex: number) => {
     ruleSets: updatedRuleSets,
   });
 }
-export function RemoveRule(values: any, setValues: any, ruleSetIndex: number, ruleIndex: number) {
+export function RemoveRule(values: RuleSetPropsInterface['values'], setValues: RuleSetPropsInterface['setValues'], ruleSetIndex: number, ruleIndex: number) {
   values.ruleSets[ruleSetIndex].rules.splice(ruleIndex, 1)
   const updatedRulesets = [...values.ruleSets]
 

@@ -1,6 +1,6 @@
 import axios from "axios";
 import {EmptyStringToNullData, NullDataToEmptyStrings} from "../components/RenderingForm/functions/RenderFunctions.ts";
-import {ruleSet} from "../components/RenderingForm/functions/RuleSetType.ts";
+import {RuleSetInterface} from "./interface/PriceMatrixInterface.ts";
 
 const defaultURL = "https://localhost:7062"
 const matrixID = "3"
@@ -26,7 +26,7 @@ export async function ReformatRuleSets() {
   return await data.ruleSets;
 }
 
-export async function SubmitMatrix(values: { id: number, name: string, ruleSets: ruleSet[] }) {
+export async function SubmitMatrix(values: { id: number, name: string, ruleSets: RuleSetInterface[] }) {
   const refactoredData = await EmptyStringToNullData(values);
   //console.log(refactoredData)
   try {

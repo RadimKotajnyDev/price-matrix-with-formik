@@ -1,14 +1,14 @@
-import {Field} from "formik";
+import {Field, FormikHelpers} from "formik";
 import {MapValueType} from "../functions/MapFunctions.tsx";
 import DaysOfWeekConfig from "../../../../../configs/options/DaysOfWeekOptions.tsx";
 import {ArrowOnSelect} from "../../../../elements/ArrowOnSelect.tsx";
-import type {RuleType} from "../../functions/RuleSetTypes.ts"
 import {ChangeEvent} from "react";
 import PerformanceDateOptions from "../../../../../configs/options/PerformanceDateOptions.tsx";
+import {PriceMatrix, RulesType} from "../../../../../configs/interface/PriceMatrixInterface.ts";
 
 interface valueProps {
-  setFieldValue: (field: string | number | undefined, value: number | string, shouldValidate?: boolean) => void,
-  rule: RuleType
+  setFieldValue: FormikHelpers<PriceMatrix>['setFieldValue'],
+  rule: RulesType
   valueName: string,
   value: string | null,
   errorExists: boolean

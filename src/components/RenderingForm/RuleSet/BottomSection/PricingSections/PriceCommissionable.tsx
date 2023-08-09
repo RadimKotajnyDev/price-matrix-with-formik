@@ -1,18 +1,9 @@
 import {Field} from "formik";
-
-interface PriceCommissionableProps {
-  commissionableBookingFeeAbsoluteValue: number | string | null,
-  commissionableBookingFeePercentValue: number | string | null,
-  commissionablePriceSellingValue: number | string | null,
-  commissionableBookingFeeAbsolute: string,
-  commissionableBookingFeePercent: string,
-  commissionablePriceSelling: string,
-  disabledProp: boolean
-}
+import {PriceCommissionableInterface} from "../../../../../configs/interface/BottomSectionInterface.ts";
 
 const rowClass = " flex flex-row justify-between items-center"
 const widthClass = " w-full min-w-[100px] max-w-[120px]"
-export default function PriceCommissionable(props: PriceCommissionableProps) {
+export default function PriceCommissionable(props: PriceCommissionableInterface) {
   const {
     commissionableBookingFeePercentValue,
     commissionablePriceSellingValue,

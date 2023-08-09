@@ -5,11 +5,11 @@ import {Heading} from "./elements/Heading.tsx";
 import {AddRuleset, HandleRemoveRuleSet, NullDataToEmptyStrings} from "./functions/RenderFunctions.ts";
 import ResponseModal from "./elements/ResponseModal.tsx";
 import {schema} from "./functions/validationSchema.ts";
-import {ruleSet} from "./functions/RuleSetType.ts";
 import {SubmitMatrixButton} from "./elements/SubmitMatrixButton.tsx";
 import {LoadingSpinner} from "./elements/LoadingSpinner.tsx";
 import {useRenderingForm} from "../../hooks/useRenderingForm.ts";
-import {FormInterface} from "./functions/FormInterface.ts";
+
+import {PriceMatrix, RuleSetInterface} from "../../configs/interface/PriceMatrixInterface.ts";
 
 export default function RenderingForm() {
   const {
@@ -33,7 +33,7 @@ export default function RenderingForm() {
     return <LoadingSpinner/>
   } else {
     return (
-      <Formik<FormInterface>
+      <Formik<PriceMatrix>
         validationSchema={schema}
         initialValues={
           {id: matrixData.id, name: matrixData.name, ruleSets: resolvedRuleSets}
@@ -71,7 +71,7 @@ export default function RenderingForm() {
                   }}
                   />
                   <div>
-                    {values.ruleSets.map((ruleSet: ruleSet, ruleSetIndex: number) => {
+                    {values.ruleSets.map((ruleSet: RuleSetInterface, ruleSetIndex: number) => {
                       return (
                         <div key={ruleSetIndex}
                              className={`list-item list-none ${ruleSetIndex === 0 && lastRuleSetAdded ? 'animate' : ''}
@@ -86,8 +86,8 @@ export default function RenderingForm() {
                             }}
                             errors={errors}
                             ruleSetIndex={ruleSetIndex}
-                            ruleSetPriority={ruleSet.priority}
-                            ruleSetID={ruleSet.ruleSetId}
+                            priority={ruleSet.priority}
+                            ruleSetId={ruleSet.ruleSetId}
                             rules={ruleSet.rules}
                             rulesString={`ruleSets[${ruleSetIndex}].rules`}
                             offerCode={`ruleSets[${ruleSetIndex}].offerCode`}

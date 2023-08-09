@@ -1,11 +1,7 @@
 import {Field} from "formik";
+import {BottomSectionInterface} from "../../../../../configs/interface/BottomSectionInterface.ts";
 
-
-interface InsideCommissionRateProps {
-  insideCommissionRate: string | null
-}
-
-export const InsideCommissionRate = (props: InsideCommissionRateProps) => {
+export const InsideCommissionRate = (props: {insideCommissionRate: BottomSectionInterface['insideCommissionRate']}) => {
   const {
     insideCommissionRate
   } = props
