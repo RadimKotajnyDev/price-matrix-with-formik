@@ -1,5 +1,6 @@
 import {Field} from "formik";
 import {OfferCodeInterface} from "../../../../../configs/interface/BottomSectionInterface.ts";
+import {RuleSetInterface} from "../../../../../configs/interface/PriceMatrixInterface.ts";
 
 export const OfferCode = (props: OfferCodeInterface) => {
 
@@ -16,7 +17,7 @@ export const OfferCode = (props: OfferCodeInterface) => {
       ${errors
       && errors?.ruleSets
       && errors?.ruleSets[ruleSetIndex]
-      && errors?.ruleSets[ruleSetIndex].offerCode ? "border-red-400 bg-red-100" : ""
+      && (errors?.ruleSets[ruleSetIndex] as RuleSetInterface).offerCode ? "border-red-400 bg-red-100" : ""
       }
       `} />
     </div>
