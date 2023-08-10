@@ -1,4 +1,4 @@
-import {PriceCommissionableType, PriceNetType, PriceMatrix, RuleSetInterface} from "./PriceMatrixInterface.ts";
+import {PriceCommissionableType, PriceNetType, PriceMatrixInterface, RuleSetInterface} from "./PriceMatrixInterface.ts";
 import {FormikHelpers} from "formik";
 import {FormikState} from "formik/dist/types";
 
@@ -23,11 +23,11 @@ export interface RuleSetPropsInterface {
   commissionablePriceSelling: string,
   removeRuleSet: () => void,
   rulesString: string,
-  setFieldValue: FormikHelpers<PriceMatrix>['setFieldValue'],
-  values: FormikState<PriceMatrix>['values'],
-  setValues: FormikHelpers<PriceMatrix>['setValues'],
+  setFieldValue: FormikHelpers<PriceMatrixInterface>['setFieldValue'],
+  values: FormikState<PriceMatrixInterface>['values'],
+  setValues: FormikHelpers<PriceMatrixInterface>['setValues'],
   ruleSetIndex: number,
-  errors: FormikState<PriceMatrix>['errors'],
+  errors: FormikState<PriceMatrixInterface>['errors'],
   nameProp?: string | null,
   disabledProp?: boolean
 }

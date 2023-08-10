@@ -9,7 +9,7 @@ import {SubmitMatrixButton} from "./elements/SubmitMatrixButton.tsx";
 import {LoadingSpinner} from "./elements/LoadingSpinner.tsx";
 import {useRenderingForm} from "../../hooks/useRenderingForm.ts";
 
-import {PriceMatrix, RuleSetInterface} from "../../configs/interface/PriceMatrixInterface.ts";
+import {PriceMatrixInterface, RuleSetInterface} from "../../configs/interface/PriceMatrixInterface.ts";
 
 export default function RenderingForm() {
   const {
@@ -33,7 +33,7 @@ export default function RenderingForm() {
     return <LoadingSpinner/>
   } else {
     return (
-      <Formik<PriceMatrix>
+      <Formik<PriceMatrixInterface>
         validationSchema={schema}
         initialValues={
           {id: matrixData.id, name: matrixData.name, ruleSets: resolvedRuleSets}

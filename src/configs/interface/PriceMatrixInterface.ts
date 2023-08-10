@@ -1,4 +1,4 @@
-export interface PriceMatrix {
+export interface PriceMatrixInterface {
   id: number;
   name: string;
   ruleSets: RuleSetInterface[];

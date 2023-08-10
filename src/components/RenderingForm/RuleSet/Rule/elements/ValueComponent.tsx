@@ -4,10 +4,10 @@ import DaysOfWeekConfig from "../../../../../configs/options/DaysOfWeekOptions.t
 import {ArrowOnSelect} from "../../../../elements/ArrowOnSelect.tsx";
 import {ChangeEvent} from "react";
 import PerformanceDateOptions from "../../../../../configs/options/PerformanceDateOptions.tsx";
-import {PriceMatrix, RulesType} from "../../../../../configs/interface/PriceMatrixInterface.ts";
+import {PriceMatrixInterface, RulesType} from "../../../../../configs/interface/PriceMatrixInterface.ts";
 
 interface valueProps {
-  setFieldValue: FormikHelpers<PriceMatrix>['setFieldValue'],
+  setFieldValue: FormikHelpers<PriceMatrixInterface>['setFieldValue'],
   rule: RulesType
   valueName: string,
   value: string | null,

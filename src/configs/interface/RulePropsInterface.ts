@@ -1,17 +1,17 @@
 import {FormikErrors, FormikState} from "formik/dist/types";
-import {PriceMatrix, RulesType} from "./PriceMatrixInterface.ts";
+import {PriceMatrixInterface, RulesType} from "./PriceMatrixInterface.ts";
 import {FormikHelpers} from "formik";
 
 export interface RulePropsInterface {
-  errors: FormikErrors<PriceMatrix>,
+  errors: FormikErrors<PriceMatrixInterface>,
   ruleSetIndex: number,
   ruleIndex: number,
-  setFieldValue: FormikHelpers<PriceMatrix>['setFieldValue'],
+  setFieldValue: FormikHelpers<PriceMatrixInterface>['setFieldValue'],
   fieldName: string,
   optionName: string,
   valueName: string,
   rule: RulesType,
   value: string | null,
-  values: FormikState<PriceMatrix>['values'],
-  setValues: FormikHelpers<PriceMatrix>['setValues'],
+  values: FormikState<PriceMatrixInterface>['values'],
+  setValues: FormikHelpers<PriceMatrixInterface>['setValues'],
 }
