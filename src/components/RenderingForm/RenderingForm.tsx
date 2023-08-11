@@ -13,23 +13,23 @@ import {PriceMatrixInterface, RuleSetInterface} from "../../configs/interface/Pr
 
 export default function RenderingForm() {
   const {
-    RefOnTop,
-    setLoadingSpin,
-    loadingSpin,
+    refOnTop,
+    setIsLoadingSpin,
+    isLoadingSpin,
     resolvedRuleSets,
     matrixData,
-    setRequestModalState,
-    requestModalState,
-    lastRuleSetAdded,
-    setRuleSetToRemoveAnimation,
-    ruleSetToRemoveAnimation,
-    AddRulesetAnimate,
-    setErrorStateModal,
-    ErrorStateModal,
+    setIsRequestModal,
+    isRequestModal,
+    isLastRuleSetAdded,
+    setRemoveRuleSetAnimationIndex,
+    removeRuleSetAnimationIndex,
+    addRuleSetAnimate,
+    setIsErrorModal,
+    isErrorModal,
     DisplayError
   } = useRenderingForm()
 
-  if (loadingSpin) {
+  if (isLoadingSpin) {
     return <LoadingSpinner/>
   } else {
     return (
@@ -40,33 +40,33 @@ export default function RenderingForm() {
         }
         onSubmit={async (values, {setValues, setSubmitting}) => {
           try {
-            setErrorStateModal(false);
+            setIsErrorModal(false);
             const result = await SubmitMatrix(values);
             const reformattedData = await NullDataToEmptyStrings(result)
             setValues(reformattedData)
-            setLoadingSpin(true)
-            setRequestModalState(true);
+            setIsLoadingSpin(true)
+            setIsRequestModal(true);
           } catch (error) {
-            setErrorStateModal(true)
-            setRequestModalState(true)
+            setIsErrorModal(true)
+            setIsRequestModal(true)
           }
           setSubmitting(false)
         }}
         validateOnChange={false}
       >
         {({values, setFieldValue, setValues, errors, isValid, isSubmitting}) => (
-          <Form className="flex justify-center" ref={RefOnTop}>
+          <Form className="flex justify-center" ref={refOnTop}>
             <FieldArray name={`ruleSets`}>
               {(/*{push, remove}*/) => (
                 <div className="relative mb-20">
                   <ResponseModal
-                    errorModal={ErrorStateModal}
-                    showState={requestModalState}
-                    openModal={() => setRequestModalState(true)}
-                    closeModal={() => setRequestModalState(false)}
+                    errorModal={isErrorModal}
+                    showState={isRequestModal}
+                    openModal={() => setIsRequestModal(true)}
+                    closeModal={() => setIsRequestModal(false)}
                   />
                   <Heading matrix={matrixData} AddRuleSet={() => {
-                    AddRulesetAnimate();
+                    addRuleSetAnimate();
                     AddRuleset(values, setValues);
                   }}
                   />
@@ -74,13 +74,13 @@ export default function RenderingForm() {
                     {values.ruleSets.map((ruleSet: RuleSetInterface, ruleSetIndex: number) => {
                       return (
                         <div key={ruleSetIndex}
-                             className={`list-item list-none ${ruleSetIndex === 0 && lastRuleSetAdded ? 'animate' : ''}
-                       ${ruleSetToRemoveAnimation === ruleSetIndex ? 'animate' : ''}`}>
+                             className={`list-item list-none ${ruleSetIndex === 0 && isLastRuleSetAdded ? 'animate' : ''}
+                       ${removeRuleSetAnimationIndex === ruleSetIndex ? 'animate' : ''}`}>
                           <RuleSet
                             removeRuleSet={() => {
-                              setRuleSetToRemoveAnimation(ruleSetIndex);
+                              setRemoveRuleSetAnimationIndex(ruleSetIndex);
                               setTimeout(() => {
-                                setRuleSetToRemoveAnimation(null);
+                                setRemoveRuleSetAnimationIndex(null);
                                 HandleRemoveRuleSet(values, setValues, ruleSetIndex);
                               }, 500);
                             }}

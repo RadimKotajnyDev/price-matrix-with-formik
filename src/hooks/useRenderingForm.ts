@@ -4,62 +4,61 @@ import {ScrollToTop} from "../components/RenderingForm/functions/RenderFunctions
 
 export function useRenderingForm() { // TODO: use arrow function
 
+  const refOnTop = useRef(null)
+
   const [resolvedRuleSets, setResolvedRuleSets] = useState([])
   const [matrixData, setMatrixData] = useState({name: "", id: 0})
+  const [isLoadingSpin, setIsLoadingSpin] = useState<boolean>(true);
+  const [isLastRuleSetAdded, setIsLastRuleSetAdded] = useState<boolean>(false);
+  const [removeRuleSetAnimationIndex, setRemoveRuleSetAnimationIndex] = useState<number | null>(null);
+  const [isRequestModal, setIsRequestModal] = useState<boolean>(false)
+  const [isErrorModal, setIsErrorModal] = useState<boolean>(false)
 
-  const [loadingSpin, setLoadingSpin] = useState<boolean>(true); //TODO: all useState should be sorted at the top for better readability, (isLoadingSpinner)
   useEffect(() => {
     FetchData().then((res) => setMatrixData(res)) //TODO: change this for async / await -> newer and better readability
     ReformatRuleSets()
       .then((res) => {
         setResolvedRuleSets(res);
-        setLoadingSpin(false);
+        setIsLoadingSpin(false);
       })
-  }, [loadingSpin])
+  }, [isLoadingSpin])
 
-  const RefOnTop = useRef(null) // TODO: change to camelCase, better nam
-
-  const [lastRuleSetAdded, setLastRuleSetAdded] = useState<boolean>(false); // TODO: "islastRuleSetAdded"
-  const [ruleSetToRemoveAnimation, setRuleSetToRemoveAnimation] = useState<number | null>(null); // TODO: better name, something with index
-
-  const AddRulesetAnimate = () => { // TODO: all functions change to camelCase (and all other for consistent), look at the other names, more concise and to the point
-    setLastRuleSetAdded(true);
+  const addRuleSetAnimate = () => {
+    setIsLastRuleSetAdded(true);
     setTimeout(() => {
-      setLastRuleSetAdded(false);
-      ScrollToTop(RefOnTop);
+      setIsLastRuleSetAdded(false);
+      ScrollToTop(refOnTop);
     }, 500);
   };
 
-  const [requestModalState, setRequestModalState] = useState<boolean>(false) // TODO isRequestModal
-  const [ErrorStateModal, setErrorStateModal] = useState<boolean>(false) // TODO: camelCase, isErrorModal
   useEffect(() => {
-    if (requestModalState) {
+    if (isRequestModal) {
       const timeout = setTimeout(() => {
-        setRequestModalState(false)
+        setIsRequestModal(false)
       }, 1250);
       return () => clearTimeout(timeout);
     }
-  }, [requestModalState]);
+  }, [isRequestModal]);
 
-  function DisplayError() { // TODO: use arow function here to be consistent
-    setErrorStateModal(true)
-    setRequestModalState(true)
+  const DisplayError = () => {
+    setIsErrorModal(true)
+    setIsRequestModal(true)
   }
 
   return {
-    RefOnTop,
-    setLoadingSpin,
-    loadingSpin,
+    refOnTop,
+    setIsLoadingSpin,
+    isLoadingSpin,
     resolvedRuleSets,
     matrixData,
-    setRequestModalState,
-    requestModalState,
-    lastRuleSetAdded,
-    setRuleSetToRemoveAnimation,
-    ruleSetToRemoveAnimation,
-    AddRulesetAnimate,
-    setErrorStateModal,
-    ErrorStateModal,
+    setIsRequestModal,
+    isRequestModal,
+    isLastRuleSetAdded,
+    setRemoveRuleSetAnimationIndex,
+    removeRuleSetAnimationIndex,
+    addRuleSetAnimate,
+    setIsErrorModal,
+    isErrorModal,
     DisplayError
   }
 }
