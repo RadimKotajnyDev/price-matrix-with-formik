@@ -3,13 +3,13 @@ import fieldOptions from "../../../../configs/options/FieldOptionsOptions.tsx";
 import {ArrowOnSelect} from "../../../elements/ArrowOnSelect.tsx";
 import {RemoveRule} from "./functions/RuleFunctions.ts"
 import {MapOperators} from "./functions/MapFunctions.tsx";
-import ValueComponent from "./elements/ValueComponent.tsx";
+import {ValueComponent} from "./elements/ValueComponent.tsx";
 import {ChangeEvent} from "react";
 import {RemoveRuleButton} from "./elements/RemoveRuleButton.tsx";
 import {RulePropsInterface} from "../../../../configs/interface/RulePropsInterface.ts";
 import {useErrorStyles} from "../../../../hooks/useRuleErrors.ts";
 
-export default function Rule(props: RulePropsInterface) {
+export const Rule = (props: RulePropsInterface) => {
 
   const {
     errors,

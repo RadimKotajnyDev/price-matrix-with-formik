@@ -1,5 +1,5 @@
-import Note from "./elements/Note.tsx";
-import Rule from "./Rule/Rule.tsx";
+import {Note} from "./elements/Note.tsx";
+import {Rule} from "./Rule/Rule.tsx";
 import {FieldArray} from "formik";
 import {Labels} from "./Rule/elements/Labels.tsx";
 import {AddRuleButton} from "./Rule/elements/AddRuleButton.tsx";
@@ -11,7 +11,7 @@ import {BottomSection} from "./BottomSection/BottomSection.tsx";
 import {RuleSetPropsInterface} from "../../../configs/interface/RuleSetPropsInterface.ts";
 import {RulesType} from "../../../configs/interface/PriceMatrixInterface.ts";
 
-export default function RuleSet(props: RuleSetPropsInterface) {
+export const RuleSet = (props: RuleSetPropsInterface) => {
   const {
     ruleSetId,
     priority,

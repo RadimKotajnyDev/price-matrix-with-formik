@@ -2,7 +2,7 @@ import {useEffect, useRef, useState} from "react";
 import {FetchData, ReformatRuleSets} from "../configs/API.tsx";
 import {ScrollToTop} from "../components/RenderingForm/functions/RenderFunctions.ts";
 
-export function useRenderingForm() { // TODO: use arrow function
+export const useRenderingForm = () => {
 
   const refOnTop = useRef(null)
 
@@ -15,13 +15,18 @@ export function useRenderingForm() { // TODO: use arrow function
   const [isErrorModal, setIsErrorModal] = useState<boolean>(false)
 
   useEffect(() => {
-    FetchData().then((res) => setMatrixData(res)) //TODO: change this for async / await -> newer and better readability
-    ReformatRuleSets()
-      .then((res) => {
-        setResolvedRuleSets(res);
-        setIsLoadingSpin(false);
-      })
-  }, [isLoadingSpin])
+    const fetchDataAsync = async () => {
+      const data = await FetchData();
+      setMatrixData(data);
+    };
+    const reformatRuleSetsAsync = async () => {
+      const reformattedData = await ReformatRuleSets();
+      setResolvedRuleSets(reformattedData);
+      setIsLoadingSpin(false);
+    };
+    fetchDataAsync().then()
+    reformatRuleSetsAsync().then()
+  }, [isLoadingSpin]);
 
   const addRuleSetAnimate = () => {
     setIsLastRuleSetAdded(true);

@@ -1,9 +1,9 @@
 import {FieldArray, Form, Formik} from 'formik';
 import {SubmitMatrix} from "../../configs/API.tsx";
-import RuleSet from "./RuleSet/RuleSet.tsx";
+import {RuleSet} from "./RuleSet/RuleSet.tsx";
 import {Heading} from "./elements/Heading.tsx";
 import {AddRuleset, HandleRemoveRuleSet, NullDataToEmptyStrings} from "./functions/RenderFunctions.ts";
-import ResponseModal from "./elements/ResponseModal.tsx";
+import {ResponseModal} from "./elements/ResponseModal.tsx";
 import {schema} from "./functions/validationSchema.ts";
 import {SubmitMatrixButton} from "./elements/SubmitMatrixButton.tsx";
 import {LoadingSpinner} from "./elements/LoadingSpinner.tsx";
@@ -12,6 +12,7 @@ import {useRenderingForm} from "../../hooks/useRenderingForm.ts";
 import {PriceMatrixInterface, RuleSetInterface} from "../../configs/interface/PriceMatrixInterface.ts";
 
 export default function RenderingForm() {
+
   const {
     refOnTop,
     setIsLoadingSpin,
@@ -74,7 +75,7 @@ export default function RenderingForm() {
                     {values.ruleSets.map((ruleSet: RuleSetInterface, ruleSetIndex: number) => {
                       return (
                         <div key={ruleSetIndex}
-                             className={`list-item list-none ${ruleSetIndex === 0 && isLastRuleSetAdded ? 'animate' : ''}
+                             className={`ruleSetAnimation list-none ${ruleSetIndex === 0 && isLastRuleSetAdded ? 'animate' : ''}
                        ${removeRuleSetAnimationIndex === ruleSetIndex ? 'animate' : ''}`}>
                           <RuleSet
                             removeRuleSet={() => {

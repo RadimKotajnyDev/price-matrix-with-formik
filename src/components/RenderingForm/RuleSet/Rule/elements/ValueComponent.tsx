@@ -22,7 +22,7 @@ const ValidateDays = (value: string | null) => {
   return error;
 };
 
-export default function ValueComponent(props: valueProps) {
+export const ValueComponent = (props: valueProps) => {
   const disabledBool = props.rule.fieldId === 0
   return (
     <div className="flex flex-row relative">
