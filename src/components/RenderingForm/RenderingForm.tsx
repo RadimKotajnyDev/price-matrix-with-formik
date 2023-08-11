@@ -11,7 +11,7 @@ import {useRenderingForm} from "../../hooks/useRenderingForm.ts";
 
 import {PriceMatrixInterface, RuleSetInterface} from "../../configs/interface/PriceMatrixInterface.ts";
 
-export default function RenderingForm() {
+export const RenderingForm = () => {
 
   const {
     refOnTop,

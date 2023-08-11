@@ -1,5 +1,5 @@
 import './App.css'
-import RenderingForm from './components/RenderingForm/RenderingForm.tsx'
+import {RenderingForm} from './components/RenderingForm/RenderingForm.tsx'
 
 function App() {
   return (
