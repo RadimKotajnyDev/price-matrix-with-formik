@@ -23,34 +23,44 @@ const ValidateDays = (value: string | null) => {
 };
 
 export const ValueComponent = (props: valueProps) => {
-  const disabledBool = props.rule.fieldId === 0
+
+  const {
+    rule,
+    valueName,
+    value,
+    errorExists,
+    setFieldValue
+  } = props
+
+  const disabledBool = rule.fieldId === 0
+
   return (
     <div className="flex flex-row relative">
       {
-        props.rule.fieldId !== 3 && props.rule.fieldId !== 1 ?
-          <Field className={`InputClass w-[17.7rem] ${props.errorExists ? "border-red-400 text-red-600 bg-red-100" : ""}`}
+        rule.fieldId !== 3 && rule.fieldId !== 1 ?
+          <Field className={`InputClass w-[17.7rem] ${errorExists ? "border-red-400 text-red-600 bg-red-100" : ""}`}
                  component="input"
                  disabled={disabledBool}
-                 onChange={(e: ChangeEvent<HTMLInputElement>) => props.setFieldValue(props.valueName, e.target.value)} // parseInt(e.target.value)
-                 name={props.valueName}
-                 value={props.value}
-                 type={MapValueType(props.rule.fieldId)}
+                 onChange={(e: ChangeEvent<HTMLInputElement>) => setFieldValue(valueName, e.target.value)} // parseInt(e.target.value)
+                 name={valueName}
+                 value={value}
+                 type={MapValueType(rule.fieldId)}
           ></Field>
           : null
       }
       {
-        props.rule.fieldId === 1 ?
+        rule.fieldId === 1 ?
           <>
             <Field
-              className={`InputClass w-[17.7rem] ${props.errorExists ? "border-red-400 text-red-600 bg-red-100" : ""}`}
+              className={`InputClass w-[17.7rem] ${errorExists ? "border-red-400 text-red-600 bg-red-100" : ""}`}
               component="select"
               disabled={disabledBool}
-              onChange={(e: ChangeEvent<HTMLInputElement>) => props.setFieldValue(
-                props.valueName, e.target.value)
+              onChange={(e: ChangeEvent<HTMLInputElement>) => setFieldValue(
+                valueName, e.target.value)
               }
-              name={props.valueName}
-              value={props.value}
-              type={MapValueType(props.rule.fieldId)}
+              name={valueName}
+              value={value}
+              type={MapValueType(rule.fieldId)}
               size={1}
             >
               {
@@ -62,19 +72,19 @@ export const ValueComponent = (props: valueProps) => {
             <ArrowOnSelect/>
           </> : null
       }
-      {props.rule.fieldId === 3 ?
+      {rule.fieldId === 3 ?
         <>
           <Field
-            validate={() => ValidateDays(props.value)}
-            className={`InputClass w-[17.7rem] ${props.errorExists ? "border-red-400 text-red-600 bg-red-100" : ""}`}
+            validate={() => ValidateDays(value)}
+            className={`InputClass w-[17.7rem] ${errorExists ? "border-red-400 text-red-600 bg-red-100" : ""}`}
             component="select"
             disabled={disabledBool}
-            onChange={(e: ChangeEvent<HTMLInputElement>) => props.setFieldValue(
-              props.valueName, e.target.value)
+            onChange={(e: ChangeEvent<HTMLInputElement>) => setFieldValue(
+              valueName, e.target.value)
             }
-            name={props.valueName}
-            value={props.value}
-            type={MapValueType(props.rule.fieldId)}
+            name={valueName}
+            value={value}
+            type={MapValueType(rule.fieldId)}
           >
             {
               DaysOfWeekConfig.map((current: { name: string, id: number }) => (
