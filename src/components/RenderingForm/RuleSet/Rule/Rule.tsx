@@ -8,43 +8,6 @@ import {ChangeEvent} from "react";
 import {RemoveRuleButton} from "./elements/RemoveRuleButton.tsx";
 import {RulePropsInterface} from "../../../../configs/interface/RulePropsInterface.ts";
 import {useErrorStyles} from "../../../../hooks/useRuleErrors.ts";
-/*
-
-function FieldIdErrorsExists() {
-    if(errors
-      && errors?.ruleSets
-      && errors?.ruleSets[ruleSetIndex]
-      && (errors?.ruleSets[ruleSetIndex] as RuleSetInterface).rules
-      && (errors?.ruleSets[ruleSetIndex] as RuleSetInterface).rules[ruleIndex]
-      && (errors?.ruleSets[ruleSetIndex] as RuleSetInterface).rules[ruleIndex].fieldId) {
-      return "border-red-400 text-red-600 bg-red-100"
-    }
-    return ""
-  }
-
-  function CompareOperatorErrorExists() {
-    if(errors
-      && errors?.ruleSets
-      && errors?.ruleSets[ruleSetIndex]
-      && (errors?.ruleSets[ruleSetIndex] as RuleSetInterface).rules
-      && (errors?.ruleSets[ruleSetIndex] as RuleSetInterface).rules[ruleIndex]
-      && (errors?.ruleSets[ruleSetIndex] as RuleSetInterface).rules[ruleIndex].compareOperatorId) {
-      return "border-red-400 text-red-600 bg-red-100"
-    }
-    return ""
-  }
-
-  function ValueErrorExists() {
-    return !!(errors
-      && errors?.ruleSets
-      && errors?.ruleSets[ruleSetIndex]
-      && (errors?.ruleSets[ruleSetIndex] as RuleSetInterface).rules
-      && (errors?.ruleSets[ruleSetIndex] as RuleSetInterface).rules[ruleIndex]
-      && (errors?.ruleSets[ruleSetIndex] as RuleSetInterface).rules[ruleIndex].value);
-  }
-
-
- */
 
 export default function Rule(props: RulePropsInterface) {
 
