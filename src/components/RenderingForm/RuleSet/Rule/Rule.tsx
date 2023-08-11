@@ -7,12 +7,10 @@ import ValueComponent from "./elements/ValueComponent.tsx";
 import {ChangeEvent} from "react";
 import {RemoveRuleButton} from "./elements/RemoveRuleButton.tsx";
 import {RulePropsInterface} from "../../../../configs/interface/RulePropsInterface.ts";
-import {RuleSetInterface} from "../../../../configs/interface/PriceMatrixInterface.ts";
+import {useErrorStyles} from "../../../../hooks/useRuleErrors.ts";
+/*
 
-
-export default function Rule(props: RulePropsInterface) {
-
-  function FieldIdErrorsExists() {
+function FieldIdErrorsExists() {
     if(errors
       && errors?.ruleSets
       && errors?.ruleSets[ruleSetIndex]
@@ -45,6 +43,11 @@ export default function Rule(props: RulePropsInterface) {
       && (errors?.ruleSets[ruleSetIndex] as RuleSetInterface).rules[ruleIndex].value);
   }
 
+
+ */
+
+export default function Rule(props: RulePropsInterface) {
+
   const {
     errors,
     ruleSetIndex,
@@ -59,11 +62,15 @@ export default function Rule(props: RulePropsInterface) {
     setValues
   } = props
 
+  const {
+    fieldIdErrorStyles, compareOperatorIdErrorStyles, valueErrorExists
+  } = useErrorStyles(errors, ruleSetIndex, ruleIndex)
+
   return (
     <>
       <div className="flex flex-row mb-3">
         <div className="flex flex-row relative">
-          <Field component="select" className={`InputClass w-[17.7rem] ${FieldIdErrorsExists()}`}
+          <Field component="select" className={`InputClass w-[17.7rem] ${fieldIdErrorStyles}`}
                  required={true}
                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
                    setFieldValue(fieldName, parseInt(e.target.value));
@@ -79,7 +86,7 @@ export default function Rule(props: RulePropsInterface) {
           <ArrowOnSelect/>
         </div>
         <div className="flex flex-row relative">
-          <Field component="select" className={`InputClass w-[17.7rem] ${CompareOperatorErrorExists()}`}
+          <Field component="select" className={`InputClass w-[17.7rem] ${compareOperatorIdErrorStyles}`}
                  required={true}
                  onChange={(e: ChangeEvent<HTMLInputElement>) => setFieldValue(optionName, parseInt(e.target.value))}
                  name={optionName} value={rule.compareOperatorId}>
@@ -92,7 +99,7 @@ export default function Rule(props: RulePropsInterface) {
         <ValueComponent rule={rule}
                         valueName={valueName}
                         value={value}
-                        errorExists={ValueErrorExists()}
+                        errorExists={valueErrorExists}
                         setFieldValue={setFieldValue}
         />
         <RemoveRuleButton onRemoveRuleButtonClick={() => RemoveRule(values, setValues, ruleSetIndex, ruleIndex)}/>
