@@ -58,7 +58,7 @@ export const RenderingForm = () => {
         {({values, setFieldValue, setValues, errors, isValid, isSubmitting}) => (
           <Form className="flex justify-center" ref={refOnTop}>
             <FieldArray name={`ruleSets`}>
-              {(/*{push, remove}*/) => (
+              {() => (
                 <div className="relative mb-20">
                   <ResponseModal
                     errorModal={isErrorModal}
