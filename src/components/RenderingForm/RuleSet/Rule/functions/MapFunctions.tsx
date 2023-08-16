@@ -37,21 +37,15 @@ export function MapValueType(fieldId: string | number | null) {
   switch (fieldId) {
     case 1:
       return "number"
-    //valueInt
     case 2:
       return "date"
-    //valueDateTime
     case 3:
       return "number"
-    //valueInt
     case 4:
       return "text"
-    //valueString
     case 5:
       return "date"
-    //valueDateTime
     case 6:
       return "number"
-    // valueDecimal
   }
 }

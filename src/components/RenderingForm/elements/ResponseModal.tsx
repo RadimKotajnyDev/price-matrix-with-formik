@@ -10,7 +10,6 @@ interface ModalProps {
 }
 
 export const ResponseModal = (props: ModalProps) => {
-  //fixed "There are no focusable elements inside the <FocusTrap />"
   const modalRef = useRef(null);
 
   return (

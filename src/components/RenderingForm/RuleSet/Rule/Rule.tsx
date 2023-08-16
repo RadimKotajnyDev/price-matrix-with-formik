@@ -38,7 +38,6 @@ export const Rule = (props: RulePropsInterface) => {
                  onChange={(e: ChangeEvent<HTMLInputElement>) => {
                    setFieldValue(fieldName, parseInt(e.target.value));
                    setFieldValue(optionName, 0);
-                   //fixed compareOperatorId value when changing field
                    setFieldValue(valueName, "")
                  }}
                  name={fieldName} value={rule.fieldId}>

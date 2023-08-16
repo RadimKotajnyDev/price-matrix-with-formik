@@ -37,7 +37,6 @@ export default function PriceCommissionable(props: PriceCommissionableInterface)
           value={commissionableBookingFeePercentValue}
           disabled={commissionablePriceSellingValue != "" || disabledProp}
           min={0}
-          //max={100}
         />
       </div>
       <div className={rowClass}>
