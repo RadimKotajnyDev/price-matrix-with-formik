@@ -32,8 +32,8 @@ export const useRenderingForm = () => {
     setIsLastRuleSetAdded(true);
     setTimeout(() => {
       setIsLastRuleSetAdded(false);
-      ScrollToTop(refOnTop);
     }, 500);
+    ScrollToTop(refOnTop);
   };
 
   useEffect(() => {
