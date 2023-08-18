@@ -127,6 +127,7 @@ export const RenderingForm = () => {
               )}
             </FieldArray>
             <SubmitMatrixButton disabledOption={isSubmitting} onClickProp={() => {
+              console.log(errors)
               !isValid ? DisplayError() : null
             }}
             />

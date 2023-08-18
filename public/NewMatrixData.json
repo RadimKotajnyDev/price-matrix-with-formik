@@ -17,14 +17,14 @@
         ]
       },
       "priceCommissionable": {
-        "priceSelling": 0,
-        "bookingFeeAbsolute": 0,
-        "bookingFeePercent": 0
+        "priceSelling": 1,
+        "bookingFeeAbsolute": null,
+        "bookingFeePercent": null
       },
       "priceNet": {
-        "priceSelling": 0,
-        "bookingFeeAbsolute": 0,
-        "bookingFeePercent": 0
+        "priceSelling": null,
+        "bookingFeeAbsolute": null,
+        "bookingFeePercent": null
       },
       "insideCommissionRate": 0,
       "note": "string",

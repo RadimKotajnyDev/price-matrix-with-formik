@@ -7,20 +7,20 @@ export const schema = yup.object().shape({
     yup.object().shape({
       ruleSetId: yup.number().nullable(),
       priority: yup.number(),
-      priceBandCodes: yup.date(),
+      priceBandCodes: yup.string(),
       dateSelector: yup.object().shape(
         {
           performancesFrom: yup.date(),
           performancesTo: yup.date(),
           bookingsFrom: yup.date(),
           bookingsTo: yup.date(),
-          selectedPerformanceTimes: yup.array().of( // Corrected here
+          selectedPerformanceTimes: yup.array().of(
             yup.object().shape(
               {
                 type: yup.number(),
                 dayOfWeek: yup.number()
               },
-            )
+            ).optional()
           )
         }
       ),
