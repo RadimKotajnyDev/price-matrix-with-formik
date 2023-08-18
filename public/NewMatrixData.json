@@ -5,7 +5,7 @@
     {
       "ruleSetId": 0,
       "priority": 0,
-      "priceBandCodes": "string",
+      "priceBandCodes": "test-test-test",
       "dateSelector": {
         "performancesFrom": "date",
         "performancesTo": "date",

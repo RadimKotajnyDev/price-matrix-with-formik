@@ -94,7 +94,7 @@ export const RenderingForm = () => {
                             offerCode={`ruleSets[${ruleSetIndex}].offerCode`}
                             note={`ruleSets[${ruleSetIndex}].note`}
 
-                            priceBandCodes={`ruleSets[${ruleSetIndex}].dateSelector.priceBandCodes`}
+                            priceBandCodes={`ruleSets[${ruleSetIndex}].priceBandCodes`}
                             performancesFrom={`ruleSets[${ruleSetIndex}].dateSelector.performancesFrom`}
                             performancesTo={`ruleSets[${ruleSetIndex}].dateSelector.performancesTo`}
                             bookingsFrom={`ruleSets[${ruleSetIndex}].dateSelector.bookingsFrom`}

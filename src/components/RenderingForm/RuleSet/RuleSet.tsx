@@ -61,7 +61,7 @@ export const RuleSet = (props: RuleSetPropsInterface) => {
                     performancesTo={performancesTo}
                     bookingsFrom={bookingsFrom}
                     bookingsTo={bookingsTo}
-                    selectedPerformanceTimes={selectedPerformanceTimes}
+                    //selectedPerformanceTimes={selectedPerformanceTimes}
                     selectedPerformanceTimesName={selectedPerformanceTimesName}
                 />
                 <Divider/>
