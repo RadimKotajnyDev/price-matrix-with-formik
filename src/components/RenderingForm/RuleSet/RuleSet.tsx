@@ -34,7 +34,7 @@ export const RuleSet = (props: RuleSetPropsInterface) => {
         performancesTo,
         bookingsFrom,
         bookingsTo,
-        selectedPerformanceTimes,
+        //selectedPerformanceTimes,
         selectedPerformanceTimesName,
         values,
         setValues,

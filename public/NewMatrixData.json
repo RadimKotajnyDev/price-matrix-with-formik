@@ -7,10 +7,10 @@
       "priority": 0,
       "priceBandCodes": "test-test-test",
       "dateSelector": {
-        "performancesFrom": "date",
-        "performancesTo": "date",
-        "bookingsFrom": "date",
-        "bookingsTo": "date",
+        "performancesFrom": "2020-01-05",
+        "performancesTo": "2020-01-05",
+        "bookingsFrom": "2020-01-05",
+        "bookingsTo": "2020-01-05",
         "selectedPerformanceTimes": [
           { "type": 0, "dayOfWeek": 1 },
           { "type": 1, "dayOfWeek": 2 }

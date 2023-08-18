@@ -7,14 +7,23 @@ export const schema = yup.object().shape({
     yup.object().shape({
       ruleSetId: yup.number().nullable(),
       priority: yup.number(),
-      rules: yup.array().of(
-        yup.object().shape({
-          ruleId: yup.number().nullable(),
-          fieldId: yup.number().required().min(1),
-          compareOperatorId: yup.number().required().min(1),
-          value: yup.string().nullable().required(),
-        })
-      ).min(1),
+      priceBandCodes: yup.date(),
+      dateSelector: yup.object().shape(
+        {
+          performancesFrom: yup.date(),
+          performancesTo: yup.date(),
+          bookingsFrom: yup.date(),
+          bookingsTo: yup.date(),
+          selectedPerformanceTimes: yup.array().of( // Corrected here
+            yup.object().shape(
+              {
+                type: yup.number(),
+                dayOfWeek: yup.number()
+              },
+            )
+          )
+        }
+      ),
       priceCommissionable: yup.object().shape({
         priceSelling: yup.number().nullable(),
         bookingFeePercent: yup.number().nullable(),

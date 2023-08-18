@@ -35,7 +35,7 @@ export const RenderingForm = () => {
   } else {
     return (
       <Formik<PriceMatrixInterface>
-        //validationSchema={schema}
+        validationSchema={schema}
         initialValues={
           {id: matrixData.id, name: matrixData.name, ruleSets: resolvedRuleSets}
         }
@@ -99,7 +99,7 @@ export const RenderingForm = () => {
                             performancesTo={`ruleSets[${ruleSetIndex}].dateSelector.performancesTo`}
                             bookingsFrom={`ruleSets[${ruleSetIndex}].dateSelector.bookingsFrom`}
                             bookingsTo={`ruleSets[${ruleSetIndex}].dateSelector.bookingsTo`}
-                            selectedPerformanceTimes={ruleSet.dateSelector.selectedPerformanceTimes}
+                            //selectedPerformanceTimes={ruleSet.dateSelector.selectedPerformanceTimes}
                             selectedPerformanceTimesName={`ruleSets[${ruleSetIndex}].dateSelector.selectedPerformanceTimes`}
 
                             netBookingFeeAbsoluteValue={ruleSet.priceNet.bookingFeeAbsolute}
