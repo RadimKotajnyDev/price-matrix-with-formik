@@ -41,18 +41,7 @@ export const DateSelector = (props: DataSelectorProps) => {
           <label>Time (matinee)</label>
           <label>Time (evening)</label>
         </div>
-        {/*
-                    selectedPerformanceTimes.map((value: selectedPerformanceTime, index: number) => (
-                      <div role="group" aria-labelledby="checkbox-group"
-                        key={index} className="grid grid-rows-3 justify-center gap-y-3">
-                          <label>{days[index]}</label>
-                          <Field type="checkbox" name={selectedPerformanceTimesName} value={value} className="h-5 w-5"/>
-                          <Field type="checkbox" name={selectedPerformanceTimesName} value={value} className="h-5 w-5"/>
-                      </div>
-                    ))
-                */}
         {
-          //TODO: convert string to object
           dayNames.map((current: { id: number, day: string }) => {
             return (
               <div role="group"

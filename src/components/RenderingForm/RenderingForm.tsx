@@ -35,7 +35,7 @@ export const RenderingForm = () => {
   } else {
     return (
       <Formik<PriceMatrixInterface>
-        validationSchema={schema}
+        //validationSchema={schema}
         initialValues={
           {id: matrixData.id, name: matrixData.name, ruleSets: resolvedRuleSets}
         }
@@ -45,6 +45,7 @@ export const RenderingForm = () => {
             const result = await SubmitMatrix(values);
             const reformattedData = await NullDataToEmptyStrings(result)
             setValues(reformattedData)
+            console.log(values)
             setIsLoadingSpin(true)
             setIsRequestModal(true);
           } catch (error) {
@@ -55,7 +56,7 @@ export const RenderingForm = () => {
         }}
         validateOnChange={false}
       >
-        {({values, setFieldValue, setValues, errors, isValid, isSubmitting}) => (
+        {({values, setValues, errors, isValid, isSubmitting}) => (
           <Form className="flex justify-center" ref={refOnTop}>
             <FieldArray name={`ruleSets`}>
               {() => (

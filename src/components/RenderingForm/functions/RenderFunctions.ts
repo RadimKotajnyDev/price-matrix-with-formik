@@ -43,42 +43,39 @@ export async function NullDataToEmptyStrings(data: { id: number, name: string, r
 
 export async function EmptyStringToNullData(data: { id: number, name: string, ruleSets: RuleSetInterface[] }) {
   data.ruleSets.map((item: RuleSetInterface, index: number) => {
-    if (typeof item.dateSelector.selectedPerformanceTimes !== "string") {
-      data.ruleSets[index] = {
-        ruleSetId: item.ruleSetId === "" ? null : item.ruleSetId,
-        priority: item.priority === "" ? null : item.priority,
-        priceBandCodes: item.priceBandCodes === "" ? null : item.priceBandCodes,
-        dateSelector: {
-          performancesFrom: item.dateSelector.performancesFrom,
-          performancesTo: item.dateSelector.performancesTo,
-          bookingsFrom: item.dateSelector.bookingsFrom,
-          bookingsTo: item.dateSelector.bookingsTo,
-          selectedPerformanceTimes: item.dateSelector.selectedPerformanceTimes.map((currObj, index2: number) => {
-            //FIXME:
-            return JSON.parse(currObj)
-          })
-        },
-        priceCommissionable: {
-          priceSelling:
-            item.priceCommissionable.priceSelling === "" ? null : item.priceCommissionable.priceSelling,
-          bookingFeeAbsolute:
-            item.priceCommissionable.bookingFeeAbsolute === "" ? null : item.priceCommissionable.bookingFeeAbsolute,
-          bookingFeePercent:
-            item.priceCommissionable.bookingFeePercent === "" ? null : item.priceCommissionable.bookingFeePercent,
-        },
-        priceNet: {
-          priceSelling: item.priceNet.priceSelling === "" ? null : item.priceNet.priceSelling,
-          bookingFeeAbsolute: item.priceNet.bookingFeeAbsolute === "" ? null : item.priceNet.bookingFeeAbsolute,
-          bookingFeePercent: item.priceNet.bookingFeePercent === "" ? null : item.priceNet.bookingFeePercent,
-        },
-        insideCommissionRate: item.insideCommissionRate === "" ? null : item.insideCommissionRate,
-        note: item.note === "" ? null : item.note,
-        offerCode: item.offerCode === "" ? null : item.offerCode,
-      }
+    data.ruleSets[index] = {
+      ruleSetId: item.ruleSetId === "" ? null : item.ruleSetId,
+      priority: item.priority === "" ? null : item.priority,
+      priceBandCodes: item.priceBandCodes === "" ? null : item.priceBandCodes,
+      dateSelector: {
+        performancesFrom: item.dateSelector.performancesFrom,
+        performancesTo: item.dateSelector.performancesTo,
+        bookingsFrom: item.dateSelector.bookingsFrom,
+        bookingsTo: item.dateSelector.bookingsTo,
+        selectedPerformanceTimes: item.dateSelector.selectedPerformanceTimes.map((currObj: any) => {
+          console.log(JSON.parse(currObj))
+          return JSON.parse(currObj)
+        })
+      },
+      priceCommissionable: {
+        priceSelling:
+          item.priceCommissionable.priceSelling === "" ? null : item.priceCommissionable.priceSelling,
+        bookingFeeAbsolute:
+          item.priceCommissionable.bookingFeeAbsolute === "" ? null : item.priceCommissionable.bookingFeeAbsolute,
+        bookingFeePercent:
+          item.priceCommissionable.bookingFeePercent === "" ? null : item.priceCommissionable.bookingFeePercent,
+      },
+      priceNet: {
+        priceSelling: item.priceNet.priceSelling === "" ? null : item.priceNet.priceSelling,
+        bookingFeeAbsolute: item.priceNet.bookingFeeAbsolute === "" ? null : item.priceNet.bookingFeeAbsolute,
+        bookingFeePercent: item.priceNet.bookingFeePercent === "" ? null : item.priceNet.bookingFeePercent,
+      },
+      insideCommissionRate: item.insideCommissionRate === "" ? null : item.insideCommissionRate,
+      note: item.note === "" ? null : item.note,
+      offerCode: item.offerCode === "" ? null : item.offerCode,
     }
-  })
-  console.log(data)
-  return data;
+  });
+  return data
 }
 
 export function RemapPriorities(jsonData: RuleSetInterface[]) {
@@ -155,5 +152,5 @@ export const AddRuleset = (values: RuleSetPropsInterface['values'], setValues: R
 
 export const ScrollToTop = (ref: RefObject<HTMLElement>) => {
   const firstChildElement = ref.current as HTMLElement | null;
-  firstChildElement?.firstElementChild?.scrollIntoView({ behavior: 'smooth' });
+  firstChildElement?.firstElementChild?.scrollIntoView({behavior: 'smooth'});
 };

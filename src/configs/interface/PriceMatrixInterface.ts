@@ -19,7 +19,7 @@ export interface DataSelectorInterface {
   performancesTo: string | null,
   bookingsFrom: string | null,
   bookingsTo: string | null,
-  selectedPerformanceTimes: selectedPerformanceTime[] | string
+  selectedPerformanceTimes: selectedPerformanceTime[] | string[]
 }
 export interface selectedPerformanceTime { type: number, dayOfWeek: number }
 
