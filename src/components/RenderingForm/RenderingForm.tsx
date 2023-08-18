@@ -89,10 +89,18 @@ export const RenderingForm = () => {
                             ruleSetIndex={ruleSetIndex}
                             priority={ruleSet.priority}
                             ruleSetId={ruleSet.ruleSetId}
-                            rules={ruleSet.rules}
                             rulesString={`ruleSets[${ruleSetIndex}].rules`}
                             offerCode={`ruleSets[${ruleSetIndex}].offerCode`}
                             note={`ruleSets[${ruleSetIndex}].note`}
+
+                            priceBandCodes={`ruleSets[${ruleSetIndex}].dateSelector.priceBandCodes`}
+                            performancesFrom={`ruleSets[${ruleSetIndex}].dateSelector.performancesFrom`}
+                            performancesTo={`ruleSets[${ruleSetIndex}].dateSelector.performancesTo`}
+                            bookingsFrom={`ruleSets[${ruleSetIndex}].dateSelector.bookingsFrom`}
+                            bookingsTo={`ruleSets[${ruleSetIndex}].dateSelector.bookingsTo`}
+                            selectedPerformanceTimes={ruleSet.dateSelector.selectedPerformanceTimes}
+                            selectedPerformanceTimesName={`ruleSets[${ruleSetIndex}].dateSelector.selectedPerformanceTimes`}
+
                             netBookingFeeAbsoluteValue={ruleSet.priceNet.bookingFeeAbsolute}
                             netBookingFeePercentValue={ruleSet.priceNet.bookingFeePercent}
                             netPriceSellingValue={ruleSet.priceNet.priceSelling}
@@ -106,7 +114,7 @@ export const RenderingForm = () => {
                             commissionableBookingFeePercent={`ruleSets[${ruleSetIndex}].priceCommissionable.bookingFeePercent`}
                             commissionablePriceSelling={`ruleSets[${ruleSetIndex}].priceCommissionable.priceSelling`}
                             insideCommissionRate={`ruleSets[${ruleSetIndex}].insideCommissionRate`}
-                            setFieldValue={setFieldValue}
+                            //setFieldValue={setFieldValue}
                             values={values}
                             setValues={setValues}
                           />

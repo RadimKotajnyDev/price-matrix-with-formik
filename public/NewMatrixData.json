@@ -1,0 +1,34 @@
+{
+  "id": 0,
+  "name": "string",
+  "ruleSets": [
+    {
+      "ruleSetId": 0,
+      "priority": 0,
+      "priceBandCodes": "string",
+      "dateSelector": {
+        "performancesFrom": "date",
+        "performancesTo": "date",
+        "bookingsFrom": "date",
+        "bookingsTo": "date",
+        "selectedPerformanceTimes": [
+          { "type": 0, "dayOfWeek": 1 },
+          { "type": 1, "dayOfWeek": 2 }
+        ]
+      },
+      "priceCommissionable": {
+        "priceSelling": 0,
+        "bookingFeeAbsolute": 0,
+        "bookingFeePercent": 0
+      },
+      "priceNet": {
+        "priceSelling": 0,
+        "bookingFeeAbsolute": 0,
+        "bookingFeePercent": 0
+      },
+      "insideCommissionRate": 0,
+      "note": "string",
+      "offerCode": "string"
+    }
+  ]
+}

@@ -1,27 +1,33 @@
 //reformat empty string to null on submit
 
 export const defaultRuleset = {
-  "ruleSetId": "",
-  "priority": "",
-  "rules": [
+  "id": "",
+  "name": "",
+  "ruleSets": [
     {
-      "ruleId": "",
-      "fieldId": 0,
-      "compareOperatorId": 0,
-      "value": ""
+      "ruleSetId": "",
+      "priority": "",
+      "priceBandCodes": "",
+      "dateSelector": {
+        "performancesFrom": "",
+        "performancesTo": "",
+        "bookingsFrom": "",
+        "bookingsTo": "",
+        "selectedPerformanceTimes": []
+      },
+      "priceCommissionable": {
+        "priceSelling": "",
+        "bookingFeeAbsolute": "",
+        "bookingFeePercent": ""
+      },
+      "priceNet": {
+        "priceSelling": "",
+        "bookingFeeAbsolute": "",
+        "bookingFeePercent": ""
+      },
+      "insideCommissionRate": "",
+      "note": "",
+      "offerCode": ""
     }
-  ],
-  "priceCommissionable": {
-    "priceSelling": "",
-    "bookingFeePercent": "",
-    "bookingFeeAbsolute": ""
-  },
-  "priceNet": {
-    "priceSelling": "",
-    "bookingFeePercent": "",
-    "bookingFeeAbsolute": ""
-  },
-  "insideCommissionRate": "",
-  "note": "",
-  "offerCode": ""
+  ]
 }

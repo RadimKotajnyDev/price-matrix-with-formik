@@ -1,4 +1,10 @@
-import {PriceCommissionableType, PriceNetType, PriceMatrixInterface, RuleSetInterface} from "./PriceMatrixInterface.ts";
+import {
+  PriceCommissionableType,
+  PriceNetType,
+  PriceMatrixInterface,
+  RuleSetInterface,
+  selectedPerformanceTime
+} from "./PriceMatrixInterface.ts";
 import {FormikHelpers} from "formik";
 import {FormikState} from "formik/dist/types";
 
@@ -8,7 +14,15 @@ export interface RuleSetPropsInterface {
   offerCode: RuleSetInterface['offerCode'],
   note: RuleSetInterface['note'],
   insideCommissionRate: RuleSetInterface['insideCommissionRate'],
-  rules: RuleSetInterface['rules']
+  priceBandCodes: RuleSetInterface['priceBandCodes'],
+
+  performancesFrom: string | null,
+  performancesTo: string | null,
+  bookingsFrom: string | null,
+  bookingsTo: string | null,
+  selectedPerformanceTimes: selectedPerformanceTime[],
+  selectedPerformanceTimesName: string,
+
   netBookingFeeAbsoluteValue: PriceNetType['bookingFeeAbsolute'],
   netBookingFeePercentValue: PriceNetType['bookingFeePercent'],
   netPriceSellingValue: PriceNetType['priceSelling'],
@@ -23,7 +37,7 @@ export interface RuleSetPropsInterface {
   commissionablePriceSelling: string,
   removeRuleSet: () => void,
   rulesString: string,
-  setFieldValue: FormikHelpers<PriceMatrixInterface>['setFieldValue'],
+  //setFieldValue: FormikHelpers<PriceMatrixInterface>['setFieldValue'],
   values: FormikState<PriceMatrixInterface>['values'],
   setValues: FormikHelpers<PriceMatrixInterface>['setValues'],
   ruleSetIndex: number,
