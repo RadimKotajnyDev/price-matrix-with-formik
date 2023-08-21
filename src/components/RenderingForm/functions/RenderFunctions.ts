@@ -52,9 +52,9 @@ export async function EmptyStringToNullData(data: { id: number, name: string, ru
         performancesTo: item.dateSelector.performancesTo,
         bookingsFrom: item.dateSelector.bookingsFrom,
         bookingsTo: item.dateSelector.bookingsTo,
-        selectedPerformanceTimes: item.dateSelector.selectedPerformanceTimes.map((currObj: any) => {
-          console.log(JSON.parse(currObj))
-          return JSON.parse(currObj)
+        selectedPerformanceTimes: item.dateSelector.selectedPerformanceTimes.map((currObj) => {
+          //console.log(JSON.parse(currObj))
+          return JSON.parse(<string>currObj)
         })
       },
       priceCommissionable: {
@@ -138,7 +138,6 @@ export const HandleRemoveRuleSet = (values: RuleSetPropsInterface['values'], set
 };
 
 export const AddRuleset = (values: RuleSetPropsInterface['values'], setValues: RuleSetPropsInterface['setValues'],) => {
-  //FIXME:
   const newRuleset: RuleSetInterface = {...defaultRuleset};
   newRuleset.priority = values.ruleSets.length + 1;
   newRuleset.ruleSetId = "" //backend will create new ID

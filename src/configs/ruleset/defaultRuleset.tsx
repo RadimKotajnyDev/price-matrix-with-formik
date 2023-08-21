@@ -1,10 +1,6 @@
 //reformat empty string to null on submit
 
 export const defaultRuleset = {
-  "id": "",
-  "name": "",
-  "ruleSets": [
-    {
       "ruleSetId": "",
       "priority": "",
       "priceBandCodes": "",
@@ -28,6 +24,4 @@ export const defaultRuleset = {
       "insideCommissionRate": "",
       "note": "",
       "offerCode": ""
-    }
-  ]
 }

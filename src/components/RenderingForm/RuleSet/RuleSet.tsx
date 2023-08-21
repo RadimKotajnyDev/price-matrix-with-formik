@@ -67,36 +67,6 @@ export const RuleSet = (props: RuleSetPropsInterface) => {
                 <Divider/>
                 <PriceBandCodes nameProp={priceBandCodes}/>
             </div>
-            {/*
-      <Labels/>
-
-        <FieldArray name={`ruleSets.rules`}>
-        {() => (
-          <>
-            {rules.map((rule: RulesType, ruleIndex: number) => (
-              <Rule key={ruleIndex}
-                    rule={rule}
-                    ruleSetIndex={ruleSetIndex}
-                    ruleIndex={ruleIndex}
-                    fieldName={rulesString + `[${ruleIndex}].fieldId`}
-                    optionName={rulesString + `[${ruleIndex}].compareOperatorId`}
-                    valueName={rulesString + `[${ruleIndex}].value`}
-                    value={rule.value}
-                    setFieldValue={setFieldValue}
-                    setValues={setValues}
-                    values={values}
-                    errors={errors}
-              />
-            ))}
-            <AddRuleButton
-              setValues={setValues}
-              values={values}
-              ruleSetIndex={ruleSetIndex}
-            />
-          </>
-        )}
-      </FieldArray>
-       */}
             <BottomSection
                 netBookingFeeAbsolute={netBookingFeeAbsolute}
                 netBookingFeeAbsoluteValue={netBookingFeeAbsoluteValue}
