@@ -99,7 +99,6 @@ export const RenderingForm = () => {
                             performancesTo={`ruleSets[${ruleSetIndex}].dateSelector.performancesTo`}
                             bookingsFrom={`ruleSets[${ruleSetIndex}].dateSelector.bookingsFrom`}
                             bookingsTo={`ruleSets[${ruleSetIndex}].dateSelector.bookingsTo`}
-                            //selectedPerformanceTimes={ruleSet.dateSelector.selectedPerformanceTimes}
                             selectedPerformanceTimesName={`ruleSets[${ruleSetIndex}].dateSelector.selectedPerformanceTimes`}
 
                             netBookingFeeAbsoluteValue={ruleSet.priceNet.bookingFeeAbsolute}
@@ -127,8 +126,8 @@ export const RenderingForm = () => {
               )}
             </FieldArray>
             <SubmitMatrixButton disabledOption={isSubmitting} onClickProp={() => {
-              console.log(errors)
-              !isValid ? DisplayError() : null
+              !isValid ? console.log(errors) : null;
+              !isValid ? DisplayError() : null;
             }}
             />
           </Form>
