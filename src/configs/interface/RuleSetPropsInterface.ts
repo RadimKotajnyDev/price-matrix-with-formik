@@ -1,10 +1,4 @@
-import {
-  PriceCommissionableType,
-  PriceNetType,
-  PriceMatrixInterface,
-  RuleSetInterface,
-  selectedPerformanceTime
-} from "./PriceMatrixInterface.ts";
+import {PriceCommissionableType, PriceMatrixInterface, PriceNetType, RuleSetInterface} from "./PriceMatrixInterface.ts";
 import {FormikHelpers} from "formik";
 import {FormikState} from "formik/dist/types";
 
@@ -20,7 +14,7 @@ export interface RuleSetPropsInterface {
   performancesTo: string | null,
   bookingsFrom: string | null,
   bookingsTo: string | null,
-  selectedPerformanceTimes: selectedPerformanceTime[],
+  //selectedPerformanceTimes: selectedPerformanceTime[],
   selectedPerformanceTimesName: string,
 
   netBookingFeeAbsoluteValue: PriceNetType['bookingFeeAbsolute'],

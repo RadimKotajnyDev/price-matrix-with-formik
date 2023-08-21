@@ -15,12 +15,21 @@ export const schema = yup.object().shape({
           bookingsFrom: yup.date(),
           bookingsTo: yup.date(),
           selectedPerformanceTimes: yup.array().of(
-            yup.object().shape(
-              {
-                type: yup.number(),
-                dayOfWeek: yup.number()
-              },
-            ).optional()
+            yup.lazy(value => {
+              switch (typeof value) {
+                case 'object':
+                  return yup.object().shape(
+                    {
+                      type: yup.number(),
+                      dayOfWeek: yup.number()
+                    },
+                  ).optional()
+                case 'string':
+                  return yup.string()
+                default:
+                  return yup.mixed()
+              }
+            })
           )
         }
       ),

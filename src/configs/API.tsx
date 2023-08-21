@@ -7,10 +7,13 @@ import {RuleSetInterface} from "./interface/PriceMatrixInterface.ts";
 const matrixId = "1";
 const apiUrl = "https://localhost:7062"
 */
+
+const apiurl = "http://localhost:3000/priceMatrix"
 export async function FetchData() {
   try {
     //const response = await axios.get(`${apiUrl}/pricematrix/${matrixId}`)
-    const response = await axios.get("/NewMatrixData.json")
+    //const response = await axios.get("/NewMatrixData.json")
+    const response = await axios.get(apiurl)
     return response.data
   } catch (error) {
     console.error(error);
@@ -26,14 +29,12 @@ export async function ReformatRuleSets() {
 
 export async function SubmitMatrix(values: { id: number, name: string, ruleSets: RuleSetInterface[] }) {
   const refactoredData = await EmptyStringToNullData(values);
-  return refactoredData
-  /*
   try {
-    const response = await axios.put(`${apiUrl}/pricematrix/${matrixId}`, refactoredData);
+    //const response = await axios.put(`${apiUrl}/pricematrix/${matrixId}`, refactoredData);
+    const response = await axios.put(apiurl, refactoredData);
     return response.data;
   } catch (error) {
     console.error(error);
     throw error;
   }
-   */
 } 
