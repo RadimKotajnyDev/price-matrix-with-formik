@@ -50,6 +50,8 @@ export const RenderingForm = () => {
           } catch (error) {
             setIsErrorModal(true)
             setIsRequestModal(true)
+            const reformattedData = await NullDataToEmptyStrings(values)
+            setValues(reformattedData)
           }
           setSubmitting(false)
         }}
@@ -118,6 +120,7 @@ export const RenderingForm = () => {
               )}
             </FieldArray>
             <SubmitMatrixButton disabledOption={isSubmitting} onClickProp={() => {
+              !isValid ? console.log(errors) : null
               !isValid ? DisplayError() : null
             }}
             />
