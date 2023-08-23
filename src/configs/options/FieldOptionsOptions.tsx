@@ -4,8 +4,7 @@ const fieldOptions = [
     {name: "PerformanceDate", id: 2},
     {name: "PerformanceDayOfWeek", id: 3},
     {name: "PriceBandCode", id: 4},
-    {name: "BookingDate", id: 5},
-    {name: "FaceValue", id: 6},
+    {name: "BookingDate", id: 5}
 ];
 
 export default fieldOptions

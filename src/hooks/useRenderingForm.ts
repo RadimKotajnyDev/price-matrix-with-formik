@@ -14,6 +14,9 @@ export const useRenderingForm = () => {
   const [isRequestModal, setIsRequestModal] = useState<boolean>(false)
   const [isErrorModal, setIsErrorModal] = useState<boolean>(false)
 
+
+  //TODO: refactor fetching data
+
   useEffect(() => {
     const fetchDataAsync = async () => {
       const data = await FetchData();

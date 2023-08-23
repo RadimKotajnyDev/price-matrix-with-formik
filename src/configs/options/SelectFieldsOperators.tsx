@@ -4,7 +4,7 @@ export const SelectField1 = [
   {name: "GreaterThanOrEqual", id: 4},
 ]
 
-export const SelectField256 = [
+export const SelectField25 = [
   {name: "---select operator---", id: 0},
   {name: "Equal", id: 1},
   {name: "LessThanOrEqual", id: 2},

@@ -1,6 +1,6 @@
 import {
   SelectField1,
-  SelectField256,
+  SelectField25,
   SelectField3,
   SelectField4
 } from "../../../../../configs/options/SelectFieldsOperators.tsx";
@@ -15,8 +15,7 @@ export function MapOperators(fieldId: string | number | null) {
       ))
     case 2:
     case 5:
-    case 6:
-      return SelectField256.map((current: {name: string, id: number}) => (
+      return SelectField25.map((current: {name: string, id: number}) => (
         <option key={current.id} value={current.id}>{current.name}</option>
       ))
     case 3:
@@ -45,7 +44,5 @@ export function MapValueType(fieldId: string | number | null) {
       return "text"
     case 5:
       return "date"
-    case 6:
-      return "number"
   }
 }
