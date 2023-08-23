@@ -5,11 +5,11 @@ import {RuleSetInterface, RulesType} from "../../../configs/interface/PriceMatri
 
 
 export async function NullDataToEmptyStrings(data: { id: number, name: string, ruleSets: RuleSetInterface[] }) {
-  data.ruleSets.map((item: RuleSetInterface, index: number) => {
+  data?.ruleSets?.map((item: RuleSetInterface, index: number) => {
     data.ruleSets[index] = {
       ruleSetId: item.ruleSetId === null ? "" : item.ruleSetId,
       priority: item.priority === null ? "" : item.priority,
-      rules: item.rules.map((rule: RulesType) => {
+      rules: item?.rules?.map((rule: RulesType) => {
         return {
           ruleId: rule.ruleId === null ? "" : rule.ruleId,
           fieldId: rule.fieldId === null ? "" : rule.fieldId,
@@ -39,11 +39,11 @@ export async function NullDataToEmptyStrings(data: { id: number, name: string, r
 }
 
 export async function EmptyStringToNullData(data: { id: number, name: string, ruleSets: RuleSetInterface[] }) {
-  data.ruleSets.map((item: RuleSetInterface, index: number) => {
+  data?.ruleSets?.map((item: RuleSetInterface, index: number) => {
     data.ruleSets[index] = {
       ruleSetId: item.ruleSetId === "" ? null : item.ruleSetId,
       priority: item.priority === "" ? null : item.priority,
-      rules: item.rules.map((rule: RulesType) => {
+      rules: item?.rules?.map((rule: RulesType) => {
         return {
           ruleId: rule.ruleId === "" ? null : rule.ruleId,
           fieldId: rule.fieldId === "" ? null : rule.fieldId,
