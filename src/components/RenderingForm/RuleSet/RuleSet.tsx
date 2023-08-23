@@ -42,8 +42,7 @@ export const RuleSet = (props: RuleSetPropsInterface) => {
     } = props
 
     return (
-        <div
-            className="w-full p-4 my-4 rounded-md bg-white border-2 outline-gray-100 shadow-lg">
+        <div className="w-full p-4 my-4 rounded-md bg-white border-2 outline-gray-100 shadow-lg">
             <div className="flex flex-row justify-between mb-2">
                 <Title ruleSetId={ruleSetId}
                        ruleSetPriority={priority}/>

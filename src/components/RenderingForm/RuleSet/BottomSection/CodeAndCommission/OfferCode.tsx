@@ -13,7 +13,7 @@ export const OfferCode = (props: OfferCodeInterface) => {
   return (
     <div className="flex flex-col">
       <label className="LabelClass">Offer Code</label>
-      <Field type="text" name={offerCode} className={`InputClass w-full 
+      <Field type="text" name={offerCode} className={`InputClass w-56 
       ${errors
       && errors?.ruleSets
       && errors?.ruleSets[ruleSetIndex]

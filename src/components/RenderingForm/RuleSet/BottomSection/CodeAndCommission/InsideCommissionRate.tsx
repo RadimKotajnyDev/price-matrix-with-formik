@@ -9,7 +9,7 @@ export const InsideCommissionRate = (props: {insideCommissionRate: BottomSection
     <div className="flex flex-col">
       <label className="LabelClass">Inside Commission (%)</label>
       <Field
-        className={"InputClass w-full"}
+        className={"InputClass w-56"}
         type="number"
         pattern="/^\d+$/"
         min={0}
