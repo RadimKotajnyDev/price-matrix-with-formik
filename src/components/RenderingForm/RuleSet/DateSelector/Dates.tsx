@@ -18,16 +18,16 @@ export const Dates = (props: DatesInterface) => {
 
   return (
     <>
-      <div className="grid grid-flow-col w-[40rem] justify-start items-center gap-x-2">
-        <label className="w-40">Performances from</label>
+      <div className="grid grid-flow-col w-[40rem] justify-evenly items-center gap-x-2">
+        <label className="text-secondary w-40">Performances from</label>
         <Field type="date" name={performancesFrom} className="InputClass w-48"/>
-        <label>to:</label>
+        <label className="text-secondary">to:</label>
         <Field type="date" name={performancesTo} className="InputClass w-48"/>
       </div>
-      <div className="grid grid-flow-col w-[40rem] justify-start items-center gap-x-2">
-        <label className="w-40">Bookings from</label>
+      <div className="grid grid-flow-col w-[40rem] justify-evenly items-center gap-x-2">
+        <label className="text-secondary w-40">Bookings from</label>
         <Field type="date" name={bookingsFrom} className="InputClass w-48"/>
-        <label>to:</label>
+        <label className="text-secondary ">to:</label>
         <Field type="date" name={bookingsTo} className="InputClass w-48"/>
       </div></>
   )

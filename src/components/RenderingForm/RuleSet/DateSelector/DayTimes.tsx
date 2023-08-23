@@ -14,7 +14,7 @@ export const DayTimes = (props: DayTimesInterface) => {
   return (
     <>
       <div className="grid grid-flow-col gap-x-5">
-        <div className="grid grid-rows-3 gap-y-3">
+        <div className="grid grid-rows-3 gap-y-3 text-secondary">
           <span/>
           <label>Time (matinee)</label>
           <label>Time (evening)</label>
@@ -25,7 +25,7 @@ export const DayTimes = (props: DayTimesInterface) => {
               <div role="group"
                    aria-labelledby="checkbox-group"
                    key={current.id} className="grid grid-rows-3 justify-center gap-y-3">
-                <label>{current.day}</label>
+                <label className="text-secondary">{current.day}</label>
                 <Field
                   type="checkbox" name={selectedPerformanceTimesName}
                   value={JSON.stringify({ type: 0, dayOfWeek: current.id })} className="h-5 w-5"/>

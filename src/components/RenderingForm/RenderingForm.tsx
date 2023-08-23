@@ -49,6 +49,8 @@ export const RenderingForm = () => {
             setIsLoadingSpin(true)
             setIsRequestModal(true);
           } catch (error) {
+            const reformattedData = await NullDataToEmptyStrings(values)
+            setValues(reformattedData)
             setIsErrorModal(true)
             setIsRequestModal(true)
           }
