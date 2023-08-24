@@ -17,7 +17,6 @@ export const RenderingForm = () => {
     refOnTop,
     setIsLoadingSpin,
     isLoadingSpin,
-    resolvedRuleSets,
     matrixData,
     setIsRequestModal,
     isRequestModal,
@@ -37,7 +36,7 @@ export const RenderingForm = () => {
       <Formik<PriceMatrixInterface>
         validationSchema={schema}
         initialValues={
-          {id: matrixData.id, name: matrixData.name, ruleSets: resolvedRuleSets}
+          {id: matrixData.id, name: matrixData.name, ruleSets: matrixData.ruleSets}
         }
         onSubmit={async (values, {setValues, setSubmitting}) => {
           try {

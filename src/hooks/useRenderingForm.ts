@@ -1,13 +1,13 @@
 import {useEffect, useRef, useState} from "react";
-import {FetchData, ReformatRuleSets} from "../configs/API.tsx";
-import {ScrollToTop} from "../components/RenderingForm/functions/RenderFunctions.ts";
+import {FetchData} from "../configs/API.tsx";
+import {NullDataToEmptyStrings, ScrollToTop} from "../components/RenderingForm/functions/RenderFunctions.ts";
+import {RuleSetInterface} from "../configs/interface/PriceMatrixInterface.ts";
 
 export const useRenderingForm = () => {
 
   const refOnTop = useRef(null)
 
-  const [resolvedRuleSets, setResolvedRuleSets] = useState([])
-  const [matrixData, setMatrixData] = useState({name: "", id: 0})
+  const [matrixData, setMatrixData] = useState<{ name: string; id: number; ruleSets: RuleSetInterface[] }>({name: "", id: 0, ruleSets: []})
   const [isLoadingSpin, setIsLoadingSpin] = useState<boolean>(true);
   const [isLastRuleSetAdded, setIsLastRuleSetAdded] = useState<boolean>(false);
   const [removeRuleSetAnimationIndex, setRemoveRuleSetAnimationIndex] = useState<number | null>(null);
@@ -15,20 +15,13 @@ export const useRenderingForm = () => {
   const [isErrorModal, setIsErrorModal] = useState<boolean>(false)
 
 
-  //TODO: refactor fetching data
-
   useEffect(() => {
-    const fetchDataAsync = async () => {
-      const data = await FetchData();
-      setMatrixData(data);
-    };
-    const reformatRuleSetsAsync = async () => {
-      const reformattedData = await ReformatRuleSets();
-      setResolvedRuleSets(reformattedData);
+    const fetchAndFormat = async () => {
+      const data = await NullDataToEmptyStrings(await FetchData())
+      setMatrixData(data)
       setIsLoadingSpin(false);
-    };
-    fetchDataAsync().then()
-    reformatRuleSetsAsync().then()
+    }
+    fetchAndFormat().then()
   }, [isLoadingSpin]);
 
   const addRuleSetAnimate = () => {
@@ -57,7 +50,6 @@ export const useRenderingForm = () => {
     refOnTop,
     setIsLoadingSpin,
     isLoadingSpin,
-    resolvedRuleSets,
     matrixData,
     setIsRequestModal,
     isRequestModal,
