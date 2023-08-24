@@ -2,9 +2,25 @@ import {defaultRuleset} from "../../../configs/ruleset/defaultRuleset.tsx";
 import {RefObject} from "react";
 import {RuleSetPropsInterface} from "../../../configs/interface/RuleSetPropsInterface.ts";
 import {RuleSetInterface, RulesType} from "../../../configs/interface/PriceMatrixInterface.ts";
-
+import {isValid, parseISO} from "date-fns"
 
 export async function NullDataToEmptyStrings(data: { id: number, name: string, ruleSets: RuleSetInterface[] }) {
+
+  function CheckValueNull(input: null | string) {
+    if(input === null) {
+      return ""
+    }
+    else if(isValid(parseISO(input))) {
+
+      const year = input.substring(0, 4);
+      const month = input.substring(5, 7);
+      const day = input.substring(8, 10);
+
+      return `${year}-${month}-${day}`
+    }
+    return input
+  }
+
   data?.ruleSets?.map((item: RuleSetInterface, index: number) => {
     data.ruleSets[index] = {
       ruleSetId: item.ruleSetId === null ? "" : item.ruleSetId,
@@ -14,7 +30,7 @@ export async function NullDataToEmptyStrings(data: { id: number, name: string, r
           ruleId: rule.ruleId === null ? "" : rule.ruleId,
           fieldId: rule.fieldId === null ? "" : rule.fieldId,
           compareOperatorId: rule.compareOperatorId === null ? "" : rule.compareOperatorId,
-          value: rule.value === null ? "" : rule.value
+          value: CheckValueNull(rule.value)
         }
       }),
       priceCommissionable: {
@@ -39,6 +55,20 @@ export async function NullDataToEmptyStrings(data: { id: number, name: string, r
 }
 
 export async function EmptyStringToNullData(data: { id: number, name: string, ruleSets: RuleSetInterface[] }) {
+
+  function CheckValueEmptyStrings(input: null | string) {
+    if(input === "") {
+      return null
+    }
+    if(input != null && isValid(parseISO(input))) {
+      const year = input.substring(0, 4);
+      const month = input.substring(5, 7);
+      const day = input.substring(8, 10);
+      return `${year}-${month}-${day}T00:00:00`;
+    }
+    return input
+  }
+
   data?.ruleSets?.map((item: RuleSetInterface, index: number) => {
     data.ruleSets[index] = {
       ruleSetId: item.ruleSetId === "" ? null : item.ruleSetId,
@@ -48,7 +78,7 @@ export async function EmptyStringToNullData(data: { id: number, name: string, ru
           ruleId: rule.ruleId === "" ? null : rule.ruleId,
           fieldId: rule.fieldId === "" ? null : rule.fieldId,
           compareOperatorId: rule.compareOperatorId === "" ? null : rule.compareOperatorId,
-          value: rule.value === "" ? null : rule.value
+          value: CheckValueEmptyStrings(rule.value)
         }
       }),
       priceCommissionable: {
