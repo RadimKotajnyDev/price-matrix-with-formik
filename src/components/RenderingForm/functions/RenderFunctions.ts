@@ -2,7 +2,7 @@ import {defaultRuleset} from "../../../configs/ruleset/defaultRuleset.tsx";
 import {RefObject} from "react";
 import {RuleSetPropsInterface} from "../../../configs/interface/RuleSetPropsInterface.ts";
 import {RuleSetInterface, RulesType} from "../../../configs/interface/PriceMatrixInterface.ts";
-import {isValid, parseISO} from "date-fns"
+import {format, isValid, parse} from "date-fns"
 
 export async function NullDataToEmptyStrings(data: { id: number, name: string, ruleSets: RuleSetInterface[] }) {
 
@@ -10,13 +10,9 @@ export async function NullDataToEmptyStrings(data: { id: number, name: string, r
     if(input === null) {
       return ""
     }
-    else if(isValid(parseISO(input))) {
-
-      const year = input.substring(0, 4);
-      const month = input.substring(5, 7);
-      const day = input.substring(8, 10);
-
-      return `${year}-${month}-${day}`
+    else if(isValid(parse(<string>input, 'yyyy-MM-dd\'T\'HH:mm:ss', new Date()))) {
+      const date = parse(<string>input, 'yyyy-MM-dd\'T\'HH:mm:ss', new Date())
+      return format(date, 'yyyy-MM-dd');
     }
     return input
   }
@@ -57,17 +53,17 @@ export async function NullDataToEmptyStrings(data: { id: number, name: string, r
 export async function EmptyStringToNullData(data: { id: number, name: string, ruleSets: RuleSetInterface[] }) {
 
   function CheckValueEmptyStrings(input: null | string) {
+
     if(input === "") {
       return null
     }
-    if(input != null && isValid(parseISO(input))) {
-      const year = input.substring(0, 4);
-      const month = input.substring(5, 7);
-      const day = input.substring(8, 10);
-      return `${year}-${month}-${day}T00:00:00`;
+    else if(isValid(parse(<string>input, 'yyyy-MM-dd', new Date()))) {
+      const date = parse(<string>input, 'yyyy-MM-dd', new Date())
+      return format(date, 'yyyy-MM-dd\'T\'HH:mm:ss');
     }
     return input
   }
+
 
   data?.ruleSets?.map((item: RuleSetInterface, index: number) => {
     data.ruleSets[index] = {
@@ -99,6 +95,9 @@ export async function EmptyStringToNullData(data: { id: number, name: string, ru
       offerCode: item.offerCode === "" ? null : item.offerCode,
     }
   })
+
+  console.log(data)
+
   return data;
 }
 
