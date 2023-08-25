@@ -22,7 +22,7 @@ export async function NullDataToEmptyStrings(data: { id: number, name: string, r
     data.ruleSets[index] = {
       ruleSetId: item.ruleSetId === null ? "" : item.ruleSetId,
       priority: item.priority === null ? "" : item.priority,
-      rules: item?.rules?.sort((a, b) => ((a.ruleId || 0) as number) - ((b.ruleId || 0) as number))
+      rules: item?.rules?.sort((a, b) => ((b.ruleId || 0) as number) - ((a.ruleId || 0) as number))
         .map((rule: RulesType) => {
         return {
           ruleId: rule.ruleId === null ? "" : rule.ruleId,
