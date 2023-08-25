@@ -5,7 +5,7 @@ import {RuleSetInterface} from "../../../configs/interface/PriceMatrixInterface.
 
 
 export async function NullDataToEmptyStrings(data: { id: number, name: string, ruleSets: RuleSetInterface[] }) {
-  data.ruleSets.map((item: RuleSetInterface, index: number) => {
+  data?.ruleSets?.map((item: RuleSetInterface, index: number) => {
     data.ruleSets[index] = {
       ruleSetId: item.ruleSetId === null ? "" : item.ruleSetId,
       priority: item.priority === null ? "" : item.priority,
@@ -42,7 +42,7 @@ export async function NullDataToEmptyStrings(data: { id: number, name: string, r
 }
 
 export async function EmptyStringToNullData(data: { id: number, name: string, ruleSets: RuleSetInterface[] }) {
-  data.ruleSets.map((item: RuleSetInterface, index: number) => {
+  data?.ruleSets?.map((item: RuleSetInterface, index: number) => {
     data.ruleSets[index] = {
       ruleSetId: item.ruleSetId === "" ? null : item.ruleSetId,
       priority: item.priority === "" ? null : item.priority,
