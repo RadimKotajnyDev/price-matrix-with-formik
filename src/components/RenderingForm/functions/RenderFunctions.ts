@@ -22,7 +22,8 @@ export async function NullDataToEmptyStrings(data: { id: number, name: string, r
     data.ruleSets[index] = {
       ruleSetId: item.ruleSetId === null ? "" : item.ruleSetId,
       priority: item.priority === null ? "" : item.priority,
-      rules: item?.rules?.map((rule: RulesType) => {
+      rules: item?.rules?.sort((a, b) => ((a.ruleId || 0) as number) - ((b.ruleId || 0) as number))
+        .map((rule: RulesType) => {
         return {
           ruleId: rule.ruleId === null ? "" : rule.ruleId,
           fieldId: rule.fieldId === null ? "" : rule.fieldId,
@@ -71,7 +72,8 @@ export async function EmptyStringToNullData(data: { id: number, name: string, ru
     data.ruleSets[index] = {
       ruleSetId: item.ruleSetId === "" ? null : item.ruleSetId,
       priority: item.priority === "" ? null : item.priority,
-      rules: item?.rules?.map((rule: RulesType) => {
+      rules: item?.rules?.sort((a, b) => ((a.ruleId || 0) as number) - ((b.ruleId || 0) as number))
+        .map((rule: RulesType) => {
         return {
           ruleId: rule.ruleId === "" ? null : rule.ruleId,
           fieldId: rule.fieldId === "" ? null : rule.fieldId,
