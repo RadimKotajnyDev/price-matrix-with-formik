@@ -7,17 +7,18 @@ import {format, isValid, parse} from "date-fns"
 export async function NullDataToEmptyStrings(data: { id: number, name: string, ruleSets: RuleSetInterface[] }) {
 
   function CheckValueNull(input: null | string) {
-    if(input === null) {
+    if (input === null) {
       return ""
     }
-    else if(isValid(parse(<string>input, 'yyyy-MM-dd\'T\'HH:mm:ss', new Date()))) {
+    if (isValid(parse(<string>input, 'yyyy-MM-dd\'T\'HH:mm:ss', new Date()))) {
       const date = parse(<string>input, 'yyyy-MM-dd\'T\'HH:mm:ss', new Date())
       return format(date, 'yyyy-MM-dd');
     }
-    return input
+    return input;
   }
 
-  data?.ruleSets?.map((item: RuleSetInterface, index: number) => {
+  data?.ruleSets?.sort((a, b) => ((b.priority || 0) as number) - ((a.priority || 0) as number))
+    .map((item: RuleSetInterface, index: number) => {
     data.ruleSets[index] = {
       ruleSetId: item.ruleSetId === null ? "" : item.ruleSetId,
       priority: item.priority === null ? "" : item.priority,
@@ -54,10 +55,10 @@ export async function EmptyStringToNullData(data: { id: number, name: string, ru
 
   function CheckValueEmptyStrings(input: null | string) {
 
-    if(input === "") {
+    if (input === "") {
       return null
     }
-    else if(isValid(parse(<string>input, 'yyyy-MM-dd', new Date()))) {
+    if (isValid(parse(<string>input, 'yyyy-MM-dd', new Date()))) {
       const date = parse(<string>input, 'yyyy-MM-dd', new Date())
       return format(date, 'yyyy-MM-dd\'T\'HH:mm:ss');
     }
@@ -65,7 +66,8 @@ export async function EmptyStringToNullData(data: { id: number, name: string, ru
   }
 
 
-  data?.ruleSets?.map((item: RuleSetInterface, index: number) => {
+  data?.ruleSets?.sort((a, b) => ((b.priority || 0) as number) - ((a.priority || 0) as number))
+    .map((item: RuleSetInterface, index: number) => {
     data.ruleSets[index] = {
       ruleSetId: item.ruleSetId === "" ? null : item.ruleSetId,
       priority: item.priority === "" ? null : item.priority,
@@ -175,5 +177,5 @@ export const AddRuleset = (values: RuleSetPropsInterface['values'], setValues: R
 
 export const ScrollToTop = (ref: RefObject<HTMLElement>) => {
   const firstChildElement = ref.current as HTMLElement | null;
-  firstChildElement?.firstElementChild?.scrollIntoView({ behavior: 'smooth' });
+  firstChildElement?.firstElementChild?.scrollIntoView({behavior: 'smooth'});
 };

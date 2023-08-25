@@ -19,7 +19,7 @@ export const useRenderingForm = () => {
     const fetchAndFormat = async () => {
       const data = await NullDataToEmptyStrings(await FetchData())
       setMatrixData(data)
-      setIsLoadingSpin(false);
+      setIsLoadingSpin(false)
     }
     fetchAndFormat().then()
   }, [isLoadingSpin]);
