@@ -57,7 +57,7 @@ export const RuleSet = (props: RuleSetPropsInterface) => {
         {() => (
           <>
             {rules.map((rule: RulesType, ruleIndex: number) => (
-              <Rule key={rule.ruleId || rules.length}
+              <Rule key={ruleIndex}
                     rule={rule}
                     ruleSetIndex={ruleSetIndex}
                     ruleIndex={ruleIndex}
