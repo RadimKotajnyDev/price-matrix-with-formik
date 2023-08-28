@@ -2,15 +2,14 @@ import {defaultRuleset} from "../../../configs/ruleset/defaultRuleset.tsx";
 import {RefObject} from "react";
 import {RuleSetPropsInterface} from "../../../configs/interface/RuleSetPropsInterface.ts";
 import {RuleSetInterface} from "../../../configs/interface/PriceMatrixInterface.ts";
+import {isValid, parse, format} from "date-fns"
 
 
-export async function NullDataToEmptyStrings(data: { id: number, name: string, ruleSets: RuleSetInterface[] }) {
-  data.ruleSets.map((item: RuleSetInterface, index: number) => {
-    data.ruleSets[index] = {
-      ruleSetId: item.ruleSetId === null ? "" : item.ruleSetId,
-      priority: item.priority === null ? "" : item.priority,
-      priceBandCodes: item.priceBandCodes === null ? "" : item.priceBandCodes,
-      dateSelector: {
+/*
+
+NULL TO EMPTY
+
+dateSelector: {
         performancesFrom: item.dateSelector.performancesFrom,
         performancesTo: item.dateSelector.performancesTo,
         bookingsFrom: item.dateSelector.bookingsFrom,
@@ -20,34 +19,10 @@ export async function NullDataToEmptyStrings(data: { id: number, name: string, r
           return JSON.stringify(currObj)
         })
       },
-      priceCommissionable: {
-        priceSelling:
-          item.priceCommissionable.priceSelling === null ? "" : item.priceCommissionable.priceSelling,
-        bookingFeeAbsolute:
-          item.priceCommissionable.bookingFeeAbsolute === null ? "" : item.priceCommissionable.bookingFeeAbsolute,
-        bookingFeePercent:
-          item.priceCommissionable.bookingFeePercent === null ? "" : item.priceCommissionable.bookingFeePercent,
-      },
-      priceNet: {
-        priceSelling: item.priceNet.priceSelling === null ? "" : item.priceNet.priceSelling,
-        bookingFeeAbsolute: item.priceNet.bookingFeeAbsolute === null ? "" : item.priceNet.bookingFeeAbsolute,
-        bookingFeePercent: item.priceNet.bookingFeePercent === null ? "" : item.priceNet.bookingFeePercent,
-      },
-      insideCommissionRate: item.insideCommissionRate === null ? "" : item.insideCommissionRate,
-      note: item.note === null ? "" : item.note,
-      offerCode: item.offerCode === null ? "" : item.offerCode,
-    }
-  })
-  return data;
-}
 
-export async function EmptyStringToNullData(data: { id: number, name: string, ruleSets: RuleSetInterface[] }) {
-  data.ruleSets.map((item: RuleSetInterface, index: number) => {
-    data.ruleSets[index] = {
-      ruleSetId: item.ruleSetId === "" ? null : item.ruleSetId,
-      priority: item.priority === "" ? null : item.priority,
-      priceBandCodes: item.priceBandCodes === "" ? null : item.priceBandCodes,
-      dateSelector: {
+EMPTY TO NULL:
+
+       dateSelector: {
         performancesFrom: item.dateSelector.performancesFrom,
         performancesTo: item.dateSelector.performancesTo,
         bookingsFrom: item.dateSelector.bookingsFrom,
@@ -57,25 +32,111 @@ export async function EmptyStringToNullData(data: { id: number, name: string, ru
           return JSON.parse(<string>currObj)
         })
       },
-      priceCommissionable: {
-        priceSelling:
-          item.priceCommissionable.priceSelling === "" ? null : item.priceCommissionable.priceSelling,
-        bookingFeeAbsolute:
-          item.priceCommissionable.bookingFeeAbsolute === "" ? null : item.priceCommissionable.bookingFeeAbsolute,
-        bookingFeePercent:
-          item.priceCommissionable.bookingFeePercent === "" ? null : item.priceCommissionable.bookingFeePercent,
-      },
-      priceNet: {
-        priceSelling: item.priceNet.priceSelling === "" ? null : item.priceNet.priceSelling,
-        bookingFeeAbsolute: item.priceNet.bookingFeeAbsolute === "" ? null : item.priceNet.bookingFeeAbsolute,
-        bookingFeePercent: item.priceNet.bookingFeePercent === "" ? null : item.priceNet.bookingFeePercent,
-      },
-      insideCommissionRate: item.insideCommissionRate === "" ? null : item.insideCommissionRate,
-      note: item.note === "" ? null : item.note,
-      offerCode: item.offerCode === "" ? null : item.offerCode,
+
+ */
+
+export async function NullDataToEmptyStrings(data: { id: number, name: string, ruleSets: RuleSetInterface[] }) {
+
+  function CheckValueNull(input: null | string) {
+    if (input === null) {
+      return ""
     }
-  });
-  return data
+    if (isValid(parse(<string>input, 'yyyy-MM-dd\'T\'HH:mm:ss', new Date()))) {
+      const date = parse(<string>input, 'yyyy-MM-dd\'T\'HH:mm:ss', new Date())
+      return format(date, 'yyyy-MM-dd');
+    }
+    return input;
+  }
+
+  data?.ruleSets?.sort((a, b) => ((b.priority || 0) as number) - ((a.priority || 0) as number))
+    .map((item: RuleSetInterface, index: number) => {
+      data.ruleSets[index] = {
+        ruleSetId: item.ruleSetId === null ? "" : item.ruleSetId,
+        priority: item.priority === null ? "" : item.priority,
+        priceBandCodes: item.priceBandCodes === null ? "" : item.priceBandCodes,
+        dateSelector: {
+          performancesFrom: CheckValueNull(item.dateSelector.performancesFrom),
+          performancesTo: CheckValueNull(item.dateSelector.performancesTo),
+          bookingsFrom: CheckValueNull(item.dateSelector.bookingsFrom),
+          bookingsTo: CheckValueNull(item.dateSelector.bookingsTo),
+          //selectedPerformanceTimes: item.dateSelector.selectedPerformanceTimes
+          selectedPerformanceTimes: item.dateSelector.selectedPerformanceTimes.map((currObj) => {
+            return JSON.stringify(currObj)
+          })
+        },
+        priceCommissionable: {
+          priceSelling:
+            item.priceCommissionable.priceSelling === null ? "" : item.priceCommissionable.priceSelling,
+          bookingFeeAbsolute:
+            item.priceCommissionable.bookingFeeAbsolute === null ? "" : item.priceCommissionable.bookingFeeAbsolute,
+          bookingFeePercent:
+            item.priceCommissionable.bookingFeePercent === null ? "" : item.priceCommissionable.bookingFeePercent,
+        },
+        priceNet: {
+          priceSelling: item.priceNet.priceSelling === null ? "" : item.priceNet.priceSelling,
+          bookingFeeAbsolute: item.priceNet.bookingFeeAbsolute === null ? "" : item.priceNet.bookingFeeAbsolute,
+          bookingFeePercent: item.priceNet.bookingFeePercent === null ? "" : item.priceNet.bookingFeePercent,
+        },
+        insideCommissionRate: item.insideCommissionRate === null ? "" : item.insideCommissionRate,
+        note: item.note === null ? "" : item.note,
+        offerCode: item.offerCode === null ? "" : item.offerCode,
+      }
+    })
+  return data;
+}
+
+export async function EmptyStringToNullData(data: { id: number, name: string, ruleSets: RuleSetInterface[] }) {
+
+  function CheckValueEmptyStrings(input: null | string) {
+    if (input === "") {
+      return null
+    }
+    if (isValid(parse(<string>input, 'yyyy-MM-dd', new Date()))) {
+      const date = parse(<string>input, 'yyyy-MM-dd', new Date())
+      return format(date, 'yyyy-MM-dd\'T\'HH:mm:ss');
+    }
+    return input
+  }
+
+
+  data?.ruleSets?.sort((a, b) => ((b.priority || 0) as number) - ((a.priority || 0) as number))
+    .map((item: RuleSetInterface, index: number) => {
+      data.ruleSets[index] = {
+        ruleSetId: item.ruleSetId === "" ? null : item.ruleSetId,
+        priority: item.priority === "" ? null : item.priority,
+        priceBandCodes: item.priceBandCodes === "" ? null : item.priceBandCodes,
+        dateSelector: {
+          performancesFrom: CheckValueEmptyStrings(item.dateSelector.performancesFrom),
+          performancesTo:  CheckValueEmptyStrings(item.dateSelector.performancesTo),
+          bookingsFrom:  CheckValueEmptyStrings(item.dateSelector.bookingsFrom),
+          bookingsTo: CheckValueEmptyStrings(item.dateSelector.bookingsTo),
+          selectedPerformanceTimes: item.dateSelector.selectedPerformanceTimes.map((currObj) => {
+            //console.log(JSON.parse(currObj))
+            return JSON.parse(<string>currObj)
+          })
+        },
+        priceCommissionable: {
+          priceSelling:
+            item.priceCommissionable.priceSelling === "" ? null : item.priceCommissionable.priceSelling,
+          bookingFeeAbsolute:
+            item.priceCommissionable.bookingFeeAbsolute === "" ? null : item.priceCommissionable.bookingFeeAbsolute,
+          bookingFeePercent:
+            item.priceCommissionable.bookingFeePercent === "" ? null : item.priceCommissionable.bookingFeePercent,
+        },
+        priceNet: {
+          priceSelling: item.priceNet.priceSelling === "" ? null : item.priceNet.priceSelling,
+          bookingFeeAbsolute: item.priceNet.bookingFeeAbsolute === "" ? null : item.priceNet.bookingFeeAbsolute,
+          bookingFeePercent: item.priceNet.bookingFeePercent === "" ? null : item.priceNet.bookingFeePercent,
+        },
+        insideCommissionRate: item.insideCommissionRate === "" ? null : item.insideCommissionRate,
+        note: item.note === "" ? null : item.note,
+        offerCode: item.offerCode === "" ? null : item.offerCode
+      }
+    })
+
+  console.log(data)
+
+  return data;
 }
 
 export function RemapPriorities(jsonData: RuleSetInterface[]) {

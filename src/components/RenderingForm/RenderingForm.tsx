@@ -17,7 +17,6 @@ export const RenderingForm = () => {
     refOnTop,
     setIsLoadingSpin,
     isLoadingSpin,
-    resolvedRuleSets,
     matrixData,
     setIsRequestModal,
     isRequestModal,
@@ -37,7 +36,7 @@ export const RenderingForm = () => {
       <Formik<PriceMatrixInterface>
         validationSchema={schema}
         initialValues={
-          {id: matrixData.id, name: matrixData.name, ruleSets: resolvedRuleSets}
+          {id: matrixData.id, name: matrixData.name, ruleSets: matrixData.ruleSets}
         }
         onSubmit={async (values, {setValues, setSubmitting}) => {
           try {
@@ -45,14 +44,13 @@ export const RenderingForm = () => {
             const result = await SubmitMatrix(values);
             const reformattedData = await NullDataToEmptyStrings(result)
             setValues(reformattedData)
-            console.log(values)
             setIsLoadingSpin(true)
             setIsRequestModal(true);
           } catch (error) {
-            const reformattedData = await NullDataToEmptyStrings(values)
-            setValues(reformattedData)
             setIsErrorModal(true)
             setIsRequestModal(true)
+            const reformattedData = await NullDataToEmptyStrings(values)
+            setValues(reformattedData)
           }
           setSubmitting(false)
         }}
