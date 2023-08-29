@@ -5,36 +5,7 @@ import {RuleSetInterface} from "../../../configs/interface/PriceMatrixInterface.
 import {isValid, parse, format} from "date-fns"
 
 
-/*
-
-NULL TO EMPTY
-
-dateSelector: {
-        performancesFrom: item.dateSelector.performancesFrom,
-        performancesTo: item.dateSelector.performancesTo,
-        bookingsFrom: item.dateSelector.bookingsFrom,
-        bookingsTo: item.dateSelector.bookingsTo,
-        //selectedPerformanceTimes: item.dateSelector.selectedPerformanceTimes
-        selectedPerformanceTimes: item.dateSelector.selectedPerformanceTimes.map((currObj) => {
-          return JSON.stringify(currObj)
-        })
-      },
-
-EMPTY TO NULL:
-
-       dateSelector: {
-        performancesFrom: item.dateSelector.performancesFrom,
-        performancesTo: item.dateSelector.performancesTo,
-        bookingsFrom: item.dateSelector.bookingsFrom,
-        bookingsTo: item.dateSelector.bookingsTo,
-        selectedPerformanceTimes: item.dateSelector.selectedPerformanceTimes.map((currObj) => {
-          //console.log(JSON.parse(currObj))
-          return JSON.parse(<string>currObj)
-        })
-      },
-
- */
-
+// FORMATTING FUNCTIONS
 export async function NullDataToEmptyStrings(data: { id: number, name: string, ruleSets: RuleSetInterface[] }) {
 
   function CheckValueNull(input: null | string) {
@@ -48,12 +19,19 @@ export async function NullDataToEmptyStrings(data: { id: number, name: string, r
     return input;
   }
 
+  function ArrayToStrings(input: string | string[] | null) {
+    if (input === null) {
+      return ""
+    }
+    return typeof input !== "string" ? input?.join("\n") : input
+  }
+
   data?.ruleSets?.sort((a, b) => ((b.priority || 0) as number) - ((a.priority || 0) as number))
     .map((item: RuleSetInterface, index: number) => {
       data.ruleSets[index] = {
         ruleSetId: item.ruleSetId === null ? "" : item.ruleSetId,
         priority: item.priority === null ? "" : item.priority,
-        priceBandCodes: item.priceBandCodes === null ? "" : item.priceBandCodes,
+        priceBandCodes: ArrayToStrings(item.priceBandCodes),
         dateSelector: {
           performancesFrom: CheckValueNull(item.dateSelector.performancesFrom),
           performancesTo: CheckValueNull(item.dateSelector.performancesTo),
@@ -82,6 +60,7 @@ export async function NullDataToEmptyStrings(data: { id: number, name: string, r
         offerCode: item.offerCode === null ? "" : item.offerCode,
       }
     })
+
   return data;
 }
 
@@ -98,13 +77,21 @@ export async function EmptyStringToNullData(data: { id: number, name: string, ru
     return input
   }
 
-
+  function StringsToArray(input: string | string[] | null) {
+    if (input === "") {
+      return null
+    }
+    if(typeof input === 'string') {
+      return input?.split("\n")
+    }
+    return input
+  }
   data?.ruleSets?.sort((a, b) => ((b.priority || 0) as number) - ((a.priority || 0) as number))
     .map((item: RuleSetInterface, index: number) => {
       data.ruleSets[index] = {
         ruleSetId: item.ruleSetId === "" ? null : item.ruleSetId,
         priority: item.priority === "" ? null : item.priority,
-        priceBandCodes: item.priceBandCodes === "" ? null : item.priceBandCodes,
+        priceBandCodes: StringsToArray(item.priceBandCodes),
         dateSelector: {
           performancesFrom: CheckValueEmptyStrings(item.dateSelector.performancesFrom),
           performancesTo:  CheckValueEmptyStrings(item.dateSelector.performancesTo),
@@ -134,7 +121,6 @@ export async function EmptyStringToNullData(data: { id: number, name: string, ru
       }
     })
 
-  console.log(data)
 
   return data;
 }

@@ -29,6 +29,7 @@ export const Dates = (props: DatesInterface) => {
         <Field type="date" name={bookingsFrom} className="InputClass w-48"/>
         <label className="text-secondary ">to:</label>
         <Field type="date" name={bookingsTo} className="InputClass w-48"/>
-      </div></>
+      </div>
+    </>
   )
 }

@@ -6,7 +6,7 @@ export interface PriceMatrixInterface {
 export interface RuleSetInterface {
   ruleSetId: number | string | null,
   priority: number | string | null,
-  priceBandCodes: string | null,
+  priceBandCodes: string | string[] | null ,
   dateSelector: DataSelectorInterface,
   priceCommissionable: PriceCommissionableType,
   priceNet: PriceNetType,
