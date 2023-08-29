@@ -55,6 +55,9 @@ export const RuleSet = (props: RuleSetPropsInterface) => {
             <Note nameProp={note}/>
             <div className="flex flex-row my-4">
                 <DateSelector
+                    ruleSetIndex={ruleSetIndex}
+                    errors={errors}
+
                     performancesFrom={performancesFrom}
                     performancesTo={performancesTo}
                     bookingsFrom={bookingsFrom}

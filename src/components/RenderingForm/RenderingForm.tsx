@@ -95,10 +95,10 @@ export const RenderingForm = () => {
                             note={`ruleSets[${ruleSetIndex}].note`}
 
                             priceBandCodes={`ruleSets[${ruleSetIndex}].priceBandCodes`}
-                            performancesFrom={`ruleSets[${ruleSetIndex}].dateSelector.performancesFrom`}
-                            performancesTo={`ruleSets[${ruleSetIndex}].dateSelector.performancesTo`}
-                            bookingsFrom={`ruleSets[${ruleSetIndex}].dateSelector.bookingsFrom`}
-                            bookingsTo={`ruleSets[${ruleSetIndex}].dateSelector.bookingsTo`}
+                            performancesFrom={`ruleSets[${ruleSetIndex}].dateSelector.performancesRange.performancesFrom`}
+                            performancesTo={`ruleSets[${ruleSetIndex}].dateSelector.performancesRange.performancesTo`}
+                            bookingsFrom={`ruleSets[${ruleSetIndex}].dateSelector.bookingsRange.bookingsFrom`}
+                            bookingsTo={`ruleSets[${ruleSetIndex}].dateSelector.bookingsRange.bookingsTo`}
                             selectedPerformanceTimesName={`ruleSets[${ruleSetIndex}].dateSelector.selectedPerformanceTimes`}
 
                             netBookingFeeAbsoluteValue={ruleSet.priceNet.bookingFeeAbsolute}

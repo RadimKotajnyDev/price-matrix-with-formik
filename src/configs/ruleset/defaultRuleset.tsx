@@ -5,10 +5,14 @@ export const defaultRuleset = {
       "priority": "",
       "priceBandCodes": "",
       "dateSelector": {
-        "performancesFrom": "",
-        "performancesTo": "",
-        "bookingsFrom": "",
-        "bookingsTo": "",
+        "performancesRange": {
+          "performancesFrom": "",
+          "performancesTo": ""
+        },
+        "bookingsRange": {
+          "bookingsFrom": "",
+          "bookingsTo": "",
+        },
         "selectedPerformanceTimes": []
       },
       "priceCommissionable": {

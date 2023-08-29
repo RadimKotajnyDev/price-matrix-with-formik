@@ -33,10 +33,14 @@ export async function NullDataToEmptyStrings(data: { id: number, name: string, r
         priority: item.priority === null ? "" : item.priority,
         priceBandCodes: ArrayToStrings(item.priceBandCodes),
         dateSelector: {
-          performancesFrom: CheckValueNull(item.dateSelector.performancesFrom),
-          performancesTo: CheckValueNull(item.dateSelector.performancesTo),
-          bookingsFrom: CheckValueNull(item.dateSelector.bookingsFrom),
-          bookingsTo: CheckValueNull(item.dateSelector.bookingsTo),
+          performancesRange: {
+            performancesFrom: CheckValueNull(item.dateSelector.performancesRange.performancesFrom),
+            performancesTo: CheckValueNull(item.dateSelector.performancesRange.performancesTo),
+          },
+          bookingsRange: {
+            bookingsFrom: CheckValueNull(item.dateSelector.bookingsRange.bookingsFrom),
+            bookingsTo: CheckValueNull(item.dateSelector.bookingsRange.bookingsTo),
+          },
           //selectedPerformanceTimes: item.dateSelector.selectedPerformanceTimes
           selectedPerformanceTimes: item.dateSelector.selectedPerformanceTimes.map((currObj) => {
             return JSON.stringify(currObj)
@@ -93,10 +97,14 @@ export async function EmptyStringToNullData(data: { id: number, name: string, ru
         priority: item.priority === "" ? null : item.priority,
         priceBandCodes: StringsToArray(item.priceBandCodes),
         dateSelector: {
-          performancesFrom: CheckValueEmptyStrings(item.dateSelector.performancesFrom),
-          performancesTo:  CheckValueEmptyStrings(item.dateSelector.performancesTo),
-          bookingsFrom:  CheckValueEmptyStrings(item.dateSelector.bookingsFrom),
-          bookingsTo: CheckValueEmptyStrings(item.dateSelector.bookingsTo),
+          performancesRange: {
+            performancesFrom: CheckValueEmptyStrings(item.dateSelector.performancesRange.performancesFrom),
+            performancesTo:  CheckValueEmptyStrings(item.dateSelector.performancesRange.performancesTo),
+          },
+          bookingsRange: {
+            bookingsFrom:  CheckValueEmptyStrings(item.dateSelector.bookingsRange.bookingsFrom),
+            bookingsTo: CheckValueEmptyStrings(item.dateSelector.bookingsRange.bookingsTo),
+          },
           selectedPerformanceTimes: item.dateSelector.selectedPerformanceTimes.map((currObj) => {
             //console.log(JSON.parse(currObj))
             return JSON.parse(<string>currObj)

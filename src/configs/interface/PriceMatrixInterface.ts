@@ -15,13 +15,21 @@ export interface RuleSetInterface {
   offerCode: string | null
 }
 export interface DataSelectorInterface {
-  performancesFrom: string | null,
-  performancesTo: string | null,
-  bookingsFrom: string | null,
-  bookingsTo: string | null,
+  performancesRange: PerformanceRange,
+  bookingsRange: BookingsRange,
   selectedPerformanceTimes: selectedPerformanceTime[] | string[]
 }
 export interface selectedPerformanceTime { type: number, dayOfWeek: number }
+
+export type PerformanceRange = {
+  performancesFrom: string | null,
+  performancesTo: string | null,
+}
+
+export type BookingsRange = {
+  bookingsFrom: string | null,
+  bookingsTo: string | null,
+}
 
 
 export type PriceCommissionableType = {

@@ -10,10 +10,30 @@ export const schema = yup.object().shape({
       priceBandCodes: yup.string(),
       dateSelector: yup.object().shape(
         {
-          performancesFrom: yup.date(),
-          performancesTo: yup.date(),
-          bookingsFrom: yup.date(),
-          bookingsTo: yup.date(),
+          performancesRange: yup.object().shape({
+            performancesFrom: yup.date(),
+            performancesTo: yup.date(),
+          }).test("performancesRange",
+              "Performances From must be before Performances To",
+              function (value) {
+                const {performancesFrom, performancesTo} = value;
+                if (performancesFrom && performancesTo) {
+                  return performancesFrom <= performancesTo;
+                }
+                return true;
+              }),
+          bookingsRange: yup.object().shape({
+            bookingsFrom: yup.date(),
+            bookingsTo: yup.date(),
+          }).test("bookingsRange",
+              "Bookings From must be before Bookings To",
+              function (value) {
+                const {bookingsFrom, bookingsTo} = value;
+                if (bookingsFrom && bookingsTo) {
+                  return bookingsFrom <= bookingsTo;
+                }
+                return true;
+              }),
           selectedPerformanceTimes: yup.array().of(
             yup.lazy(value => {
               switch (typeof value) {
@@ -32,23 +52,7 @@ export const schema = yup.object().shape({
             })
           )
         }
-      ).test("performancesRange",
-        "Performances From must be before Performances To",
-        function (value) {
-          const {performancesFrom, performancesTo} = value;
-          if (performancesFrom && performancesTo) {
-            return performancesFrom <= performancesTo;
-          }
-          return true;
-        }).test("bookingsRange",
-        "Bookings From must be before Bookings To",
-        function (value) {
-          const {bookingsFrom, bookingsTo} = value;
-          if (bookingsFrom && bookingsTo) {
-            return bookingsFrom <= bookingsTo;
-          }
-          return true;
-        }),
+      ),
       priceCommissionable: yup.object().shape({
         priceSelling: yup.number().nullable(),
         bookingFeePercent: yup.number().nullable(),
