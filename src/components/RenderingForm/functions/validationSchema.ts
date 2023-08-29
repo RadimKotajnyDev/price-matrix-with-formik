@@ -32,7 +32,23 @@ export const schema = yup.object().shape({
             })
           )
         }
-      ),
+      ).test("performancesRange",
+        "Performances From must be before Performances To",
+        function (value) {
+          const {performancesFrom, performancesTo} = value;
+          if (performancesFrom && performancesTo) {
+            return performancesFrom <= performancesTo;
+          }
+          return true;
+        }).test("bookingsRange",
+        "Bookings From must be before Bookings To",
+        function (value) {
+          const {bookingsFrom, bookingsTo} = value;
+          if (bookingsFrom && bookingsTo) {
+            return bookingsFrom <= bookingsTo;
+          }
+          return true;
+        }),
       priceCommissionable: yup.object().shape({
         priceSelling: yup.number().nullable(),
         bookingFeePercent: yup.number().nullable(),
