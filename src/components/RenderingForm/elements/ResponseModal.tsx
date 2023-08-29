@@ -53,7 +53,7 @@ export const ResponseModal = (props: ModalProps) => {
                     </>) : (
                       <>
                         <AiFillCloseCircle size={30} className="text-red-500"/>
-                        Price Matrix submit failed! <br /> Check for unfilled inputs.
+                        Price Matrix submit failed!
                       </>
                     )}
                   </Dialog.Title>
