@@ -81,6 +81,7 @@ export const RenderingForm = () => {
                               values.ruleSets[ruleSetIndex].isRemoving = !values.ruleSets[ruleSetIndex].isRemoving;
                               setValues(values);
                             }}
+                            isRemoving={values.ruleSets[ruleSetIndex].isRemoving || false}
                             errors={errors}
                             ruleSetIndex={ruleSetIndex}
                             priority={ruleSet.priority}

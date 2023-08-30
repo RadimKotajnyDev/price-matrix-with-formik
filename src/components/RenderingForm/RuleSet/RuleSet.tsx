@@ -11,6 +11,7 @@ import {Divider} from "../../elements/Divider.tsx";
 
 export const RuleSet = (props: RuleSetPropsInterface) => {
   const {
+    isRemoving,
     ruleSetId,
     priority,
     offerCode,
@@ -46,7 +47,7 @@ export const RuleSet = (props: RuleSetPropsInterface) => {
       <div className="flex flex-row justify-between mb-2">
         <Title ruleSetId={ruleSetId}
                ruleSetPriority={priority}/>
-        <RemoveRuleSetButton removeRuleSet={removeRuleSet}/>
+        <RemoveRuleSetButton isRemoving={isRemoving} removeRuleSet={removeRuleSet}/>
         <PriorityButtons
           onUP={() => PriorityUp(values, setValues, ruleSetIndex)}
           onDOWN={() => PriorityDown(values, setValues, ruleSetIndex)}

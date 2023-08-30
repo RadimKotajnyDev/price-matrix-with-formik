@@ -3,6 +3,7 @@ import {FormikHelpers} from "formik";
 import {FormikState} from "formik/dist/types";
 
 export interface RuleSetPropsInterface {
+  isRemoving: boolean,
   ruleSetId: RuleSetInterface['ruleSetId'],
   priority: RuleSetInterface['ruleSetId'],
   offerCode: RuleSetInterface['offerCode'],
