@@ -2,7 +2,7 @@ import {FieldArray, Form, Formik} from 'formik';
 import {SubmitMatrix} from "../../configs/API.tsx";
 import {RuleSet} from "./RuleSet/RuleSet.tsx";
 import {Heading} from "./elements/Heading.tsx";
-import {AddRuleset, HandleRemoveRuleSet, NullDataToEmptyStrings} from "./functions/RenderFunctions.ts";
+import {AddRuleset, NullDataToEmptyStrings} from "./functions/RenderFunctions.ts";
 import {ResponseModal} from "./elements/ResponseModal.tsx";
 import {schema} from "./functions/validationSchema.ts";
 import {SubmitMatrixButton} from "./elements/SubmitMatrixButton.tsx";
@@ -21,8 +21,6 @@ export const RenderingForm = () => {
     setIsRequestModal,
     isRequestModal,
     isLastRuleSetAdded,
-    setRemoveRuleSetAnimationIndex,
-    removeRuleSetAnimationIndex,
     addRuleSetAnimate,
     setIsErrorModal,
     isErrorModal,
@@ -77,14 +75,11 @@ export const RenderingForm = () => {
                       return (
                         <div key={ruleSetIndex}
                              className={`ruleSetAnimation list-none ${ruleSetIndex === 0 && isLastRuleSetAdded ? 'animate' : ''}
-                       ${removeRuleSetAnimationIndex === ruleSetIndex ? 'animate' : ''}`}>
+                       ${values.ruleSets[ruleSetIndex].isRemoving ? 'opacity-50' : ''}`}>
                           <RuleSet
                             removeRuleSet={() => {
-                              setRemoveRuleSetAnimationIndex(ruleSetIndex);
-                              setTimeout(() => {
-                                setRemoveRuleSetAnimationIndex(null);
-                                HandleRemoveRuleSet(values, setValues, ruleSetIndex);
-                              }, 500);
+                              values.ruleSets[ruleSetIndex].isRemoving = !values.ruleSets[ruleSetIndex].isRemoving;
+                              setValues(values);
                             }}
                             errors={errors}
                             ruleSetIndex={ruleSetIndex}

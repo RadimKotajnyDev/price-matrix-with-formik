@@ -4,6 +4,7 @@ export interface PriceMatrixInterface {
   ruleSets: RuleSetInterface[];
 }
 export interface RuleSetInterface {
+  isRemoving?: boolean,
   ruleSetId: number | string | null,
   priority: number | string | null,
   priceBandCodes: string | string[] | null ,

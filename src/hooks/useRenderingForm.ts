@@ -10,7 +10,6 @@ export const useRenderingForm = () => {
   const [matrixData, setMatrixData] = useState<{ name: string; id: number; ruleSets: RuleSetInterface[] }>({name: "", id: 0, ruleSets: []})
   const [isLoadingSpin, setIsLoadingSpin] = useState<boolean>(true);
   const [isLastRuleSetAdded, setIsLastRuleSetAdded] = useState<boolean>(false);
-  const [removeRuleSetAnimationIndex, setRemoveRuleSetAnimationIndex] = useState<number | null>(null);
   const [isRequestModal, setIsRequestModal] = useState<boolean>(false)
   const [isErrorModal, setIsErrorModal] = useState<boolean>(false)
 
@@ -54,8 +53,6 @@ export const useRenderingForm = () => {
     setIsRequestModal,
     isRequestModal,
     isLastRuleSetAdded,
-    setRemoveRuleSetAnimationIndex,
-    removeRuleSetAnimationIndex,
     addRuleSetAnimate,
     setIsErrorModal,
     isErrorModal,

@@ -2,8 +2,7 @@ import {defaultRuleset} from "../../../configs/ruleset/defaultRuleset.tsx";
 import {RefObject} from "react";
 import {RuleSetPropsInterface} from "../../../configs/interface/RuleSetPropsInterface.ts";
 import {RuleSetInterface} from "../../../configs/interface/PriceMatrixInterface.ts";
-import {isValid, parse, format} from "date-fns"
-
+import {format, isValid, parse} from "date-fns"
 
 // FORMATTING FUNCTIONS
 export async function NullDataToEmptyStrings(data: { id: number, name: string, ruleSets: RuleSetInterface[] }) {
@@ -26,9 +25,12 @@ export async function NullDataToEmptyStrings(data: { id: number, name: string, r
     return typeof input !== "string" ? input?.join("\n") : input
   }
 
+  RemapPriorities(data.ruleSets)
+
   data?.ruleSets?.sort((a, b) => ((b.priority || 0) as number) - ((a.priority || 0) as number))
     .map((item: RuleSetInterface, index: number) => {
       data.ruleSets[index] = {
+        isRemoving: false,
         ruleSetId: item.ruleSetId === null ? "" : item.ruleSetId,
         priority: item.priority === null ? "" : item.priority,
         priceBandCodes: ArrayToStrings(item.priceBandCodes),
@@ -68,7 +70,7 @@ export async function NullDataToEmptyStrings(data: { id: number, name: string, r
   return data;
 }
 
-export async function EmptyStringToNullData(data: { id: number, name: string, ruleSets: RuleSetInterface[] }) {
+export async function EmptyStringToNullData(data: { id: number, name: string, ruleSets: RuleSetInterface[], filter?: (item: RuleSetInterface) => object}) {
 
   function CheckValueEmptyStrings(input: null | string) {
     if (input === "") {
@@ -90,8 +92,15 @@ export async function EmptyStringToNullData(data: { id: number, name: string, ru
     }
     return input
   }
+
+
+  //removing ruleSet based on isRemoving boolean
+  data.ruleSets = data.ruleSets.filter(item => !item.isRemoving);
+  RemapPriorities(data.ruleSets)
+
   data?.ruleSets?.sort((a, b) => ((b.priority || 0) as number) - ((a.priority || 0) as number))
     .map((item: RuleSetInterface, index: number) => {
+      delete data.ruleSets[index].isRemoving;
       data.ruleSets[index] = {
         ruleSetId: item.ruleSetId === "" ? null : item.ruleSetId,
         priority: item.priority === "" ? null : item.priority,
@@ -128,7 +137,7 @@ export async function EmptyStringToNullData(data: { id: number, name: string, ru
         offerCode: item.offerCode === "" ? null : item.offerCode
       }
     })
-
+  //console.log(data)
 
   return data;
 }
