@@ -25,7 +25,7 @@ export const Dates = (props: DatesInterface) => {
   return (
     <>
       <div className="grid grid-flow-col w-[40rem] justify-between items-center gap-x-2">
-        <label className="text-secondary w-40">Performances from</label>
+        <label htmlFor={performancesFrom || undefined} className="text-secondary w-40">Performances from</label>
         <Field type="date" name={performancesFrom}
                className={`InputClass w-48 
                ${errors
@@ -35,7 +35,7 @@ export const Dates = (props: DatesInterface) => {
                && (errors?.ruleSets[ruleSetIndex] as RuleSetInterface)?.dateSelector?.performancesRange ? "border-red-400 text-red-600 bg-red-100" : ""
                }`}
         />
-        <label className="text-secondary">to:</label>
+        <label htmlFor={performancesTo || undefined} className="text-secondary">to:</label>
         <Field type="date" name={performancesTo}
                className={`InputClass w-48 
                ${errors
@@ -47,7 +47,7 @@ export const Dates = (props: DatesInterface) => {
         />
       </div>
       <div className="grid grid-flow-col w-[40rem] justify-between items-center gap-x-2">
-        <label className="text-secondary w-40">Bookings from</label>
+        <label htmlFor={bookingsFrom || undefined} className="text-secondary w-40">Bookings from</label>
         <Field type="date" name={bookingsFrom}
                className={`InputClass w-48 
                ${errors
@@ -57,7 +57,7 @@ export const Dates = (props: DatesInterface) => {
                && (errors?.ruleSets[ruleSetIndex] as RuleSetInterface)?.dateSelector?.bookingsRange ? "border-red-400 text-red-600 bg-red-100" : ""
                }`}
         />
-        <label className="text-secondary ">to:</label>
+        <label htmlFor={bookingsTo || undefined} className="text-secondary ">to:</label>
         <Field type="date" name={bookingsTo}
                className={`InputClass w-48 
                ${errors
