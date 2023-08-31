@@ -21,6 +21,9 @@
         @apply rounded text-white bg-primary duration-700 delay-0 cursor-pointer
         hover:text-white hover:opacity-75 disabled:cursor-not-allowed
     }
+    .TableInput {
+        @apply bg-gray-50 border border-gray-300 w-full text-center
+    }
     .InputClass {
         @apply appearance-none h-full
          block bg-gray-50 text-secondary border border-gray-200 rounded

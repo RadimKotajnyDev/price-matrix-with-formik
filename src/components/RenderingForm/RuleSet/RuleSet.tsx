@@ -8,6 +8,7 @@ import {RuleSetPropsInterface} from "../../../configs/interface/RuleSetPropsInte
 import {DateSelector} from "./DateSelector/DateSelector.tsx";
 import {PriceBandCodes} from "./elements/PriceBandCodes.tsx";
 import {Divider} from "../../elements/Divider.tsx";
+import {ExclusionDates} from "./ExclusionDates/ExclusionDates.tsx";
 
 export const RuleSet = (props: RuleSetPropsInterface) => {
   const {
@@ -89,6 +90,7 @@ export const RuleSet = (props: RuleSetPropsInterface) => {
         offerCode={offerCode}
         insideCommissionRate={insideCommissionRate}
       />
+      <ExclusionDates />
     </div>
   )
 }
