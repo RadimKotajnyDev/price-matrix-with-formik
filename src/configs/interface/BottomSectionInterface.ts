@@ -1,6 +1,7 @@
 import {RuleSetPropsInterface} from "./RuleSetPropsInterface.ts";
 
 export interface BottomSectionInterface extends PriceCommissionableInterface, PriceNetInterface {
+  isRemoving: boolean,
   insideCommissionRate: RuleSetPropsInterface['insideCommissionRate'],
   offerCode: RuleSetPropsInterface['offerCode'],
   errors: RuleSetPropsInterface['errors'],
@@ -28,6 +29,7 @@ export interface PriceNetInterface {
   disabledProp?: boolean
 }
 export interface OfferCodeInterface {
+  isRemoving: boolean,
   offerCode: RuleSetPropsInterface['offerCode']
   errors: RuleSetPropsInterface['errors'],
   ruleSetIndex: RuleSetPropsInterface['ruleSetIndex'],

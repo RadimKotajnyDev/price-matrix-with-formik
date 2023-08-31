@@ -93,7 +93,6 @@ export async function EmptyStringToNullData(data: { id: number, name: string, ru
     return input
   }
 
-
   //removing ruleSet based on isRemoving boolean
   data.ruleSets = data.ruleSets.filter(item => !item.isRemoving);
   RemapPriorities(data.ruleSets)
@@ -191,15 +190,6 @@ export function PriorityDown(values: RuleSetPropsInterface['values'], setValues:
     });
   }
 }
-
-export const HandleRemoveRuleSet = (values: RuleSetPropsInterface['values'], setValues: RuleSetPropsInterface['setValues'], index: number) => {
-
-  values.ruleSets.splice(index, 1);
-
-  RemapPriorities(values.ruleSets)
-
-  setValues(values);
-};
 
 export const AddRuleset = (values: RuleSetPropsInterface['values'], setValues: RuleSetPropsInterface['setValues'],) => {
   const newRuleset: RuleSetInterface = {...defaultRuleset};

@@ -5,15 +5,24 @@ import {RuleSetInterface} from "../../../../../configs/interface/PriceMatrixInte
 export const OfferCode = (props: OfferCodeInterface) => {
 
   const {
+    isRemoving,
     offerCode,
     errors,
     ruleSetIndex,
   } = props
 
+  const validate = (value: string) => {
+    let error;
+    if (!isRemoving && value === "") {
+      error = "offer code cannot be empty"
+    }
+    return error
+  }
+
   return (
     <div className="flex flex-col">
       <label className="LabelClass">Offer Code</label>
-      <Field type="text" name={offerCode} className={`InputClass w-56 
+      <Field type="text" name={offerCode} validate={validate} className={`InputClass w-56 
       ${errors
       && errors?.ruleSets
       && errors?.ruleSets[ruleSetIndex]

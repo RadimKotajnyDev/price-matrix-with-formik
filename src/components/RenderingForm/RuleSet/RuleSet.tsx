@@ -85,6 +85,7 @@ export const RuleSet = (props: RuleSetPropsInterface) => {
 
         errors={errors}
         ruleSetIndex={ruleSetIndex}
+        isRemoving={isRemoving}
         offerCode={offerCode}
         insideCommissionRate={insideCommissionRate}
       />

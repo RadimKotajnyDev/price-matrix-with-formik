@@ -7,6 +7,7 @@ import {InsideCommissionRate} from "./CodeAndCommission/InsideCommissionRate.tsx
 export const BottomSection = (props: BottomSectionInterface) => {
 
   const {
+    isRemoving,
     netBookingFeeAbsolute,
     netBookingFeeAbsoluteValue,
     netBookingFeePercent,
@@ -56,7 +57,7 @@ export const BottomSection = (props: BottomSectionInterface) => {
       />
       <Divider />
       <div className="flex flex-col gap-4">
-        <OfferCode errors={errors} ruleSetIndex={ruleSetIndex} offerCode={offerCode}/>
+        <OfferCode isRemoving={isRemoving} errors={errors} ruleSetIndex={ruleSetIndex} offerCode={offerCode}/>
         <InsideCommissionRate insideCommissionRate={insideCommissionRate} />
       </div>
     </section>
