@@ -1,5 +1,5 @@
 import axios from "axios";
-import {EmptyStringToNullData} from "../components/RenderingForm/functions/RenderFunctions.ts";
+import {FormatDataToAPI} from "../components/RenderingForm/functions/RenderFunctions.ts";
 import {RuleSetInterface} from "./interface/PriceMatrixInterface.ts";
 //import { matrixId, apiUrl } from '../config.ts';
 
@@ -22,7 +22,7 @@ export async function FetchData() {
 }
 
 export async function SubmitMatrix(values: { id: number, name: string, ruleSets: RuleSetInterface[], filter?: (item: RuleSetInterface) => object }) {
-  const refactoredData = await EmptyStringToNullData(values);
+  const refactoredData = await FormatDataToAPI(values);
   try {
     //const response = await axios.put(`${apiUrl}/pricematrix/${matrixId}`, refactoredData);
     const response = await axios.put(apiurl, refactoredData);

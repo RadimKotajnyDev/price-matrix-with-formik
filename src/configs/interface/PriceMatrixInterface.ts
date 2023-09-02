@@ -14,7 +14,18 @@ export interface RuleSetInterface {
   insideCommissionRate: number | string | null,
   note: string | null,
   offerCode: string | null
+  exclusionDates: ExclusionDatesInterface[]
 }
+
+export interface ExclusionDatesInterface {
+  id: number | null | string,
+  time: string | null,
+  dateFrom: string | null,
+  dateTo: string | null,
+
+  map?(element: (exclusionDate: ExclusionDatesInterface, index: number) => JSX.Element): any;
+}
+
 export interface DataSelectorInterface {
   performancesRange: PerformanceRange,
   bookingsRange: BookingsRange,

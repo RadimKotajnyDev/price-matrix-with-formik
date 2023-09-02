@@ -5,6 +5,7 @@ export const schema = yup.object().shape({
   name: yup.string(),
   ruleSets: yup.array().of(
     yup.object().shape({
+      isRemoving: yup.boolean().optional(),
       ruleSetId: yup.number().nullable(),
       priority: yup.number(),
       priceBandCodes: yup.string(),
@@ -17,6 +18,7 @@ export const schema = yup.object().shape({
               "Performances From must be before Performances To",
               function (value) {
                 const {performancesFrom, performancesTo} = value;
+                //FIXME: turn off validation if ruleSet is removing (isRemoving = true)
                 if (performancesFrom && performancesTo) {
                   return performancesFrom <= performancesTo;
                 }

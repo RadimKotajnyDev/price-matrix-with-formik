@@ -1,6 +1,6 @@
 import {useEffect, useRef, useState} from "react";
 import {FetchData} from "../configs/API.tsx";
-import {NullDataToEmptyStrings, ScrollToTop} from "../components/RenderingForm/functions/RenderFunctions.ts";
+import {FormatDataFromAPI, ScrollToTop} from "../components/RenderingForm/functions/RenderFunctions.ts";
 import {RuleSetInterface} from "../configs/interface/PriceMatrixInterface.ts";
 
 export const useRenderingForm = () => {
@@ -15,7 +15,7 @@ export const useRenderingForm = () => {
 
   useEffect(() => {
     const fetchAndFormat = async () => {
-      const data = await NullDataToEmptyStrings(await FetchData())
+      const data = await FormatDataFromAPI(await FetchData())
       setMatrixData(data)
       setIsLoadingSpin(false)
     }

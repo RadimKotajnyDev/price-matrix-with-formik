@@ -1,13 +1,13 @@
 import {defaultRuleset} from "../../../configs/ruleset/defaultRuleset.tsx";
 import {RefObject} from "react";
 import {RuleSetPropsInterface} from "../../../configs/interface/RuleSetPropsInterface.ts";
-import {RuleSetInterface} from "../../../configs/interface/PriceMatrixInterface.ts";
+import {ExclusionDatesInterface, RuleSetInterface} from "../../../configs/interface/PriceMatrixInterface.ts";
 import {format, isValid, parse} from "date-fns"
 
 // FORMATTING FUNCTIONS
-export async function NullDataToEmptyStrings(data: { id: number, name: string, ruleSets: RuleSetInterface[] }) {
+export async function FormatDataFromAPI(data: { id: number, name: string, ruleSets: RuleSetInterface[] }) {
 
-  function CheckValueNull(input: null | string) {
+  function CheckValueNullDates(input: null | string) {
     if (input === null) {
       return ""
     }
@@ -36,12 +36,12 @@ export async function NullDataToEmptyStrings(data: { id: number, name: string, r
         priceBandCodes: ArrayToStrings(item.priceBandCodes),
         dateSelector: {
           performancesRange: {
-            performancesFrom: CheckValueNull(item.dateSelector.performancesRange.performancesFrom),
-            performancesTo: CheckValueNull(item.dateSelector.performancesRange.performancesTo),
+            performancesFrom: CheckValueNullDates(item.dateSelector.performancesRange.performancesFrom),
+            performancesTo: CheckValueNullDates(item.dateSelector.performancesRange.performancesTo),
           },
           bookingsRange: {
-            bookingsFrom: CheckValueNull(item.dateSelector.bookingsRange.bookingsFrom),
-            bookingsTo: CheckValueNull(item.dateSelector.bookingsRange.bookingsTo),
+            bookingsFrom: CheckValueNullDates(item.dateSelector.bookingsRange.bookingsFrom),
+            bookingsTo: CheckValueNullDates(item.dateSelector.bookingsRange.bookingsTo),
           },
           //selectedPerformanceTimes: item.dateSelector.selectedPerformanceTimes
           selectedPerformanceTimes: item.dateSelector.selectedPerformanceTimes.map((currObj) => {
@@ -64,15 +64,24 @@ export async function NullDataToEmptyStrings(data: { id: number, name: string, r
         insideCommissionRate: item.insideCommissionRate === null ? "" : item.insideCommissionRate,
         note: item.note === null ? "" : item.note,
         offerCode: item.offerCode === null ? "" : item.offerCode,
+        exclusionDates: item.exclusionDates?.map((edItem: ExclusionDatesInterface) => {
+          return {
+            id: edItem.id === null ? "" : edItem.id,
+            time: edItem.time === null ? "" : edItem.time,
+            dateFrom: CheckValueNullDates(edItem.dateFrom),
+            dateTo: CheckValueNullDates(edItem.dateTo)
+          }
+        })
       }
     })
+
 
   return data;
 }
 
-export async function EmptyStringToNullData(data: { id: number, name: string, ruleSets: RuleSetInterface[], filter?: (item: RuleSetInterface) => object}) {
+export async function FormatDataToAPI(data: { id: number, name: string, ruleSets: RuleSetInterface[], filter?: (item: RuleSetInterface) => object}) {
 
-  function CheckValueEmptyStrings(input: null | string) {
+  function CheckValueEmptyStringsDates(input: null | string) {
     if (input === "") {
       return null
     }
@@ -106,12 +115,12 @@ export async function EmptyStringToNullData(data: { id: number, name: string, ru
         priceBandCodes: StringsToArray(item.priceBandCodes),
         dateSelector: {
           performancesRange: {
-            performancesFrom: CheckValueEmptyStrings(item.dateSelector.performancesRange.performancesFrom),
-            performancesTo:  CheckValueEmptyStrings(item.dateSelector.performancesRange.performancesTo),
+            performancesFrom: CheckValueEmptyStringsDates(item.dateSelector.performancesRange.performancesFrom),
+            performancesTo:  CheckValueEmptyStringsDates(item.dateSelector.performancesRange.performancesTo),
           },
           bookingsRange: {
-            bookingsFrom:  CheckValueEmptyStrings(item.dateSelector.bookingsRange.bookingsFrom),
-            bookingsTo: CheckValueEmptyStrings(item.dateSelector.bookingsRange.bookingsTo),
+            bookingsFrom:  CheckValueEmptyStringsDates(item.dateSelector.bookingsRange.bookingsFrom),
+            bookingsTo: CheckValueEmptyStringsDates(item.dateSelector.bookingsRange.bookingsTo),
           },
           selectedPerformanceTimes: item.dateSelector.selectedPerformanceTimes.map((currObj) => {
             //console.log(JSON.parse(currObj))
@@ -133,10 +142,18 @@ export async function EmptyStringToNullData(data: { id: number, name: string, ru
         },
         insideCommissionRate: item.insideCommissionRate === "" ? null : item.insideCommissionRate,
         note: item.note === "" ? null : item.note,
-        offerCode: item.offerCode === "" ? null : item.offerCode
+        offerCode: item.offerCode === "" ? null : item.offerCode,
+        exclusionDates: item.exclusionDates?.map((edItem: ExclusionDatesInterface) => {
+          return {
+            id: edItem.id === "" ? null : edItem.id,
+            time: edItem.time === "" ? null : edItem.time,
+            dateFrom: CheckValueEmptyStringsDates(edItem.dateFrom),
+            dateTo: CheckValueEmptyStringsDates(edItem.dateTo)
+          }
+        })
       }
     })
-  //console.log(data)
+  console.log(data)
 
   return data;
 }

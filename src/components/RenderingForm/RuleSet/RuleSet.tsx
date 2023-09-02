@@ -40,6 +40,7 @@ export const RuleSet = (props: RuleSetPropsInterface) => {
     values,
     setValues,
     ruleSetIndex,
+    exclusionDates,
     errors
   } = props
 
@@ -90,7 +91,11 @@ export const RuleSet = (props: RuleSetPropsInterface) => {
         offerCode={offerCode}
         insideCommissionRate={insideCommissionRate}
       />
-      <ExclusionDates />
+      <ExclusionDates
+        values={values}
+        setValues={setValues}
+        exclusionDates={exclusionDates}
+        ruleSetIndex={ruleSetIndex}/>
     </div>
   )
 }

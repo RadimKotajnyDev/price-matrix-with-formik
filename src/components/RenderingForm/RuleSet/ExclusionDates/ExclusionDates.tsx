@@ -1,57 +1,61 @@
-export const ExclusionDates = () => {
+import {Field, FieldArray} from "formik";
+import {ExclusionDatesInterface} from "../../../../configs/interface/PriceMatrixInterface.ts";
+import {AddExclusionDateRow, RemoveExclusionDateRow} from "./ExclusionDatesFunctions.ts";
+import {RuleSetPropsInterface} from "../../../../configs/interface/RuleSetPropsInterface.ts";
+import {AiOutlineMinus, AiOutlinePlus} from "react-icons/ai"
 
-  //TODO: add functionality
+interface ExclusionDatesProps {
+  exclusionDates: any,
+  ruleSetIndex: number,
+  values: RuleSetPropsInterface['values']
+  setValues: RuleSetPropsInterface['setValues']
+
+  map?(element: (exclusionDate: ExclusionDatesInterface, index: number) => JSX.Element): any;
+}
+
+export const ExclusionDates = (props: ExclusionDatesProps) => {
+
+  const {
+    setValues,
+    values,
+    exclusionDates,
+    ruleSetIndex
+  } = props
 
   return (
-    <section className="flex flex-row border-t-2 pt-2">
-      <div className="flex flex-col">
-        <p className="LabelClass">Exclusion dates:</p>
-        <table className="border-collapse border border-black text-center my-3">
-          <thead>
-            <tr>
-              <td className="border border-black bg-gray-200">Time/(Eve/mat)</td>
-              <td className="border border-black bg-gray-200">Date from</td>
-              <td className="border border-black bg-gray-200">Date to</td>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td className="border border-black">
-                <input type="text" className="TableInput" value="Mat"/>
-              </td>
-              <td className="border border-black">
-                <input type="date" className="TableInput" value=""/>
-              </td>
-              <td className="border border-black">
-                <input type="date" className="TableInput" value=""/>
-              </td>
-            </tr>
-            <tr>
-              <td className="border border-black">
-                <input type="time" className="TableInput" value="15:30"/>
-              </td>
-              <td className="border border-black">
-                <input type="date" className="TableInput" value=""/>
-              </td>
-              <td className="border border-black">
-                <input type="date" className="TableInput" value=""/>
-              </td>
-            </tr>
-            <tr>
-              <td className="border border-black">
-                <input type="time" className="TableInput" value="19:30"/>
-              </td>
-              <td className="border border-black">
-                <input type="date" className="TableInput" value=""/>
-              </td>
-              <td className="border border-black">
-                <input type="date" className="TableInput" value=""/>
-              </td>
-            </tr>
-          </tbody>
-        </table>
-        <button type="button" className="ButtonClass bg-secondary px-2 py-1 w-fit">Add exclusion date</button>
-      </div>
-    </section>
+    <FieldArray name={`ruleSets.exclusionDates`}>
+      {() => (
+        <div className="w-fit">
+          <div className="w-fit mb-3">
+            <div className="flex flex-row">
+              <p className="border w-[140px] text-center">Time/(Eve/Mat)</p>
+              <p className="border w-[140px] text-center">Date from</p>
+              <p className="border w-[140px] text-center">Date to</p>
+            </div>
+            {exclusionDates?.map((exclusionDate: ExclusionDatesInterface, edIndex: number) => (
+              <div key={exclusionDate.id} className="flex flex-row justify-between">
+                <Field name={`ruleSets[${ruleSetIndex}].exclusionDates[${edIndex}].time`}
+                       className="border text-center w-[140px]"/>
+                <Field name={`ruleSets[${ruleSetIndex}].exclusionDates[${edIndex}].dateFrom`}
+                       type="date" className="border text-center w-[140px]"/>
+                <Field name={`ruleSets[${ruleSetIndex}].exclusionDates[${edIndex}].dateTo`}
+                       type="date" className="border text-center w-[140px]"/>
+                <button type="button" onClick={() => RemoveExclusionDateRow(values, setValues, ruleSetIndex, edIndex)}
+                        className="rounded-sm text-white bg-secondary ml-2 my-1">
+                  <AiOutlineMinus size={30}/>
+                </button>
+              </div>
+            ))}
+          </div>
+          <div className="w-full flex justify-center">
+            <button type="button" onClick={() => AddExclusionDateRow(values, setValues, ruleSetIndex)}
+                    className="ButtonClass bg-secondary px-2 py-1 flex justify-center items-center w-fit">
+              <AiOutlinePlus size={25}/>
+              exclusion date
+            </button>
+          </div>
+        </div>
+      )}
+    </FieldArray>
   )
 }

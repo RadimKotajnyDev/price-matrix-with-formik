@@ -11,6 +11,8 @@ export interface RuleSetPropsInterface {
   insideCommissionRate: RuleSetInterface['insideCommissionRate'],
   priceBandCodes: RuleSetInterface['priceBandCodes'],
 
+  exclusionDates: RuleSetInterface['exclusionDates']
+
   performancesFrom: string | null,
   performancesTo: string | null,
   bookingsFrom: string | null,
@@ -31,7 +33,6 @@ export interface RuleSetPropsInterface {
   commissionableBookingFeePercent: string,
   commissionablePriceSelling: string,
   removeRuleSet: () => void,
-  rulesString: string,
   //setFieldValue: FormikHelpers<PriceMatrixInterface>['setFieldValue'],
   values: FormikState<PriceMatrixInterface>['values'],
   setValues: FormikHelpers<PriceMatrixInterface>['setValues'],

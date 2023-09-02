@@ -2,7 +2,7 @@ import {FieldArray, Form, Formik} from 'formik';
 import {SubmitMatrix} from "../../configs/API.tsx";
 import {RuleSet} from "./RuleSet/RuleSet.tsx";
 import {Heading} from "./elements/Heading.tsx";
-import {AddRuleset, NullDataToEmptyStrings} from "./functions/RenderFunctions.ts";
+import {AddRuleset, FormatDataFromAPI} from "./functions/RenderFunctions.ts";
 import {ResponseModal} from "./elements/ResponseModal.tsx";
 import {schema} from "./functions/validationSchema.ts";
 import {SubmitMatrixButton} from "./elements/SubmitMatrixButton.tsx";
@@ -27,6 +27,7 @@ export const RenderingForm = () => {
     DisplayError
   } = useRenderingForm()
 
+
   if (isLoadingSpin) {
     return <LoadingSpinner/>
   } else {
@@ -40,19 +41,20 @@ export const RenderingForm = () => {
           try {
             setIsErrorModal(false);
             const result = await SubmitMatrix(values);
-            const reformattedData = await NullDataToEmptyStrings(result)
+            const reformattedData = await FormatDataFromAPI(result)
             setValues(reformattedData)
             setIsLoadingSpin(true)
             setIsRequestModal(true);
           } catch (error) {
             setIsErrorModal(true)
             setIsRequestModal(true)
-            const reformattedData = await NullDataToEmptyStrings(values)
+            const reformattedData = await FormatDataFromAPI(values)
             setValues(reformattedData)
           }
           setSubmitting(false)
         }}
         validateOnChange={false}
+        validateOnBlur={false}
       >
         {({values, setValues, errors, isValid, isSubmitting}) => (
           <Form className="flex justify-center" ref={refOnTop}>
@@ -86,7 +88,6 @@ export const RenderingForm = () => {
                             ruleSetIndex={ruleSetIndex}
                             priority={ruleSet.priority}
                             ruleSetId={ruleSet.ruleSetId}
-                            rulesString={`ruleSets[${ruleSetIndex}].rules`}
                             offerCode={`ruleSets[${ruleSetIndex}].offerCode`}
                             note={`ruleSets[${ruleSetIndex}].note`}
 
@@ -110,6 +111,8 @@ export const RenderingForm = () => {
                             commissionableBookingFeePercent={`ruleSets[${ruleSetIndex}].priceCommissionable.bookingFeePercent`}
                             commissionablePriceSelling={`ruleSets[${ruleSetIndex}].priceCommissionable.priceSelling`}
                             insideCommissionRate={`ruleSets[${ruleSetIndex}].insideCommissionRate`}
+
+                            exclusionDates={values.ruleSets[ruleSetIndex].exclusionDates}
                             //setFieldValue={setFieldValue}
                             values={values}
                             setValues={setValues}

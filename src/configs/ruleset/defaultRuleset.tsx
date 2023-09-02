@@ -27,5 +27,6 @@ export const defaultRuleset = {
       },
       "insideCommissionRate": "",
       "note": "",
-      "offerCode": ""
+      "offerCode": "",
+      "exclusionDates" : []
 }
