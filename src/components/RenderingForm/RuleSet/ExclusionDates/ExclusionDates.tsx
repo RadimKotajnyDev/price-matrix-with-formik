@@ -1,10 +1,11 @@
 import {Field, FieldArray} from "formik";
-import {ExclusionDatesInterface} from "../../../../configs/interface/PriceMatrixInterface.ts";
+import {ExclusionDatesInterface, RuleSetInterface} from "../../../../configs/interface/PriceMatrixInterface.ts";
 import {AddExclusionDateRow, RemoveExclusionDateRow} from "./ExclusionDatesFunctions.ts";
 import {RuleSetPropsInterface} from "../../../../configs/interface/RuleSetPropsInterface.ts";
 import {AiOutlineMinus, AiOutlinePlus} from "react-icons/ai"
 
 interface ExclusionDatesProps {
+  errors: RuleSetPropsInterface['errors']
   exclusionDates: any,
   ruleSetIndex: number,
   values: RuleSetPropsInterface['values']
@@ -16,6 +17,7 @@ interface ExclusionDatesProps {
 export const ExclusionDates = (props: ExclusionDatesProps) => {
 
   const {
+    errors,
     setValues,
     values,
     exclusionDates,
@@ -35,11 +37,35 @@ export const ExclusionDates = (props: ExclusionDatesProps) => {
             {exclusionDates?.map((exclusionDate: ExclusionDatesInterface, edIndex: number) => (
               <div key={exclusionDate.id} className="flex flex-row justify-between">
                 <Field name={`ruleSets[${ruleSetIndex}].exclusionDates[${edIndex}].time`}
-                       className="border text-center w-[140px]"/>
+                       className={`border text-center w-[140px]
+                        ${errors
+                       && errors?.ruleSets
+                       && errors?.ruleSets[ruleSetIndex]
+                       && (errors?.ruleSets[ruleSetIndex] as RuleSetInterface).exclusionDates[edIndex]
+                       && (errors?.ruleSets[ruleSetIndex] as RuleSetInterface).exclusionDates[edIndex].time ? "border-red-400 bg-red-100" : ""
+                       }
+                       `}/>
                 <Field name={`ruleSets[${ruleSetIndex}].exclusionDates[${edIndex}].dateFrom`}
-                       type="date" className="border text-center w-[140px]"/>
+                       type="date"
+                       className={`border text-center w-[140px]
+                        ${errors
+                       && errors?.ruleSets
+                       && errors?.ruleSets[ruleSetIndex]
+                       && (errors?.ruleSets[ruleSetIndex] as RuleSetInterface).exclusionDates[edIndex]
+                       && (errors?.ruleSets[ruleSetIndex] as RuleSetInterface).exclusionDates[edIndex] ? "border-red-400 bg-red-100" : ""
+                       }
+                       `}/>
                 <Field name={`ruleSets[${ruleSetIndex}].exclusionDates[${edIndex}].dateTo`}
-                       type="date" className="border text-center w-[140px]"/>
+                       type="date"
+                       className={`border text-center w-[140px]
+                        ${errors
+                       && errors?.ruleSets
+                       && errors?.ruleSets[ruleSetIndex]
+                       && (errors?.ruleSets[ruleSetIndex] as RuleSetInterface).exclusionDates[edIndex]
+                       && (errors?.ruleSets[ruleSetIndex] as RuleSetInterface).exclusionDates[edIndex] ? "border-red-400 bg-red-100" : ""
+                       }
+                       `}
+                />
                 <button type="button" onClick={() => RemoveExclusionDateRow(values, setValues, ruleSetIndex, edIndex)}
                         className="rounded-sm text-white bg-secondary ml-2 my-1">
                   <AiOutlineMinus size={30}/>

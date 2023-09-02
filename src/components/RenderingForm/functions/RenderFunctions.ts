@@ -75,7 +75,6 @@ export async function FormatDataFromAPI(data: { id: number, name: string, ruleSe
       }
     })
 
-
   return data;
 }
 

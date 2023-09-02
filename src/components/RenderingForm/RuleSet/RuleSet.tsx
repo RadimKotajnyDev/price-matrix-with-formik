@@ -92,6 +92,7 @@ export const RuleSet = (props: RuleSetPropsInterface) => {
         insideCommissionRate={insideCommissionRate}
       />
       <ExclusionDates
+        errors={errors}
         values={values}
         setValues={setValues}
         exclusionDates={exclusionDates}
