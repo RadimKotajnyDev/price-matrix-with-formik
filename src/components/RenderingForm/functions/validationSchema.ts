@@ -77,8 +77,8 @@ export const schema = yup.object().shape({
           time: yup.string().matches(
             /^(Mat|mat|Eve|eve|([01]\d|2[0-3]):[0-5]\d)$/,
             'Time must be "Mat", "Eve", or in the "HH:mm" format (e.g., "00:00").'
-          ),
-          dateFrom: yup.date(),
+          ).required(),
+          dateFrom: yup.date().required(),
           dateTo: yup.date().test(
             "date from",
             "Date From must be before Date To",
@@ -88,7 +88,7 @@ export const schema = yup.object().shape({
                 return true;
               }
               return !dateFrom || !dateTo || dateFrom <= dateTo;
-            })
+            }).required()
         })
       )
     })
