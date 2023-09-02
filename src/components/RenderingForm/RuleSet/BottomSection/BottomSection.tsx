@@ -27,7 +27,7 @@ export const BottomSection = (props: BottomSectionInterface) => {
   } = props
 
   return (
-    <section className="flex flex-row mt-5 border-t-2 py-2">
+    <section className="flex flex-row mt-5 border-y-2 py-2 mb-2">
       <PriceCommissionable
         disabledProp={
         netBookingFeeAbsoluteValue != ""
